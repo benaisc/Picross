@@ -5,11 +5,11 @@
 class Case
 {
 private:
-	enum {-1, 0, 1}
+	enum ind {0, 1, -1};//0=0, 1=1, -1=2
 public:
 	Case();
 	~Case();
 
-	enum valeur() const;
+	int valeur() const;
 };
 #endif

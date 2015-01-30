@@ -15,7 +15,7 @@ public:
 
 	size_t valeur() const;
 	size_t longueur() const;
-	void setSuivant(Cell* p, Cell* suiv) const {p->setSuiv(suiv);};
+	void setSuivant(Cell* p, Cell* suiv){p->setSuiv(suiv);};
 
 };
 #endif

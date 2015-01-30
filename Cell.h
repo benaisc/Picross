@@ -11,9 +11,8 @@ class Cell{
 		
 		size_t getVal() const;
 		Cell* getSuiv() const;
-		Cell& operator=(const Cell&);
 		void setVal(size_t);
 		void setSuiv(Cell*);
-		void echanger(Cell,Cell);
+		Cell& operator=(const Cell&);
 };
 #endif

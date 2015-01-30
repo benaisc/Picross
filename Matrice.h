@@ -12,6 +12,5 @@ public:
 	Matrice();
 	~Matrice();
 
-
 };
 #endif
