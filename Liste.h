@@ -1,21 +1,26 @@
 #ifndef __LISTE_H__
 #define __LISTE_H__
 
-#include "Cell.h"
-
+#include "cell.h"
+#include <iostream> //il sera utilisé par la suite
 
 class Liste
 {
 private:
 	Cell* tete;
-	Cell* queue;
+
 public:
 	Liste();
 	~Liste();
 
-	size_t valeur() const;
-	size_t longueur() const;
-	void setSuivant(Cell* p, Cell* suiv){p->setSuiv(suiv);};
+	//Renvoi un pointeur sur la tete de liste
+	Cell* getPremier() const;
+	//Prend une cellule et sa suivante
+	void setSuivant(Cell*, Cell*);
+	//Renvoi 0 si non nul, il faut tester !isnull
+	bool isnull(Cell*) const;
+	//Affiche la liste
+	void affiche() const;
 
 };
 #endif
