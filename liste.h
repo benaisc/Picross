@@ -20,7 +20,7 @@ public:
 	//Renvoi 0 si non nul, il faut tester !isnull
 	bool isnull(Cell*) const;
 	//Affiche la liste
-	void affiche() const;
+	void afficheL() const;
 
 };
 #endif

@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 	L.setSuivant(L.getPremier(), &a);
 	L.setSuivant(&a, &b);
 	L.setSuivant(&b, &c);
-	L.affiche();
+	L.afficheL();
 
 
 	return 0;

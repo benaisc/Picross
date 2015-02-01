@@ -35,7 +35,7 @@ void Liste::setSuivant(Cell* p, Cell* suiv)
   else{tete=suiv;}
 }
 
-void Liste::affiche() const
+void Liste::afficheL() const
 {
   Cell* p=tete;
   std::string sep="";

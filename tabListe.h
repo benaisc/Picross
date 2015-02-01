@@ -1,17 +1,23 @@
-#ifndef __TABLI_H__
+#ifndef __TABLISTE_H__
 #define __TABLISTE_H__
 
-#include "Liste.h"
+#include "liste.h"
 
 
 class TabListe
 {
 private:
-	Liste* tab;
 	size_t taille;
+	Liste* tab;
+
 public:
 	TabListe(size_t);
 	~TabListe();
+
+	size_t getTaille() const;
+	void afficheT() const;
+	TabListe& operator[](const TabListe& T);
+
 
 };
 #endif
