@@ -2,7 +2,7 @@
 
 
 Liste::Liste():tete(NULL){}
-
+/*
 Liste::~Liste()
 {
   Cell* p=tete;
@@ -15,7 +15,7 @@ Liste::~Liste()
     std::cout << "Dans le destructeur B, p=" << p->getVal() << std::endl;
   }
 }
-
+*/
 bool Liste::isnull(Cell* p) const
 {
   return !p;
