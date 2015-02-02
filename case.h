@@ -8,7 +8,6 @@ private:
 	enum ind {0, 1, -1};//0=0, 1=1, -1=2
 public:
 	Case();
-	~Case();
 
 	int valeur() const;
 };

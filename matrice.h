@@ -8,7 +8,7 @@ class Matrice
 {
 private:
 	Case** mat;
-	size_t n, m;
+	size_t nbc, nbl;
 public:
 	Matrice(size_t, size_t);
 	~Matrice();
