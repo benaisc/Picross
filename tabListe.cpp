@@ -34,7 +34,8 @@ Liste& TabListe::operator[](size_t i)
   return tab[i];
 }
 
-void TabListe::error() const{
+void TabListe::error() const
+{
   std::cerr<<"Attention i>taille"<<std::endl;
   exit(EXIT_FAILURE);
 }
