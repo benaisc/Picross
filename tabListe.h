@@ -2,7 +2,6 @@
 #define __TABLISTE_H__
 
 #include "liste.h"
-#include <stdlib.h>//pour exit
 
 class TabListe
 {
