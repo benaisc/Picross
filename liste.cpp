@@ -1,21 +1,8 @@
 #include "liste.h"
 
 
-Liste::Liste():tete(NULL){}
-/*
-Liste::~Liste()
-{
-  Cell* p=tete;
-  while(!isnull(p))
-  {
-    tete=p->getSuiv();
-    std::cout << "Dans le destructeur A, p=" << p->getVal() <<" tete="<< tete->getVal() << std::endl;
-    delete p;
-    p=tete;
-    std::cout << "Dans le destructeur B, p=" << p->getVal() << std::endl;
-  }
-}
-*/
+Liste::Liste():tete(NULL), longueur(0){}
+
 bool Liste::isnull(Cell* p) const
 {
   return !p;
@@ -26,23 +13,61 @@ Cell* Liste::getPremier() const
   return tete;
 }
 
-void Liste::setSuivant(Cell* p, Cell* suiv)
+size_t Liste::getLongueur() const
 {
-  if(!isnull(p))
+  return longueur;
+}
+
+Cell& Liste::operator()(size_t i)
+{
+  if(i>longueur)
   {
-    p->setSuiv(suiv);
+    exit(EXIT_FAILURE);
   }
-  else{tete=suiv;}
+  else
+  {
+    if(i<=1)
+    {
+      return *tete;
+    }
+    else
+    {
+      Cell* ptr=tete;
+      for(size_t j=1; j<i; j++)
+      {
+        ptr=ptr->getSuiv();
+      }
+      return *ptr;
+    }
+  }
+}
+
+void Liste::ajoutFin(Cell& c)
+{
+  if(longueur==0)
+  {
+    tete=&c;
+  }
+  else
+  {
+    Cell* ptr=tete;
+    for(size_t j=1; j<longueur; j++)
+    {
+      ptr=ptr->getSuiv();
+    }
+    ptr->setSuiv(c);
+  }
+  ++longueur;
 }
 
 void Liste::afficheL() const
 {
-  Cell* p=tete;
+  Cell* ptr=tete;
   std::string sep="";
-  while(!isnull(p))
+  while(!isnull(ptr))
   {
-    std::cout << sep << p->getVal();
-    p=p->getSuiv();
+    std::cout << sep << ptr->getVal();
+    ptr=ptr->getSuiv();
     sep="->";
   }
   std::cout << std::endl;

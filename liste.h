@@ -3,24 +3,25 @@
 
 #include "cell.h"
 #include <iostream> //il sera utilisé par la suite
+#include <stdlib.h>//pour exit
 
 class Liste
 {
 private:
 	Cell* tete;
+	size_t longueur;
 
 public:
 	Liste();
-	//~Liste();useless ?
-
-	//Renvoi un pointeur sur la tete de liste
-	Cell* getPremier() const;
-	//Prend une cellule et sa suivante
-	void setSuivant(Cell*, Cell*);
-	//Renvoi 0 si non nul, il faut tester !isnull
+	//1 si null
 	bool isnull(Cell*) const;
+	//Renvoi la tete de liste
+	Cell* getPremier() const;
+	size_t getLongueur() const;
+	//sucre, L(1)=tete en temp constant
+	Cell& operator()(size_t i);
+	void ajoutFin(Cell&);
 	//Affiche la liste
 	void afficheL() const;
-
 };
 #endif
