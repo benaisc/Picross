@@ -2,24 +2,25 @@
 #define __PICROSS_H__
 #include "tabListe.h"
 #include "matrice.h"
+
 class Picross
 {
  private:
   Matrice mat;
-  Tabliste lignes;
-  Tabliste colonnes;
+  TabListe lignes;
+  TabListe colonnes;
  public:
 
   //constructeur
-  Picross(Matrice mat,Tabliste lignes,Tabliste colonnes);
+  Picross(Matrice mat,TabListe lignes,TabListe colonnes);
   //accesseur
-  Tabliste getLignes()const;
-  Tabliste getColonnes()const;
+  TabListe getLignes()const;
+  TabListe getColonnes()const;
   Matrice  getMat()const;
   
   //Methode
   void affiche_ter()const;
   
-}
-ostream& operator<<( ostream &flux, Picross const& picross );
+};
+std::ostream& operator<<( std::ostream &flux, Picross const& picross );
 #endif

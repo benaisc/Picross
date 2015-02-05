@@ -21,5 +21,6 @@ public:
 
 	//stratagème pour sortir du programme
 	void error() const;
+	void affiche_ter()const;
 };
 #endif
