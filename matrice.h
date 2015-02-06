@@ -2,22 +2,24 @@
 #define __MATRICE_H__
 #include <string>
 #include <iostream>
+
+using namespace std;
 //enum class Color  {?, rouge, noir};
 
 class Matrice
 {
-private:
-  int** mat;
-  size_t nbl;
-  size_t nbc;
-public:
+  private:
+    size_t nbl;
+    size_t nbc;
+    int** mat;
 
-  Matrice(size_t nbl, size_t nbc);
-  ~Matrice();
+  public:
+    Matrice(size_t nbl, size_t nbc);
+    ~Matrice();
 
-  int** getMat()const;
-  size_t getNbc()const;
-  size_t getNbl()const;
-  void affiche_ter(std::ostream& f)const;
+    int** getMat()const;
+    size_t getNbc()const;
+    size_t getNbl()const;
+    void affiche_ter(std::ostream& f)const;
 };
 #endif
