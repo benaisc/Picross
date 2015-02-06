@@ -17,9 +17,8 @@ class Picross
   TabListe getLignes()const;
   TabListe getColonnes()const;
   Matrice  getMat()const;
-  
   //Methode
-  void affiche_ter()const;
+  void affiche_ter(std::ostream& f)const;
   
 };
 std::ostream& operator<<( std::ostream &flux, Picross const& picross );

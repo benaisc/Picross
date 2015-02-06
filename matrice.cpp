@@ -1,24 +1,30 @@
 # include "matrice.h"
+using namespace std;
+Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc),mat(NULL){
 
-Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc){
- 
- if(nbc=!0 && mbl=!0)
+ if(nbc!=0 || nbl!=0)
    {
-  mat=new int*[nbc];
+  mat=new int* [nbc];
+  
   for(size_t i=0;i<nbc;i++)
     {
     mat[i]=new int[nbl];
-    for(size_t j=0;j<nbl;i++)
+   
+    for(size_t j=0;j<nbl;j++)
       {
 	mat[i][j]=0;
       }
     }
    }
- else
-   {
-     mat==NULL;
-   }
+}
 
+Matrice::~Matrice()
+{
+  for(size_t i=0;i<nbc;i++)
+    {
+      delete [] mat[i];
+    }
+  delete [] mat;
 }
 
 int** Matrice:: getMat()const
@@ -27,9 +33,19 @@ int** Matrice:: getMat()const
 }
 size_t Matrice:: getNbc()const
 {
-  return Nbc;
+  return nbc;
 }
 size_t Matrice:: getNbl()const
 {
-  return Nbl;
+  return nbl;
+}
+void Matrice::affiche_ter(ostream &f)const
+{
+  for(size_t i=0; i<nbc;i++)
+    {
+    for(size_t j=0;j<nbl;j++)
+      {
+	f<<mat[i][j];
+	}
+    }
 }

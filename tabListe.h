@@ -21,6 +21,6 @@ public:
 
 	//stratagème pour sortir du programme
 	void error() const;
-	void affiche_ter()const;
+	void affiche_ter(std::ostream& f)const;
 };
 #endif
