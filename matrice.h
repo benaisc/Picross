@@ -1,17 +1,20 @@
 #ifndef __MATRICE_H__
 #define __MATRICE_H__
 
-#include "Case.h"
-
+//enum class Color  {?, rouge, noir};
 
 class Matrice
 {
 private:
-	Case** mat;
-	size_t nbc, nbl;
+  int** mat;
+  size_t nbc, nbl;
 public:
-	Matrice(size_t, size_t);
-	~Matrice();
-
+  //accesseurs
+  Matrice(size_t, size_t);
+  //methode
+  int** getMat()const;
+  size_t getNbc()const;
+  size_t getNbl()const;
+  void affiche_ter()const;
 };
 #endif
