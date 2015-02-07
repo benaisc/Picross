@@ -84,5 +84,3 @@ int Liste::somElem() const
       }
     return som;
 }
-      }
-}
