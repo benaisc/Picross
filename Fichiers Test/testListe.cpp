@@ -20,6 +20,8 @@ int main(int argc, char** argv)
 	L.ajoutFin(d);
 	cout << L(4).getVal() << endl;//test sucre
 	L.afficheL();
+	
+	cout << L.somElem() << endl;
 
 	return 0;
 }
