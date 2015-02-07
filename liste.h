@@ -23,5 +23,8 @@ public:
 	void ajoutFin(Cell&);
 	//Affiche la liste
 	void afficheL() const;
+	
+	int somElem()const;
+	//Renvoi la somme des elements de la liste
 };
 #endif
