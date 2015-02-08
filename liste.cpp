@@ -72,3 +72,15 @@ void Liste::afficheL() const
   }
   std::cout << std::endl;
 }
+
+int Liste::somElem() const
+{
+    int som = 0;
+    Cell* ptr=tete;
+    while (!isnull(ptr))
+      {
+        som += ptr->getVal();
+        ptr = ptr->getSuiv();
+      }
+    return som;
+}
