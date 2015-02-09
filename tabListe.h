@@ -33,5 +33,8 @@ public:
 	* Affiche problèmes sur terminal en cas d'erreur
 	*/
 	void error() const;
+
+
+	void affiche_ter(std::ostream& f) const;
 };
 #endif
