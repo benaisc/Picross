@@ -4,4 +4,5 @@
 #include <fstream>
 #include <iostream>
 Picross lecture(std::ifstream& f);
+char carsuiv(std::ifstream &f);
 #endif
