@@ -25,7 +25,9 @@ int main(int argc, char** argv)
   T[0]=L1;
   T[1]=L2;
 
-  T.afficheT();
+  T.afficheT(cout);
+
+  cout << T;
 
   return 0;
 }

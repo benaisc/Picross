@@ -15,11 +15,11 @@ size_t TabListe::getTaille() const
   return taille;
 }
 
-void TabListe::afficheT() const
+void TabListe::afficheT(std::ostream& os) const
 {
   for(size_t i=0; i<taille; i++)
   {
-    std::cout <<"tab[" << i << "] : ";
+    os <<"tab[" << i << "] : ";
     this->tab[i].afficheL();
   }
 }
@@ -39,18 +39,8 @@ void TabListe::error() const
   exit(EXIT_FAILURE);
 }
 
-void TabListe::affiche_ter(std::ostream& f) const
+std::ostream &operator<<(std::ostream &os, TabListe &L)
 {
-  size_t j=0;
-  for(size_t i=0;i<taille;i++)
-  {
-    j=0;
-    f<<"T["<<i<<"] : ";
-    while(tab[i].getPremier()!=NULL && tab[i](j).getSuiv()!=NULL)
-    {
-      f<<tab[i](j).getSuiv()->getVal()<<" ";
-      j++;
-    }
-    f<<std::endl;
-  }
+  L.afficheT(os);
+  return os;
 }

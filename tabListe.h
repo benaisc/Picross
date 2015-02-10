@@ -18,7 +18,7 @@ public:
 	TabListe(size_t);
 	~TabListe();
 	size_t getTaille() const;
-	void afficheT() const; /**< Affichage simple des listes du tab */
+	void afficheT(std::ostream& os) const; /**< Affichage simple des listes du tab */
 	/**
 	* \fn operator[](size_t)
 	* \brief Sucre syntaxique évitant les seg. fault
@@ -34,7 +34,7 @@ public:
 	*/
 	void error() const;
 
-
-	void affiche_ter(std::ostream& f) const;
 };
+std::ostream &operator<<(std::ostream &os, TabListe &L);
+
 #endif
