@@ -48,7 +48,7 @@ public:
 	void ajoutFin(Cell&);
 	void afficheL() const;	/**< Affiche la liste : 1->2->.. */
 
-	int somElem()const;
+	size_t somElem()const;
 	//Renvoi la somme des elements de la liste
 };
 #endif

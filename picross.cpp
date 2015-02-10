@@ -1,27 +1,34 @@
 #include "picross.h"
 
 //constructeur
-Picross::Picross(Matrice mat, TabListe lignes, TabListe colonnes) : mat(mat), lignes(lignes), colonnes(colonnes){}
+Picross::Picross(Matrice m, TabListe l, TabListe c) : mat(m), lignes(l), colonnes(c){}
 //accesseur
-TabListe Picross::getLignes()const{
+TabListe Picross::getLignes() const
+{
   return lignes;
 }
-TabListe Picross::getColonnes()const{
+TabListe Picross::getColonnes() const
+{
   return colonnes;
 }
-Matrice Picross::getMat()const{
+Matrice Picross::getMat() const
+{
   return mat;
 }
 //Methode
-void Picross::affiche_ter(std::ostream& f)const{
-  lignes.affiche_ter(f);
-  colonnes.affiche_ter(f);
-  mat.affiche_ter(f);
+void Picross::afficheP(std::ostream &os) const
+{
+  os<<"Lignes : "<<std::endl;
+  lignes.afficheT(os);
+  os<<"Colonnes : "<<std::endl;
+  colonnes.afficheT(os);
+  os<<"Matrice : "<<std::endl;
+  mat.afficheM(os);
 }
 
 //operateur d'affichage
-std::ostream& operator<<( std::ostream& flux, Picross const& picross )
+std::ostream &operator<<(std::ostream& os, Picross &picross)
 {
-  picross.affiche_ter(flux);
-    return flux;
+  picross.afficheP(os);
+  return os;
 }

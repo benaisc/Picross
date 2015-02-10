@@ -37,13 +37,20 @@ size_t Matrice:: getNbl()const
 {
   return nbl;
 }
-void Matrice::affiche_ter(ostream &f)const
+void Matrice::afficheM(std::ostream &os)const
 {
   for(size_t i=0; i<nbc;i++)
   {
+    os << std::endl << "T[" << i << "] : ";
     for(size_t j=0;j<nbl;j++)
     {
-      f<<mat[i][j];
+      os<<mat[i][j];
     }
   }
+  os << std::endl;
+}
+std::ostream &operator<<(std::ostream &os, Matrice &M)
+{
+  M.afficheM(os);
+  return os;
 }

@@ -4,7 +4,7 @@
 #include <iostream>
 
 using namespace std;
-//enum class Color  {?, rouge, noir};
+//enum class Color  {?, rouge, noir}; ! ! !
 
 class Matrice
 {
@@ -17,9 +17,10 @@ class Matrice
     Matrice(size_t nbl, size_t nbc);
     ~Matrice();
 
-    int** getMat()const;
-    size_t getNbc()const;
-    size_t getNbl()const;
-    void affiche_ter(std::ostream& f)const;
+    int** getMat() const;
+    size_t getNbc() const;
+    size_t getNbl() const;
+    void afficheM(std::ostream&) const;
 };
+std::ostream &operator<<(std::ostream&, Matrice&);
 #endif

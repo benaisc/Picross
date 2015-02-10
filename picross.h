@@ -12,14 +12,14 @@ class Picross
  public:
 
   //constructeur
-  Picross(Matrice mat,TabListe lignes,TabListe colonnes);
+  Picross(Matrice,TabListe,TabListe);
   //accesseur
   TabListe getLignes()const;
   TabListe getColonnes()const;
   Matrice  getMat()const;
   //Methode
-  void affiche_ter(std::ostream& f)const;
-  
+  void afficheP(std::ostream&)const;
+
 };
-std::ostream& operator<<( std::ostream &flux, Picross const& picross );
+std::ostream& operator<<(std::ostream&, Picross&);
 #endif

@@ -73,7 +73,7 @@ void Liste::afficheL() const
   std::cout << std::endl;
 }
 
-int Liste::somElem() const
+size_t Liste::somElem() const
 {
     int som = 0;
     Cell* ptr=tete;
@@ -82,5 +82,5 @@ int Liste::somElem() const
         som += ptr->getVal();
         ptr = ptr->getSuiv();
       }
-    return som;
+    return som+longueur-1;
 }

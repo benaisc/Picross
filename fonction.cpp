@@ -16,10 +16,10 @@ void remplirTabListe(ifstream& f, TabListe& colonne)
   int test;
  while(carsuiv(f)!=';')
    {
-  
+
      while(carsuiv(f)!=',' && carsuiv(f)!=';')
        {
-	 
+
 	 f>>valindice;//je lit l'indice
 	 f.ignore();
 	 indice=Cell(valindice);//je le tranforme en cell
@@ -62,7 +62,7 @@ Picross lecture(ifstream& f)
   cout<<"-----------------Maintenant remplisons Colonne-----------------------------"<<endl;
   remplirTabListe(f,colonne);
   cout<<"----------------Colonne remplie avec succes-----------------------------"<<endl;
-  f.get(suiv);
+  f.ignore();
   f.get(suiv);
   if(suiv!='\n')
     {
