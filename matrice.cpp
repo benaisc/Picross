@@ -2,13 +2,13 @@
 
 Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc),mat(NULL)
 {
-  if(nbc!=0 || nbl!=0)
+  if(nbc!=0 && nbl!=0)
   {
     mat=new int* [nbc];
-    for(size_t i=0;i<nbc;i++)
+    for(size_t i=0; i<nbc; i++)
     {
-      mat[i]=new int[nbl];
-      for(size_t j=0;j<nbl;j++)
+      mat[i]=new int [nbl];
+      for(size_t j=0; j<nbl; j++)
       {
         mat[i][j]=0;
       }
@@ -37,11 +37,12 @@ size_t Matrice:: getNbl()const
 {
   return nbl;
 }
+
 void Matrice::afficheM(std::ostream &os)const
 {
   for(size_t i=0; i<nbc;i++)
   {
-    os << std::endl << "T[" << i << "] : ";
+    os << "\n" << "L|C[" << i << "] : ";
     for(size_t j=0;j<nbl;j++)
     {
       os<<mat[i][j];

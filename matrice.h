@@ -3,7 +3,6 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
 //enum class Color  {?, rouge, noir}; ! ! !
 
 class Matrice

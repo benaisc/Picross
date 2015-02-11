@@ -27,8 +27,8 @@ void Picross::afficheP(std::ostream &os) const
 }
 
 //operateur d'affichage
-std::ostream &operator<<(std::ostream& os, Picross &picross)
+std::ostream &operator<<(std::ostream& os, Picross &P)
 {
-  picross.afficheP(os);
+  P.afficheP(os);
   return os;
 }
