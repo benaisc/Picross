@@ -8,18 +8,6 @@ bool Liste::isnull(Cell* p) const
   return !p;
 }
 
-Liste& Liste::operator=(const Liste& c)
-{
-  tete=NULL;
-  Cell *ptr=c.getPremier();
-  for(size_t i=0; i<c.getLongueur();i++)
-  {
-    Cell a=Cell(ptr->getVal());
-    this->ajoutFin(a);
-  }
-  return *this;
-}
-
 Cell* Liste::getPremier() const
 {
   return tete;
@@ -30,28 +18,9 @@ size_t Liste::getLongueur() const
   return longueur;
 }
 
-Cell& Liste::operator()(size_t i)
+void Liste::setLongueur(size_t i)
 {
-  if(i>longueur)
-  {
-    exit(EXIT_FAILURE);
-  }
-  else
-  {
-    if(i<=1)
-    {
-      return *tete;
-    }
-    else
-    {
-      Cell* ptr=tete;
-      for(size_t j=1; j<i; j++)
-      {
-        ptr=ptr->getSuiv();
-      }
-      return *ptr;
-    }
-  }
+  longueur=i;
 }
 
 void Liste::ajoutFin(Cell& c)
@@ -84,18 +53,59 @@ size_t Liste::somElem() const
     return som+longueur-1;
 }
 
-std::ostream &operator<<(std::ostream &os, Liste &Li)
+Liste& Liste::operator=(const Liste& c)
 {
-  Cell* ptr=Li.getPremier();
-  std::string sep="";
-  size_t i=1;
-  while(i<=Li.getLongueur())
+  this->tete=NULL;
+  longueur=c.getLongueur();
+  Cell *ptr=c.getPremier();
+  while(!isnull(ptr))
   {
-    std::cout << sep << ptr->getVal();
+    Cell a(ptr->getVal());
+    this->ajoutFin(a);
+    ptr=ptr->getSuiv();
+  }
+  return *this;
+}
+
+Cell& Liste::operator()(size_t i)
+{
+  if(i>longueur)
+  {
+    exit(EXIT_FAILURE);
+  }
+  else
+  {
+    if(i<=1)
+    {
+      return *tete;
+    }
+    else
+    {
+      Cell* ptr=tete;
+      for(size_t j=1; j<i; j++)
+      {
+        ptr=ptr->getSuiv();
+      }
+      return *ptr;
+    }
+  }
+}
+
+void Liste::afficheL(std::ostream &os) const
+{
+  Cell* ptr=tete;
+  std::string sep="";
+  while(!isnull(ptr))
+  {
+    os << sep << ptr->getVal();
     ptr=ptr->getSuiv();
     sep="->";
-    i++;
   }
-  std::cout << std::endl;
+  os << std::endl;
+}
+
+std::ostream &operator<<(std::ostream &os, Liste &L)
+{
+  L.afficheL(os);
   return os;
 }

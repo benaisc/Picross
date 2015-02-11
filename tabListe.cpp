@@ -15,13 +15,10 @@ size_t TabListe::getTaille() const
   return taille;
 }
 
-void TabListe::afficheT(std::ostream& os) const
+void TabListe::error() const
 {
-  for(size_t i=0; i<taille; i++)
-  {
-    os <<"tab[" << i << "] : ";
-    this->tab[i].afficheL();
-  }
+  std::cerr << "Attention i>taille" << std::endl;
+  exit(EXIT_FAILURE);
 }
 
 Liste& TabListe::operator[](size_t i)
@@ -32,15 +29,49 @@ Liste& TabListe::operator[](size_t i)
   }
   return tab[i];
 }
-
-void TabListe::error() const
+/*
+Cette fonction seg_fault mais est à priori inutile
+TabListe& TabListe::operator=(TabListe &L)
 {
-  std::cerr<<"Attention i>taille"<<std::endl;
-  exit(EXIT_FAILURE);
+  if(taille != 0)
+  {
+    delete [] this->tab;
+  }
+  taille=L.getTaille();
+  this->tab=new Liste [taille];
+  for(size_t i=0; i<taille; i++)
+  {
+    this->tab[i]=L[i];
+  }
+  return *this;
+}
+*/
+/*
+Liste& TabListe::operator=(const Liste& L)
+{
+  this=NULL;
+  this.setLongueur(L.getLongueur());
+  Cell *ptr=L.getPremier();
+  while(!isnull(ptr))
+  {
+    Cell a(ptr->getVal());
+    this.ajoutFin(a);
+    ptr=ptr->getSuiv();
+  }
+  return *this;
+}
+*/
+void TabListe::afficheT(std::ostream &os) const
+{
+  for(size_t i=0; i<taille; i++)
+  {
+    os << "tab[" << i << "] : ";
+    this->tab[i].afficheL(os);
+  }
 }
 
-std::ostream &operator<<(std::ostream &os, TabListe &L)
+std::ostream &operator<<(std::ostream &os, TabListe &T)
 {
-  L.afficheT(os);
+  T.afficheT(os);
   return os;
 }

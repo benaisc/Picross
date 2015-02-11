@@ -29,8 +29,8 @@ Cell& Cell::operator=(const Cell& c)
 {
 	if(this != &c)
 	{
-		this->suiv=c.getSuiv();
-		this->val=c.getVal();
+		suiv=c.getSuiv();
+		val=c.getVal();
 	}
 	return *this;
 }

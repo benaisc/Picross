@@ -30,6 +30,7 @@ public:
 	bool isnull(Cell*) const;	/**< \return 1 si vide, 0 sinon */
 	Cell* getPremier() const;	/**< \return la tete de liste */
 	size_t getLongueur() const;	/**< \return le nombre de cellules de la liste */
+	void setLongueur(size_t);
 	/**
 	* \fn ajoutFin(Cell&)
 	* \brief Ajout d'une cellule en queue de liste
@@ -59,6 +60,8 @@ public:
 	* somElem(1->1)=3
 	*/
 	size_t somElem() const;
+
+	void afficheL(std::ostream&) const; /**< 1->2->... */
 };
 std::ostream &operator<<(std::ostream &os, Liste &Li);	/**< 1->2->... */
 #endif

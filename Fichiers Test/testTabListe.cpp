@@ -7,27 +7,28 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-  Liste L1;
-  Cell a1(1);
-  Cell b1(2);
-  L1.ajoutFin(a1);
-  L1.ajoutFin(b1);
-  L1.afficheL();
+  Cell a(1);
+  Cell b(2);
+  Cell c(3);
+  TabListe T(1);
 
-  Liste L2;
-  Cell a2(3);
-  Cell b2(4);
-  L2.ajoutFin(a2);
-  L2.ajoutFin(b2);
-  L2.afficheL();
+  cout << "//test operator[]" << endl;
+  T[0].ajoutFin(a);
+  T[0].ajoutFin(b);
+  T[0].ajoutFin(c);
+  T[0].afficheL(cout);
+  cout << T[0];
+  cout << "Premier élément par T[]()=" << T[0](1).getVal() << endl;
 
-  TabListe T(2);
-  T[0]=L1;
-  T[1]=L2;
-
-  T.afficheT(cout);
-
+  cout << "//test operator<<" << endl;
   cout << T;
+
+  /*
+  cout << "//test operateur=" << endl;
+  TabListe A(2);
+  A=T;
+  cout << A;
+  */
 
   return 0;
 }
