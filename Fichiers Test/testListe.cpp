@@ -14,14 +14,15 @@ int main(int argc, char** argv)
 	L.ajoutFin(a);
 	L.ajoutFin(b);
 	L.ajoutFin(c);
-	L.afficheL();
+	cout << L;	//test operator<<
+	cout << "L(2) : "<<L(2).getVal() << endl;	//test operator()
 
-	Cell d(9);
-	L.ajoutFin(d);
-	cout << L(4).getVal() << endl;//test sucre
-	L.afficheL();
-	
-	cout << L.somElem() << endl;
+
+	Liste L2=L;	//test operator=
+	cout << L2;
+
+
+	cout <<"somElem : "<< L.somElem() << endl;
 
 	return 0;
 }

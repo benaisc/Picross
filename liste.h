@@ -27,9 +27,16 @@ public:
 	* \param Pointeur sur une Cellule
 	* \return 1 si la liste est vide, 0 sinon
 	*/
-	bool isnull(Cell*) const;
-	Cell* getPremier() const;	/**< Renvoi la tete de liste */
-	size_t getLongueur() const;	/**< return le nombre de cellules de la liste */
+	bool isnull(Cell*) const;	/**< \return 1 si vide, 0 sinon */
+	Cell* getPremier() const;	/**< \return la tete de liste */
+	size_t getLongueur() const;	/**< \return le nombre de cellules de la liste */
+	/**
+	* \fn ajoutFin(Cell&)
+	* \brief Ajout d'une cellule en queue de liste
+	* , en tete de liste si tete==NULL
+	* \param l'adresse de la cellule à placer
+	*/
+	void ajoutFin(Cell&);
 	/**
 	* \fn operator()(size_t i)
 	* \brief Sucre syntaxique permettant l'accès aux éléments d'une liste
@@ -40,15 +47,18 @@ public:
 	*/
 	Cell& operator()(size_t i);
 	/**
-	* \fn ajoutFin(Cell&)
-	* \brief Ajout d'une cellule en queue de liste
-	* , en tete de liste si tete==NULL
-	* \param l'adresse de la cellule à placer
+	* \fn operator=(const Liste&)
+	* \brief Operateur par copie
+	* Utilisation : L1=L2
+	* \param Liste dont les valeurs doivent être copiées
 	*/
-	void ajoutFin(Cell&);
-	void afficheL() const;	/**< Affiche la liste : 1->2->.. */
-
-	size_t somElem()const;
-	//Renvoi la somme des elements de la liste
+	Liste& operator=(const Liste&);
+	/**
+	* \fn somElem()
+	* \brief test de ligne à remplir logiquement
+	* somElem(1->1)=3
+	*/
+	size_t somElem() const;
 };
+std::ostream &operator<<(std::ostream &os, Liste &Li);	/**< 1->2->... */
 #endif
