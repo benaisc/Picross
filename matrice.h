@@ -16,10 +16,10 @@ class Matrice
     Matrice(size_t nbl, size_t nbc);
     ~Matrice();
 
-    int** getMat() const;
+    int**  getMat() const;
     size_t getNbc() const;
     size_t getNbl() const;
-    void afficheM(std::ostream&) const;
+    void   afficheM(std::ostream&) const;
 };
 std::ostream &operator<<(std::ostream&, Matrice&);
 #endif

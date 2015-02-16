@@ -23,11 +23,30 @@ void Liste::setLongueur(size_t i)
   longueur=i;
 }
 
-void Liste::ajoutFin(Cell& c)
+void Liste::putFin(size_t v)
+{
+  if(isnull(tete))
+  {
+    tete=new Cell(v);
+  }
+  else
+  {
+    Cell* ptr=tete;
+    for(size_t j=1; j<longueur; j++)
+    {
+      ptr=ptr->getSuiv();
+    }
+    Cell* c=new Cell(v);
+    ptr->setSuiv(c);
+  }
+  ++longueur;
+}
+
+void Liste::ajoutFin(Cell* c)
 {
   if(longueur==0)
   {
-    tete=&c;
+    tete=c;
   }
   else
   {
@@ -60,8 +79,7 @@ Liste& Liste::operator=(const Liste& c)
   Cell *ptr=c.getPremier();
   while(!isnull(ptr))
   {
-    Cell a(ptr->getVal());
-    this->ajoutFin(a);
+    this->putFin(ptr->getVal());
     ptr=ptr->getSuiv();
   }
   return *this;

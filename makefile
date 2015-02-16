@@ -1,6 +1,6 @@
 CXX=g++
 CXXFLAGS=-Wall -ansi -pedantic
-LDFLAGS=-Wall
+LDFLAGS=
 EXEC=main
 SRC=$(wildcard *.cpp)
 OBJ=$(SRC:.cpp=.o)
@@ -8,10 +8,10 @@ OBJ=$(SRC:.cpp=.o)
 all: $(EXEC)
 
 $(EXEC): $(OBJ)
-	$(CXX) $(LDFLAGS) $^ -o $@
+	$(CXX) $(LDFLAGS) -o $@ $^
 
-%.o: $(SRC)
+.o: $(SRC)
 	$(CXX) $(CXXFLAGS) -c $^
 
 clean:
-	rm *.o
+	rm *.o main

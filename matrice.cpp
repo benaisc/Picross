@@ -1,6 +1,6 @@
 # include "matrice.h"
 
-Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc),mat(NULL)
+Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc)
 {
   if(nbc!=0 && nbl!=0)
   {

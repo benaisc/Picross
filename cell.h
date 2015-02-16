@@ -20,7 +20,7 @@ class Cell{
 		Cell(size_t);
 
 		void setVal(size_t);
-		void setSuiv(Cell&);
+		void setSuiv(Cell*);
 		size_t getVal() const;
 		Cell* getSuiv() const;
 		Cell& operator=(const Cell&);

@@ -6,13 +6,11 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	Cell a(1);
-	Cell b(2);
-	Cell c(3);
 	Liste L;
 
-	L.ajoutFin(a);
-	L.ajoutFin(b);
+	L.putFin(1);
+	L.putFin(2);
+	Cell* c=new Cell(3);
 	L.ajoutFin(c);
 
 	cout << "longueur=" << L.getLongueur() << endl;

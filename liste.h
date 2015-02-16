@@ -32,12 +32,19 @@ public:
 	size_t getLongueur() const;	/**< \return le nombre de cellules de la liste */
 	void setLongueur(size_t);
 	/**
+	* \fn putFin(Cell&)
+	* \brief Ajout d'une cellule en queue de liste
+	* , en tete de liste si tete==NULL
+	* \param Valeur de la cellule à placer
+	*/
+	void putFin(size_t);
+	/**
 	* \fn ajoutFin(Cell&)
 	* \brief Ajout d'une cellule en queue de liste
 	* , en tete de liste si tete==NULL
-	* \param l'adresse de la cellule à placer
+	* \param Cellule à placer
 	*/
-	void ajoutFin(Cell&);
+	void ajoutFin(Cell*);
 	/**
 	* \fn operator()(size_t i)
 	* \brief Sucre syntaxique permettant l'accès aux éléments d'une liste

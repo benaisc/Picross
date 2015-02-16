@@ -10,9 +10,9 @@ void Cell::setVal(size_t v)
 	val=v;
 }
 
-void Cell::setSuiv(Cell& c)
+void Cell::setSuiv(Cell* c)
 {
-	suiv=&c;
+	suiv=c;
 }
 
 size_t Cell::getVal() const
