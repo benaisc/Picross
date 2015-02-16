@@ -24,17 +24,13 @@ void lecture(std::ifstream& f)
   f.ignore(); //le '\n'
 
   TabListe ligne(nbl);
-  std::cout << "----------Maintenant remplissons Lignes----------" << std::endl;
   remplirTabListe(f, ligne);
-  std::cout << "----------Lignes remplies avec succes------------" << std::endl;
   std::cout << ligne;
 
   TabListe colonne(nbc);
-  std::cout << "----------Maintenant remplissons Colonnes--------" << std::endl;
   remplirTabListe(f,colonne);
-  std::cout << "----------Colonnes remplies avec succes----------" << std::endl;
   std::cout << colonne;
 
-  //Matrice matrice(nbl,nbc);
+  //mat=new Matrice(nbl,nbc);
   //return Picross(matrice,ligne,colonne);
 }

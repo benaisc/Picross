@@ -1,7 +1,33 @@
 #include "picross.h"
 
 //constructeur
-Picross::Picross(Matrice m, TabListe l, TabListe c) : mat(m), lignes(l), colonnes(c){}
+Picross::Picross(size_t nbl, size_t nbc):mat(nbl, nbc),lignes(nbl),colonnes(nbc)
+{}
+void Picross::remplirTabListe(std::ifstream& f)
+{
+  size_t val,i=0;
+  while(i<lignes.getTaille())
+  {
+    while(f.peek()!='\n')
+    {
+      f>>val; //je lit l'indice
+      lignes[i].putFin(val); //je le rajoute a la liste
+    }
+    f.ignore(); //le '\n'
+    i++;  //on change de ligne
+  }
+  i=0;
+  while(i<colonnes.getTaille())
+  {
+    while(f.peek()!='\n')
+    {
+      f>>val;
+      colonnes[i].putFin(val);
+    }
+    f.ignore();
+    i++;
+  }
+}
 //accesseur
 TabListe Picross::getLignes() const
 {

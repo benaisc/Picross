@@ -5,8 +5,8 @@ using namespace std;
 int main(int argc, char **argv)
 {
   ifstream f;
-  f.open(argv[1]);
-
+  //f.open(argv[1]);
+  f.open("picrosstype.txt");
   if(!f.is_open())
   {
     cerr<<"probleme d'ouverture du fichier"<<endl;

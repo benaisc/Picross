@@ -2,7 +2,7 @@
 #define __FONCTION_H__
 
 #include <fstream>
-#include "picross.h"
+#include "tabListe.h"
 
 void remplirTabListe(std::ifstream& f, TabListe& T);
 
