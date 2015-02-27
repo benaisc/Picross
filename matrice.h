@@ -2,6 +2,8 @@
 #define __MATRICE_H__
 #include <string>
 #include <iostream>
+#include "cell.h"
+#include "liste.h"
 
 //enum class Color  {?, rouge, noir}; ! ! !
 
@@ -20,6 +22,8 @@ class Matrice
     size_t getNbc() const;
     size_t getNbl() const;
     void   afficheM(std::ostream&) const;
+    size_t estNoire();
+    bool   lignesFinies( Liste &L, Cell& c);
 };
 std::ostream &operator<<(std::ostream&, Matrice&);
 #endif
