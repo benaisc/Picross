@@ -1,4 +1,7 @@
 #include "matrice.h"
+
+using namespace std;
+
 int main(int argc, char** argv)
 {
    Matrice M(5,5);
