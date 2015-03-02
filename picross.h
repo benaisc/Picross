@@ -18,6 +18,10 @@ class Picross
   //accesseur
   TabListe getLignes() const;
   TabListe getColonnes() const;
+  void setLigneMat(size_t ind, int* Tab);
+  int* getLigneMat(size_t ind)const;
+  void setColonneMat(size_t ind, int* Tab);
+  int* getColonneMat(size_t ind)const;
   Matrice getMat() const;
   //Methode
   void afficheP(std::ostream&) const;
