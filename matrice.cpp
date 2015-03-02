@@ -15,7 +15,7 @@ Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc)
     }
   }
 }
-
+//donc T[colonnes][lignes]
 Matrice::~Matrice()
 {
   for(size_t i=0;i<nbc;i++)
@@ -41,13 +41,20 @@ size_t Matrice:: getNbl()const
 void Matrice::afficheM(std::ostream &os)const
 {
   for(size_t i=0; i<nbc;i++)
-  {
-    os << "\n" << "L|C[" << i << "] : ";
-    for(size_t j=0;j<nbl;j++)
     {
-      os<<mat[i][j];
+      os << "\n" << "L|C[" << i << "] : ";
+      for(size_t j=0;j<nbl;j++)
+	{
+	  if(mat[i][j]>=0)
+	    {
+	      os<<"  "<<mat[i][j]<<" ";
+	    }
+	  else
+	    {
+	      os<<" "<<mat[i][j]<<" ";
+	    }
+	}
     }
-  }
   os << std::endl;
 }
 
