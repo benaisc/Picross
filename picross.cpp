@@ -42,6 +42,42 @@ Matrice Picross::getMat() const
   return mat;
 }
 //Methode
+
+int* Picross::getLigneMat(size_t ind)const
+{
+  size_t taille=mat.getNbc();
+  int* tab=new int[taille];
+  for(size_t i =0; i<mat.getNbc();i++)
+    {
+      tab[i]=mat.getMat()[ind][i];
+    }
+  return tab;
+}
+int* Picross::getColonneMat(size_t ind)const
+{
+  size_t taille=mat.getNbl();
+  int* tab=new int[taille];
+  for(size_t i =0; i<mat.getNbl();i++)
+    {
+      tab[i]=mat.getMat()[i][ind];
+    }
+  return tab;
+}
+void Picross::setLigneMat(size_t ind, int* Tab)
+{
+  for(size_t i =0; i<mat.getNbl();i++)
+    {
+      mat.getMat()[ind][i]=Tab[i];
+    }
+}
+void Picross::setColonneMat(size_t ind, int* Tab)
+{
+  for(size_t i =0; i<mat.getNbc();i++)
+    {
+      mat.getMat()[i][ind]=Tab[i];
+    }
+}
+
 void Picross::afficheP(std::ostream &os) const
 {
   os<<"Lignes : "<<std::endl;
