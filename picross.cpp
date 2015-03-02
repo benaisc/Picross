@@ -97,7 +97,7 @@ std::ostream &operator<<(std::ostream& os, Picross &P)
 
 //Methode solution gauche 
 
-int* Picross::solGauche(int* ligne, Liste L, size_t i)
+int* Picross::solGauche(int* ligne, Liste L, size_t i) const
 {
   Cell* ptr=L.getPremier();
   size_t numBloc=1, j=i;
