@@ -20,8 +20,12 @@ class Picross
   TabListe getColonnes() const;
   Matrice getMat() const;
   //Methode
-  void afficheP(std::ostream&) const;
+  int* tabGauche(size_t ind, bool b);
+  int* tabDroite(size_t ind, bool b);
+  int* mergeTab(int *T1, int *T2, int n);
+  void remplirMat(size_t ind, int* T, bool b);
 
+  void afficheP(std::ostream&) const;
 };
 std::ostream& operator<<(std::ostream&, Picross&);
 #endif
