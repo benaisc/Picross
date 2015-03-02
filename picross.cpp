@@ -94,3 +94,32 @@ std::ostream &operator<<(std::ostream& os, Picross &P)
   P.afficheP(os);
   return os;
 }
+
+//Methode solution gauche 
+
+int* Picross::solGauche(int* ligne, Liste L, size_t i)
+{
+  Cell* ptr=L.getPremier();
+  size_t numBloc=1, j=i;
+  int* lsol = ligne;
+
+  while(ptr!=NULL)
+    {
+      size_t valInd = ptr->getVal();
+      if (j>=mat.getNbc())
+	{
+	  std::cout <<"Il n'y a pas de solution gauche pour i="<<i<<std::endl;
+	  return NULL;
+	}
+      while(valInd!=0)
+	{
+	  lsol[j]=numBloc;
+	  valInd--;
+	  j++;
+	}
+      j++;
+      ptr=ptr->getSuiv();
+      numBloc++;
+    }
+  return lsol;
+}
