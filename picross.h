@@ -25,6 +25,7 @@ class Picross
   Matrice getMat() const;
   //Methode
   void afficheP(std::ostream&) const;
+  int* solGauche(int* ligne, Liste L, size_t i)const;
 
 };
 std::ostream& operator<<(std::ostream&, Picross&);
