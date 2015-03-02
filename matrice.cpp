@@ -15,7 +15,7 @@ Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc)
     }
   }
 }
-
+//donc T[colonnes][lignes]
 Matrice::~Matrice()
 {
   for(size_t i=0;i<nbc;i++)
@@ -41,46 +41,57 @@ size_t Matrice:: getNbl()const
 void Matrice::afficheM(std::ostream &os)const
 {
   for(size_t i=0; i<nbc;i++)
-  {
-    os << "\n" << "L|C[" << i << "] : ";
-    for(size_t j=0;j<nbl;j++)
     {
-      os<<mat[i][j];
+      os << "\n" << "L|C[" << i << "] : ";
+      for(size_t j=0;j<nbl;j++)
+	{
+	  if(mat[i][j]>=0)
+	    {
+	      os<<"  "<<mat[i][j]<<" ";
+	    }
+	  else
+	    {
+	      os<<" "<<mat[i][j]<<" ";
+	    }
+	}
     }
-  }
   os << std::endl;
 }
 
 size_t Matrice::estNoire()
 {
   int nbrEstNoire =0;
-  Cell c;
   for(size_t i=0;i<nbc;i++)
     {
       for(size_t j=0;j<nbl;j++)
 	{
-	  if (c.getVal()==-1){ 
+	  if (mat[i][j]==1){ 
 	    nbrEstNoire+=1;
 	  }
-	  return nbrEstNoire;
 	}
     }
+return nbrEstNoire;
 }
 
 
-bool Matrice::lignesFinies( Liste &L, Cell& c)
+
+bool Matrice::lignesFinies()
 {
-  for(size_t i=0;i<nbc;i++)
+  bool flag=true; 
+    for(size_t i=0;i<nbc;i++)
     {    
       for(size_t j=0;j<nbl; j++)
 	{
-	  if (c.getVal()!=0 && L.somElem()==estNoire()){
-	    return true;
-	  }else
-	    return false;
+	  if( mat[i][j]!=0 ){}else{
+	    flag=false;
+	  }
 	}
     }
+std::cout<<flag;
+ return 0;
 }
+
+
 
 std::ostream &operator<<(std::ostream &os, Matrice &M)
 {

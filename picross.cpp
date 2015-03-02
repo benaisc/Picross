@@ -41,6 +41,68 @@ Matrice Picross::getMat() const
 {
   return mat;
 }
+int* Picross::getLigneMat(size_t ind)const
+{
+  size_t taille=mat.getNbc();
+  int* tab=new int[taille];
+  for(size_t i =0; i<mat.getNbc();i++)
+    {
+      tab[i]=mat.getMat()[ind][i];
+    }
+  return tab;
+}
+int* Picross::getColonneMat(size_t ind)const
+{
+  size_t taille=mat.getNbl();
+  int* tab=new int[taille];
+  for(size_t i =0; i<mat.getNbl();i++)
+    {
+      tab[i]=mat.getMat()[i][ind];
+    }
+  return tab;
+}
+void Picross::setLigneMat(size_t ind, int* Tab)
+{
+  for(size_t i =0; i<mat.getNbl();i++)
+    {
+      mat.getMat()[ind][i]=Tab[i];
+    }
+}
+void Picross::setColonneMat(size_t ind, int* Tab)
+{
+  for(size_t i =0; i<mat.getNbc();i++)
+    {
+      mat.getMat()[i][ind]=Tab[i];
+    }
+}
+
+//Methode solution gauche
+int* Picross::solGauche(int* ligne, Liste L, size_t i)
+{
+  Cell* ptr=L.getPremier();
+  size_t numBloc=1, j=i;
+  int* lsol = ligne;
+
+  while(ptr!=NULL)
+    {
+      size_t valInd = ptr->getVal();
+      if (j>=mat.getNbc())
+	{
+	  std::cout <<"Il n'y a pas de solution gauche pour i="<<i<<std::endl;
+	  return NULL;
+	}
+      while(valInd!=0)
+	{
+	  lsol[j]=numBloc;
+	  valInd--;
+	  j++;
+	}
+      j++;
+      ptr=ptr->getSuiv();
+      numBloc++;
+    }
+  return lsol;
+}
 //Methode
 int* Picross::tabGauche(size_t ind, bool b)
 {
@@ -53,18 +115,16 @@ int* Picross::tabGauche(size_t ind, bool b)
     int* tab=new int [taille];
     size_t j=0;//l'indice du tab
     size_t cpt=0;//boucle cases à noircir
-    size_t v=1;//valeur de la case noircie pour l'identifier ensuite
     for(size_t i=1; i<=nbcell; i++)//pour chaque cellule de la liste
     {
       while(cpt<lignes[ind](i).getVal());//on remplit getVal cases
       {
-        tab[j]=v;
+        tab[j]=i;//avec le numero de la cell dans la liste
         j++;
         cpt++;
       }
       ++j;//la case blanche
-      ++v;
-      cpt=0;
+      cpt=0;//on remet a 0 le nombre de cases à remplir
     }
     return tab;
   }
@@ -76,17 +136,15 @@ int* Picross::tabGauche(size_t ind, bool b)
     size_t nbcell=colonnes[ind].getLongueur();
     size_t cpt=0;
     size_t j=0;
-    size_t v=1;
     for(size_t i=1; i<=nbcell; i++)
     {
       while(cpt<colonnes[ind](i).getVal());
       {
-        tab[j]=v;
+        tab[j]=i;
         j++;
         cpt++;
       }
       ++j;
-      ++v;
       cpt=0;
     }
     return tab;
@@ -172,24 +230,27 @@ void Picross::remplirMat(size_t ind, int* T, bool b)
   {
   case 0:
   {
-    size_t taille=colonnes.getTaille();
+    size_t taille=colonnes.getTaille();//nombre de lignes
     for(size_t i=0; i<taille; i++)
     {
-      mat[ind][i]=T[i];
+      mat.getMat()[ind][i]=T[i];
     }
-    break;
   }
+  break;
   case 1:
   {
-    size_t taille=lignes.getTaille();
+    size_t taille=lignes.getTaille();//nombre de colonnes
     for(size_t i=0; i<taille; i++)
     {
-      mat[ind][i]=T[i];
+      mat.getMat()[i][ind]=T[i];
     }
+  }
+  break;
+  default:
     break;
   }
-  }
 }
+
 void Picross::afficheP(std::ostream &os) const
 {
   os<<"Lignes : "<<std::endl;
