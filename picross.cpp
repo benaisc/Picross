@@ -123,3 +123,46 @@ int* Picross::solGauche(int* ligne, Liste L, size_t i)
     }
   return lsol;
 }
+
+
+//Methode solution plus a droite
+ 
+void Picross::solutionPaD(int* tab, int taille, int indice, bool lig){
+  size_t l=0;
+  size_t k=lignes[indice].getLongueur();
+  // bool place=false;
+  if(lig)
+    {
+      if(lignes[indice].somElem()<=taille)
+	{
+	  for(size_t i=0;i<k;i++)
+	    {
+	      /*
+		while(!place)
+		{
+		while(m<=lignes[indice](k-i).getVal()+1)
+		{
+		if(tab[taille-1-l-m]==0)
+		{
+		m++;
+		}
+		else
+		{
+		m=0;
+		l=l+m+1;
+		}
+		}
+		} */ 
+	      for(size_t j=0;j<lignes[indice](k-i).getVal();j++)
+		{
+		  tab[taille-l-1]=k;
+		  l++;
+		}
+	      tab[taille-l-1]=0;
+	      l++;
+	      k--;
+	    }
+	}
+    }
+
+}
