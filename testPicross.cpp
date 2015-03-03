@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 {
   ifstream f;
   //f.open(argv[1]);
-  f.open("picrosstype.txt");
+  f.open("tipoisson.txt");
 
   if(!f.is_open())
   {
@@ -38,23 +38,10 @@ int main(int argc, char** argv)
     f.ignore(); //le '\n'
 
     P.remplirTabListe(f);
-    cout << P;
 
-    /*
-    size_t taille=P.getColonnes().getTaille();
-    for(size_t i=0; i<taille; i++)
-    {
-      int* T1=P.tabGauche(i,0);
-      int* T2=P.tabDroite(i,0);
-      int* T3=P.mergeTab(T1,T2,taille);
-      P.pushMat(i,T3,0);
-    }
+    P.solCasesSure(0);//on rempli les lignes des cases sures
     cout<<P;
-    */
 
-    P.remplirMat(0);
-    cout<<P;
-    
     /*
     int* T=P.getLigneMat(1);
     cout<<"Test getLigneMat(1) :";

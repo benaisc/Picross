@@ -1,7 +1,7 @@
 #include "picross.h"
 
 //constructeur
-Picross::Picross(size_t nbl, size_t nbc):mat(nbl, nbc),lignes(nbl),colonnes(nbc)
+Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc)
 {}
 void Picross::remplirTabListe(std::ifstream& f)
 {
@@ -150,9 +150,9 @@ int* Picross::tabGauche(size_t ind, bool b)
   {
   case 0:
   {
-    size_t taille=colonnes.getTaille();//on traite une ligne
-    int nbcell=lignes[ind].getLongueur();
+    size_t taille=colonnes.getTaille();//on traite une ligne donc on cree un tab de taille nbColonnes
     int* tab=new int [taille];
+    int nbcell=lignes[ind].getLongueur();//nbcell dans la liste
     size_t j=0;//l'indice du tab
     size_t cpt=0;//boucle cases à noircir
     for(int i=1; i<=nbcell; i++)//pour chaque cellule de la liste
@@ -285,32 +285,44 @@ void Picross::pushMat(size_t ind, int* T, bool b)
     break;
   }
 }
-void Picross::remplirMat(bool b)
+//methode permettant de remplir les cases "sures"
+//rempli la matrice de la fusion de solGauche et solDroite
+//a utiliser sur matrice vide
+void Picross::solCasesSure(bool b)
 {
   switch(b)
   {
-    case 0:
+    case 0://ligne
     {
-      size_t taille=colonnes.getTaille();
-      for(size_t i=0; i<taille; i++)
-      {
-        int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
-        pushMat(i,T,b);
-      }
+      size_t taille=mat.getNbc();
+      size_t nbl=lignes.getTaille();
+        for(size_t i=0; i<nbl; i++)//pour toutes les lignes
+        {
+          if(lignes[i].somElem()>=(taille/2)+1)//si le bloc est valide
+          {
+            int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
+            pushMat(i,T,b);
+          }
+        }
     }break;
-    case 1:
+    case 1://colonne
     {
-      size_t taille=lignes.getTaille();
-      for(size_t i=0; i<taille; i++)
+      size_t taille=mat.getNbl();
+      size_t nbc=colonnes.getTaille();
+      for(size_t i=0; i<nbc; i++)
       {
-        int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
-        pushMat(i,T,b);
+        if(colonnes[i].somElem()>=(taille/2)+1)
+        {
+          int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
+          pushMat(i,T,b);
+        }
       }
     }break;
     default:
     break;
   }
 }
+
 void Picross::afficheP(std::ostream &os) const
 {
   os<<"Lignes : "<<std::endl;

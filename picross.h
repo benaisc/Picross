@@ -14,6 +14,7 @@ class Picross
 
   //constructeur
   Picross(size_t, size_t);
+  //les lignes puis les colonnes
   void remplirTabListe(std::ifstream& f);
   //accesseur
   TabListe getLignes() const;
@@ -45,7 +46,7 @@ class Picross
   * \fn remplirMat(bool b)
   * \brief 0>lignes, 1>colonnes
   */
-  void remplirMat(bool b);
+  void solCasesSure(bool b);
 
   void afficheP(std::ostream&) const;
   int* solGauche(int* ligne, Liste L, size_t i);
