@@ -4,21 +4,21 @@ Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc)
 {
   if(nbc!=0 && nbl!=0)
   {
-    mat=new int* [nbc];
-    for(size_t i=0; i<nbc; i++)
+    mat=new int* [nbl];
+    for(size_t i=0; i<nbl; i++)
     {
-      mat[i]=new int [nbl];
-      for(size_t j=0; j<nbl; j++)
+      mat[i]=new int [nbc];
+      for(size_t j=0; j<nbc; j++)
       {
         mat[i][j]=0;
       }
     }
   }
 }
-//donc T[colonnes][lignes]
+//donc T[lignes][colonnes]
 Matrice::~Matrice()
 {
-  for(size_t i=0;i<nbc;i++)
+  for(size_t i=0;i<nbl;i++)
   {
     delete [] mat[i];
   }
@@ -40,21 +40,21 @@ size_t Matrice:: getNbl()const
 
 void Matrice::afficheM(std::ostream &os)const
 {
-  for(size_t i=0; i<nbc;i++)
+  for(size_t i=0; i<nbl;i++)
+  {
+    os << "\n" << "L|C[" << i << "] : ";
+    for(size_t j=0;j<nbc;j++)
     {
-      os << "\n" << "L|C[" << i << "] : ";
-      for(size_t j=0;j<nbl;j++)
-	{
-	  if(mat[i][j]>=0)
-	    {
-	      os<<"  "<<mat[i][j]<<" ";
-	    }
-	  else
-	    {
-	      os<<" "<<mat[i][j]<<" ";
-	    }
-	}
+      if(mat[i][j]>=0)
+      {
+        os<<"  "<<mat[i][j]<<" ";
+      }
+      else
+      {
+        os<<" "<<mat[i][j]<<" ";
+      }
     }
+  }
   os << std::endl;
 }
 
@@ -65,7 +65,7 @@ size_t Matrice::estNoire()
     {
       for(size_t j=0;j<nbl;j++)
 	{
-	  if (mat[i][j]==1){ 
+	  if (mat[i][j]==1){
 	    nbrEstNoire+=1;
 	  }
 	}
@@ -77,9 +77,9 @@ return nbrEstNoire;
 
 bool Matrice::lignesFinies()
 {
-  bool flag=true; 
+  bool flag=true;
     for(size_t i=0;i<nbc;i++)
-    {    
+    {
       for(size_t j=0;j<nbl; j++)
 	{
 	  if( mat[i][j]!=0 ){}else{
