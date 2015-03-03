@@ -42,6 +42,7 @@ class Picross
 
   void afficheP(std::ostream&) const;
   int* solGauche(int* ligne, Liste L, size_t i);
+  void solutionPaD(int* tab, int taille,int indice, bool lig);
 
 };
 std::ostream& operator<<(std::ostream&, Picross&);
