@@ -36,8 +36,9 @@ class Picross
   * \param tabGauche, tabDroite, taille
   * \return T rempli de 1 là ou les id se chevauchent
   */
-  int* mergeTab(int *T1, int *T2, int n);
-  void remplirMat(size_t ind, int* T, bool b);
+  int* mergeTab(int *T1, int *T2, size_t n);
+  void pushMat(size_t ind, int* T, bool b);
+  void remplirMat(bool b);
 
   void afficheP(std::ostream&) const;
   int* solGauche(int* ligne, Liste L, size_t i);

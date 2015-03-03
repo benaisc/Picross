@@ -111,45 +111,44 @@ int* Picross::tabGauche(size_t ind, bool b)
   case 0:
   {
     size_t taille=colonnes.getTaille();//on traite une ligne
-    size_t nbcell=lignes[ind].getLongueur();
+    int nbcell=lignes[ind].getLongueur();
     int* tab=new int [taille];
     size_t j=0;//l'indice du tab
     size_t cpt=0;//boucle cases à noircir
-    for(size_t i=1; i<=nbcell; i++)//pour chaque cellule de la liste
+    for(int i=1; i<=nbcell; i++)//pour chaque cellule de la liste
     {
-      while(cpt<lignes[ind](i).getVal());//on remplit getVal cases
+      taille=lignes[ind](i).getVal();
+      while(cpt<taille)//on remplit getVal cases
       {
         tab[j]=i;//avec le numero de la cell dans la liste
-        j++;
-        cpt++;
+        ++j;
+        ++cpt;
       }
       ++j;//la case blanche
       cpt=0;//on remet a 0 le nombre de cases à remplir
     }
     return tab;
-  }
-    break;
+  }break;
   case 1:
   {
     size_t taille=lignes.getTaille();
     int* tab=new int [taille];
-    size_t nbcell=colonnes[ind].getLongueur();
+    int nbcell=colonnes[ind].getLongueur();
     size_t cpt=0;
     size_t j=0;
-    for(size_t i=1; i<=nbcell; i++)
+    for(int i=1; i<=nbcell; i++)
     {
-      while(cpt<colonnes[ind](i).getVal());
+      while(cpt<colonnes[ind](i).getVal())
       {
         tab[j]=i;
-        j++;
-        cpt++;
+        ++j;
+        ++cpt;
       }
       ++j;
       cpt=0;
     }
     return tab;
-  }
-    break;
+  }break;
   default:
     return NULL;
     break;
@@ -162,57 +161,55 @@ int* Picross::tabDroite(size_t ind, bool b)
   case 0:
   {
     size_t taille=colonnes.getTaille();//on traite une ligne
-    size_t nbcell=lignes[ind].getLongueur();
+    int nbcell=lignes[ind].getLongueur();
     int* tab=new int [taille];
-    size_t j=taille;//l'indice du tab
+    size_t j=taille-1;//l'indice du tab
     size_t cpt=0;//boucle cases à noircir
     while(nbcell>0)//pour chaque cellule de la liste
     {
-      while(cpt<lignes[ind](nbcell).getVal());//on part de la fin
+      while(cpt<lignes[ind](nbcell).getVal())//on part de la fin
       {
         tab[j]=nbcell;
-        j--;
-        cpt++;
+        --j;
+        ++cpt;
       }
       --j;//la case blanche
       --nbcell;
       cpt=0;
     }
     return tab;
-  }
-  break;
+  }break;
   case 1:
   {
     size_t taille=lignes.getTaille();
     int* tab=new int [taille];
-    size_t nbcell=colonnes[ind].getLongueur();
+    int nbcell=colonnes[ind].getLongueur();
     size_t j=taille;
     size_t cpt=0;
     while(nbcell>0)
     {
-      while(cpt<colonnes[ind](nbcell).getVal());
+      while(cpt<colonnes[ind](nbcell).getVal())
       {
         tab[j]=nbcell;
-        j--;
-        cpt++;
+        --j;
+        ++cpt;
       }
       --j;
       --nbcell;
       cpt=0;
     }
     return tab;
-  }
-  break;
+  }break;
   default:
     return NULL;
     break;
   }
 }
-int* Picross::mergeTab(int *T1, int *T2, int n)
+int* Picross::mergeTab(int *T1, int *T2, size_t n)
 {
   int* T=new int [n];
 
-  for(int i=0; i<n; i++)
+  for(size_t i=0; i<n; i++)
   {
     /* On à mis l'indice de la cellule dans la liste en valeur dans les T
     On passe sur les 0 qui s'entrecroisent,
@@ -224,7 +221,7 @@ int* Picross::mergeTab(int *T1, int *T2, int n)
   }
   return T;
 }
-void Picross::remplirMat(size_t ind, int* T, bool b)
+void Picross::pushMat(size_t ind, int* T, bool b)
 {
   switch(b)
   {
@@ -235,8 +232,7 @@ void Picross::remplirMat(size_t ind, int* T, bool b)
     {
       mat.getMat()[ind][i]=T[i];
     }
-  }
-  break;
+  }break;
   case 1:
   {
     size_t taille=lignes.getTaille();//nombre de colonnes
@@ -244,13 +240,37 @@ void Picross::remplirMat(size_t ind, int* T, bool b)
     {
       mat.getMat()[i][ind]=T[i];
     }
-  }
-  break;
+  }break;
   default:
     break;
   }
 }
-
+void Picross::remplirMat(bool b)
+{
+  switch(b)
+  {
+    case 0:
+    {
+      size_t taille=colonnes.getTaille();
+      for(size_t i=0; i<taille; i++)
+      {
+        int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
+        pushMat(i,T,b);
+      }
+    }break;
+    case 1:
+    {
+      size_t taille=lignes.getTaille();
+      for(size_t i=0; i<taille; i++)
+      {
+        int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
+        pushMat(i,T,b);
+      }
+    }break;
+    default:
+    break;
+  }
+}
 void Picross::afficheP(std::ostream &os) const
 {
   os<<"Lignes : "<<std::endl;

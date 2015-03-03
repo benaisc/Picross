@@ -39,8 +39,24 @@ int main(int argc, char** argv)
 
     P.remplirTabListe(f);
     cout << P;
+
+    /*
+    size_t taille=P.getColonnes().getTaille();
+    for(size_t i=0; i<taille; i++)
+    {
+      int* T1=P.tabGauche(i,0);
+      int* T2=P.tabDroite(i,0);
+      int* T3=P.mergeTab(T1,T2,taille);
+      P.pushMat(i,T3,0);
+    }
+    cout<<P;
+    */
+
+    P.remplirMat(0);
+    cout<<P;
     
- int* T=P.getLigneMat(1);
+    /*
+    int* T=P.getLigneMat(1);
     cout<<"Test getLigneMat(1) :";
     afftableau(T,nbc);
     cout<<"On modifie le tableau :";
@@ -48,7 +64,6 @@ int main(int argc, char** argv)
     afftableau(T,nbc);
     P.setLigneMat(1,T);
     cout<<"On copie dans la matrice et on affiche la matrice :"<<P;
-
     T=P.getColonneMat(1);
     cout<<"Test getColonneMat(1) :";
     afftableau(T,nbl);
@@ -58,6 +73,7 @@ int main(int argc, char** argv)
     P.setColonneMat(1,T);
     cout<<"On copie dans la matrice et on affiche la matrice :"<<P;
     delete[] T;
+    */
   }
  f.close();
 
