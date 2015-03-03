@@ -23,10 +23,9 @@ class Picross
   void setColonneMat(size_t ind, int* Tab);
   int* getColonneMat(size_t ind)const;
   Matrice getMat() const;
-  //Methode
   /**
   * \fn tabGauche(size_t ind, bool b);
-  * \param ind : l'indice de la liste; b : 0>lignes, 1>colonnes
+  * \param ind : l'indice de la liste; b : lignes ou colonnes
   * \return T rempli d'entiers identidiant leurs cellules
   */
   int* tabGauche(size_t ind, bool b);
@@ -37,7 +36,15 @@ class Picross
   * \return T rempli de 1 là ou les id se chevauchent
   */
   int* mergeTab(int *T1, int *T2, size_t n);
-  void pushMat(size_t ind, int* T, bool b);
+  /**
+  * \fn pushMat(size_t ind, int *T, bool b);
+  * \brief copie le resultat de merge dans la matrice
+  */
+  void pushMat(size_t ind, int *T, bool b);
+  /**
+  * \fn remplirMat(bool b)
+  * \brief 0>lignes, 1>colonnes
+  */
   void remplirMat(bool b);
 
   void afficheP(std::ostream&) const;

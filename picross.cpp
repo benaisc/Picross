@@ -103,11 +103,7 @@ int* Picross::solGauche(int* ligne, Liste L, size_t i)
     }
   return lsol;
 }
-<<<<<<< HEAD
-
-
 //Methode solution plus a droite
- 
 void Picross::solutionPaD(int* tab, int taille, int indice, bool lig){
   size_t l=0;
   size_t k=lignes[indice].getLongueur();
@@ -133,7 +129,7 @@ void Picross::solutionPaD(int* tab, int taille, int indice, bool lig){
 		l=l+m+1;
 		}
 		}
-		} */ 
+		} */
 	      for(size_t j=0;j<lignes[indice](k-i).getVal();j++)
 		{
 		  tab[taille-l-1]=k;
@@ -145,8 +141,8 @@ void Picross::solutionPaD(int* tab, int taille, int indice, bool lig){
 	    }
 	}
     }
+  }
 
-=======
 //Methode
 int* Picross::tabGauche(size_t ind, bool b)
 {
@@ -330,5 +326,4 @@ std::ostream &operator<<(std::ostream& os, Picross &P)
 {
   P.afficheP(os);
   return os;
->>>>>>> ccb87cb3a6c74aa164b9af50d7e82d5dc0b1da54
 }
