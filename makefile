@@ -1,9 +1,9 @@
-CXX=g++
-CXXFLAGS=-Wall -ansi -pedantic
+CXX = g++
+CXXFLAGS = -Wall -ansi -pedantic
 LDFLAGS=
-EXEC=main
-SRC=$(wildcard *.cpp)
-OBJ=$(SRC:.cpp=.o)
+EXEC = main
+SRC = $(wildcard *.cpp)
+OBJ = $(SRC:.cpp=.o)
 
 all: $(EXEC)
 
@@ -15,3 +15,9 @@ $(EXEC): $(OBJ)
 
 clean:
 	rm *.o main
+
+SRCsup = $(wildcard *.h)
+NAME = picross_src.tar.gz
+
+archive:
+	tar -czf $(NAME) $(SRCsup) $(SRC) makefile
