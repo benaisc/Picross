@@ -3,6 +3,7 @@
 #include "tabListe.h"
 #include "matrice.h"
 #include <fstream>
+#include"fonctionsUtiles.h"
 
 class Picross
 {
@@ -50,8 +51,11 @@ class Picross
 
   void afficheP(std::ostream&) const;
   int* solGauche(int* ligne, Liste L, size_t i);
-  void solutionPaD(int* tab, int taille,int indice, bool lig);
-
+  void solutionPaD(int* tab, size_t taille,int indice, bool lig);
+  void SLPG(int* Tab,size_t n,Cell* L)const;
+  bool verif(int *Tab,size_t n,size_t j)const;
+  void Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const;
+  void SLG(int* Tab,size_t n,Cell* L,size_t i,bool &poss)const;
 };
 std::ostream& operator<<(std::ostream&, Picross&);
 #endif
