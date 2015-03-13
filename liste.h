@@ -17,6 +17,7 @@ class Liste
 private:
 	Cell* tete;
 	size_t longueur;
+	bool fini;
 
 public:
 	Liste(); /**< Constructeur par défaut, tete=NULL et longueur=0 */
@@ -31,6 +32,8 @@ public:
 	Cell* getPremier() const;	/**< \return la tete de liste */
 	size_t getLongueur() const;	/**< \return le nombre de cellules de la liste */
 	void setLongueur(size_t);
+	bool getFini() const; /**< \return le booleen indiquant si liste validee */
+	void setFini(bool b);
 	/**
 	* \fn putFin(Cell&)
 	* \brief Ajout d'une cellule en queue de liste

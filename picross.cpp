@@ -365,6 +365,112 @@ void Picross::solCasesSure(bool b)
     break;
   }
 }
+//On donne a manger l'indice d'une ligne ou colonne de TabListe
+//Amelioration possible : garder en memoire la somme des cellules d'une liste
+bool Picross::isLigneFinie(size_t ind, bool b)//0 ligne, 1 colonne comme dhab
+{
+  switch(b)
+  {
+    case 0://ligne
+    {
+      size_t nbcell=lignes[ind].getLongueur();
+      size_t i=1;//l'indice de la cellule ds la liste
+      size_t cpt=0;
+      while(i<=nbcell)//on compte le nombre de blocs noirs à placer
+      {
+        cpt+=lignes[ind](i).getVal();
+        ++i;
+      }
+      size_t taille=mat.getNbc();//la longueur d'une ligne de matrice
+      size_t nbNoires=0;
+      for(i=0; i<taille; i++)//on balaie la ligne
+      {
+        if(mat.getMat()[ind][i]==1)//si le bloc est noir
+        {
+          ++nbNoires;
+        }
+      }
+      return cpt==nbNoires;
+    }break;
+    case 1://colonne
+    {
+      size_t nbcell=colonnes[ind].getLongueur();
+      size_t i=1;
+      size_t cpt=0;
+      while(i<=nbcell)
+      {
+        cpt+=colonnes[ind](i).getVal();
+        ++i;
+      }
+      size_t taille=mat.getNbl();
+      size_t nbNoires=0;
+      for(i=0; i<taille; i++)
+      {
+        if(mat.getMat()[i][ind]==1)
+        {
+          ++nbNoires;
+        }
+      }
+      return cpt==nbNoires;
+    }break;
+    default:
+      return 0;
+      break;
+  }
+}
+//on donne a manger un booleen pour balayer lignes ou colonnes
+void Picross::setLignesFinies(bool b)
+{
+  switch(b)
+  {
+    case 0://ligne
+    {
+      size_t taille=lignes.getTaille();//nombre de lignes
+      for(size_t i=0; i<taille; i++)
+      {
+        //si la ligne n'est pas a true alors qu'elle est terminee
+        if(!lignes[i].getFini() && isLigneFinie(i,0))
+        {
+          lignes[i].setFini(true);//on met le booleen a vrai
+        }
+      }
+    }break;
+    case 1:
+    {
+      size_t taille=colonnes.getTaille();
+      for(size_t i=0; i<taille; i++)
+      {
+        if(!colonnes[i].getFini() && isLigneFinie(i,1))
+        {
+          colonnes[i].setFini(true);
+        }
+      }
+    }break;
+    default:
+    break;
+  }
+}
+//methode indiquant si le picross est correctement rempli
+bool Picross::isPicrossFini()
+{
+  size_t taille=lignes.getTaille();
+  for(size_t i=0; i<taille; i++)
+  {
+    if(!lignes[i].getFini())
+    {
+      return false;
+    }
+  }
+  taille=colonnes.getTaille();
+  for(size_t i=0; i<taille; i++)
+  {
+    if(!colonnes[i].getFini())
+    {
+      return false;
+    }
+  }
+  return true;
+}
 
 void Picross::afficheP(std::ostream &os) const
 {

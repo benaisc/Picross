@@ -1,7 +1,7 @@
 #include "liste.h"
 
 
-Liste::Liste():tete(NULL), longueur(0){}
+Liste::Liste():tete(NULL), longueur(0), fini(false){}
 
 bool Liste::isnull(Cell* p) const
 {
@@ -21,6 +21,16 @@ size_t Liste::getLongueur() const
 void Liste::setLongueur(size_t i)
 {
   longueur=i;
+}
+
+bool Liste::getFini() const
+{
+  return fini;
+}
+
+void Liste::setFini(bool b)
+{
+  fini=b;
 }
 
 void Liste::putFin(size_t v)

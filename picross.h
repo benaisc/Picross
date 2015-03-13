@@ -3,7 +3,7 @@
 #include "tabListe.h"
 #include "matrice.h"
 #include <fstream>
-#include"fonctionsUtiles.h"
+#include "fonctionsUtiles.h"
 
 class Picross
 {
@@ -11,8 +11,8 @@ class Picross
   Matrice mat;
   TabListe lignes;
   TabListe colonnes;
- public:
 
+ public:
   //constructeur
   Picross(size_t, size_t);
   //les lignes puis les colonnes
@@ -21,9 +21,9 @@ class Picross
   TabListe getLignes() const;
   TabListe getColonnes() const;
   void setLigneMat(size_t ind, int* Tab);
-  int* getLigneMat(size_t ind)const;
+  int* getLigneMat(size_t ind) const;
   void setColonneMat(size_t ind, int* Tab);
-  int* getColonneMat(size_t ind)const;
+  int* getColonneMat(size_t ind) const;
   Matrice getMat() const;
   /**
   * \fn tabGauche(size_t ind, bool b);
@@ -48,6 +48,9 @@ class Picross
   * \brief 0>lignes, 1>colonnes
   */
   void solCasesSure(bool b);
+  bool isLigneFinie(size_t ind, bool b);
+  void setLignesFinies(bool b);
+  bool isPicrossFini();
 
   void afficheP(std::ostream&) const;
   void SLPG(int* Tab,size_t n,Cell* L)const;
