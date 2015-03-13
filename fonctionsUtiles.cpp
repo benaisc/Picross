@@ -1,5 +1,5 @@
 
-#include"fonctionsUtiles.h"
+#include "fonctionsUtiles.h"
 using namespace std;
 void afftableau(int T[], int taille)
 {

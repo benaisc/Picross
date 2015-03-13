@@ -79,54 +79,54 @@ void Picross::setColonneMat(size_t ind, int* Tab)
 void Picross::SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const
 {
   if(P==NULL)
-    {
-      cout<<"je passe par verif tient il est "<<boolalpha<<verif(Tab,n,i)<<noboolalpha<<endl;
-      if(!verif(Tab,n,i))
-	{
-	  poss=false;
-	}
-      else
-	{
-	  poss=true;
-	  afftableau(Tab,5);
-	}
-    }
+  {
+    cout<<"je passe par verif tient il est "<<boolalpha<<verif(Tab,n,i)<<noboolalpha<<endl;
+    if(!verif(Tab,n,i))
+	  {
+	     poss=false;
+	  }
+    else
+	  {
+	     poss=true;
+	     afftableau(Tab,5);
+	  }
+  }
   else
-    {
-      int Tab2[n];
-      for(size_t j=0;j<n;j++)
-	{
-	  Tab2[j]=Tab[j];
-	}
-      int u;
-      cout<<"on apelle : Placer1bloc(Tab,"<<n<<","<<P->getVal()<<","<<i<<","<<poss<<")"<<endl;
-      cin>>u;
-      Placer1bloc(Tab,n,P->getVal(),i,poss);
-      afftableau(Tab,5);
-      cout<<" Placer1bloc : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
-      if(poss)
-	{
-	  bool poss2=false;
-	  cout<<"on apelle : SLG(Tab,"<<n<<","<<P->getSuiv()<<","<<i+P->getVal()+1<<","<<poss2<<")"<<endl;
-	  cin>>u;
-	  SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss2);
-	  cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss2<<noboolalpha<<endl;
-	  if(!poss2)
-	    {
-	      cout<<"on apelle: SLG(Tab2,"<<n<<","<<P<<","<<i+1<<","<<poss<<")"<<endl;
-	      cin>>u;
-	      SLG(Tab2,n,P,i+1,poss);
-	      cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
-	    }
-	}
-      else
-	{
-	  cout<<"on apelle: SLG(Tab,"<<n<<","<<P<<","<<i+1<<","<<poss<<")"<<endl;
-	  cin>>u;
-	  SLG(Tab,n,P,i+1,poss);
-	  cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
-	}
+  {
+    int* Tab2=new int [n];
+    for(size_t j=0;j<n;j++)
+  	{
+  	  Tab2[j]=Tab[j];
+  	}
+    int u;
+    cout<<"on apelle : Placer1bloc(Tab,"<<n<<","<<P->getVal()<<","<<i<<","<<poss<<")"<<endl;
+    cin>>u;
+    Placer1bloc(Tab,n,P->getVal(),i,poss);
+    afftableau(Tab,5);
+    cout<<" Placer1bloc : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
+    if(poss)
+	  {
+  	  bool poss2=false;
+  	  cout<<"on apelle : SLG(Tab,"<<n<<","<<P->getSuiv()<<","<<i+P->getVal()+1<<","<<poss2<<")"<<endl;
+  	  cin>>u;
+  	  SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss2);
+  	  cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss2<<noboolalpha<<endl;
+  	  if(!poss2)
+  	  {
+  	    cout<<"on apelle: SLG(Tab2,"<<n<<","<<P<<","<<i+1<<","<<poss<<")"<<endl;
+  	    cin>>u;
+  	    SLG(Tab2,n,P,i+1,poss);
+  	    cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
+  	  }
     }
+    else
+	  {
+  	  cout<<"on apelle: SLG(Tab,"<<n<<","<<P<<","<<i+1<<","<<poss<<")"<<endl;
+  	  cin>>u;
+  	  SLG(Tab,n,P,i+1,poss);
+  	  cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
+    }
+  }
 }
 void Picross::Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
 {
@@ -145,33 +145,33 @@ void Picross::Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
       poss=false;
     }
   else
-    {
-      for(size_t j=i;j<i+val;j++)//si il y a un blanc entre i et val+i
-	{
-	  if(Tab[j]==-1)
-	    {
-	      poss=false;
-	    }
-	}
-    }
+  {
+    for(size_t j=i;j<i+val;j++)//si il y a un blanc entre i et val+i
+	  {
+	     if(Tab[j]==-1)
+	     {
+	        poss=false;
+	     }
+	  }
+  }
   if(poss)
+  {
+    for(size_t j=i;j<=i+val;j++)
     {
-      for(size_t j=i;j<=i+val;j++)
-	{
-	  if(j==i+val)
-	    {
-	      Tab[j]=-1;
-	    }
-	  else
-	    {
-	      Tab[j]=1;
-	    } 
-	}
+	     if(j==i+val)
+	     {
+	        Tab[j]=-1;
+	     }
+	     else
+	     {
+	        Tab[j]=1;
+	     }
     }
+  }
 }
 void Picross::SLPG(int* Tab,size_t n,Cell* L)const
 {
-  bool b=true ;
+  bool b=true;
   SLG(Tab,n,L,0,b);
 }
 bool Picross::verif(int *Tab,size_t n,size_t j)const
@@ -185,73 +185,6 @@ bool Picross::verif(int *Tab,size_t n,size_t j)const
     }
       return true;
 }
-
-//Methode solution gauche
-int* Picross::solGauche(int* ligne, Liste L, size_t i)
-{
-  Cell* ptr=L.getPremier();
-  size_t numBloc=1, j=i;
-  int* lsol = ligne;
-
-  while(ptr!=NULL)
-    {
-      size_t valInd = ptr->getVal();
-      if (j>=mat.getNbc())
-	{
-	  std::cout <<"Il n'y a pas de solution gauche pour i="<<i<<std::endl;
-	  return NULL;
-	}
-      while(valInd!=0)
-	{
-	  lsol[j]=numBloc;
-	  valInd--;
-	  j++;
-	}
-      j++;
-      ptr=ptr->getSuiv();
-      numBloc++;
-    }
-  return lsol;
-}
-//Methode solution plus a droite
-void Picross::solutionPaD(int* tab, size_t taille, int indice, bool lig){
-  size_t l=0;
-  size_t k=lignes[indice].getLongueur();
-  // bool place=false;
-  if(lig)
-    {
-      if(lignes[indice].somElem()<=taille)
-	{
-	  for(size_t i=0;i<k;i++)
-	    {
-	      /*
-		while(!place)
-		{
-		while(m<=lignes[indice](k-i).getVal()+1)
-		{
-		if(tab[taille-1-l-m]==0)
-		{
-		m++;
-		}
-		else
-		{
-		m=0;
-		l=l+m+1;
-		}
-		}
-		} */
-	      for(size_t j=0;j<lignes[indice](k-i).getVal();j++)
-		{
-		  tab[taille-l-1]=k;
-		  l++;
-		}
-	      tab[taille-l-1]=0;
-	      l++;
-	      k--;
-	    }
-	}
-    }
-  }
 
 //Methode
 int* Picross::tabGauche(size_t ind, bool b)

@@ -21,11 +21,11 @@ int main(int argc, char** argv)
 
     P.remplirTabListe(f);
 
-    P.solCasesSure(0);//on rempli les lignes des cases sures
-    cout<<P;
-    
-    P.SLPG(P.getColonneMat(1),P.getMat().getNbl(),P.getColonnes()[1].getPremier());
+    //P.solCasesSure(0);//on rempli les lignes des cases sures
 
+
+    P.SLPG(P.getColonneMat(1),P.getMat().getNbl(),P.getColonnes()[1].getPremier());
+    cout<<P;
 
   }
  f.close();

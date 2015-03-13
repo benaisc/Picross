@@ -50,8 +50,6 @@ class Picross
   void solCasesSure(bool b);
 
   void afficheP(std::ostream&) const;
-  int* solGauche(int* ligne, Liste L, size_t i);
-  void solutionPaD(int* tab, size_t taille,int indice, bool lig);
   void SLPG(int* Tab,size_t n,Cell* L)const;
   bool verif(int *Tab,size_t n,size_t j)const;
   void Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const;
