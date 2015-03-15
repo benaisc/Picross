@@ -472,6 +472,25 @@ bool Picross::isPicrossFini()
   return true;
 }
 
+
+void Picross::inverseTab(int *Tab, size_t taille){
+  size_t  temp;  
+  if(taille%2 ==0){
+    for(size_t i=0;i<taille/2;i++){
+      temp=Tab[taille-1-i];
+      Tab[taille-1-i]=Tab[i];
+      Tab[i]=temp;
+    }
+  }else   {
+    for(size_t i=0;i<(taille-1)/2;i++){
+      temp=Tab[taille-1-i];
+      Tab[taille-1-i]=Tab[i];
+      Tab[i]=temp;
+    }
+  }
+}
+
+
 void Picross::afficheP(std::ostream &os) const
 {
   os<<"Lignes : "<<std::endl;

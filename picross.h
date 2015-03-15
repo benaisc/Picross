@@ -51,7 +51,7 @@ class Picross
   bool isLigneFinie(size_t ind, bool b);
   void setLignesFinies(bool b);
   bool isPicrossFini();
-
+  void inverseTab(int *Tab, size_t taille);
   void afficheP(std::ostream&) const;
   void SLPG(int* Tab,size_t n,Cell* L)const;
   bool verif(int *Tab,size_t n,size_t j)const;
