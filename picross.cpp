@@ -76,49 +76,63 @@ void Picross::setColonneMat(size_t ind, int* Tab)
       mat.getMat()[i][ind]=Tab[i];
     }
 }
+
 void Picross::SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const
+//voir docxygen et commentaire interne
 {
   if(P==NULL)
   {
     cout<<"je passe par verif tient il est "<<boolalpha<<verif(Tab,n,i)<<noboolalpha<<endl;
     if(!verif(Tab,n,i))
 	  {
-	     poss=false;
+	    poss=false;//il reste au moins une case noire entre(i et n) alors que la liste est vide
 	  }
     else
 	  {
-	     poss=true;
+	     poss=true;//il ne reste pas de case noire entre(i et n) alors que la liste est vide(fini)
 	     afftableau(Tab,5);
 	  }
   }
   else
   {
+   //je fais une copie de Tab
     int* Tab2=new int [n];
     for(size_t j=0;j<n;j++)
   	{
   	  Tab2[j]=Tab[j];
   	}
+ 
+
     int u;
     cout<<"on apelle : Placer1bloc(Tab,"<<n<<","<<P->getVal()<<","<<i<<","<<poss<<")"<<endl;
     cin>>u;
+    //voir Placer1bloc
     Placer1bloc(Tab,n,P->getVal(),i,poss);
     afftableau(Tab,5);
     cout<<" Placer1bloc : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
+
+    //J'ai reussi a placer mon bloc
     if(poss)
 	  {
   	  bool poss2=false;
   	  cout<<"on apelle : SLG(Tab,"<<n<<","<<P->getSuiv()<<","<<i+P->getVal()+1<<","<<poss2<<")"<<endl;
   	  cin>>u;
+	  //Je rapelle SLG avec mon tableau modifier, l'indice suivant, et la position correpodante a deux cases apres la fin de mon bloc
   	  SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss2);
   	  cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss2<<noboolalpha<<endl;
+
+	  //La SLPG prenant comme point de depart en supposant mon i courant ne convient pas(cad: il reste au moins une case noire entre(la fin de mon dernier bloc et n) alors que la liste est vide
   	  if(!poss2)
   	  {
   	    cout<<"on apelle: SLG(Tab2,"<<n<<","<<P<<","<<i+1<<","<<poss<<")"<<endl;
   	    cin>>u;
+	    //Je rapelle SLG sur mon tableau sauvegarder pas celui modifier par Placer1Bloc et je retente ma chance en placant mon bloc courant un cran plus loin
   	    SLG(Tab2,n,P,i+1,poss);
   	    cout<<"SLG : Il renvoie poss a "<<boolalpha<<poss<<noboolalpha<<endl;
   	  }
     }
+
+    //Il n'y a pas la place directe en i pour placer mon bloc courant je tente un cran plus loin
     else
 	  {
   	  cout<<"on apelle: SLG(Tab,"<<n<<","<<P<<","<<i+1<<","<<poss<<")"<<endl;
@@ -129,6 +143,7 @@ void Picross::SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const
   }
 }
 void Picross::Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
+//voir docxygen et commentaire interne
 {
   std::cout<<"n : "<<n<<" val : "<<val<<" i : "<<i<<std::endl;
   poss=true;
@@ -154,6 +169,8 @@ void Picross::Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
 	     }
 	  }
   }
+
+  //il n'y a pas de contrindication je peux placer mon bloc
   if(poss)
   {
     for(size_t j=i;j<=i+val;j++)
@@ -169,12 +186,12 @@ void Picross::Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
     }
   }
 }
-void Picross::SLPG(int* Tab,size_t n,Cell* L)const
+void Picross::SLPG(int* Tab,size_t n,Cell* L)const//voir docxygen
 {
   bool b=true;
   SLG(Tab,n,L,0,b);
 }
-bool Picross::verif(int *Tab,size_t n,size_t j)const
+bool Picross::verif(int *Tab,size_t n,size_t j)const//voir docxygen
 {
   for(size_t i=j+1;i<n;i++)
     {
