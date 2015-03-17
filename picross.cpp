@@ -191,6 +191,15 @@ void Picross::SLPG(int* Tab,size_t n,Cell* L)const//voir docxygen
   bool b=true;
   SLG(Tab,n,L,0,b);
 }
+
+void Picross::SLPD(int* Tab, size_t n, Liste L)
+{
+  bool b=true;
+  inverseTab(Tab,n);
+  Liste Linv = inverseListe(L);
+  SLG(Tab,n,Linv.getPremier(),0,b);
+}
+
 bool Picross::verif(int *Tab,size_t n,size_t j)const//voir docxygen
 {
   for(size_t i=j+1;i<n;i++)
@@ -507,6 +516,20 @@ void Picross::inverseTab(int *Tab, size_t taille){
   }
 }
 
+Liste Picross::inverseListe(const Liste& L) 
+{
+  Liste Linv = L;
+  size_t temp, taille;
+  if (L.getLongueur() % 2 == 0){ taille = L.getLongueur()/2; }
+  else { taille = (L.getLongueur()-1)/2; }
+  for (size_t i = 0; i<=taille; i++)
+    {
+      temp=Linv(i).getVal();
+      Linv(i).setVal(Linv(taille-i).getVal());
+      Linv(taille-i).setVal(temp);
+    }
+  return Linv;
+}
 
 void Picross::afficheP(std::ostream &os) const
 {
