@@ -52,6 +52,7 @@ class Picross
   void setLignesFinies(bool b);
   bool isPicrossFini();
   void inverseTab(int *Tab, size_t taille);
+  Liste inverseListe(const Liste& L);
   void afficheP(std::ostream&) const;
  /**
   * \fn   void SLPG(int* Tab,size_t n,Cell* L)const;
@@ -69,6 +70,8 @@ class Picross
    * \param[in]  j : indice a partir duquel on verifie;
    * \return trivial a partir du brief
    */
+  void SLPD(int* Tab, size_t n, Liste L);
+   
   bool verif(int *Tab,size_t n,size_t j)const;
  /**
   * \fn Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
