@@ -101,7 +101,7 @@ void Picross::SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const
   	{
   	  Tab2[j]=Tab[j];
   	}
- 
+
 
     int u;
     cout<<"on apelle : Placer1bloc(Tab,"<<n<<","<<P->getVal()<<","<<i<<","<<poss<<")"<<endl;
@@ -393,7 +393,7 @@ void Picross::solCasesSure(bool b)
 }
 //On donne a manger l'indice d'une ligne ou colonne de TabListe
 //Amelioration possible : garder en memoire la somme des cellules d'une liste
-bool Picross::isLigneFinie(size_t ind, bool b)//0 ligne, 1 colonne comme dhab
+bool Picross::isLigneFinie(size_t ind, bool b) const//0 ligne, 1 colonne comme dhab
 {
   switch(b)
   {
@@ -445,7 +445,7 @@ bool Picross::isLigneFinie(size_t ind, bool b)//0 ligne, 1 colonne comme dhab
   }
 }
 //on donne a manger un booleen pour balayer lignes ou colonnes
-void Picross::setLignesFinies(bool b)
+void Picross::setLignesFinies(bool b) const
 {
   switch(b)
   {
@@ -477,7 +477,7 @@ void Picross::setLignesFinies(bool b)
   }
 }
 //methode indiquant si le picross est correctement rempli
-bool Picross::isPicrossFini()
+bool Picross::isPicrossFini() const
 {
   size_t taille=lignes.getTaille();
   for(size_t i=0; i<taille; i++)
@@ -500,7 +500,7 @@ bool Picross::isPicrossFini()
 
 
 void Picross::inverseTab(int *Tab, size_t taille){
-  size_t  temp;  
+  size_t  temp;
   if(taille%2 ==0){
     for(size_t i=0;i<taille/2;i++){
       temp=Tab[taille-1-i];
@@ -516,7 +516,7 @@ void Picross::inverseTab(int *Tab, size_t taille){
   }
 }
 
-Liste Picross::inverseListe(const Liste& L) 
+Liste Picross::inverseListe(const Liste& L)
 {
   Liste Linv = L;
   size_t temp, taille;
@@ -542,7 +542,7 @@ void Picross::afficheP(std::ostream &os) const
 }
 
 //operateur d'affichage
-std::ostream &operator<<(std::ostream& os, Picross &P)
+std::ostream &operator<<(std::ostream& os, const Picross &P)
 {
   P.afficheP(os);
   return os;

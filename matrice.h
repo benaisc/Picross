@@ -2,7 +2,6 @@
 #define __MATRICE_H__
 #include <string>
 #include <iostream>
-#include "liste.h"
 
 
 
@@ -23,8 +22,6 @@ class Matrice
     size_t getNbc() const;
     size_t getNbl() const;
     void   afficheM(std::ostream&) const;
-    size_t estNoire();
-    bool   lignesFinies();
 };
-std::ostream &operator<<(std::ostream&, Matrice&);
+std::ostream &operator<<(std::ostream&, const Matrice&);
 #endif

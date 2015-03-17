@@ -58,42 +58,8 @@ void Matrice::afficheM(std::ostream &os)const
   os << std::endl;
 }
 
-size_t Matrice::estNoire()
-{
-  int nbrEstNoire =0;
-  for(size_t i=0;i<nbc;i++)
-    {
-      for(size_t j=0;j<nbl;j++)
-	{
-	  if (mat[i][j]==1){
-	    nbrEstNoire+=1;
-	  }
-	}
-    }
-return nbrEstNoire;
-}
 
-
-
-bool Matrice::lignesFinies()
-{
-  bool flag=true;
-    for(size_t i=0;i<nbc;i++)
-    {
-      for(size_t j=0;j<nbl; j++)
-	{
-	  if( mat[i][j]!=0 ){}else{
-	    flag=false;
-	  }
-	}
-    }
-std::cout<<flag;
- return 0;
-}
-
-
-
-std::ostream &operator<<(std::ostream &os, Matrice &M)
+std::ostream &operator<<(std::ostream &os, const Matrice &M)
 {
   M.afficheM(os);
   return os;
