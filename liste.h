@@ -56,7 +56,7 @@ public:
 	* Si i>longueur, le programme s'arrête, évitant la seg fault
 	* \return L'adresse de la cellule
 	*/
-	Cell& operator()(size_t i);
+	Cell& operator()(size_t i) const;
 	/**
 	* \fn operator=(const Liste&)
 	* \brief Operateur par copie
@@ -73,5 +73,5 @@ public:
 
 	void afficheL(std::ostream&) const; /**< 1->2->... */
 };
-std::ostream &operator<<(std::ostream &os, Liste &Li);	/**< 1->2->... */
+std::ostream &operator<<(std::ostream &os, const Liste &Li);	/**< 1->2->... */
 #endif

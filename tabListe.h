@@ -31,7 +31,7 @@ public:
 	* \param i l'indice de la liste dans le tableau[O..taille-1]
 	* \return tab[i]
 	*/
-	Liste &operator[](size_t);
+	Liste &operator[](size_t) const;
 	/**
 	* \fn operator=()
 	* \brief Surcharge opérateur
@@ -46,6 +46,6 @@ public:
 * \param os un flux, L le tabListe
 * \return Affichage
 */
-std::ostream &operator<<(std::ostream&, TabListe&); /**< T[0]=1->1->.. */
+std::ostream &operator<<(std::ostream&, const TabListe&); /**< T[0]=1->1->.. */
 
 #endif

@@ -7,28 +7,19 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-  Cell a(1);
-  Cell b(2);
-  Cell c(3);
+  Cell* a = new Cell(1);
   TabListe T(1);
 
-  cout << "//test operator[]" << endl;
+  cout << "//test operator[], affichages" << endl;
   T[0].ajoutFin(a);
-  T[0].ajoutFin(b);
-  T[0].ajoutFin(c);
+  T[0].putFin(2);
+  T[0].putFin(3);
   T[0].afficheL(cout);
-  cout << T[0];
-  cout << "Premier élément par T[]()=" << T[0](1).getVal() << endl;
-
-  cout << "//test operator<<" << endl;
   cout << T;
+  cout << "Premier élément de la liste par T[]()=" << T[0](1).getVal() << endl;
 
-  /*
-  cout << "//test operateur=" << endl;
-  TabListe A(2);
-  A=T;
-  cout << A;
-  */
+  cout << "//test error handler" << endl;
+  cout << T[999];
 
   return 0;
 }

@@ -95,7 +95,7 @@ Liste& Liste::operator=(const Liste& c)
   return *this;
 }
 
-Cell& Liste::operator()(size_t i)
+Cell& Liste::operator()(size_t i) const
 {
   if(i>longueur)
   {
@@ -132,7 +132,7 @@ void Liste::afficheL(std::ostream &os) const
   os << std::endl;
 }
 
-std::ostream &operator<<(std::ostream &os, Liste &L)
+std::ostream &operator<<(std::ostream &os, const Liste &L)
 {
   L.afficheL(os);
   return os;
