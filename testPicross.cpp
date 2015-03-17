@@ -48,7 +48,12 @@ int main(int argc, char** argv)
     P.inverseTab(T,5);
     afftableau(T,5);
 
-    //cout << P.inverseListe(P.getLignes()[1]);
+    Liste L;
+    L.putFin(1);
+    L.putFin(2);
+    L.putFin(3);
+    cout << L;
+    cout << P.inverseListe(L);
     // P.SLPG(P.getColonneMat(1),P.getMat().getNbl(),P.getColonnes()[1].getPremier());
   }
   f.close();
