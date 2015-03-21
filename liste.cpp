@@ -3,6 +3,18 @@
 
 Liste::Liste():tete(NULL), longueur(0), fini(false){}
 
+Liste::~Liste()
+{
+  Cell* ptr=tete;
+  while(!isnull(ptr))
+  {
+    ptr=ptr->getSuiv();
+    delete tete;
+    tete=ptr;
+  }
+  delete ptr;
+}
+
 bool Liste::isnull(Cell* p) const
 {
   return !p;
@@ -84,14 +96,13 @@ size_t Liste::somElem() const
 
 Liste& Liste::operator=(const Liste& c)
 {
-  this->tete=NULL;
-  longueur=c.getLongueur();
   Cell *ptr=c.getPremier();
   while(!isnull(ptr))
   {
     this->putFin(ptr->getVal());
     ptr=ptr->getSuiv();
   }
+  this->setFini(c.getFini());
   return *this;
 }
 

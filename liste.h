@@ -21,6 +21,7 @@ private:
 
 public:
 	Liste(); /**< Constructeur par défaut, tete=NULL et longueur=0 */
+	~Liste();
 	/**
 	* \fn isnull(Cell*) const
 	* \brief Test de liste nulle
