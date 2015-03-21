@@ -7,14 +7,12 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-  Cell* a = new Cell(1);
   TabListe T(1);
 
-  cout << "//test operator[], affichages" << endl;
-  T[0].ajoutFin(a);
+  cout << "//test operator[], affichage" << endl;
+  T[0].putFin(1);
   T[0].putFin(2);
   T[0].putFin(3);
-  T[0].afficheL(cout);
   cout << T;
   cout << "Premier élément de la liste par T[]()=" << T[0](1).getVal() << endl;
 

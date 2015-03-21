@@ -2,6 +2,17 @@
 
 TabListe::TabListe(size_t v) : taille(v), tab(new Liste [taille]){}
 
+TabListe::~TabListe()
+{
+  if(tab)
+  {
+    delete [] tab;
+  }
+  else
+  {
+    delete tab;
+  }
+}
 size_t TabListe::getTaille() const
 {
   return taille;
@@ -10,6 +21,7 @@ size_t TabListe::getTaille() const
 void TabListe::error() const
 {
   std::cerr << "Attention i>taille" << std::endl;
+  this->~TabListe();
   exit(EXIT_FAILURE);
 }
 
