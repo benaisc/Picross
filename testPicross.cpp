@@ -23,14 +23,7 @@ int main(int argc, char** argv)
 
     //on rempli les lignes des cases sures
     P.solCasesSure(0);
-
-    //subterfuge pour finir tipoisson et valider le test des methodes
-    int* T=new int [5];
-    for(size_t i=0; i<5; i++)
-    {
-      T[i]=1;
-    }
-    P.pushMat(0, T, 1);
+    P.solCasesSure(1);
 
     cout<<P;
 
@@ -42,22 +35,29 @@ int main(int argc, char** argv)
     cout << "isPicrossFini : " << P.isPicrossFini() << endl;
 
     //verification methode inverseTab
+    int* T=new int [5];
+    for(size_t i=0; i<5; i++)
+    {
+      T[i]=1;
+    }
     T[4]=0;
     afftableau(T,5);
     cout << "inverseTab : " << endl;
     P.inverseTab(T,5);
     afftableau(T,5);
+    delete [] T;
 
     Liste L;
     L.putFin(1);
     L.putFin(2);
     L.putFin(3);
     cout << L;
-    cout << P.inverseListe(L);
-   
+    cout << inverseL(L);
+/*
     int * Test=P.getColonneMat(1);
     P.SLPG(Test,5,P.getColonnes()[1].getPremier());
     afftableau(Test,5);
+*/
   }
   f.close();
   return 0;

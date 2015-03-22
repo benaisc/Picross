@@ -1,5 +1,4 @@
 #include "picross.h"
-using namespace std;
 
 //constructeur
 Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc)
@@ -322,11 +321,6 @@ int* Picross::mergeTab(int *T1, int *T2, size_t n)
     {
       T[i]=1;
     }
-    //verification permettant de remplir les cases blanches "sures" 
-    if(T1[i]==0 && T2[i]==0)
-      {
-	T[i]=-1;
-      }
   }
   delete [] T1;
   delete [] T2;
@@ -505,10 +499,9 @@ bool Picross::isPicrossFini() const
   return true;
 }
 
-
 void Picross::inverseTab(int *Tab, size_t taille){
-  size_t  temp;
-  if(taille%2 ==0){
+  size_t temp;
+  if(taille%2==0){
     for(size_t i=0;i<taille/2;i++){
       temp=Tab[taille-1-i];
       Tab[taille-1-i]=Tab[i];
@@ -527,8 +520,8 @@ Liste Picross::inverseListe(const Liste& L)
 {
   Liste Linv = L;
   size_t temp, taille;
-  taille = L.getLongueur(); 
-  if (taille % 2 == 0){ 
+  taille = L.getLongueur();
+  if (taille % 2 == 0){
     for (size_t i = 1; i<= (taille/2); i++){
       temp=Linv(i).getVal();
       Linv(i).setVal(Linv(taille-i+1).getVal());
@@ -542,19 +535,7 @@ Liste Picross::inverseListe(const Liste& L)
       Linv(taille-i+1).setVal(temp);
     }
   }
-
   return Linv;
-
-/*  if (L.getLongueur() % 2 == 0){ taille = L.getLongueur()/2; }
-  else { taille = (L.getLongueur()-1)/2; }
-  for (size_t i = 0; i<=taille; i++)
-    {
-      temp=Linv(i).getVal();
-      Linv(i).setVal(Linv(taille-i).getVal());
-      Linv(taille-i).setVal(temp);
-    }
-  return Linv;
-  */
 }
 
 void Picross::afficheP(std::ostream &os) const
@@ -573,7 +554,7 @@ std::ostream &operator<<(std::ostream& os, const Picross &P)
   P.afficheP(os);
   return os;
 }
-void afftableau(int T[], int taille)
+void afftableau(const int T[], int taille)
 {
   std::cout<<"T[";
   for(int i=0; i<taille; i++)
@@ -593,4 +574,16 @@ int* initTab(int taille)
   int* init=new int [taille];
   for(int i=0; i<taille; i++){init[i]=0;}
   return init;
+}
+Liste inverseL(const Liste& Lin)
+{
+  Liste Lout;
+  size_t taille=Lin.getLongueur();
+  size_t temp=taille;
+  for(size_t i = 1; i<=taille; i++)
+  {
+    Lout.putFin(Lin(temp).getVal());
+    --temp;
+  }
+  return Lout;
 }

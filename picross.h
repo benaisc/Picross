@@ -95,7 +95,8 @@ class Picross
   void SLG(int* Tab,size_t n,Cell* L,size_t i,bool &poss)const;
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
-void afftableau(int*, int);
+void afftableau(const int*, int);
 void creetableau(int*,int);
 int* initTab(int);
+Liste inverseL(const Liste&);
 #endif
