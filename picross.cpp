@@ -192,16 +192,16 @@ void Picross::SLPD(int* Tab, size_t n, Liste L)
   SLG(Tab,n,Linv.getPremier(),0,b);
 }
 
-bool Picross::verif(int *Tab,size_t n,size_t j)const//voir docxygen
+bool Picross::verif(int *Tab,size_t n,size_t j)const
 {
   for(size_t i=j+1;i<n;i++)
-    {
-      if(Tab[i]==1)
-	{
-	  return false;
-	}
+  {
+    if(Tab[i]==1)
+	  {
+	     return false;
     }
-      return true;
+  }
+  return true;
 }
 
 //Methode
@@ -211,8 +211,8 @@ int* Picross::tabGauche(size_t ind, bool b)
   {
   case 0:
   {
-    size_t taille=colonnes.getTaille();//on traite une ligne donc on cree un tab de taille nbColonnes
-    int* tab=new int [taille];
+    size_t taille=mat.getNbc();//on traite une ligne donc on cree un tab de taille nbColonnes
+    int* tab=initTab(taille);
     int nbcell=lignes[ind].getLongueur();//nbcell dans la liste
     size_t j=0;//l'indice du tab
     size_t cpt=0;//boucle cases à noircir
@@ -232,8 +232,8 @@ int* Picross::tabGauche(size_t ind, bool b)
   }break;
   case 1:
   {
-    size_t taille=lignes.getTaille();
-    int* tab=new int [taille];
+    size_t taille=mat.getNbl();
+    int* TG=initTab(taille);
     int nbcell=colonnes[ind].getLongueur();
     size_t cpt=0;
     size_t j=0;
@@ -242,14 +242,14 @@ int* Picross::tabGauche(size_t ind, bool b)
       taille=colonnes[ind](i).getVal();
       while(cpt<taille)
       {
-        tab[j]=i;
+        TG[j]=i;
         ++j;
         ++cpt;
       }
       ++j;
       cpt=0;
     }
-    return tab;
+    return TG;
   }break;
   default:
     return NULL;
@@ -262,14 +262,15 @@ int* Picross::tabDroite(size_t ind, bool b)
   {
   case 0:
   {
-    size_t taille=colonnes.getTaille();//on traite une ligne
+    size_t taille=mat.getNbc();//on traite une ligne
     int nbcell=lignes[ind].getLongueur();
-    int* tab=new int [taille];
+    int* tab=initTab(taille);
     size_t j=taille-1;//l'indice du tab
     size_t cpt=0;//boucle cases à noircir
     while(nbcell>0)//pour chaque cellule de la liste
     {
-      while(cpt<lignes[ind](nbcell).getVal())//on part de la fin
+      taille=lignes[ind](nbcell).getVal();
+      while(cpt<taille)//on part de la fin
       {
         tab[j]=nbcell;
         --j;
@@ -283,16 +284,17 @@ int* Picross::tabDroite(size_t ind, bool b)
   }break;
   case 1:
   {
-    size_t taille=lignes.getTaille();
-    int* tab=new int [taille];
+    size_t taille=mat.getNbl();
+    int* TD=initTab(taille);
     int nbcell=colonnes[ind].getLongueur();
     size_t j=taille-1;
     size_t cpt=0;
     while(nbcell>0)
     {
-      while(cpt<colonnes[ind](nbcell).getVal())
+      taille=colonnes[ind](nbcell).getVal();
+      while(cpt<taille)
       {
-        tab[j]=nbcell;
+        TD[j]=nbcell;
         --j;
         ++cpt;
       }
@@ -300,7 +302,7 @@ int* Picross::tabDroite(size_t ind, bool b)
       --nbcell;
       cpt=0;
     }
-    return tab;
+    return TD;
   }break;
   default:
     return NULL;
@@ -309,7 +311,7 @@ int* Picross::tabDroite(size_t ind, bool b)
 }
 int* Picross::mergeTab(int *T1, int *T2, size_t n)
 {
-  int* T=new int [n];
+  int* T=initTab(n);
 
   for(size_t i=0; i<n; i++)
   {
@@ -331,7 +333,7 @@ void Picross::pushMat(size_t ind, int* T, bool b)
   {
   case 0:
   {
-    size_t taille=colonnes.getTaille();// <=> mat.getNbc(), longueur d'une ligne
+    size_t taille=mat.getNbc();
     for(size_t i=0; i<taille; i++)
     {
       if(T[i]==1)//pour n'y mettre que les cases sures
@@ -343,12 +345,12 @@ void Picross::pushMat(size_t ind, int* T, bool b)
   }break;
   case 1:
   {
-    size_t taille=lignes.getTaille();//nombre de colonnes
+    size_t taille=mat.getNbl();//nombre de colonnes
     for(size_t i=0; i<taille; i++)
     {
       if(T[i]==1)
       {
-        mat.getMat()[i][ind]=T[i];
+        mat.getMat()[i][ind]=1;
       }
     }
     delete [] T;
@@ -392,7 +394,6 @@ void Picross::solCasesSure(bool b)
     break;
   }
 }
-//On donne a manger l'indice d'une ligne ou colonne de TabListe
 //Amelioration possible : garder en memoire la somme des cellules d'une liste
 bool Picross::isLigneFinie(size_t ind, bool b) const//0 ligne, 1 colonne comme dhab
 {
@@ -547,4 +548,25 @@ std::ostream &operator<<(std::ostream& os, const Picross &P)
 {
   P.afficheP(os);
   return os;
+}
+void afftableau(int T[], int taille)
+{
+  std::cout<<"T[";
+  for(int i=0; i<taille; i++)
+  {
+    std::cout<<T[i];
+    if(i!=taille-1){std::cout<<", ";}
+  }
+  std::cout<<"]"<<std::endl;
+}
+void creetableau(int T[],int taille)
+{
+  srand(time(NULL));
+  for(int i=0; i<taille; i++){T[i]=rand()%2-1;}
+}
+int* initTab(int taille)
+{
+  int* init=new int [taille];
+  for(int i=0; i<taille; i++){init[i]=0;}
+  return init;
 }

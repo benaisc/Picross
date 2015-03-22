@@ -3,7 +3,7 @@
 #include "tabListe.h"
 #include "matrice.h"
 #include <fstream>
-#include "fonctionsUtiles.h"
+#include <stdlib.h> //rand de creeTab
 
 class Picross
 {
@@ -40,12 +40,12 @@ class Picross
   int* mergeTab(int *T1, int *T2, size_t n);
   /**
   * \fn pushMat(size_t ind, int *T, bool b);
-  * \brief copie le resultat de merge dans la matrice
+  * \brief place les blocs noirs de T dans la matrice
   */
   void pushMat(size_t ind, int *T, bool b);
   /**
-  * \fn remplirMat(bool b)
-  * \brief 0>lignes, 1>colonnes
+  * \fn solCasesSure(bool b)
+  * \brief appel sur les 0>lignes, 1>colonnes pour placer les blocs noirs sûrs
   */
   void solCasesSure(bool b);
   bool isLigneFinie(size_t ind, bool b) const;
@@ -95,4 +95,7 @@ class Picross
   void SLG(int* Tab,size_t n,Cell* L,size_t i,bool &poss)const;
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
+void afftableau(int*, int);
+void creetableau(int*,int);
+int* initTab(int);
 #endif

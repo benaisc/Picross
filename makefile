@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -ansi -pedantic
-LDFLAGS=
+LDFLAGS= -Wall -g
 EXEC = main
 SRC = $(wildcard *.cpp)
 OBJ = $(SRC:.cpp=.o)
