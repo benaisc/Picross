@@ -239,7 +239,8 @@ int* Picross::tabGauche(size_t ind, bool b)
     size_t j=0;
     for(int i=1; i<=nbcell; i++)
     {
-      while(cpt<colonnes[ind](i).getVal())
+      taille=colonnes[ind](i).getVal();
+      while(cpt<taille)
       {
         tab[j]=i;
         ++j;
@@ -285,7 +286,7 @@ int* Picross::tabDroite(size_t ind, bool b)
     size_t taille=lignes.getTaille();
     int* tab=new int [taille];
     int nbcell=colonnes[ind].getLongueur();
-    size_t j=taille;
+    size_t j=taille-1;
     size_t cpt=0;
     while(nbcell>0)
     {
@@ -320,6 +321,8 @@ int* Picross::mergeTab(int *T1, int *T2, size_t n)
       T[i]=1;
     }
   }
+  delete [] T1;
+  delete [] T2;
   return T;
 }
 void Picross::pushMat(size_t ind, int* T, bool b)
@@ -328,19 +331,27 @@ void Picross::pushMat(size_t ind, int* T, bool b)
   {
   case 0:
   {
-    size_t taille=colonnes.getTaille();//nombre de lignes
+    size_t taille=colonnes.getTaille();// <=> mat.getNbc(), longueur d'une ligne
     for(size_t i=0; i<taille; i++)
     {
-      mat.getMat()[ind][i]=T[i];
+      if(T[i]==1)//pour n'y mettre que les cases sures
+      {
+        mat.getMat()[ind][i]=T[i];
+      }
     }
+    delete [] T;
   }break;
   case 1:
   {
     size_t taille=lignes.getTaille();//nombre de colonnes
     for(size_t i=0; i<taille; i++)
     {
-      mat.getMat()[i][ind]=T[i];
+      if(T[i]==1)
+      {
+        mat.getMat()[i][ind]=T[i];
+      }
     }
+    delete [] T;
   }break;
   default:
     break;
@@ -361,8 +372,7 @@ void Picross::solCasesSure(bool b)
         {
           if(lignes[i].somElem()>=(taille/2)+1)//si le bloc est valide
           {
-            int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
-            pushMat(i,T,b);
+            pushMat(i,mergeTab(tabGauche(i,b),tabDroite(i,b),taille),b);
           }
         }
     }break;
@@ -374,8 +384,7 @@ void Picross::solCasesSure(bool b)
       {
         if(colonnes[i].somElem()>=(taille/2)+1)
         {
-          int* T=mergeTab(tabGauche(i,b),tabDroite(i,b),taille);
-          pushMat(i,T,b);
+          pushMat(i,mergeTab(tabGauche(i,b),tabDroite(i,b),taille),b);
         }
       }
     }break;
