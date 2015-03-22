@@ -322,6 +322,11 @@ int* Picross::mergeTab(int *T1, int *T2, size_t n)
     {
       T[i]=1;
     }
+    //verification permettant de remplir les cases blanches "sures" 
+    if(T1[i]==0 && T2[i]==0)
+      {
+	T[i]=-1;
+      }
   }
   delete [] T1;
   delete [] T2;
@@ -522,7 +527,25 @@ Liste Picross::inverseListe(const Liste& L)
 {
   Liste Linv = L;
   size_t temp, taille;
-  if (L.getLongueur() % 2 == 0){ taille = L.getLongueur()/2; }
+  taille = L.getLongueur(); 
+  if (taille % 2 == 0){ 
+    for (size_t i = 1; i<= (taille/2); i++){
+      temp=Linv(i).getVal();
+      Linv(i).setVal(Linv(taille-i+1).getVal());
+      Linv(taille-i+1).setVal(temp);
+    }
+  }
+  else {
+    for (size_t i = 1; i<=(taille-1)/2; i++){
+      temp=Linv(i).getVal();
+      Linv(i).setVal(Linv(taille-i+1).getVal());
+      Linv(taille-i+1).setVal(temp);
+    }
+  }
+
+  return Linv;
+
+/*  if (L.getLongueur() % 2 == 0){ taille = L.getLongueur()/2; }
   else { taille = (L.getLongueur()-1)/2; }
   for (size_t i = 0; i<=taille; i++)
     {
@@ -531,6 +554,7 @@ Liste Picross::inverseListe(const Liste& L)
       Linv(taille-i).setVal(temp);
     }
   return Linv;
+  */
 }
 
 void Picross::afficheP(std::ostream &os) const

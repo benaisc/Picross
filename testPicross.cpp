@@ -54,6 +54,7 @@ int main(int argc, char** argv)
     L.putFin(3);
     cout << L;
     cout << P.inverseListe(L);
+   
     int * Test=P.getColonneMat(1);
     P.SLPG(Test,5,P.getColonnes()[1].getPremier());
     afftableau(Test,5);
