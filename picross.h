@@ -11,8 +11,6 @@ class Picross
   Matrice mat;
   TabListe lignes;
   TabListe colonnes;
-  Liste colModif;
-  Liste ligModif;
 
  public:
   //constructeur
@@ -26,8 +24,6 @@ class Picross
   int* getLigneMat(size_t ind) const;
   void setColonneMat(size_t ind, int* Tab);
   int* getColonneMat(size_t ind) const;
-  Liste getColModif()const;
-  Liste getLigModif()const;
   Matrice getMat() const;
   /**
   * \fn tabGauche(size_t ind, bool b);
@@ -52,6 +48,7 @@ class Picross
   * \brief appel sur les 0>lignes, 1>colonnes pour placer les blocs noirs sûrs
   */
   void solCasesSure(bool b);
+  int* remplirCasesSure(int *Tg, int *Td, size_t n,const Liste& L);
   bool isLigneFinie(size_t ind, bool b) const;
   void setLignesFinies(bool b) const;
   bool isPicrossFini() const;
@@ -97,7 +94,6 @@ class Picross
  * \param[in,out] poss : retour de la fonction permettant de sa voir si l'hypothese faite est la bonne
   */
   void SLG(int* Tab,size_t n,Cell* L,size_t i,bool &poss)const;
-  void amodif(bool ligne, int* Av, int*Ap);
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);

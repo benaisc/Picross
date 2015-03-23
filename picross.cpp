@@ -1,7 +1,7 @@
 #include "picross.h"
-
+using namespace std;
 //constructeur
-Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc),colModif(Liste()),ligModif(Liste())
+Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc)
 {}
 void Picross::remplirTabListe(std::ifstream& f)
 {
@@ -41,17 +41,6 @@ Matrice Picross::getMat() const
 {
   return mat;
 }
-
-Liste Picross::getColModif()const
-{
-  return colModif;
-}
-
-Liste Picross::getLigModif()const
-{
-  return ligModif;
-}
-
 int* Picross::getLigneMat(size_t ind)const
 {
   size_t taille=mat.getNbc();
@@ -404,6 +393,57 @@ void Picross::solCasesSure(bool b)
     break;
   }
 }
+
+
+//methode permettant de remplir les cases blanches "sures" 
+int* Picross::remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L)
+{
+  // int* T=initTab(n);
+  size_t maxD=0,minG=0,minD=0,min=0,max=0;
+  int* T=new int[n];
+  int* Ten=new int[n];
+ for(size_t i=0; i<n; i++)
+    {
+      T[i]=0;
+    }
+  for(size_t i=0; i<n; i++)
+    {
+      Ten[i]=-1;
+    }
+  for(size_t j=1; j<L.getLongueur()+1 ;j++)
+    {//j=numerodubloc 1.2.3...
+     while( (size_t)Tg[minG]!=j)
+	{
+	  minG++;
+	}
+      while(  (size_t)Td[minD]!=j)
+	{
+	  minD++;
+	}
+      maxD=minD;
+      while(  (size_t)Td[maxD]==j)
+	{
+	  maxD++;
+	}
+      min=minG;
+      max=maxD-1;
+ cout<<"min :"<<min<<endl<<"max :"<<max<<endl<<"Ten:";
+      for(size_t i=min; i<=max; i++)
+	{ 
+	  Ten[i]=(int)j;
+	}
+afftableau(Ten,5);
+    } 
+ afftableau(T,5);
+      for(size_t i=0; i<n; i++)
+	{ 
+	  if (Ten[i]==-1)
+	 T[i]=Ten[i];
+	}
+  return T;
+}
+
+
 //Amelioration possible : garder en memoire la somme des cellules d'une liste
 bool Picross::isLigneFinie(size_t ind, bool b) const//0 ligne, 1 colonne comme dhab
 {
@@ -557,30 +597,6 @@ void Picross::afficheP(std::ostream &os) const
   colonnes.afficheT(os);
   os<<"Matrice : "<<std::endl;
   mat.afficheM(os);
-}
-void Picross::amodif(bool ligne, int* Av, int*Ap)
-{
-  if(!ligne)
-    {
-      for(size_t i=0;i<colonnes.getTaille();i++)
-	{
-	  if(Av[i]!=Ap[i])
-	    {
-	      ligModif.putFin(i);
-	    }
-	}
-    }
-  else
-    {
-      for(size_t i=0;i<lignes.getTaille();i++)
-	{
-	  if(Av[i]!=Ap[i])
-	    {
-	      colModif.putFin(i);
-	    }
-	}
-    }
-
 }
 
 //operateur d'affichage

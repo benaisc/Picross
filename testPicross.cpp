@@ -20,6 +20,7 @@ int main(int argc, char** argv)
     Picross P(nbl,nbc);
     f.ignore(); //le '\n'
     P.remplirTabListe(f);
+
     //on rempli les lignes des cases sures
     P.solCasesSure(0);
     P.solCasesSure(1);
@@ -49,9 +50,17 @@ int main(int argc, char** argv)
     Liste L;
     L.putFin(1);
     L.putFin(2);
-    L.putFin(3);
+    L.putFin(2);
+    // L.putFin(3);
     cout << L;
     cout << inverseL(L);
+    
+    int Tg[10]={1,0,2,2,0,3,3,0,0,0};
+    int Td[10]={1,0,0,0,0,2,2,0,3,3};
+
+    afftableau(Tg,10);
+    afftableau(Td,10);
+    afftableau(P.remplirCasesSure(Tg,Td,10,L),10);
 /*
     int * Test=P.getColonneMat(1);
     P.SLPG(Test,5,P.getColonnes()[1].getPremier());
