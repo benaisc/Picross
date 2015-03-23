@@ -1,5 +1,5 @@
 #include "liste.h"
-
+using namespace std;
 
 Liste::Liste():tete(NULL), longueur(0), fini(false){}
 
@@ -142,7 +142,24 @@ void Liste::afficheL(std::ostream &os) const
   }
   os << std::endl;
 }
-
+void Liste::cutTail()
+{
+  if(longueur!=0)
+    {
+      if(longueur==1)
+	{
+	  tete=NULL;
+	  longueur--;
+	}
+    }
+  else
+    {
+      Liste L=*this;
+      L(longueur-2).setSuiv(NULL);
+      longueur--;
+      *this=L;
+    }
+}
 std::ostream &operator<<(std::ostream &os, const Liste &L)
 {
   L.afficheL(os);

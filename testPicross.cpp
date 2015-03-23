@@ -20,7 +20,6 @@ int main(int argc, char** argv)
     Picross P(nbl,nbc);
     f.ignore(); //le '\n'
     P.remplirTabListe(f);
-
     //on rempli les lignes des cases sures
     P.solCasesSure(0);
     P.solCasesSure(1);

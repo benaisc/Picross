@@ -34,6 +34,7 @@ public:
 	size_t getLongueur() const;	/**< \return le nombre de cellules de la liste */
 	void setLongueur(size_t);
 	bool getFini() const; /**< \return le booleen indiquant si liste validee */
+	void cutTail();
 	void setFini(bool b);
 	/**
 	* \fn putFin(Cell&)
