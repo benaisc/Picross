@@ -1,5 +1,4 @@
 #include "liste.h"
-using namespace std;
 
 Liste::Liste():tete(NULL), longueur(0), fini(false){}
 
@@ -159,6 +158,39 @@ void Liste::cutTail()
       longueur--;
       *this=L;
     }
+}
+//FONCTIONS OK MAIS CAUSENT MEM_LEAK WTF HOW TO DO ?
+void Liste::rmDernierCell()
+{
+  if(longueur>1)
+  {
+    Cell* ptr=tete;
+    while(!isnull(ptr->getSuiv()))
+    {
+      ptr=ptr->getSuiv();
+    }
+    delete ptr;
+    --longueur;
+  }
+  else
+  {
+    delete tete;
+    tete=NULL;
+    longueur=0;
+  }
+}
+void Liste::cut()
+{
+  if(longueur>1)
+  {
+    this->operator()(longueur-1).setSuiv(NULL);
+    --longueur;
+  }
+  else
+  {
+    delete tete;
+    longueur=0;
+  }
 }
 std::ostream &operator<<(std::ostream &os, const Liste &L)
 {

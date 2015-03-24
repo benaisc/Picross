@@ -25,6 +25,9 @@ int main(int argc, char** argv)
 	cout << "longueur=" << L2.getLongueur() << endl;
 	cout << "somElem : " << L.somElem() << endl;
 
-
+	cout << "test suppression dernier element : ";
+	L.cut();
+	cout << L;
+	
 	return 0;
 }
