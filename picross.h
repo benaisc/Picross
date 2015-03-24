@@ -55,54 +55,67 @@ class Picross
   bool isLigneFinie(size_t ind, bool b) const;
   void setLignesFinies(bool b) const;
   bool isPicrossFini() const;
-  void inverseTab(int *Tab, size_t taille);
-  Liste inverseListe(const Liste& L);
   void afficheP(std::ostream&) const;
- /**
+  /**
   * \fn   void SLPG(int* Tab,size_t n,Cell* L)const;
   * \brief Fonction qui donne la solution la plus a gauche en fonction d'une liste L
   * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
- * \param[in]  n : Taille du dit tableau;
- * \param[in]  P : Premiere cellule de la liste des indices;
+  * \param[in]  n : Taille du dit tableau;
+  * \param[in]  L : Premiere cellule de la liste des indices;
   */
-  void SLPG(int* Tab,size_t n,Cell* L)const;
-  /**
-   * \fn   bool verif(int *Tab,size_t n,size_t j)const;
-   * \brief Fonction verifie si les cases entre j et n sont non-noires
-   * \param[in] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
-   * \param[in]  n : Taille du dit tableau;
-   * \param[in]  j : indice a partir duquel on verifie;
-   * \return trivial a partir du brief
-   */
-  void SLPD(int* Tab, size_t n, Liste L);
-
-  bool verif(int *Tab,size_t n,size_t j)const;
- /**
-  * \fn Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
-  * \brief Fonction qui tente de placer le bloc val directement en i et renvoi si cela est possible
-  * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
- * \param[in]  n : Taille du dit tableau;
- * \param[in]  val : Taille du bloc;
- * \param[in] i : indice a partir duquel on tente de placer le bloc;
- * \param[in,out] poss : retour de la fonction permettant de sa voir si je peux ou non le placer
-  */
-  void Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const;
+  void SLPG(int*, size_t, Liste&);
+  void SLPD(int*, size_t, Liste&);
   /**
   * \fn SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const;
   * \brief Fonction recursive qui retourne la solution la plus a gauche de Tab en fonction de P
   * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
- * \param[in]  n : Taille du dit tableau;
- * \param[in]  P : Premiere cellule de la liste des indices;
- * \param[in] i : indice a partir duquel on interagit avec Tab(voir Placer1bloc);
- * \param[in,out] poss : retour de la fonction permettant de sa voir si l'hypothese faite est la bonne
+  * \param[in]  n : Taille du dit tableau;
+  * \param[in]  P : Premiere cellule de la liste des indices;
+  * \param[in] i : indice a partir duquel on interagit avec Tab(voir Placer1bloc);
+  * \param[in,out] poss : retour de la fonction permettant de sa voir si l'hypothese faite est la bonne
   */
- 
- void SLG(int* Tab,size_t n,Cell* L,size_t i,bool &poss)const;
+  void SLG(int*, size_t, Cell*, size_t, bool&);
+  /**
+  * \fn PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
+  * \brief Fonction qui tente de placer le bloc val directement en i et renvoi si cela est possible
+  * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
+  * \param[in]  n : Taille du dit tableau;
+  * \param[in]  val : Taille du bloc;
+  * \param[in] i : indice a partir duquel on tente de placer le bloc;
+  * \param[in,out] poss : retour de la fonction permettant de sa voir si je peux ou non le placer
+  */
+  void PlacerBloc(int*, size_t, size_t, size_t, bool&);
+  /**
+   * \fn Verification(int *Tab,size_t j,size_t n)const;
+   * \brief verifie si les cases entre j et n sont non-noires
+   * \param[in] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
+   * \param[in]  n : Taille du dit tableau;
+   * \param[in]  j : indice a partir duquel on verifie;
+   * \return trivial a partir du brief
+  */
+  bool Verification(int* , size_t, size_t);
+  /**
+  * \fn Numeroter(int*, size_t);
+  * \brief identifie les blocs de cases noires (1..2..)
+  */
+  void Numeroter(int*, size_t);
+  /**
+  * \fn Fusion(int*, int*, int*, size_t);
+  * \brief Fusion simple entre TG et TD là ou les valeures sont égales
+  */
+  void Fusion(int*, int*, int*, size_t);
+  /**
+  * \fn Push(int*,size_t,bool);
+  * \brief brute push dans la matrice a l'indice ind, 0>ligne 1>colonne
+  */
+  void Push(int*,size_t,bool);
+
  void amodif(bool ligne, int* Av, int*Ap);
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);
 void creetableau(int*,int);
-int* initTab(int);
+int* initTab(size_t);
 Liste inverseL(const Liste&);
+void inverseT(int*, size_t);
 #endif

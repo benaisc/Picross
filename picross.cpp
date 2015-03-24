@@ -87,131 +87,161 @@ void Picross::setColonneMat(size_t ind, int* Tab)
     }
 }
 
-void Picross::SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const
-//voir docxygen et commentaire interne
+void Picross::SLPD(int* Tab, size_t n, Liste &L)
+{
+  bool Res;
+  inverseT(Tab,n);
+  Liste Linv;
+  Linv = inverseL(L);
+  SLG(Tab,n,Linv.getPremier(),0,Res);
+  inverseT(Tab,n);
+}
+void Picross::SLPG(int* Tab, size_t n, Liste &L)
+{
+  bool Res;
+  SLG(Tab,n,L.getPremier(),0,Res);
+}
+void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
 {
   if(P==NULL)
-    {
-      if(!verif(Tab,n,i))
-	{
-	  poss=false;//il reste au moins une case noire entre(i et n) alors que la liste est vide
-	}
-      else
-	{
-	  poss=true;//il ne reste pas de case noire entre(i et n) alors que la liste est vide(fini)
-	}
-    }
+  {
+    poss=Verification(Tab,i,n);
+  }
   else
+  {
+    int* Tab2=new int [n];
+    for(size_t j=0;j<n;j++)
     {
-      //je fais une copie de Tab
-      int* Tab2=new int [n];
-      for(size_t j=0;j<n;j++)
-  	{
-  	  Tab2[j]=Tab[j];
-  	}
-      //voir Placer1bloc
-      Placer1bloc(Tab,n,P->getVal(),i,poss);
-      //J'ai reussi a placer mon bloc
-      if(poss)
-	{
-  	  bool poss2=false;
-	  //Je rapelle SLG avec mon tableau modifier, l'indice suivant, et la position correpodante a deux cases apres la fin de mon bloc
-  	  SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss2);
-	  //La SLPG prenant comme point de depart en supposant mon i courant ne convient pas(cad: il reste au moins une case noire entre(la fin de mon dernier bloc et n) alors que la liste est vide
-  	  if(!poss2)
-	    {
-	      if(Tab2[i]!=1)
-		{
-		  //Je rapelle SLG sur mon tableau sauvegarder pas celui modifier par Placer1Bloc et je retente ma chance en placant mon bloc courant un cran plus loin
-		  SLG(Tab2,n,P,i+1,poss);
-		}
-	      else
-		{
-		  poss2=false;
-		}
-	    }
-	}
-
-      //Il n'y a pas la place directe en i pour placer mon bloc courant je tente un cran plus loin
-      else{
-	if(Tab[i]!=1)
-	  {
-	    SLG(Tab,n,P,i+1,poss);
-	  }
-	else
-	  {
-	    poss=false;
-	  }
-      }
+      Tab2[j]=Tab[j];
     }
+    PlacerBloc(Tab,n,P->getVal(),i,poss);
+    if(poss)
+    {
+      SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss);
+      if(!poss)
+      {
+        for(size_t j=0;j<n;j++)
+        {
+          Tab[j]=Tab2[j];
+        }
+        delete [] Tab2;
+        SLG(Tab,n,P,i+1,poss);
+      }
+      delete [] Tab2;
+    }
+    else
+    {
+      delete [] Tab2;
+      SLG(Tab,n,P,i+1,poss);
+    }
+  }
 }
-void Picross::Placer1bloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
-//voir docxygen et commentaire interne
+void Picross::PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)
 {
   poss=true;
-  if(i+val>n-1)
-    {
-      poss=false;
-    }
-  else if(Tab[i]==0)//si il y a un blanc en i
-    {
-      poss=false;
-    }
-  else if(i+val<n && Tab[i+val]==1)//si il y a un noir juste a la fin du bloc
-    {
-      poss=false;
-    }
+  if(i+val>n)
+  {
+    poss=false;
+  }
   else
   {
-    for(size_t j=i;j<i+val;j++)//si il y a un blanc entre i et val+i
-	  {
-	     if(Tab[j]==-1)
-	     {
-	        poss=false;
-	     }
-	  }
+    if(i+val<n && Tab[i+val]==1)
+    {
+      poss=false;
+    }
+    else
+    {
+      for(size_t j=i; j<i+val; j++)
+      {
+        if(Tab[j]==-1)
+        {
+          poss=false;
+        }
+      }
+    }
   }
-
-  //il n'y a pas de contrindication je peux placer mon bloc
   if(poss)
   {
-    for(size_t j=i;j<=i+val;j++)
+    for(size_t j=i; j<i+val; j++)
     {
-	     if(i+val<n && j==i+val)
-	     {
-	        Tab[j]=-1;
-	     }
-	     else
-	     {
-	        Tab[j]=1;
-	     }
+      Tab[j]=1;
+    }
+    if(i+val<n)
+    {
+      Tab[i+val]=-1;
     }
   }
 }
-void Picross::SLPG(int* Tab,size_t n,Cell* L)const//voir docxygen
+bool Picross::Verification(int *T, size_t ind, size_t n)
 {
-  bool b=true;
-  SLG(Tab,n,L,0,b);
-}
-
-void Picross::SLPD(int* Tab, size_t n, Liste L)
-{
-  bool b=true;
-  inverseTab(Tab,n);
-  Liste Linv = inverseListe(L);
-  SLG(Tab,n,Linv.getPremier(),0,b);
-}
-
-bool Picross::verif(int *Tab,size_t n,size_t j)const
-{
-  for(size_t i=j+1;i<n;i++)
+  for(size_t i=ind;i<n;i++)
   {
-    if(Tab[i]==1)
-	  {
-	     return false;
+    if(T[i]==1)
+    {
+      return false;
     }
   }
   return true;
+}
+
+void Picross::Numeroter(int *T, size_t n)
+{
+  int cpt=1;
+  for(size_t i=0; i<n; i++)
+  {
+    if(T[i]==1)
+    {
+      while(T[i]==1)
+      {
+        T[i]=cpt;
+        ++i;
+      }
+      ++cpt;
+    }
+  }
+}
+
+void Picross::Fusion(int* Res, int *T1, int *T2, size_t n)
+{
+  for(size_t i=0; i<n; i++)
+  {
+    if(T1[i]==T2[i])
+    {
+      Res[i]=T2[i];
+    }
+  }
+  for(size_t i=0; i<n; i++)
+  {
+    if(Res[i]>1)
+    {
+      Res[i]=1;
+    }
+  }
+}
+
+void Picross::Push(int* T, size_t ind, bool b)
+{
+  switch(b)
+  {
+    case 0:
+    {
+      size_t taille=mat.getNbc();
+      for(size_t i=0; i<taille; i++)
+      {
+        mat.getMat()[ind][i]=T[i];
+      }
+    }break;
+    case 1:
+    {
+      size_t taille=mat.getNbl();
+      for(size_t i=0; i<taille; i++)
+      {
+        mat.getMat()[i][ind]=T[i];
+      }
+    }break;
+    default:
+    break;
+  }
 }
 
 //Methode
@@ -406,7 +436,7 @@ void Picross::solCasesSure(bool b)
 }
 
 
-//methode permettant de remplir les cases blanches "sures" 
+//methode permettant de remplir les cases blanches "sures"
 int* Picross::remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L)
 {
   // int* T=initTab(n);
@@ -440,14 +470,14 @@ int* Picross::remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L)
       max=maxD-1;
  cout<<"min :"<<min<<endl<<"max :"<<max<<endl<<"Ten:";
       for(size_t i=min; i<=max; i++)
-	{ 
+	{
 	  Ten[i]=(int)j;
 	}
 afftableau(Ten,5);
-    } 
+    }
  afftableau(T,5);
       for(size_t i=0; i<n; i++)
-	{ 
+	{
 	  if (Ten[i]==-1)
 	 T[i]=Ten[i];
 	}
@@ -563,67 +593,28 @@ bool Picross::isPicrossFini() const
 
 void Picross::amodif(bool ligne, int* Av, int*Ap)
 {
-if(!ligne)
-{
-for(size_t i=0;i<colonnes.getTaille();i++)
-{
-if(Av[i]!=Ap[i])
-{
-ligModif.putFin(i);
-}
-}
-}
-else
-{
-for(size_t i=0;i<lignes.getTaille();i++)
-{
-if(Av[i]!=Ap[i])
-{
-colModif.putFin(i);
-}
-}
-}
-
-}
-
-void Picross::inverseTab(int *Tab, size_t taille){
-  size_t temp;
-  if(taille%2==0){
-    for(size_t i=0;i<taille/2;i++){
-      temp=Tab[taille-1-i];
-      Tab[taille-1-i]=Tab[i];
-      Tab[i]=temp;
+  if(!ligne)
+  {
+    for(size_t i=0;i<colonnes.getTaille();i++)
+    {
+      if(Av[i]!=Ap[i])
+      {
+        ligModif.putFin(i);
+      }
     }
-  }else   {
-    for(size_t i=0;i<(taille-1)/2;i++){
-      temp=Tab[taille-1-i];
-      Tab[taille-1-i]=Tab[i];
-      Tab[i]=temp;
+  }
+  else
+  {
+    for(size_t i=0;i<lignes.getTaille();i++)
+    {
+      if(Av[i]!=Ap[i])
+      {
+        colModif.putFin(i);
+      }
     }
   }
 }
 
-Liste Picross::inverseListe(const Liste& L)
-{
-  Liste Linv = L;
-  size_t temp, taille;
-  taille = L.getLongueur();
-  if (taille % 2 == 0){
-    for (size_t i = 1; i<= (taille/2); i++){
-      temp=Linv(i).getVal();
-      Linv(i).setVal(Linv(taille-i+1).getVal());
-      Linv(taille-i+1).setVal(temp);
-    }
-  }
-  else {
-    for (size_t i = 1; i<=(taille-1)/2; i++){
-      temp=Linv(i).getVal();
-      Linv(i).setVal(Linv(taille-i+1).getVal());
-      Linv(taille-i+1).setVal(temp);
-    }
-  }
-  return Linv;
-}
 
 void Picross::afficheP(std::ostream &os) const
 {
@@ -641,6 +632,8 @@ std::ostream &operator<<(std::ostream& os, const Picross &P)
   P.afficheP(os);
   return os;
 }
+
+//fonctions diverses
 void afftableau(const int T[], int taille)
 {
   std::cout<<"T[";
@@ -656,10 +649,10 @@ void creetableau(int T[],int taille)
   srand(time(NULL));
   for(int i=0; i<taille; i++){T[i]=rand()%2-1;}
 }
-int* initTab(int taille)
+int* initTab(size_t taille)
 {
   int* init=new int [taille];
-  for(int i=0; i<taille; i++){init[i]=0;}
+  for(size_t i=0; i<taille; i++){init[i]=0;}
   return init;
 }
 Liste inverseL(const Liste& Lin)
@@ -673,4 +666,23 @@ Liste inverseL(const Liste& Lin)
     --temp;
   }
   return Lout;
+}
+void inverseT(int *Tab, size_t taille){
+  size_t temp;
+  if(taille%2==0){
+    for(size_t i=0;i<taille/2;i++)
+    {
+      temp=Tab[taille-1-i];
+      Tab[taille-1-i]=Tab[i];
+      Tab[i]=temp;
+    }
+  }
+  else{
+    for(size_t i=0;i<(taille-1)/2;i++)
+    {
+      temp=Tab[taille-1-i];
+      Tab[taille-1-i]=Tab[i];
+      Tab[i]=temp;
+    }
+  }
 }
