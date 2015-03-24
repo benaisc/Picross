@@ -1,7 +1,7 @@
 #include "picross.h"
 using namespace std;
 //constructeur
-Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc)
+Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc),colModif(Liste()),ligModif(Liste())
 {}
 void Picross::remplirTabListe(std::ifstream& f)
 {
@@ -41,6 +41,17 @@ Matrice Picross::getMat() const
 {
   return mat;
 }
+
+Liste Picross::getColModif()const
+{
+ return colModif;
+}
+
+Liste Picross::getLigModif()const
+{
+ return ligModif;
+}
+
 int* Picross::getLigneMat(size_t ind)const
 {
   size_t taille=mat.getNbc();
@@ -548,6 +559,31 @@ bool Picross::isPicrossFini() const
     }
   }
   return true;
+}
+
+void Picross::amodif(bool ligne, int* Av, int*Ap)
+{
+if(!ligne)
+{
+for(size_t i=0;i<colonnes.getTaille();i++)
+{
+if(Av[i]!=Ap[i])
+{
+ligModif.putFin(i);
+}
+}
+}
+else
+{
+for(size_t i=0;i<lignes.getTaille();i++)
+{
+if(Av[i]!=Ap[i])
+{
+colModif.putFin(i);
+}
+}
+}
+
 }
 
 void Picross::inverseTab(int *Tab, size_t taille){
