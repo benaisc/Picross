@@ -109,13 +109,18 @@ class Picross
   * \brief brute push dans la matrice a l'indice ind, 0>ligne 1>colonne
   */
   void Push(int*,size_t,bool);
-
+  /**
+  * \fn solLignesSure(size_t, size_t);
+  * \brief appel recursif sur les lignes SLPG SLPD Fusion Push
+  */
+  void solLignes(size_t, size_t);
+  void solColonnes(size_t, size_t);
  void amodif(bool ligne, int* Av, int*Ap);
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);
 void creetableau(int*,int);
 int* initTab(size_t);
-Liste inverseL(const Liste&);
+Liste* inverseL(const Liste&);
 void inverseT(int*, size_t);
 #endif

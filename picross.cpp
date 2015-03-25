@@ -56,7 +56,7 @@ int* Picross::getLigneMat(size_t ind)const
 {
   size_t taille=mat.getNbc();
   int* tab=new int[taille];
-  for(size_t i =0; i<mat.getNbc();i++)
+  for(size_t i =0; i<taille;i++)
     {
       tab[i]=mat.getMat()[ind][i];
     }
@@ -66,7 +66,7 @@ int* Picross::getColonneMat(size_t ind)const
 {
   size_t taille=mat.getNbl();
   int* tab=new int[taille];
-  for(size_t i =0; i<mat.getNbl();i++)
+  for(size_t i =0; i<taille;i++)
     {
       tab[i]=mat.getMat()[i][ind];
     }
@@ -87,14 +87,16 @@ void Picross::setColonneMat(size_t ind, int* Tab)
     }
 }
 
-void Picross::SLPD(int* Tab, size_t n, Liste &L)
+void Picross::SLPD(int* T, size_t n, Liste &L)
 {
-  bool Res;
-  inverseT(Tab,n);
-  Liste Linv;
+  bool B;
+  inverseT(T,n);
+  Liste* Linv;
   Linv = inverseL(L);
-  SLG(Tab,n,Linv.getPremier(),0,Res);
-  inverseT(Tab,n);
+  std::cout << "inside SLPD after inverseL" << std::endl;
+  SLG(T,n,Linv->getPremier(),0,B);
+  std::cout << "outside SLG" << std::endl;
+  inverseT(T,n);
 }
 void Picross::SLPG(int* Tab, size_t n, Liste &L)
 {
@@ -124,7 +126,6 @@ void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
         {
           Tab[j]=Tab2[j];
         }
-        delete [] Tab2;
         SLG(Tab,n,P,i+1,poss);
       }
       delete [] Tab2;
@@ -166,10 +167,13 @@ void Picross::PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)
     {
       Tab[j]=1;
     }
+    /*
+    mouais, à voir une fonction pour mettre des -1 apres Fusion
     if(i+val<n)
     {
       Tab[i+val]=-1;
     }
+    */
   }
 }
 bool Picross::Verification(int *T, size_t ind, size_t n)
@@ -244,6 +248,60 @@ void Picross::Push(int* T, size_t ind, bool b)
   }
 }
 
+void Picross::solLignes(size_t taille, size_t ind)
+{
+  if(ind<taille)
+  {
+    int* TG=getLigneMat(ind);
+
+    SLPG(TG,taille,lignes[ind]);
+
+    int* TD=getLigneMat(ind);
+    SLPD(TD,taille,lignes[ind]);
+
+    Numeroter(TG,taille);
+    Numeroter(TD,taille);
+
+    int* Merge=initTab(taille);
+    Fusion(Merge,TG,TD,taille);
+
+    //remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L);
+    Push(Merge,ind,0);
+
+    delete [] TG;
+    delete [] TD;
+    delete [] Merge;
+    solLignes(taille,ind+1);
+  }
+}
+void Picross::solColonnes(size_t taille, size_t ind)
+{
+  if(ind<taille)
+  {
+    std::cout << "Colonne mat à l'indice : " << ind << std::endl;
+    int* TG=getColonneMat(ind);
+    afftableau(TG,taille);
+    SLPG(TG,taille,colonnes[ind]);
+
+    int* TD=getColonneMat(ind);
+    SLPD(TD,taille,colonnes[ind]);
+
+    Numeroter(TG,taille);
+    Numeroter(TD,taille);
+
+    int* Merge=initTab(taille);
+    Fusion(Merge,TG,TD,taille);
+    std::cout << "Solution : " << std::endl;
+    afftableau(Merge,taille);
+    //remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L);
+    Push(Merge,ind,1);
+
+    delete [] TG;
+    delete [] TD;
+    delete [] Merge;
+    solColonnes(taille,ind+1);
+  }
+}
 //Methode
 int* Picross::tabGauche(size_t ind, bool b)
 {
@@ -655,34 +713,25 @@ int* initTab(size_t taille)
   for(size_t i=0; i<taille; i++){init[i]=0;}
   return init;
 }
-Liste inverseL(const Liste& Lin)
+Liste* inverseL(const Liste& Lin)
 {
-  Liste Lout;
   size_t taille=Lin.getLongueur();
   size_t temp=taille;
+  Liste* Lout=new Liste();
   for(size_t i = 1; i<=taille; i++)
   {
-    Lout.putFin(Lin(temp).getVal());
+    Lout->putFin(Lin(temp).getVal());
     --temp;
   }
   return Lout;
 }
-void inverseT(int *Tab, size_t taille){
+void inverseT(int *Tab, size_t taille)
+{
   size_t temp;
-  if(taille%2==0){
-    for(size_t i=0;i<taille/2;i++)
-    {
-      temp=Tab[taille-1-i];
-      Tab[taille-1-i]=Tab[i];
-      Tab[i]=temp;
-    }
-  }
-  else{
-    for(size_t i=0;i<(taille-1)/2;i++)
-    {
-      temp=Tab[taille-1-i];
-      Tab[taille-1-i]=Tab[i];
-      Tab[i]=temp;
-    }
+  for(size_t i=0;i<taille/2;i++)
+  {
+    temp=Tab[taille-1-i];
+    Tab[taille-1-i]=Tab[i];
+    Tab[i]=temp;
   }
 }
