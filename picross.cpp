@@ -673,7 +673,6 @@ void Picross::amodif(bool ligne, int* Av, int*Ap)
   }
 }
 
-
 void Picross::afficheP(std::ostream &os) const
 {
   os<<"Lignes : "<<std::endl;
@@ -702,6 +701,17 @@ void afftableau(const int T[], int taille)
   }
   std::cout<<"]"<<std::endl;
 }
+
+void affliste(const Liste* L)
+{
+  for(size_t i=0; i < (L->getLongueur()); i++)
+    {
+      cout << L[i];
+      if(i != (L->getLongueur())-1){cout << "->";}
+    }
+  cout << endl;
+}
+
 void creetableau(int T[],int taille)
 {
   srand(time(NULL));
