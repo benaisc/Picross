@@ -45,13 +45,22 @@ void Matrice::afficheM(std::ostream &os)const
     os << "\n" << "L|C[" << i << "] : ";
     for(size_t j=0;j<nbc;j++)
     {
-      if(mat[i][j]>=0)
+      switch(mat[i][j])
       {
-        os<<"  "<<mat[i][j]<<" ";
-      }
-      else
+      case(-1):
       {
-        os<<" "<<mat[i][j]<<" ";
+        os<<" "<<"\u25A7"<<" ";
+      }break;
+      case(0):
+      {
+	os<<" "<<"\u25A1"<<" ";
+      }break;
+      case(1):
+      {
+        os<<" "<<"\u25A0"<<" ";
+      }break;
+      default:
+	os<<" "<<"\u25A3"<<" ";
       }
     }
   }
