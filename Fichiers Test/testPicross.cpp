@@ -54,9 +54,8 @@ int main(int argc, char** argv)
     // L.putFin(3);
     cout << "Liste L : " << L << endl;
     Liste* Linv = inverseL(L);
-    cout << "inverseL : " << endl;
-    // affliste(Linv);  provoque erreur de segmentation 
-    
+    cout << "inverseL : " << *Linv << endl;
+
     int Tg[10]={1,0,2,2,0,3,3,0,0,0};
     int Td[10]={1,0,0,0,0,2,2,0,3,3};
 
