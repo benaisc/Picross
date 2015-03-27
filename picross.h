@@ -119,7 +119,6 @@ class Picross
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);
-void affliste(const Liste*);
 void creetableau(int*,int);
 int* initTab(size_t);
 Liste* inverseL(const Liste&);
