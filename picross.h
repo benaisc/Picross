@@ -51,7 +51,7 @@ class Picross
   * \brief appel sur les 0>lignes, 1>colonnes pour placer les blocs noirs sûrs
   */
   void solCasesSure(bool b);
-  int* remplirCasesSure(int *Tg, int *Td, size_t n,const Liste& L);
+  void remplirCasesSureBl(int* Res,int *Tg, int *Td, size_t n, Liste& L);
   bool isLigneFinie(size_t ind, bool b) const;
   void setLignesFinies(bool b) const;
   bool isPicrossFini() const;

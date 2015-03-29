@@ -265,9 +265,10 @@ void Picross::solLignes(size_t taille, size_t ind)
     int* Merge=initTab(taille);
     Fusion(Merge,TG,TD,taille);
 
-    //remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L);
+    // int* CasesSureBl=initTab(taille);
+    //remplirCasesSureBl(CasesSureBl,TG, TD, taille,lignes[ind]);
     Push(Merge,ind,0);
-
+    
     delete [] TG;
     delete [] TD;
     delete [] Merge;
@@ -293,9 +294,12 @@ void Picross::solColonnes(size_t taille, size_t ind)
     Fusion(Merge,TG,TD,taille);
     std::cout << "Solution : " << std::endl;
     afftableau(Merge,taille);
-    //remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L);
+    
+     //int* CasesSureBl=initTab(taille);
+     //remplirCasesSureBl(CasesSureBl,TG, TD, taille,colonnes[ind]);
+     
     Push(Merge,ind,1);
-
+    
     delete [] TG;
     delete [] TD;
     delete [] Merge;
@@ -495,52 +499,47 @@ void Picross::solCasesSure(bool b)
 
 
 //methode permettant de remplir les cases blanches "sures"
-int* Picross::remplirCasesSure(int *Tg, int *Td, size_t n,const Liste & L)
-{
-  // int* T=initTab(n);
-  size_t maxD=0,minG=0,minD=0,min=0,max=0;
-  int* T=new int[n];
-  int* Ten=new int[n];
- for(size_t i=0; i<n; i++)
-    {
-      T[i]=0;
-    }
-  for(size_t i=0; i<n; i++)
-    {
-      Ten[i]=-1;
-    }
-  for(size_t j=1; j<L.getLongueur()+1 ;j++)
-    {//j=numerodubloc 1.2.3...
-     while( (size_t)Tg[minG]!=j)
-	{
-	  minG++;
-	}
-      while(  (size_t)Td[minD]!=j)
-	{
-	  minD++;
-	}
-      maxD=minD;
-      while(  (size_t)Td[maxD]==j)
-	{
-	  maxD++;
-	}
-      min=minG;
-      max=maxD-1;
- cout<<"min :"<<min<<endl<<"max :"<<max<<endl<<"Ten:";
-      for(size_t i=min; i<=max; i++)
-	{
-	  Ten[i]=(int)j;
-	}
-afftableau(Ten,5);
-    }
- afftableau(T,5);
-      for(size_t i=0; i<n; i++)
-	{
-	  if (Ten[i]==-1)
-	 T[i]=Ten[i];
-	}
-  return T;
-}
+void Picross::remplirCasesSureBl(int* Res,int *Tg, int *Td,size_t n, Liste & L)
+ {
+   size_t maxD=0,minG=0,minD=0,min=0,max=0;
+   int* Te=new int[n];
+   for(size_t i=0; i<n; i++)
+     {
+       Res[i]=0;
+     }
+   for(size_t i=0; i<n; i++)
+     {
+       Te[i]=-1;
+     }
+   for(size_t j=1; j<L.getLongueur()+1 ;j++)
+     {//j=numerodubloc 1.2.3...
+       while( (size_t)Tg[minG]!=j)
+	 {
+	   minG++;
+	 }
+       while(  (size_t)Td[minD]!=j)
+	 {
+	   minD++;
+	 }
+       maxD=minD;
+       while(  (size_t)Td[maxD]==j)
+	 {
+	   maxD++;
+	 }
+       min=minG;
+       max=maxD-1;
+       for(size_t i=min; i<=max; i++)
+	 {
+	   Te[i]=(int)j;
+	 }
+     }
+   for(size_t i=0; i<n; i++)
+     {
+       if (Te[i]==-1)
+	  Res[i]=Te[i];
+         }
+  }
+
 
 
 //Amelioration possible : garder en memoire la somme des cellules d'une liste

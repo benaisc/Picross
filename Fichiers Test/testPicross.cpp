@@ -41,27 +41,33 @@ int main(int argc, char** argv)
       T[i]=1;
     }
     T[4]=0;
-    afftableau(T,5);
-    cout << "inverseTab : " << endl;
-    P.inverseTab(T,5);
-    afftableau(T,5);
-    delete [] T;
+    // afftableau(T,5);
+    // cout << "inverseTab : " << endl;
+    // P.inverseT(T,5);
+    // afftableau(T,5);
+    // delete [] T;
 
     Liste L;
+    L.putFin(2);
     L.putFin(1);
-    L.putFin(2);
-    L.putFin(2);
-    // L.putFin(3);
+    L.putFin(3);
     cout << "Liste L : " << L << endl;
     Liste* Linv = inverseL(L);
     cout << "inverseL : " << *Linv << endl;
 
-    int Tg[10]={1,0,2,2,0,3,3,0,0,0};
-    int Td[10]={1,0,0,0,0,2,2,0,3,3};
+    int* Tres=new int [12];
+    for(size_t i=0; i<12; i++)
+    {
+      Tres[i]=1;
+    }
 
-    afftableau(Tg,10);
-    afftableau(Td,10);
-    afftableau(P.remplirCasesSure(Tg,Td,10,L),10);
+    int Tg[12]={-1,1,1,0,2,-1,0,-1,3,3,3,-1};
+    int Td[12]={-1,1,1,0,2,-1,0,-1,3,3,3,-1};
+   
+    afftableau(Tg,12);
+    afftableau(Td,12);
+    P.remplirCasesSureBl(Tres,Tg,Td,12,L);
+    afftableau(Tres,12);
 /*
     int * Test=P.getColonneMat(1);
     P.SLPG(Test,5,P.getColonnes()[1].getPremier());
