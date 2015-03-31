@@ -74,6 +74,7 @@ public:
 	* somElem(1->1)=3
 	*/
 	size_t somElem() const;
+	bool appartient(size_t) const; 	/**< \return 1 si la valeur est dans la liste, 0 sinon */
 
 	void afficheL(std::ostream&) const; /**< 1->2->... */
 };
