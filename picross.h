@@ -67,16 +67,16 @@ class Picross
   void SLPD(int*, size_t, Liste&);
   /**
   * \fn SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const;
-  * \brief Fonction recursive qui retourne la solution la plus a gauche de Tab en fonction de P
-  * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
+  * \brief Fonction recursive qui retourne la solution la plus a gauche de Tab en fonction de P (tableau rempli uniquement de -1 et 1)
+  * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non egalement utiliser comme tableau de retour;
   * \param[in]  n : Taille du dit tableau;
   * \param[in]  P : Premiere cellule de la liste des indices;
   * \param[in] i : indice a partir duquel on interagit avec Tab(voir Placer1bloc);
   * \param[in,out] poss : retour de la fonction permettant de sa voir si l'hypothese faite est la bonne
   */
-  void SLG(int*, size_t, Cell*, size_t, bool&);
+  void SLG(int*, size_t, Cell*, size_t, bool);
   /**
-  * \fn PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)const
+  * \fn PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool poss)const
   * \brief Fonction qui tente de placer le bloc val directement en i et renvoi si cela est possible
   * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
   * \param[in]  n : Taille du dit tableau;

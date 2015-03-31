@@ -68,11 +68,11 @@ int main(int argc, char** argv)
     afftableau(Td,12);
     P.remplirCasesSureBl(Tres,Tg,Td,12,L);
     afftableau(Tres,12);
-/*
+
     int * Test=P.getColonneMat(1);
     P.SLPG(Test,5,P.getColonnes()[1].getPremier());
     afftableau(Test,5);
-*/
+
   }
   f.close();
   return 0;

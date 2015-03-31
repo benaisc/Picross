@@ -16,7 +16,6 @@ private:
 
 public:
 	TabListe(size_t);
-	~TabListe();
 	size_t getTaille() const;
 	/**
 	* \fn error()

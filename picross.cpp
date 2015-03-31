@@ -89,7 +89,7 @@ void Picross::setColonneMat(size_t ind, int* Tab)
 
 void Picross::SLPD(int* T, size_t n, Liste &L)
 {
-  bool B;
+  bool B=false;
   inverseT(T,n);
   Liste* Linv;
   Linv = inverseL(L);
@@ -100,14 +100,15 @@ void Picross::SLPD(int* T, size_t n, Liste &L)
 }
 void Picross::SLPG(int* Tab, size_t n, Liste &L)
 {
-  bool Res;
+  bool Res=false;
   SLG(Tab,n,L.getPremier(),0,Res);
 }
-void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
+void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool poss)
 {
   if(P==NULL)
   {
     poss=Verification(Tab,i,n);
+    for(size_t j=0;j<n;j++) { if(Tab[j]==0) {Tab[j]=-1; } }
   }
   else
   {
@@ -126,15 +127,16 @@ void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
         {
           Tab[j]=Tab2[j];
         }
-        SLG(Tab,n,P,i+1,poss);
+	if (Tab[i]==1){poss =false;}
+        else {SLG(Tab,n,P,i+1,poss);}
       }
-      delete [] Tab2;
     }
     else
     {
-      delete [] Tab2;
-      SLG(Tab,n,P,i+1,poss);
+      if (Tab[i]==1){poss =false;}
+      else {SLG(Tab,n,P,i+1,poss);}
     }
+    delete [] Tab2;
   }
 }
 void Picross::PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)
