@@ -18,6 +18,11 @@ int main(int argc, char** argv)
 
 	cout << "//test operator() : " << endl;
 	cout << "L(2) : " << L(2).getVal() << endl;
+	
+	cout << "appartient(1) : " << L.appartient(1) << endl;
+	cout << "appartient(2) : " << L.appartient(2) << endl;
+	cout << "appartient(3) : " << L.appartient(3) << endl;
+	cout << "appartient(4) : " << L.appartient(4) << endl;
 
 	Liste L2;
 	L2=L;
