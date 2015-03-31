@@ -654,7 +654,7 @@ void Picross::amodif(bool ligne, int* Av, int*Ap)
   {
     for(size_t i=0;i<colonnes.getTaille();i++)
     {
-      if(Av[i]!=Ap[i])
+      if(Av[i]!=Ap[i] && !ligModif.appartient(i))
       {
         ligModif.putFin(i);
       }
@@ -664,7 +664,7 @@ void Picross::amodif(bool ligne, int* Av, int*Ap)
   {
     for(size_t i=0;i<lignes.getTaille();i++)
     {
-      if(Av[i]!=Ap[i])
+      if(Av[i]!=Ap[i] && !colModif.appartient(i))
       {
         colModif.putFin(i);
       }
