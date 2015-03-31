@@ -197,3 +197,12 @@ std::ostream &operator<<(std::ostream &os, const Liste &L)
   L.afficheL(os);
   return os;
 }
+bool Liste::appartient(size_t val) const 
+{
+  Cell* ptr = tete;
+  while (!isnull(ptr) && ptr->getVal() != val)
+    {
+      ptr = ptr->getSuiv();
+    }
+  return !isnull(ptr);
+}
