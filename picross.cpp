@@ -211,7 +211,7 @@ void Picross::Fusion(int* Res, int *T1, int *T2, size_t n)
 {
   for(size_t i=0; i<n; i++)
   {
-    if(T1[i]==T2[i])
+    if(T1[i]==T2[i] && T1[i]!=0)
     {
       Res[i]=T2[i];
     }
@@ -251,10 +251,7 @@ void Picross::Push(int* T, size_t ind, bool b)
 }
 
 void Picross::solLignes(size_t taille, size_t ind)
-{
-  if(ind<taille)
-  {
-    int* TG=getLigneMat(ind);
+{    int* TG=getLigneMat(ind);
 
     SLPG(TG,taille,lignes[ind]);
 
@@ -265,22 +262,19 @@ void Picross::solLignes(size_t taille, size_t ind)
     Numeroter(TD,taille);
 
     int* Merge=initTab(taille);
+    remplirCasesSureBl(Merge,TG, TD, taille,lignes[ind]);
     Fusion(Merge,TG,TD,taille);
-
-    // int* CasesSureBl=initTab(taille);
-    //remplirCasesSureBl(CasesSureBl,TG, TD, taille,lignes[ind]);
     Push(Merge,ind,0);
-    
+    amodif(false, getLigneMat(ind), Merge);
+ 
     delete [] TG;
     delete [] TD;
     delete [] Merge;
-    solLignes(taille,ind+1);
-  }
+   
 }
 void Picross::solColonnes(size_t taille, size_t ind)
 {
-  if(ind<taille)
-  {
+ 
     std::cout << "Colonne mat à l'indice : " << ind << std::endl;
     int* TG=getColonneMat(ind);
     afftableau(TG,taille);
@@ -293,20 +287,17 @@ void Picross::solColonnes(size_t taille, size_t ind)
     Numeroter(TD,taille);
 
     int* Merge=initTab(taille);
+    remplirCasesSureBl(Merge,TG, TD, taille,colonnes[ind]);
     Fusion(Merge,TG,TD,taille);
     std::cout << "Solution : " << std::endl;
     afftableau(Merge,taille);
-    
-     //int* CasesSureBl=initTab(taille);
-     //remplirCasesSureBl(CasesSureBl,TG, TD, taille,colonnes[ind]);
-     
+      
     Push(Merge,ind,1);
-    
+    amodif(true, getColonneMat(ind),Merge);
     delete [] TG;
     delete [] TD;
     delete [] Merge;
-    solColonnes(taille,ind+1);
-  }
+   
 }
 //Methode
 int* Picross::tabGauche(size_t ind, bool b)
@@ -505,11 +496,7 @@ void Picross::remplirCasesSureBl(int* Res,int *Tg, int *Td,size_t n, Liste & L)
  {
    size_t maxD=0,minG=0,minD=0,min=0,max=0;
    int* Te=new int[n];
-   for(size_t i=0; i<n; i++)
-     {
-       Res[i]=0;
-     }
-   for(size_t i=0; i<n; i++)
+     for(size_t i=0; i<n; i++)
      {
        Te[i]=-1;
      }
