@@ -21,8 +21,9 @@ int main(int argc, char** argv)
     f.ignore(); //le '\n'
     P.remplirTabListe(f);
 
-    P.solLignes(nbl,0);
-    P.solColonnes(nbc,0);
+    for(size_t i=0;i<nbl;i++) P.solLignes(nbl,i);
+    for(size_t i=0;i<nbc;i++) P.solColonnes(nbc,i);
+       
     cout << P;
 
 

@@ -211,7 +211,7 @@ void Picross::Fusion(int* Res, int *T1, int *T2, size_t n)
 {
   for(size_t i=0; i<n; i++)
   {
-    if(T1[i]==T2[i] && T1[i]!=0)
+    if(T1[i]==T2[i] && T1[i]>0)
     {
       Res[i]=T2[i];
     }
@@ -251,7 +251,8 @@ void Picross::Push(int* T, size_t ind, bool b)
 }
 
 void Picross::solLignes(size_t taille, size_t ind)
-{    int* TG=getLigneMat(ind);
+{  
+  int* TG=getLigneMat(ind);
 
     SLPG(TG,taille,lignes[ind]);
 
@@ -264,20 +265,17 @@ void Picross::solLignes(size_t taille, size_t ind)
     int* Merge=initTab(taille);
     remplirCasesSureBl(Merge,TG, TD, taille,lignes[ind]);
     Fusion(Merge,TG,TD,taille);
+    amodif(true, getLigneMat(ind), Merge);
     Push(Merge,ind,0);
-    amodif(false, getLigneMat(ind), Merge);
- 
+   
     delete [] TG;
     delete [] TD;
     delete [] Merge;
    
 }
 void Picross::solColonnes(size_t taille, size_t ind)
-{
- 
-    std::cout << "Colonne mat à l'indice : " << ind << std::endl;
+{ 
     int* TG=getColonneMat(ind);
-    afftableau(TG,taille);
     SLPG(TG,taille,colonnes[ind]);
 
     int* TD=getColonneMat(ind);
@@ -288,12 +286,12 @@ void Picross::solColonnes(size_t taille, size_t ind)
 
     int* Merge=initTab(taille);
     remplirCasesSureBl(Merge,TG, TD, taille,colonnes[ind]);
+    cout <<"apres casesbl"; afftableau(Merge, taille); cout <<endl;
     Fusion(Merge,TG,TD,taille);
-    std::cout << "Solution : " << std::endl;
-    afftableau(Merge,taille);
-      
+    cout <<"apres casesbl"; afftableau(Merge, taille); cout <<endl;
+  
+    amodif(false, getColonneMat(ind),Merge);
     Push(Merge,ind,1);
-    amodif(true, getColonneMat(ind),Merge);
     delete [] TG;
     delete [] TD;
     delete [] Merge;
@@ -511,7 +509,7 @@ void Picross::remplirCasesSureBl(int* Res,int *Tg, int *Td,size_t n, Liste & L)
 	   minD++;
 	 }
        maxD=minD;
-       while(  (size_t)Td[maxD]==j)
+       while(maxD<n && (size_t)Td[maxD]==j)
 	 {
 	   maxD++;
 	 }
