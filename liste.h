@@ -32,23 +32,20 @@ public:
 	bool isnull(Cell*) const;	/**< \return 1 si vide, 0 sinon */
 	Cell* getPremier() const;	/**< \return la tete de liste */
 	size_t getLongueur() const;	/**< \return le nombre de cellules de la liste */
-	void setLongueur(size_t);
 	bool getFini() const; /**< \return le booleen indiquant si liste validee */
 	void cutTail();
 	size_t cutHd(); /**< \brief supprime le premier element de la liste et renvoie sa valeur */
 	size_t cutTl(); /**< \brief supprime le dernier element de la liste et renvoie sa valeur */
-	void setFini(bool b);
+	void setFini(bool);
 	/**
 	* \fn putFin(Cell&)
 	* \brief Ajout d'une cellule en queue de liste
-	* , en tete de liste si tete==NULL
 	* \param Valeur de la cellule à placer
 	*/
 	void putFin(size_t);
 	/**
 	* \fn ajoutFin(Cell&)
 	* \brief Ajout d'une cellule en queue de liste
-	* , en tete de liste si tete==NULL
 	* \param Cellule à placer
 	*/
 	void ajoutFin(Cell*);
@@ -58,9 +55,9 @@ public:
 	* L(1)=tete
 	* \param i "l'indice" de la cellule dans la liste
 	* Si i>longueur, le programme s'arrête, évitant la seg fault
-	* \return L'adresse de la cellule
+	* \return Un pointeur sur la cellule
 	*/
-	Cell& operator()(size_t i) const;
+	Cell* operator()(size_t) const;
 	/**
 	* \fn operator=(const Liste&)
 	* \brief Operateur par copie
@@ -69,9 +66,13 @@ public:
 	*/
 	Liste& operator=(const Liste&);
 	/**
+	* \fn somCell()
+	* \brief renvoie la valeur des blocs de case à placer
+	*/
+	size_t somCell() const;
+	/**
 	* \fn somElem()
-	* \brief test de ligne à remplir logiquement
-	* somElem(1->1)=3
+	* \brief renvoie la valeur du bloc de cases à placer (avec blancs)
 	*/
 	size_t somElem() const;
 	bool appartient(size_t) const; 	/**< \return 1 si la valeur est dans la liste, 0 sinon */

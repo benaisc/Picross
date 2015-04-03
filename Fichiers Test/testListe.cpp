@@ -17,8 +17,8 @@ int main(int argc, char** argv)
 	cout << "//test operator<< : " << L << endl;
 
 	cout << "//test operator() : " << endl;
-	cout << "L(2) : " << L(2).getVal() << endl;
-	
+	cout << "L(2) : " << L(2)->getVal() << endl;
+
 	cout << "appartient(1) : " << L.appartient(1) << endl;
 	cout << "appartient(2) : " << L.appartient(2) << endl;
 	cout << "appartient(3) : " << L.appartient(3) << endl;
@@ -30,9 +30,9 @@ int main(int argc, char** argv)
 	cout << "longueur=" << L2.getLongueur() << endl;
 	cout << "somElem : " << L.somElem() << endl;
 
-	cout << "test suppression dernier element : ";
-	L.cut();
+	cout << "test suppression premier element : ";
+	L.cutHd();
 	cout << L;
-	
+
 	return 0;
 }

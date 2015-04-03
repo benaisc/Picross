@@ -11,7 +11,8 @@ Liste::~Liste()
     delete tete;
     tete=ptr;
   }
-  delete ptr;
+  longueur=0;
+  fini=false;
 }
 
 bool Liste::isnull(Cell* p) const
@@ -27,11 +28,6 @@ Cell* Liste::getPremier() const
 size_t Liste::getLongueur() const
 {
   return longueur;
-}
-
-void Liste::setLongueur(size_t i)
-{
-  longueur=i;
 }
 
 bool Liste::getFini() const
@@ -93,8 +89,24 @@ size_t Liste::somElem() const
     return som+longueur-1;
 }
 
+size_t Liste::somCell() const
+{
+  size_t som = 0;
+  Cell* ptr=tete;
+  while(!isnull(ptr))
+  {
+    som += ptr->getVal();
+    ptr = ptr->getSuiv();
+  }
+  return som;
+}
+
 Liste& Liste::operator=(const Liste& c)
 {
+  if(longueur)
+  {
+    this->~Liste();
+  }
   Cell *ptr=c.getPremier();
   while(!isnull(ptr))
   {
@@ -105,7 +117,7 @@ Liste& Liste::operator=(const Liste& c)
   return *this;
 }
 
-Cell& Liste::operator()(size_t i) const
+Cell* Liste::operator()(size_t i) const
 {
   if(i>longueur)
   {
@@ -115,7 +127,7 @@ Cell& Liste::operator()(size_t i) const
   {
     if(i<=1)
     {
-      return *tete;
+      return tete;
     }
     else
     {
@@ -124,7 +136,7 @@ Cell& Liste::operator()(size_t i) const
       {
         ptr=ptr->getSuiv();
       }
-      return *ptr;
+      return ptr;
     }
   }
 }
@@ -133,20 +145,11 @@ size_t Liste::cutHd()
   size_t val=0;
   if(!isnull(tete))
   {
-    if(longueur>1)
-    {
-      val=tete->getVal();
-      Cell* ptr=tete->getSuiv();
-      delete tete;
-      tete=ptr;
-      --longueur;
-    }
-    else
-    {
-      val=tete->getVal();
-      this->~Liste();
-      longueur=0;
-    }
+    val=tete->getVal();
+    Cell* ptr=tete->getSuiv();
+    delete tete;
+    tete=ptr;
+    --longueur;
   }
   return val;
 }
@@ -188,7 +191,7 @@ void Liste::afficheL(std::ostream &os) const
   }
   os << std::endl;
 }
-void Liste::cutTail()
+/*void Liste::cutTail()
 {
   if(longueur!=0)
     {
@@ -205,14 +208,14 @@ void Liste::cutTail()
       longueur--;
       *this=L;
     }
-}
+}*/
 
 std::ostream &operator<<(std::ostream &os, const Liste &L)
 {
   L.afficheL(os);
   return os;
 }
-bool Liste::appartient(size_t val) const 
+bool Liste::appartient(size_t val) const
 {
   Cell* ptr = tete;
   while (!isnull(ptr) && ptr->getVal() != val)
