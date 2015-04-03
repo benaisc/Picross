@@ -110,9 +110,23 @@ class Picross
   */
   void Push(int*,size_t,bool);
   /**
-  * \fn solLignesSure(size_t, size_t);
-  * \brief appel recursif sur les lignes SLPG SLPD Fusion Push
+  * \fn TINY_SOL(size_t nbl, size_t nbc, size_t rec);
+  * \brief appel recursif sur toutes les lignes et colonnes de solLignes et
+  * solColonnes dans le but d'initialiser ligModif et colModif pour FAT_SOL
   */
+  void TINY_SOL(size_t, size_t, size_t);
+  /**
+  * \fn FAT_SOL(size_t nbIndLig, size_t nbIndCol, size_t nbl, size_t nbc);
+  * \brief appel recursif FATCOL&FATLIG tq colModif et ligModif contiennent des cell
+  * càd tant que l'on modifie des lignes ou des colonnes
+  */
+  void FAT_SOL(size_t, size_t, size_t, size_t);
+  /**
+  * \fn FAT_LIG(size_t chk, size_t taille);
+  * \brief appel recursif sur tout les indices de ligModif
+  */
+  void FAT_LIG(size_t, size_t);
+  void FAT_COL(size_t, size_t);
   void solLignes(size_t, size_t);
   void solColonnes(size_t, size_t);
  void amodif(bool ligne, int* Av, int*Ap);
