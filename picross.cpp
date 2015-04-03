@@ -103,12 +103,15 @@ void Picross::SLPG(int* Tab, size_t n, Liste &L)
   bool Res=false;
   SLG(Tab,n,L.getPremier(),0,Res);
 }
-void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool poss)
+void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
 {
-  if(P==NULL)
+  if(P==NULL )
   {
     poss=Verification(Tab,i,n);
+    if(Verification(Tab,i,n))
+      {
     for(size_t j=0;j<n;j++) { if(Tab[j]==0) {Tab[j]=-1; } }
+      }
   }
   else
   {
@@ -286,9 +289,8 @@ void Picross::solColonnes(size_t taille, size_t ind)
 
     int* Merge=initTab(taille);
     remplirCasesSureBl(Merge,TG, TD, taille,colonnes[ind]);
-    cout <<"apres casesbl"; afftableau(Merge, taille); cout <<endl;
     Fusion(Merge,TG,TD,taille);
-    cout <<"apres casesbl"; afftableau(Merge, taille); cout <<endl;
+   
   
     amodif(false, getColonneMat(ind),Merge);
     Push(Merge,ind,1);

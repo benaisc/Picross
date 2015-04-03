@@ -74,7 +74,7 @@ class Picross
   * \param[in] i : indice a partir duquel on interagit avec Tab(voir Placer1bloc);
   * \param[in,out] poss : retour de la fonction permettant de sa voir si l'hypothese faite est la bonne
   */
-  void SLG(int*, size_t, Cell*, size_t, bool);
+  void SLG(int*, size_t, Cell*, size_t, bool&);
   /**
   * \fn PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool poss)const
   * \brief Fonction qui tente de placer le bloc val directement en i et renvoi si cela est possible
