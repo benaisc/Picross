@@ -107,6 +107,7 @@ class Picross
   void amodif(bool ligne, int* Av, int*Ap);
   /** \fn VerifMatrice(size_t ind, bool B) const;
   * \brief false si la ligne ou colonne de matrice n'est pas correctement rempli
+  * càd si le nombre de blocs noirs et le nombre de cases noirs est différent de celui attendu
   */
   bool VerifMatrice(size_t ind, bool B) const;
   /** \fn setLCFini();
