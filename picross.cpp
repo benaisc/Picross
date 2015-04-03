@@ -265,9 +265,9 @@ void Picross::FAT_SOL(size_t nbIndLig, size_t nbIndCol, size_t nbl, size_t nbc)
 {
   if(nbIndLig>0)
   {
-    FAT_LIG(nbIndLig,nbl);
+    FAT_LIG(nbIndLig,nbc);
     nbIndCol=colModif.getLongueur();
-    FAT_COL(nbIndCol,nbc);
+    FAT_COL(nbIndCol,nbl);
     FAT_SOL(ligModif.getLongueur(),0,nbl,nbc);
   }
 }
