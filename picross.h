@@ -28,33 +28,8 @@ class Picross
   Matrice getMat() const;
   Liste getColModif()const;
   Liste getLigModif()const;
-  /**
-  * \fn tabGauche(size_t ind, bool b);
-  * \param ind : l'indice de la liste; b : lignes ou colonnes
-  * \return T rempli d'entiers identidiant leurs cellules
-  */
-  int* tabGauche(size_t ind, bool b);
-  int* tabDroite(size_t ind, bool b);
-  /**
-  * \fn mergeTab(int *T1, int *T2, int n);
-  * \param tabGauche, tabDroite, taille
-  * \return T rempli de 1 là ou les id se chevauchent
-  */
-  int* mergeTab(int *T1, int *T2, size_t n);
-  /**
-  * \fn pushMat(size_t ind, int *T, bool b);
-  * \brief place les blocs noirs de T dans la matrice
-  */
-  void pushMat(size_t ind, int *T, bool b);
-  /**
-  * \fn solCasesSure(bool b)
-  * \brief appel sur les 0>lignes, 1>colonnes pour placer les blocs noirs sûrs
-  */
-  void solCasesSure(bool b);
+
   void remplirCasesSureBl(int* Res,int *Tg, int *Td, size_t n, Liste& L);
-  bool isLigneFinie(size_t ind, bool b) const;
-  void setLignesFinies(bool b) const;
-  bool isPicrossFini() const;
   void afficheP(std::ostream&) const;
   /**
   * \fn   void SLPG(int* Tab,size_t n,Cell* L)const;
@@ -129,7 +104,21 @@ class Picross
   void FAT_COL(size_t, size_t);
   void solLignes(size_t, size_t);
   void solColonnes(size_t, size_t);
- void amodif(bool ligne, int* Av, int*Ap);
+  void amodif(bool ligne, int* Av, int*Ap);
+  /** \fn VerifMatrice(size_t ind, bool B) const;
+  * \brief false si la ligne ou colonne de matrice n'est pas correctement rempli
+  */
+  bool VerifMatrice(size_t ind, bool B) const;
+  /** \fn setLCFini();
+  * \brief appel de VerifMatrice sur toutes les lignes et colonnes non finies
+  * et pose à true les listes fini
+  */
+  void setLCFini();
+  /** \fn isPicrossFini() const;
+  * \brief false si la liste d'une ligne ou d'une colonne n'est pas à true
+  */
+  bool isPicrossFini() const;
+
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);
