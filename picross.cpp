@@ -250,6 +250,52 @@ void Picross::Push(int* T, size_t ind, bool b)
   }
 }
 
+void Picross::TINY_SOL(size_t nbl, size_t nbc, size_t ind)
+{
+  if(ind<nbl||ind<nbc)
+  {
+    if(ind<nbl && lignes[ind].somElem()>nbc/2)
+    {
+      solLignes(nbc,ind);
+    }
+    if(ind<nbc && colonnes[ind].somElem()>nbl/2)
+    {
+      solColonnes(nbl,ind);
+    }
+    TINY_SOL(nbl,nbc,ind+1);
+  }
+}
+void Picross::FAT_SOL(size_t nbIndLig, size_t nbIndCol, size_t nbl, size_t nbc)
+{
+  if(nbIndLig>0)
+  {
+    FAT_LIG(nbIndLig,nbl);
+    nbIndCol=colModif.getLongueur();
+    FAT_COL(nbIndCol,nbc);
+    FAT_SOL(ligModif.getLongueur(),0,nbl,nbc);
+  }
+}
+
+void Picross::FAT_LIG(size_t chk, size_t taille)
+{
+  if(chk>0)
+  {
+    size_t indice=ligModif.cutHd();
+    solLignes(taille,indice);
+    FAT_LIG(chk-1,taille);
+  }
+}
+
+void Picross::FAT_COL(size_t chk, size_t taille)
+{
+  if(chk>0)
+  {
+    size_t indice=colModif.cutHd();
+    solColonnes(taille,indice);
+    FAT_COL(chk-1,taille);
+  }
+}
+
 void Picross::solLignes(size_t taille, size_t ind)
 {  
   int* TG=getLigneMat(ind);

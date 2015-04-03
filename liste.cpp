@@ -128,7 +128,54 @@ Cell& Liste::operator()(size_t i) const
     }
   }
 }
-
+size_t Liste::cutHd()
+{
+  size_t val=0;
+  if(!isnull(tete))
+  {
+    if(longueur>1)
+    {
+      val=tete->getVal();
+      Cell* ptr=tete->getSuiv();
+      delete tete;
+      tete=ptr;
+      --longueur;
+    }
+    else
+    {
+      val=tete->getVal();
+      this->~Liste();
+      longueur=0;
+    }
+  }
+  return val;
+}
+size_t Liste::cutTl()
+{
+  size_t val=0;
+  if(!isnull(tete))
+  {
+    if(longueur>1)
+    {
+      Cell* ptr=tete;
+      Liste list;
+      for(size_t j=1; j<longueur; j++)
+      {
+        list.putFin(ptr->getVal());
+        ptr=ptr->getSuiv();
+      }
+      val=ptr->getVal();
+      *this=list;
+    }
+    else
+    {
+      val=tete->getVal();
+      this->~Liste();
+      longueur=0;
+    }
+  }
+  return val;
+}
 void Liste::afficheL(std::ostream &os) const
 {
   Cell* ptr=tete;
@@ -159,39 +206,7 @@ void Liste::cutTail()
       *this=L;
     }
 }
-//FONCTIONS OK MAIS CAUSENT MEM_LEAK WTF HOW TO DO ?
-void Liste::rmDernierCell()
-{
-  if(longueur>1)
-  {
-    Cell* ptr=tete;
-    while(!isnull(ptr->getSuiv()))
-    {
-      ptr=ptr->getSuiv();
-    }
-    delete ptr;
-    --longueur;
-  }
-  else
-  {
-    delete tete;
-    tete=NULL;
-    longueur=0;
-  }
-}
-void Liste::cut()
-{
-  if(longueur>1)
-  {
-    this->operator()(longueur-1).setSuiv(NULL);
-    --longueur;
-  }
-  else
-  {
-    delete tete;
-    longueur=0;
-  }
-}
+
 std::ostream &operator<<(std::ostream &os, const Liste &L)
 {
   L.afficheL(os);

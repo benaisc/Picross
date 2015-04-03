@@ -35,8 +35,8 @@ public:
 	void setLongueur(size_t);
 	bool getFini() const; /**< \return le booleen indiquant si liste validee */
 	void cutTail();
-	void rmDernierCell(); /**< \brief supprime le dernier element de la liste */
-	void cut();
+	size_t cutHd(); /**< \brief supprime le premier element de la liste et renvoie sa valeur */
+	size_t cutTl(); /**< \brief supprime le dernier element de la liste et renvoie sa valeur */
 	void setFini(bool b);
 	/**
 	* \fn putFin(Cell&)
