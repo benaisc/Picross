@@ -5,7 +5,7 @@ Liste::Liste():tete(NULL), longueur(0), fini(false){}
 Liste::~Liste()
 {
   Cell* ptr=tete;
-  while(!isnull(ptr))
+  while(!isnull(tete))
   {
     ptr=ptr->getSuiv();
     delete tete;
@@ -39,7 +39,18 @@ void Liste::setFini(bool b)
 {
   fini=b;
 }
-
+void Liste::add(Cell* c)
+{
+  if(isnull(tete))
+  {
+    tete=c;
+  }
+  else
+  {
+    this->operator()(longueur)->setSuiv(c);
+  }
+  ++longueur;
+}
 void Liste::putFin(size_t v)
 {
   if(isnull(tete))
@@ -103,7 +114,7 @@ size_t Liste::somCell() const
 
 Liste& Liste::operator=(const Liste& c)
 {
-  if(longueur)
+  if(!isnull(tete))
   {
     this->~Liste();
   }

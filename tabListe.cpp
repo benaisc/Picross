@@ -2,6 +2,14 @@
 
 TabListe::TabListe(size_t v) : taille(v), tab(new Liste [taille]){}
 
+TabListe::~TabListe()
+{
+  if(tab)
+  {
+    delete [] tab;
+    taille=0;
+  }
+}
 
 size_t TabListe::getTaille() const
 {

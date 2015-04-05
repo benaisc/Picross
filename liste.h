@@ -43,6 +43,7 @@ public:
 	* \param Valeur de la cellule à placer
 	*/
 	void putFin(size_t);
+	void add(Cell*);
 	/**
 	* \fn ajoutFin(Cell&)
 	* \brief Ajout d'une cellule en queue de liste

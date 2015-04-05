@@ -16,6 +16,7 @@ private:
 
 public:
 	TabListe(size_t);
+	~TabListe();
 	size_t getTaille() const;
 	/**
 	* \fn error()
@@ -26,7 +27,6 @@ public:
 	/**
 	* \fn operator[](size_t)
 	* \brief Sucre syntaxique évitant les seg. fault
-	*
 	* \param i l'indice de la liste dans le tableau[O..taille-1]
 	* \return tab[i]
 	*/
@@ -35,16 +35,12 @@ public:
 	* \fn operator=()
 	* \brief Surcharge opérateur
 	*/
-	//TabListe &operator=(TabListe&);
-	//Liste& operator=(const Liste&);
 	void afficheT(std::ostream&) const;
 };
 /**
 * \fn operator<<(&ostream, &TabListe)
 * \brief Sucre syntaxique permettant l'affichage d'un tabListe
-* \param os un flux, L le tabListe
-* \return Affichage
 */
-std::ostream &operator<<(std::ostream&, const TabListe&); /**< T[0]=1->1->.. */
+std::ostream &operator<<(std::ostream&, const TabListe&);
 
 #endif
