@@ -80,6 +80,11 @@ class Picross
   */
   void Fusion(int*, int*, int*, size_t);
   /**
+  * \fn CasesBlanches(int* Merge, size_t taille, Liste &L);
+  * \brief verifie bloc à bloc et met des -1 avant/après s'ils sont complets
+  */
+  void CasesBlanches(int*, size_t, Liste&);
+  /**
   * \fn Push(int*,size_t,bool);
   * \brief brute push dans la matrice a l'indice ind, 0>ligne 1>colonne
   */
@@ -90,21 +95,22 @@ class Picross
   * solColonnes dans le but d'initialiser ligModif et colModif pour FAT_SOL
   */
   void TINY_SOL(size_t, size_t, size_t);
+  void TINY_SOL_iter(size_t, size_t);
   /**
-  * \fn FAT_SOL(size_t nbIndLig, size_t nbIndCol, size_t nbl, size_t nbc);
+  * \fn FAT_SOL(size_t nbIndLig, size_t nbl, size_t nbc);
   * \brief appel recursif FATCOL&FATLIG tq colModif et ligModif contiennent des cell
   * càd tant que l'on modifie des lignes ou des colonnes
   */
-  void FAT_SOL(size_t, size_t, size_t, size_t);
+  void FAT_SOL(size_t, size_t, size_t);
   /**
   * \fn FAT_LIG(size_t chk, size_t taille);
   * \brief appel recursif sur tout les indices de ligModif
   */
-  void FAT_LIG(size_t, size_t);
-  void FAT_COL(size_t, size_t);
+  void FAT_LIG(size_t);
+  void FAT_COL(size_t);
   void solLignes(size_t, size_t);
   void solColonnes(size_t, size_t);
-  void amodif(bool ligne, int* Av, int*Ap);
+  void amodif(bool ligne, int* Av, int*Ap, size_t n);
   /** \fn VerifMatrice(size_t ind, bool B) const;
   * \brief false si la ligne ou colonne de matrice n'est pas correctement rempli
   * càd si le nombre de blocs noirs et le nombre de cases noirs est différent de celui attendu

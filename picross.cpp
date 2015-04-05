@@ -1,7 +1,7 @@
 #include "picross.h"
 using namespace std;
 //constructeur
-Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc),colModif(Liste()),ligModif(Liste())
+Picross::Picross(size_t nbl, size_t nbc):mat(nbl,nbc),lignes(nbl),colonnes(nbc),colModif(),ligModif()
 {}
 void Picross::remplirTabListe(std::ifstream& f)
 {
@@ -93,10 +93,9 @@ void Picross::SLPD(int* T, size_t n, Liste &L)
   inverseT(T,n);
   Liste* Linv;
   Linv = inverseL(L);
-  std::cout << "inside SLPD after inverseL" << std::endl;
   SLG(T,n,Linv->getPremier(),0,B);
-  std::cout << "outside SLG" << std::endl;
   inverseT(T,n);
+  delete Linv;
 }
 void Picross::SLPG(int* Tab, size_t n, Liste &L)
 {
@@ -108,7 +107,7 @@ void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
   if(P==NULL )
   {
     poss=Verification(Tab,i,n);
-    if(Verification(Tab,i,n))
+    if(poss)
       {
     for(size_t j=0;j<n;j++) { if(Tab[j]==0) {Tab[j]=-1; } }
       }
@@ -245,7 +244,28 @@ void Picross::Push(int* T, size_t ind, bool b)
     break;
   }
 }
-
+void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
+{
+  size_t ind=0;
+  while(ind<nbl)
+  {
+    if(lignes[ind].somElem()>nbc/2)
+    {
+      solLignes(nbc,ind);
+    }
+    ++ind;
+  }
+  ind=0;
+  while(ind<nbc)
+  {
+    if(colonnes[ind].somElem()>nbl/2)
+    {
+      solColonnes(nbl,ind);
+    }
+    ++ind;
+  }
+  setLCFini();
+}
 void Picross::TINY_SOL(size_t nbl, size_t nbc, size_t ind)
 {
   if(ind<nbl||ind<nbc)
@@ -260,83 +280,99 @@ void Picross::TINY_SOL(size_t nbl, size_t nbc, size_t ind)
     }
     TINY_SOL(nbl,nbc,ind+1);
   }
+  else
+  {
+    setLCFini();
+  }
 }
-void Picross::FAT_SOL(size_t nbIndLig, size_t nbIndCol, size_t nbl, size_t nbc)
+void Picross::FAT_SOL(size_t nbIndLig, size_t nbl, size_t nbc)
 {
+  std::cout << "FAT_SOL : " << nbIndLig << std::endl;
   if(nbIndLig>0)
   {
-    FAT_LIG(nbIndLig,nbc);
-    nbIndCol=colModif.getLongueur();
-    FAT_COL(nbIndCol,nbl);
-    FAT_SOL(ligModif.getLongueur(),0,nbl,nbc);
+    FAT_LIG(nbc);
+    FAT_COL(nbl);
+    FAT_SOL(ligModif.getLongueur(),nbl,nbc);
+  }
+  else
+  {
+    setLCFini();
   }
 }
 
-void Picross::FAT_LIG(size_t chk, size_t taille)
+void Picross::FAT_LIG(size_t taille)
 {
-  if(chk>0)
+  std::cout << "FAT_LIG : " << std::endl;
+  if(ligModif.getLongueur()>0)
   {
-    size_t indice=ligModif.cutHd();
+    size_t indice=this->ligModif.cutHd();
+    std::cout << "on as cut l'indice : " << indice << std::endl;
     solLignes(taille,indice);
-    FAT_LIG(chk-1,taille);
+    std::cout << mat << std::endl;
+    FAT_LIG(taille);
   }
 }
 
-void Picross::FAT_COL(size_t chk, size_t taille)
+void Picross::FAT_COL(size_t taille)
 {
-  if(chk>0)
+  std::cout << "FAT_COL : " << std::endl;
+  if(colModif.getLongueur()>0)
   {
-    size_t indice=colModif.cutHd();
+    size_t indice=this->colModif.cutHd();
+    std::cout << "on as cut l'indice : " << indice << std::endl;
     solColonnes(taille,indice);
-    FAT_COL(chk-1,taille);
+    std::cout << mat << std::endl;
+    FAT_COL(taille);
   }
 }
 
 void Picross::solLignes(size_t taille, size_t ind)
 {
-  int* TG=getLigneMat(ind);
-
-    SLPG(TG,taille,lignes[ind]);
-
-    int* TD=getLigneMat(ind);
-    SLPD(TD,taille,lignes[ind]);
-
-    Numeroter(TG,taille);
-    Numeroter(TD,taille);
-
-    int* Merge=initTab(taille);
-    remplirCasesSureBl(Merge,TG, TD, taille,lignes[ind]);
-    Fusion(Merge,TG,TD,taille);
-    amodif(true, getLigneMat(ind), Merge);
-    Push(Merge,ind,0);
-
-    delete [] TG;
-    delete [] TD;
-    delete [] Merge;
-
+  int* TG=new int[taille];
+  int* TD=new int[taille];
+  int* SAVE=new int[taille];
+  for(size_t i =0; i<taille;i++)
+  {
+    TG[i]=TD[i]=SAVE[i]=mat.getValue(ind,i);
+  }
+  SLPG(TG,taille,lignes[ind]);
+  SLPD(TD,taille,lignes[ind]);
+  Numeroter(TG,taille);
+  Numeroter(TD,taille);
+  int* Merge=initTab(taille);
+  //remplirCasesSureBl(Merge,TG, TD, taille,lignes[ind]);
+  Fusion(Merge,TG,TD,taille);
+  //CasesBlanches(Merge,taille,lignes[ind]);
+  amodif(true, SAVE, Merge,taille);
+  Push(Merge,ind,0);
+  delete [] TG;
+  delete [] TD;
+  delete [] SAVE;
+  delete [] Merge;
 }
 void Picross::solColonnes(size_t taille, size_t ind)
 {
-    int* TG=getColonneMat(ind);
-    SLPG(TG,taille,colonnes[ind]);
-
-    int* TD=getColonneMat(ind);
-    SLPD(TD,taille,colonnes[ind]);
-
-    Numeroter(TG,taille);
-    Numeroter(TD,taille);
-
-    int* Merge=initTab(taille);
-    remplirCasesSureBl(Merge,TG, TD, taille,colonnes[ind]);
-    Fusion(Merge,TG,TD,taille);
-
-
-    amodif(false, getColonneMat(ind),Merge);
-    Push(Merge,ind,1);
-    delete [] TG;
-    delete [] TD;
-    delete [] Merge;
-
+  int* TG=new int[taille];
+  int* TD=new int[taille];
+  int* SAVE=new int[taille];
+  for(size_t i =0; i<taille;i++)
+  {
+    TG[i]=TD[i]=SAVE[i]=mat.getValue(i,ind);
+  }
+  SLPG(TG,taille,colonnes[ind]);
+  SLPD(TD,taille,colonnes[ind]);
+  Numeroter(TG,taille);
+  Numeroter(TD,taille);
+  int* Merge=initTab(taille);
+  //remplirCasesSureBl(Merge,TG, TD, taille,colonnes[ind]);
+  Fusion(Merge,TG,TD,taille);
+  //CasesBlanches(Merge,taille,colonnes[ind]);
+  amodif(false, SAVE,Merge,taille);
+  Push(Merge,ind,1);
+  delete [] TG;
+  delete [] TD;
+  delete [] SAVE;
+  delete [] Merge;
 }
 
 //methode permettant de remplir les cases blanches "sures"
@@ -375,9 +411,41 @@ void Picross::remplirCasesSureBl(int* Res,int *Tg, int *Td,size_t n, Liste & L)
        if (Te[i]==-1)
 	  Res[i]=Te[i];
          }
+         delete [] Te;
   }
 
-  bool Picross::VerifMatrice(size_t ind, bool B) const
+void Picross::CasesBlanches(int* T, size_t n, Liste &L)
+{
+  size_t cpt=1;//l'indice du bloc
+  size_t nbNoires=0;//le nombre de cases
+  for(size_t i=0; i<n; i++)//on balaie la ligne
+  {
+    if(T[i]==1)//si on tombe sur un noir
+    {
+      ++nbNoires;
+      ++i;
+      while(i<n && T[i]==1)//on le(s) comptes
+      {
+        ++nbNoires;
+        ++i;
+      }
+      if(L(cpt)->getVal()==nbNoires)//si le compte est bon pour le bloc
+      {
+        if(i<n)//on place le -1 après
+        {
+          T[i]=-1;
+        }
+        if(i-nbNoires-1>=0)//on place le -1 avant
+        {
+          T[i-nbNoires-1]=-1;
+        }
+      }
+      nbNoires=0;
+      ++cpt;
+    }
+  }
+}
+bool Picross::VerifMatrice(size_t ind, bool B) const
 {
   if(!B)
   {
@@ -466,11 +534,11 @@ bool Picross::isPicrossFini() const
   return true;
 }
 
-void Picross::amodif(bool ligne, int* Av, int*Ap)
+void Picross::amodif(bool ligne, int* Av, int*Ap, size_t n)
 {
   if(!ligne)
   {
-    for(size_t i=0;i<colonnes.getTaille();i++)
+    for(size_t i=0;i<n;i++)
     {
       if(Av[i]!=Ap[i] && !ligModif.appartient(i))
       {
@@ -480,7 +548,7 @@ void Picross::amodif(bool ligne, int* Av, int*Ap)
   }
   else
   {
-    for(size_t i=0;i<lignes.getTaille();i++)
+    for(size_t i=0;i<n;i++)
     {
       if(Av[i]!=Ap[i] && !colModif.appartient(i))
       {
