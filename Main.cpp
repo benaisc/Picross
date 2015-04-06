@@ -24,14 +24,15 @@ int main(int argc, char** argv)
     P.TINY_SOL_iter(nbl,nbc);
 
     cout << P << endl;
-/*
+
     if(!P.isPicrossFini())
     {
       cout << P.getLigModif() << endl;
       cout << P.getColModif() << endl;
-      P.FAT_SOL(7,nbl,nbc);
+      P.FAT_SOL(P.getLigModif().getLongueur(),nbl,nbc);
+      cout << P << endl;
     }
-*/
+
     cout << boolalpha << P.isPicrossFini() << noboolalpha << endl;
   }
 

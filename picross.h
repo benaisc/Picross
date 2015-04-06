@@ -26,47 +26,32 @@ class Picross
   void setColonneMat(size_t ind, int* Tab);
   int* getColonneMat(size_t ind) const;
   Matrice getMat() const;
-  Liste getColModif()const;
-  Liste getLigModif()const;
+  Liste& getColModif();
+  Liste& getLigModif();
 
   void remplirCasesSureBl(int* Res,int *Tg, int *Td, size_t n, Liste& L);
-  void afficheP(std::ostream&) const;
+
   /**
   * \fn   void SLPG(int* Tab,size_t n,Cell* L)const;
   * \brief Fonction qui donne la solution la plus a gauche en fonction d'une liste L
-  * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
-  * \param[in]  n : Taille du dit tableau;
-  * \param[in]  L : Premiere cellule de la liste des indices;
   */
   void SLPG(int*, size_t, Liste&);
   void SLPD(int*, size_t, Liste&);
   /**
   * \fn SLG(int* Tab,size_t n,Cell* P,size_t i,bool &poss)const;
-  * \brief Fonction recursive qui retourne la solution la plus a gauche de Tab en fonction de P (tableau rempli uniquement de -1 et 1)
-  * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non egalement utiliser comme tableau de retour;
-  * \param[in]  n : Taille du dit tableau;
-  * \param[in]  P : Premiere cellule de la liste des indices;
-  * \param[in] i : indice a partir duquel on interagit avec Tab(voir Placer1bloc);
-  * \param[in,out] poss : retour de la fonction permettant de sa voir si l'hypothese faite est la bonne
+  * \brief Fonction recursive qui retourne la solution la plus a gauche de Tab
   */
   void SLG(int*, size_t, Cell*, size_t, bool&);
   /**
   * \fn PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool poss)const
-  * \brief Fonction qui tente de placer le bloc val directement en i et renvoi si cela est possible
-  * \param[in,out] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
-  * \param[in]  n : Taille du dit tableau;
-  * \param[in]  val : Taille du bloc;
-  * \param[in] i : indice a partir duquel on tente de placer le bloc;
-  * \param[in,out] poss : retour de la fonction permettant de sa voir si je peux ou non le placer
+  * \brief Fonction qui tente de placer le bloc val directement en i,
+  * false si il y à un -1 génant ou un 1 au bout
   */
   void PlacerBloc(int*, size_t, size_t, size_t, bool&);
   /**
    * \fn Verification(int *Tab,size_t j,size_t n)const;
    * \brief verifie si les cases entre j et n sont non-noires
-   * \param[in] Tab : Tableau representant une ligne/colonne avec des cases existante(valeur -1,1) ou non;
-   * \param[in]  n : Taille du dit tableau;
-   * \param[in]  j : indice a partir duquel on verifie;
-   * \return trivial a partir du brief
+   * (false s'il y à un noir après le dernier bloc placé)
   */
   bool Verification(int* , size_t, size_t);
   /**
@@ -81,14 +66,30 @@ class Picross
   void Fusion(int*, int*, int*, size_t);
   /**
   * \fn CasesBlanches(int* Merge, size_t taille, Liste &L);
-  * \brief verifie bloc à bloc et met des -1 avant/après s'ils sont complets
+  * \brief verifie bloc à bloc et remplace les 0 par des -1 si ligne terminée
   */
   void CasesBlanches(int*, size_t, Liste&);
+  /**
+  * \fn chkSUM(int* T, Liste& L, size_t n);
+  * \brief compte les cases noires et les blocs, true si le compte est bon
+  */
+  bool chkSUM(int*, Liste&, size_t);
+  /**
+  * \fn AMODIF(bool B, int* Av, int*Ap, size_t n);
+  * \brief ajoute à ligModif|colModif les colonnes|lignes modifiées
+  */
+  void amodif(bool ligne, int* Av, int*Ap, size_t n);
   /**
   * \fn Push(int*,size_t,bool);
   * \brief brute push dans la matrice a l'indice ind, 0>ligne 1>colonne
   */
   void Push(int*,size_t,bool);
+  /**
+  * \fn solLignes(size_t taille, size_t ind);
+  * \brief appel sur la ligneMat[ind] de SLPG SLPD Fusion CasesBlanches AMODIF & Push
+  */
+  void solLignes(size_t, size_t);
+  void solColonnes(size_t, size_t);
   /**
   * \fn TINY_SOL(size_t nbl, size_t nbc, size_t rec);
   * \brief appel recursif sur toutes les lignes et colonnes de solLignes et
@@ -108,9 +109,6 @@ class Picross
   */
   void FAT_LIG(size_t);
   void FAT_COL(size_t);
-  void solLignes(size_t, size_t);
-  void solColonnes(size_t, size_t);
-  void amodif(bool ligne, int* Av, int*Ap, size_t n);
   /** \fn VerifMatrice(size_t ind, bool B) const;
   * \brief false si la ligne ou colonne de matrice n'est pas correctement rempli
   * càd si le nombre de blocs noirs et le nombre de cases noirs est différent de celui attendu
@@ -125,7 +123,7 @@ class Picross
   * \brief false si la liste d'une ligne ou d'une colonne n'est pas à true
   */
   bool isPicrossFini() const;
-
+  void afficheP(std::ostream&) const;
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);
