@@ -65,10 +65,10 @@ class Picross
   */
   void Fusion(int*, int*, int*, size_t);
   /**
-  * \fn CasesBlanches(int* Merge, size_t taille, Liste &L);
-  * \brief verifie bloc à bloc et remplace les 0 par des -1 si ligne terminée
+  * \fn isFini(int* Merge, size_t taille, Liste &L);
+  * \brief appel chkSUM et met le booleen de la liste à true si T terminé
   */
-  void CasesBlanches(int*, size_t, Liste&);
+  void isFini(int*, size_t, Liste&);
   /**
   * \fn chkSUM(int* T, Liste& L, size_t n);
   * \brief compte les cases noires et les blocs, true si le compte est bon

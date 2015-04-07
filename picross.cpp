@@ -219,17 +219,10 @@ void Picross::Fusion(int* Res, int *T1, int *T2, size_t n)
   }
 }
 
-void Picross::CasesBlanches(int* T, size_t n, Liste &L)
+void Picross::isFini(int* T, size_t n, Liste &L)
 {
   if(chkSUM(T,L,n))
   {
-    for(size_t i=0; i<n; i++)
-    {
-      if(T[i]==0)
-      {
-        T[i]=-1;
-      }
-    }
     L.setFini(true);
   }
 }
@@ -320,7 +313,7 @@ void Picross::solLignes(size_t taille, size_t ind)
     Numeroter(TD,taille);
     Fusion(Merge,TG,TD,taille);
     remplirCasesSureBl(Merge,TG, TD, taille, lignes[ind]);
-    //CasesBlanches(Merge, taille, lignes[ind]);
+    isFini(Merge, taille, lignes[ind]);
     amodif(true, SAVE, Merge,taille);
     Push(Merge,ind,0);
     delete [] TG;
@@ -347,7 +340,7 @@ void Picross::solColonnes(size_t taille, size_t ind)
     Numeroter(TD,taille);
     Fusion(Merge,TG,TD,taille);
     remplirCasesSureBl(Merge,TG, TD, taille, colonnes[ind]);
-    //CasesBlanches(Merge, taille, colonnes[ind]);
+    isFini(Merge, taille, colonnes[ind]);
     amodif(false, SAVE,Merge,taille);
     Push(Merge,ind,1);
     delete [] TG;

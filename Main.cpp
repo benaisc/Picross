@@ -5,7 +5,7 @@ int main(int argc, char** argv)
 {
   ifstream f;
   //f.open(argv[1]);
-  f.open("Tests/waf");
+  f.open("Tests/squirrel");
 
   if(!f.is_open())
   {
@@ -28,8 +28,6 @@ int main(int argc, char** argv)
     if(!P.isPicrossFini())
     {
       cout << P.getLigModif() << endl;
-      cout << P.getLigModif() << endl;
-      cout << P.getColModif() << endl;
       cout << P.getColModif() << endl;
       P.FAT_SOL(P.getLigModif().getLongueur(),nbl,nbc);
       cout << P << endl;
