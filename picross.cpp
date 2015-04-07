@@ -319,7 +319,8 @@ void Picross::solLignes(size_t taille, size_t ind)
     Numeroter(TG,taille);
     Numeroter(TD,taille);
     Fusion(Merge,TG,TD,taille);
-    CasesBlanches(Merge, taille, lignes[ind]);
+    remplirCasesSureBl(Merge,TG, TD, taille, lignes[ind]);
+    //CasesBlanches(Merge, taille, lignes[ind]);
     amodif(true, SAVE, Merge,taille);
     Push(Merge,ind,0);
     delete [] TG;
@@ -345,7 +346,8 @@ void Picross::solColonnes(size_t taille, size_t ind)
     Numeroter(TG,taille);
     Numeroter(TD,taille);
     Fusion(Merge,TG,TD,taille);
-    CasesBlanches(Merge, taille, colonnes[ind]);
+    remplirCasesSureBl(Merge,TG, TD, taille, colonnes[ind]);
+    //CasesBlanches(Merge, taille, colonnes[ind]);
     amodif(false, SAVE,Merge,taille);
     Push(Merge,ind,1);
     delete [] TG;
