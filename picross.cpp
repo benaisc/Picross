@@ -389,21 +389,7 @@ void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
     ++ind;
   }
 }
-void Picross::TINY_SOL(size_t nbl, size_t nbc, size_t ind)
-{
-  if(ind<nbl||ind<nbc)
-  {
-    if(ind<nbl && lignes[ind].somElem()>nbc/2)
-    {
-      solLignes(nbc,ind);
-    }
-    if(ind<nbc && colonnes[ind].somElem()>nbl/2)
-    {
-      solColonnes(nbl,ind);
-    }
-    TINY_SOL(nbl,nbc,ind+1);
-  }
-}
+
 void Picross::FAT_SOL(size_t nbIndLig, size_t nbl, size_t nbc)
 {
   if(nbIndLig>0)
@@ -593,18 +579,6 @@ void afftableau(const int T[], int taille)
     if(i!=taille-1){std::cout<<", ";}
   }
   std::cout<<"]"<<std::endl;
-}
-
-void creetableau(int T[],int taille)
-{
-  srand(time(NULL));
-  for(int i=0; i<taille; i++){T[i]=rand()%2-1;}
-}
-int* initTab(size_t taille)
-{
-  int* init=new int [taille];
-  for(size_t i=0; i<taille; i++){init[i]=0;}
-  return init;
 }
 Liste* inverseL(const Liste& Lin)
 {

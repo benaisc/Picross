@@ -1,4 +1,10 @@
 /*
+#include <stdlib.h> //rand de creeTab
+void creetableau(int T[],int taille)
+{
+srand(time(NULL));
+for(int i=0; i<taille; i++){T[i]=rand()%2-1;}
+}
 Cette fonction seg_fault mais est à priori inutile
 TabListe& TabListe::operator=(TabListe &L)
 {

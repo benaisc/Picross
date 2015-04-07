@@ -3,7 +3,7 @@
 #include "tabListe.h"
 #include "matrice.h"
 #include <fstream>
-#include <stdlib.h> //rand de creeTab
+
 
 class Picross
 {
@@ -127,8 +127,6 @@ class Picross
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);
-void creetableau(int*,int);
-int* initTab(size_t);
 Liste* inverseL(const Liste&);
 void inverseT(int*, size_t);
 #endif
