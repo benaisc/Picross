@@ -120,7 +120,7 @@ void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
         {
           Tab[j]=Tab2[j];
         }
-	if(Tab[i]==1){poss=false;}
+	      if(Tab[i]==1){poss=false;}
         else{SLG(Tab,n,P,i+1,poss);}
       }
     }
@@ -135,9 +135,9 @@ void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
   {
     poss=Verification(Tab,i,n);
     if(poss)
-      {
-	for(size_t i=0; i<n; i++){if(Tab[i]==0){Tab[i]=-1;}}
-      }
+    {
+	    for(size_t i=0; i<n; i++){if(Tab[i]==0){Tab[i]=-1;}}
+    }
   }
 }
 void Picross::PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)
@@ -355,7 +355,16 @@ void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
   size_t ind=0;
   while(ind<nbl)
   {
-    if(lignes[ind].somElem()>nbc/2)
+    size_t SUM=lignes[ind].somElem();
+    if(SUM==0)
+    {
+      for(size_t i=0; i<nbc; i++)
+      {
+        mat.setValue(ind,i,-1);
+      }
+      lignes[ind].setFini(true);
+    }
+    else if(SUM>nbc/2)
     {
       solLignes(nbc,ind);
     }
@@ -364,7 +373,16 @@ void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
   ind=0;
   while(ind<nbc)
   {
-    if(colonnes[ind].somElem()>nbl/2)
+    size_t SUM=colonnes[ind].somElem();
+    if(SUM==0)
+    {
+      for(size_t i=0; i<nbl; i++)
+      {
+        mat.setValue(i,ind,-1);
+      }
+      colonnes[ind].setFini(true);
+    }
+    else if(SUM>nbl/2)
     {
       solColonnes(nbl,ind);
     }
