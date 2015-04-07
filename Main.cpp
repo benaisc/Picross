@@ -28,6 +28,8 @@ int main(int argc, char** argv)
     if(!P.isPicrossFini())
     {
       cout << P.getLigModif() << endl;
+      cout << P.getLigModif() << endl;
+      cout << P.getColModif() << endl;
       cout << P.getColModif() << endl;
       P.FAT_SOL(P.getLigModif().getLongueur(),nbl,nbc);
       cout << P << endl;
