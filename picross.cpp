@@ -91,7 +91,7 @@ void Picross::SLPD(int* T, size_t n, Liste &L)
 {
   bool B=false;
   inverseT(T,n);
-  Liste* Linv=inverseL(L);
+  Liste* Linv=L.inverseL_cst();
   SLG(T,n,Linv->getPremier(),0,B);
   inverseT(T,n);
   delete Linv;
@@ -382,7 +382,7 @@ void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
       }
       colonnes[ind].setFini(true);
     }
-    else if(SUM>nbl/2)
+    else
     {
       solColonnes(nbl,ind);
     }
