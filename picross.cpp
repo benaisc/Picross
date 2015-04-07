@@ -120,18 +120,24 @@ void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
         {
           Tab[j]=Tab2[j];
         }
-        SLG(Tab,n,P,i+1,poss);
+	if(Tab[i]==1){poss=false;}
+        else{SLG(Tab,n,P,i+1,poss);}
       }
     }
     else
     {
-      SLG(Tab,n,P,i+1,poss);
+      if(Tab[i]==1){poss=false;}
+      else{SLG(Tab,n,P,i+1,poss);}
     }
     delete [] Tab2;
   }
   else
   {
     poss=Verification(Tab,i,n);
+    if(poss)
+      {
+	for(size_t i=0; i<n; i++){if(Tab[i]==0){Tab[i]=-1;}}
+      }
   }
 }
 void Picross::PlacerBloc(int* Tab,size_t n,size_t val,size_t i,bool &poss)
