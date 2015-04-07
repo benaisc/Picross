@@ -34,5 +34,13 @@ int main(int argc, char** argv)
 	cout <<L.cutHd()<< endl;
 	cout <<"Verification longueur de la liste : "<< L.getLongueur() << endl;
 
+	L.add(1);
+	L.add(2);
+	L.add(3);
+	cout << "//add : " << L << endl;
+	Liste* Linv=L.inverseL_cst();
+	cout << "//inverseL : " << *Linv << endl;
+	delete Linv;
+	
 	return 0;
 }

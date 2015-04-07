@@ -39,15 +39,17 @@ void Liste::setFini(bool b)
 {
   fini=b;
 }
-void Liste::add(Cell* c)
+void Liste::add(size_t v)
 {
   if(isnull(tete))
   {
-    tete=c;
+    tete=new Cell(v);
   }
   else
   {
-    this->operator()(longueur)->setSuiv(c);
+    Cell* ptr=new Cell(v);
+    ptr->setSuiv(tete);
+    tete=ptr;
   }
   ++longueur;
 }
@@ -164,31 +166,16 @@ size_t Liste::cutHd()
   }
   return val;
 }
-size_t Liste::cutTl()
+Liste* Liste::inverseL_cst() const
 {
-  size_t val=0;
-  if(!isnull(tete))
+  Liste* Res=new Liste();
+  Cell* ptr=tete;
+  while(!isnull(ptr))
   {
-    if(longueur>1)
-    {
-      Cell* ptr=tete;
-      Liste list;
-      for(size_t j=1; j<longueur; j++)
-      {
-        list.putFin(ptr->getVal());
-        ptr=ptr->getSuiv();
-      }
-      val=ptr->getVal();
-      *this=list;
-    }
-    else
-    {
-      val=tete->getVal();
-      this->~Liste();
-      longueur=0;
-    }
+    Res->add(ptr->getVal());
+    ptr=ptr->getSuiv();
   }
-  return val;
+  return Res;
 }
 void Liste::afficheL(std::ostream &os) const
 {
@@ -202,24 +189,6 @@ void Liste::afficheL(std::ostream &os) const
   }
   os << std::endl;
 }
-/*void Liste::cutTail()
-{
-  if(longueur!=0)
-    {
-      if(longueur==1)
-	{
-	  tete=NULL;
-	  longueur--;
-	}
-    }
-  else
-    {
-      Liste L=*this;
-      L(longueur-2).setSuiv(NULL);
-      longueur--;
-      *this=L;
-    }
-}*/
 
 std::ostream &operator<<(std::ostream &os, const Liste &L)
 {

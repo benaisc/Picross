@@ -43,7 +43,11 @@ public:
 	* \param Valeur de la cellule à placer
 	*/
 	void putFin(size_t);
-	void add(Cell*);
+	/**
+	* \fn putFin(Cell&)
+	* \brief Ajout d'une cellule en tete de liste
+	*/
+	void add(size_t);
 	/**
 	* \fn ajoutFin(Cell&)
 	* \brief Ajout d'une cellule en queue de liste
@@ -77,6 +81,7 @@ public:
 	*/
 	size_t somElem() const;
 	bool appartient(size_t) const; 	/**< \return 1 si la valeur est dans la liste, 0 sinon */
+	Liste* inverseL_cst() const;
 
 	void afficheL(std::ostream&) const; /**< 1->2->... */
 };
