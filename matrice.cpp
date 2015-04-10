@@ -25,15 +25,15 @@ Matrice::~Matrice()
   delete [] mat;
 }
 
-int** Matrice:: getMat()const
+int** Matrice::getMat()const
 {
   return mat;
 }
-size_t Matrice:: getNbc()const
+size_t Matrice::getNbc()const
 {
   return nbc;
 }
-size_t Matrice:: getNbl()const
+size_t Matrice::getNbl()const
 {
   return nbl;
 }

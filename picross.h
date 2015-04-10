@@ -20,12 +20,22 @@ class Picross
   //les lignes puis les colonnes
   void remplirTabListe(std::ifstream&);
   //accesseur
+  int getNbLignes() const;
+  int getNbColonnes() const;
   TabListe getLignes() const;
   TabListe getColonnes() const;
   Matrice& getMatrice();
   Liste& getColModif();
   Liste& getLigModif();
 
+  int** copieMat() const;
+  void recopieMat(int** save);
+  void copieBool(bool* L, bool* C);
+  void recopieBool(bool* L, bool* C);
+  void premiereCaseLibre(bool &poss, int &nl, int &nc) const;
+  void Placer1blanc(bool &poss, int &nl, int &nc);
+  void Placer1noir(int &nl, int &nc);
+  void backtrack(bool &poss);
   /**
   * \fn   void SLPG(int* Tab,size_t n,Cell* L)const;
   * \brief Fonction qui donne la solution la plus a gauche en fonction d'une liste L

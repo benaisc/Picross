@@ -4,8 +4,8 @@ using namespace std;
 int main(int argc, char** argv)
 {
   ifstream f;
-  f.open(argv[1]);
-  //f.open("Tests/squirrel");
+  //f.open(argv[1]);
+  f.open("Tests/backtrack/calendrier4");
 
   if(!f.is_open())
   {
@@ -33,9 +33,14 @@ int main(int argc, char** argv)
       cout << P.getMatrice() << endl;
     }
 
-    cout << boolalpha << P.isPicrossFini() << noboolalpha << endl;
+    if(!P.isPicrossFini())
+    {
+      bool R;
+      P.backtrack(R);
+      cout<<"On fini avec Res à : "<<boolalpha<<R<<noboolalpha<<endl;
+      cout<< P.getMatrice() << endl;
+    }
   }
-
-f.close();
-return 0;
+  f.close();
+  return 0;
 }

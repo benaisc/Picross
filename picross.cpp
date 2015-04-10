@@ -503,6 +503,160 @@ bool Picross::isPicrossFini() const
   return true;
 }
 
+int Picross::getNbLignes() const
+{
+  return (int)mat.getNbl();
+}
+int Picross::getNbColonnes() const
+{
+  return (int)mat.getNbc();
+}
+
+int** Picross::copieMat() const
+{
+  int nbL=getNbLignes();
+  int nbC=getNbColonnes();
+  int** save=new int* [nbL];
+  for(int i=0; i<nbL; i++)
+  {
+    save[i]=new int [nbC];
+    for(int j=0; j<nbC; j++)
+    {
+      save[i][j]=mat.getValue(i,j);
+    }
+  }
+  return save;
+}
+
+void Picross::recopieMat(int** save)
+{
+  int nbL=getNbLignes();
+  int nbC=getNbColonnes();
+  for(int i=0; i<nbL; i++)
+  {
+    for(int j=0; j<nbC; j++)
+    {
+      mat.setValue(i,j,save[i][j]);
+    }
+  }
+}
+
+void Picross::premiereCaseLibre(bool &poss, int &nl, int &nc) const
+{
+  poss=false;
+  int i=0,j=0;
+  int nbL=getNbLignes();
+  int nbC=getNbColonnes();
+  while(i<nbL && !poss)
+  {
+    while(j<nbC && !poss)
+    {
+      if(mat.getValue(i,j)==0)
+      {
+        nl=i;
+        nc=j;
+        poss=true;
+      }
+      ++j;
+    }
+    ++i;
+    j=0;
+  }
+}
+
+void Picross::Placer1blanc(bool &poss, int &nl, int &nc)
+{
+  premiereCaseLibre(poss,nl,nc);
+  if(poss)
+  {
+    mat.setValue(nl,nc,-1);
+    ligModif.add((size_t)nl);
+    colModif.add((size_t)nc);
+  }
+}
+void Picross::Placer1noir(int &nl, int &nc)
+{
+  mat.setValue(nl,nc,1);
+  ligModif.add((size_t)nl);
+  colModif.add((size_t)nc);
+}
+
+void Picross::copieBool(bool* L, bool* C)
+{
+  int nbL=getNbLignes();
+  for(int i=0; i<nbL; i++)
+  {
+    L[i]=lignes[i].getFini();
+  }
+  int nbC=getNbColonnes();
+  for(int i=0; i<nbC; i++)
+  {
+    C[i]=colonnes[i].getFini();
+  }
+}
+
+void Picross::recopieBool(bool* L, bool* C)
+{
+  int nbL=getNbLignes();
+  for(int i=0; i<nbL; i++)
+  {
+    lignes[i].setFini(L[i]);
+  }
+  int nbC=getNbColonnes();
+  for(int i=0; i<nbC; i++)
+  {
+    colonnes[i].setFini(C[i]);
+  }
+}
+
+void Picross::backtrack(bool &poss)
+{
+  std::cout << "S'est parti dans backtrack" << std::endl;
+  if(!isPicrossFini())
+  {
+    std::cout << "Picross pas fini, on le copie" << std::endl;
+    int** SAVE=copieMat();//copie de mat
+    bool* TL=new bool [getNbLignes()];
+    bool* TC=new bool [getNbColonnes()];
+    copieBool(TL,TC);//des booléens des listes de TabListes ?
+    int i=0,j=0;
+    std::cout << "On place un blanc ? : " << std::endl;
+    Placer1blanc(poss,i,j);
+    std::cout<<boolalpha<<poss<<noboolalpha<<" "<<i<<","<<j<<std::endl;
+    if(poss)
+    {
+      FAT_SOL(ligModif.getLongueur(),(size_t)getNbLignes(),(size_t)getNbColonnes());
+      std::cout <<"On sort de FAT_SOL : "<<std::endl;
+      std::cout << getMatrice() << std::endl;
+      backtrack(poss);
+      std::cout << "On sort de backtrack1 à : "<<boolalpha<<poss<<noboolalpha<<std::endl;
+      if(!poss)
+      {
+        std::cout << "Du coup on recopie" << std::endl;
+        recopieMat(SAVE);
+        recopieBool(TL,TC);
+        std::cout << "On place un noir en "<<i<<","<<j<< std::endl;
+        Placer1noir(i,j);
+        std::cout << "Et bim, reFAT_SOL" << std::endl;
+        FAT_SOL(ligModif.getLongueur(),getNbLignes(),getNbColonnes());
+        std::cout << getMatrice() << std::endl;
+        backtrack(poss);
+        std::cout << "On sort de backtrack2 à : "<<boolalpha<<poss<<noboolalpha<<std::endl;
+      }
+    }//sinon on sort avec poss à false donc FUUUUUUUUU
+    for(int k=0;k<getNbLignes();k++)
+    {
+      delete [] SAVE[k];
+    }
+    delete [] SAVE;
+    delete [] TL;
+    delete [] TC;
+  }
+  else
+  {
+    std::cout << "Hey ! on as fini !" << std::endl;
+  }//sinon on sort
+}
 void Picross::afficheP(std::ostream &os) const
 {
   os<<"Lignes : "<<std::endl;
