@@ -387,11 +387,11 @@ void Picross::remplirCasesSureBl(int* Res,int *Tg, int *Td,size_t n, Liste & L)
   }
   for(size_t j=1; j<L.getLongueur()+1 ;j++)
   {//j=numerodubloc 1.2.3...
-    while((size_t)Tg[minG]!=j)
+    while(minG<n && (size_t)Tg[minG]!=j)
     {
       minG++;
     }
-    while((size_t)Td[minD]!=j)
+    while(minD<n && (size_t)Td[minD]!=j)
     {
       minD++;
     }
@@ -615,10 +615,10 @@ void Picross::backtrack(bool &poss)
   if(!isPicrossFini())
   {
     std::cout << "Picross pas fini, on le copie" << std::endl;
-    int** SAVE=copieMat();//copie de mat
+    int** SAVE=copieMat();
     bool* TL=new bool [getNbLignes()];
     bool* TC=new bool [getNbColonnes()];
-    copieBool(TL,TC);//des booléens des listes de TabListes ?
+    copieBool(TL,TC);
     int i=0,j=0;
     std::cout << "On place un blanc ? : " << std::endl;
     Placer1blanc(poss,i,j);
@@ -643,7 +643,7 @@ void Picross::backtrack(bool &poss)
         backtrack(poss);
         std::cout << "On sort de backtrack2 à : "<<boolalpha<<poss<<noboolalpha<<std::endl;
       }
-    }//sinon on sort avec poss à false donc FUUUUUUUUU
+    }
     for(int k=0;k<getNbLignes();k++)
     {
       delete [] SAVE[k];
@@ -655,7 +655,7 @@ void Picross::backtrack(bool &poss)
   else
   {
     std::cout << "Hey ! on as fini !" << std::endl;
-  }//sinon on sort
+  }
 }
 void Picross::afficheP(std::ostream &os) const
 {
