@@ -1,4 +1,30 @@
 /*
+size_t Liste::cutTl()
+{
+size_t val=0;
+if(!isnull(tete))
+{
+if(longueur>1)
+{
+Cell* ptr=tete;
+Liste list;
+for(size_t j=1; j<longueur; j++)
+{
+list.putFin(ptr->getVal());
+ptr=ptr->getSuiv();
+}
+val=ptr->getVal();
+*this=list;
+}
+else
+{
+val=tete->getVal();
+this->~Liste();
+longueur=0;
+}
+}
+return val;
+}
 #include <stdlib.h> //rand de creeTab
 void creetableau(int T[],int taille)
 {

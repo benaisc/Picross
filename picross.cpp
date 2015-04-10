@@ -37,7 +37,7 @@ TabListe Picross::getColonnes() const
 {
   return colonnes;
 }
-Matrice Picross::getMat() const
+Matrice& Picross::getMatrice()
 {
   return mat;
 }
@@ -50,41 +50,6 @@ Liste& Picross::getColModif()
 Liste& Picross::getLigModif()
 {
  return ligModif;
-}
-
-int* Picross::getLigneMat(size_t ind)const
-{
-  size_t taille=mat.getNbc();
-  int* tab=new int[taille];
-  for(size_t i =0; i<taille;i++)
-    {
-      tab[i]=mat.getMat()[ind][i];
-    }
-  return tab;
-}
-int* Picross::getColonneMat(size_t ind)const
-{
-  size_t taille=mat.getNbl();
-  int* tab=new int[taille];
-  for(size_t i =0; i<taille;i++)
-    {
-      tab[i]=mat.getMat()[i][ind];
-    }
-  return tab;
-}
-void Picross::setLigneMat(size_t ind, int* Tab)
-{
-  for(size_t i =0; i<mat.getNbl();i++)
-    {
-      mat.getMat()[ind][i]=Tab[i];
-    }
-}
-void Picross::setColonneMat(size_t ind, int* Tab)
-{
-  for(size_t i =0; i<mat.getNbc();i++)
-    {
-      mat.getMat()[i][ind]=Tab[i];
-    }
 }
 
 void Picross::SLPD(int* T, size_t n, Liste &L)
@@ -254,7 +219,7 @@ void Picross::amodif(bool ligne, int* Av, int*Ap, size_t n)
     {
       if(Av[i]!=Ap[i] && !ligModif.appartient(i))
       {
-        ligModif.putFin(i);
+        ligModif.add(i);
       }
     }
   }
@@ -264,7 +229,7 @@ void Picross::amodif(bool ligne, int* Av, int*Ap, size_t n)
     {
       if(Av[i]!=Ap[i] && !colModif.appartient(i))
       {
-        colModif.putFin(i);
+        colModif.add(i);
       }
     }
   }
@@ -272,26 +237,13 @@ void Picross::amodif(bool ligne, int* Av, int*Ap, size_t n)
 
 void Picross::Push(int* T, size_t ind, bool b)
 {
-  switch(b)
+  if(!b)
   {
-    case 0:
-    {
-      size_t taille=mat.getNbc();
-      for(size_t i=0; i<taille; i++)
-      {
-        mat.getMat()[ind][i]=T[i];
-      }
-    }break;
-    case 1:
-    {
-      size_t taille=mat.getNbl();
-      for(size_t i=0; i<taille; i++)
-      {
-        mat.getMat()[i][ind]=T[i];
-      }
-    }break;
-    default:
-    break;
+    mat.setLigne(ind,T);
+  }
+  else
+  {
+    mat.setColonne(ind,T);
   }
 }
 
@@ -426,42 +378,42 @@ void Picross::FAT_COL(size_t taille)
 
 //methode permettant de remplir les cases blanches "sures"
 void Picross::remplirCasesSureBl(int* Res,int *Tg, int *Td,size_t n, Liste & L)
- {
-   size_t maxD=0,minG=0,minD=0,min=0,max=0;
-   int* Te=new int[n];
-     for(size_t i=0; i<n; i++)
-     {
-       Te[i]=-1;
-     }
-   for(size_t j=1; j<L.getLongueur()+1 ;j++)
-     {//j=numerodubloc 1.2.3...
-       while( (size_t)Tg[minG]!=j)
-	 {
-	   minG++;
-	 }
-       while(  (size_t)Td[minD]!=j)
-	 {
-	   minD++;
-	 }
-       maxD=minD;
-       while(maxD<n && (size_t)Td[maxD]==j)
-	 {
-	   maxD++;
-	 }
-       min=minG;
-       max=maxD-1;
-       for(size_t i=min; i<=max; i++)
-	 {
-	   Te[i]=(int)j;
-	 }
-     }
-   for(size_t i=0; i<n; i++)
-     {
-       if (Te[i]==-1)
-	  Res[i]=Te[i];
-         }
-         delete [] Te;
+{
+  size_t maxD=0,minG=0,minD=0,min=0,max=0;
+  int* Te=new int[n];
+  for(size_t i=0; i<n; i++)
+  {
+    Te[i]=-1;
   }
+  for(size_t j=1; j<L.getLongueur()+1 ;j++)
+  {//j=numerodubloc 1.2.3...
+    while((size_t)Tg[minG]!=j)
+    {
+      minG++;
+    }
+    while((size_t)Td[minD]!=j)
+    {
+      minD++;
+    }
+    maxD=minD;
+    while(maxD<n && (size_t)Td[maxD]==j)
+    {
+      maxD++;
+    }
+    min=minG;
+    max=maxD-1;
+    for(size_t i=min; i<=max; i++)
+    {
+      Te[i]=(int)j;
+    }
+  }
+  for(size_t i=0; i<n; i++)
+  {
+    if(Te[i]==-1)
+  	   Res[i]=Te[i];
+  }
+  delete [] Te;
+}
 
 bool Picross::VerifMatrice(size_t ind, bool B) const
 {

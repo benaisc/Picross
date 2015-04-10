@@ -21,15 +21,11 @@ class Picross
   //accesseur
   TabListe getLignes() const;
   TabListe getColonnes() const;
-  void setLigneMat(size_t ind, int* Tab);
   int* getLigneMat(size_t ind) const;
-  void setColonneMat(size_t ind, int* Tab);
   int* getColonneMat(size_t ind) const;
-  Matrice getMat() const;
+  Matrice& getMatrice();
   Liste& getColModif();
   Liste& getLigModif();
-
-  void remplirCasesSureBl(int* Res,int *Tg, int *Td, size_t n, Liste& L);
 
   /**
   * \fn   void SLPG(int* Tab,size_t n,Cell* L)const;
@@ -65,6 +61,11 @@ class Picross
   */
   void Fusion(int*, int*, int*, size_t);
   /**
+  * \fn remplirCasesSureBl(int* Res,int *Tg, int *Td, size_t n, Liste& L);
+  * \brief TODO
+  */
+  void remplirCasesSureBl(int*,int*, int*, size_t, Liste&);
+  /**
   * \fn isFini(int* Merge, size_t taille, Liste &L);
   * \brief appel chkSUM et met le booleen de la liste à true si T terminé
   */
@@ -91,11 +92,10 @@ class Picross
   void solLignes(size_t, size_t);
   void solColonnes(size_t, size_t);
   /**
-  * \fn TINY_SOL(size_t nbl, size_t nbc, size_t rec);
-  * \brief appel recursif sur toutes les lignes et colonnes de solLignes et
+  * \fn TINY_SOL_iter(size_t nbl, size_t nbc, size_t rec);
+  * \brief appel sur toutes les lignes et colonnes de solLignes et
   * solColonnes dans le but d'initialiser ligModif et colModif pour FAT_SOL
   */
-  void TINY_SOL(size_t, size_t, size_t);
   void TINY_SOL_iter(size_t, size_t);
   /**
   * \fn FAT_SOL(size_t nbIndLig, size_t nbl, size_t nbc);

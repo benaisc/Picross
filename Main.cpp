@@ -4,8 +4,8 @@ using namespace std;
 int main(int argc, char** argv)
 {
   ifstream f;
-  //f.open(argv[1]);
-  f.open("Tests/squirrel");
+  f.open(argv[1]);
+  //f.open("Tests/squirrel");
 
   if(!f.is_open())
   {
@@ -30,7 +30,7 @@ int main(int argc, char** argv)
       cout << P.getLigModif() << endl;
       cout << P.getColModif() << endl;
       P.FAT_SOL(P.getLigModif().getLongueur(),nbl,nbc);
-      cout << P << endl;
+      cout << P.getMatrice() << endl;
     }
 
     cout << boolalpha << P.isPicrossFini() << noboolalpha << endl;
