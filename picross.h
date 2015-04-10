@@ -13,16 +13,15 @@ class Picross
   TabListe colonnes;
   Liste colModif;
   Liste ligModif;
+
  public:
   //constructeur
   Picross(size_t, size_t);
   //les lignes puis les colonnes
-  void remplirTabListe(std::ifstream& f);
+  void remplirTabListe(std::ifstream&);
   //accesseur
   TabListe getLignes() const;
   TabListe getColonnes() const;
-  int* getLigneMat(size_t ind) const;
-  int* getColonneMat(size_t ind) const;
   Matrice& getMatrice();
   Liste& getColModif();
   Liste& getLigModif();
@@ -76,10 +75,10 @@ class Picross
   */
   bool chkSUM(int*, Liste&, size_t);
   /**
-  * \fn AMODIF(bool B, int* Av, int*Ap, size_t n);
+  * \fn amodif(bool ligne, int* Av, int*Ap, size_t n);
   * \brief ajoute à ligModif|colModif les colonnes|lignes modifiées
   */
-  void amodif(bool ligne, int* Av, int*Ap, size_t n);
+  void amodif(bool, int*, int*, size_t);
   /**
   * \fn Push(int*,size_t,bool);
   * \brief brute push dans la matrice a l'indice ind, 0>ligne 1>colonne
@@ -113,7 +112,7 @@ class Picross
   * \brief false si la ligne ou colonne de matrice n'est pas correctement rempli
   * càd si le nombre de blocs noirs et le nombre de cases noirs est différent de celui attendu
   */
-  bool VerifMatrice(size_t ind, bool B) const;
+  bool VerifMatrice(size_t, bool) const;
   /** \fn setLCFini();
   * \brief appel de VerifMatrice sur toutes les lignes et colonnes non finies
   * et pose à true les listes fini
@@ -127,6 +126,5 @@ class Picross
 };
 std::ostream& operator<<(std::ostream&, const Picross&);
 void afftableau(const int*, int);
-Liste* inverseL(const Liste&);
 void inverseT(int*, size_t);
 #endif

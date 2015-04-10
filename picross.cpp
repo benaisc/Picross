@@ -482,7 +482,6 @@ void Picross::setLCFini()
   }
 }
 
-//methode indiquant si le picross est correctement rempli
 bool Picross::isPicrossFini() const
 {
   size_t taille=lignes.getTaille();
@@ -531,18 +530,6 @@ void afftableau(const int T[], int taille)
     if(i!=taille-1){std::cout<<", ";}
   }
   std::cout<<"]"<<std::endl;
-}
-Liste* inverseL(const Liste& Lin)
-{
-  size_t taille=Lin.getLongueur();
-  size_t temp=taille;
-  Liste* Lout=new Liste();
-  for(size_t i = 1; i<=taille; i++)
-  {
-    Lout->putFin(Lin(temp)->getVal());
-    --temp;
-  }
-  return Lout;
 }
 void inverseT(int *Tab, size_t taille)
 {
