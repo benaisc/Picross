@@ -28,16 +28,46 @@ class Picross
   Liste& getColModif();
   Liste& getLigModif();
 
+  /**
+  * \fn copieMat() const;
+  * \brief Simple copie d'une matrice
+  */
   int** copieMat() const;
+  /**
+  * \fn recopieMat() const;
+  * \brief Recopie d'une save de matrice pour récupérer un mauvais backtrack
+  */
   void recopieMat(int** save);
+  /**
+  * \fn (re)copieMat() const;
+  * \brief Simples copie/recopie des booléens des listes entre les backtracks
+  */
   void copieBool(bool* L, bool* C);
   void recopieBool(bool* L, bool* C);
+  /**
+  * \fn premiereCaseLibre(bool &poss, int &nl, int &nc) const;
+  * \brief parcours ligne par ligne qui donne la première case libre de mat
+  */
   void premiereCaseLibre(bool &poss, int &nl, int &nc) const;
-  void Placer1blanc(bool &poss, int &nl, int &nc);
-  void Placer1noir(int &nl, int &nc);
+  /**
+  * \fn Placer1noir(bool &poss, int &nl, int &nc);
+  * \brief Place la premCaseLib(nl,nc) a noir sinon poss false
+  */
+  void Placer1noir(bool &poss, int &nl, int &nc);
+  /**
+  * \fn Placer1blanc(int &nl, int &nc);
+  * \brief Place la case(nl,nc) a blanc
+  */
+  void Placer1blanc(int &nl, int &nc);
+  /**
+  * \fn backtrack(bool &poss);
+  * \brief Tant que le picross n'est pas rempli avec FAT il place un noir dans la
+  * premCaseLib; Si le picross n'est pas fini une fois rempli, on sort
+  * d'une recursion, on recopie et met la dernière case noir backtrackée à blanc, etc.
+  */
   void backtrack(bool &poss);
   /**
-  * \fn   void SLPG(int* Tab,size_t n,Cell* L)const;
+  * \fn void SLPG(int* Tab,size_t n,Cell* L)const;
   * \brief Fonction qui donne la solution la plus a gauche en fonction d'une liste L
   */
   void SLPG(int*, size_t, Liste&);

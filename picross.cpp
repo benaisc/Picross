@@ -564,19 +564,19 @@ void Picross::premiereCaseLibre(bool &poss, int &nl, int &nc) const
   }
 }
 
-void Picross::Placer1blanc(bool &poss, int &nl, int &nc)
+void Picross::Placer1noir(bool &poss, int &nl, int &nc)
 {
   premiereCaseLibre(poss,nl,nc);
   if(poss)
   {
-    mat.setValue(nl,nc,-1);
+    mat.setValue(nl,nc,1);
     ligModif.add((size_t)nl);
     colModif.add((size_t)nc);
   }
 }
-void Picross::Placer1noir(int &nl, int &nc)
+void Picross::Placer1blanc(int &nl, int &nc)
 {
-  mat.setValue(nl,nc,1);
+  mat.setValue(nl,nc,-1);
   ligModif.add((size_t)nl);
   colModif.add((size_t)nc);
 }
@@ -611,37 +611,24 @@ void Picross::recopieBool(bool* L, bool* C)
 
 void Picross::backtrack(bool &poss)
 {
-  std::cout << "S'est parti dans backtrack" << std::endl;
+  FAT_SOL(ligModif.getLongueur(),getNbLignes(),getNbColonnes());
   if(!isPicrossFini())
   {
-    std::cout << "Picross pas fini, on le copie" << std::endl;
     int** SAVE=copieMat();
     bool* TL=new bool [getNbLignes()];
     bool* TC=new bool [getNbColonnes()];
     copieBool(TL,TC);
     int i=0,j=0;
-    std::cout << "On place un blanc ? : " << std::endl;
-    Placer1blanc(poss,i,j);
-    std::cout<<boolalpha<<poss<<noboolalpha<<" "<<i<<","<<j<<std::endl;
+    Placer1noir(poss,i,j);
     if(poss)
     {
-      FAT_SOL(ligModif.getLongueur(),(size_t)getNbLignes(),(size_t)getNbColonnes());
-      std::cout <<"On sort de FAT_SOL : "<<std::endl;
-      std::cout << getMatrice() << std::endl;
       backtrack(poss);
-      std::cout << "On sort de backtrack1 à : "<<boolalpha<<poss<<noboolalpha<<std::endl;
       if(!poss)
       {
-        std::cout << "Du coup on recopie" << std::endl;
         recopieMat(SAVE);
         recopieBool(TL,TC);
-        std::cout << "On place un noir en "<<i<<","<<j<< std::endl;
-        Placer1noir(i,j);
-        std::cout << "Et bim, reFAT_SOL" << std::endl;
-        FAT_SOL(ligModif.getLongueur(),getNbLignes(),getNbColonnes());
-        std::cout << getMatrice() << std::endl;
+        Placer1blanc(i,j);
         backtrack(poss);
-        std::cout << "On sort de backtrack2 à : "<<boolalpha<<poss<<noboolalpha<<std::endl;
       }
     }
     for(int k=0;k<getNbLignes();k++)
@@ -651,10 +638,6 @@ void Picross::backtrack(bool &poss)
     delete [] SAVE;
     delete [] TL;
     delete [] TC;
-  }
-  else
-  {
-    std::cout << "Hey ! on as fini !" << std::endl;
   }
 }
 void Picross::afficheP(std::ostream &os) const

@@ -4,8 +4,8 @@ using namespace std;
 int main(int argc, char** argv)
 {
   ifstream f;
-  //f.open(argv[1]);
-  f.open("Tests/backtrack/calendrier4");
+  f.open(argv[1]);
+  //f.open("./hachure_big");
 
   if(!f.is_open())
   {
@@ -27,17 +27,8 @@ int main(int argc, char** argv)
 
     if(!P.isPicrossFini())
     {
-      cout << P.getLigModif() << endl;
-      cout << P.getColModif() << endl;
-      P.FAT_SOL(P.getLigModif().getLongueur(),nbl,nbc);
-      cout << P.getMatrice() << endl;
-    }
-
-    if(!P.isPicrossFini())
-    {
       bool R;
       P.backtrack(R);
-      cout<<"On fini avec Res à : "<<boolalpha<<R<<noboolalpha<<endl;
       cout<< P.getMatrice() << endl;
     }
   }
