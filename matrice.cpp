@@ -100,6 +100,28 @@ void Matrice::afficheM(std::ostream &os)const
   os << std::endl;
 }
 
+std::string Matrice::afficheMatrice(size_t i,size_t j)const//pour la Fenetre
+{
+ std::stringstream ss;
+      switch(mat[i][j])
+      {
+      case(-1):
+      {
+	ss<<"Images/croix.png";
+      }break;
+      case(0):
+      {
+	ss<<"Images/carre_blanc.png";
+      }break;
+      case(1):
+      {
+        ss<<"Images/carre_noir.png";
+      }break;
+      default:
+	ss<<"Images/carre_blanc.png";
+      }
+  return ss.str();
+}
 
 std::ostream &operator<<(std::ostream &os, const Matrice &M)
 {

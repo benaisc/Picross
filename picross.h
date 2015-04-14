@@ -30,7 +30,7 @@ class Picross
 
   /**
   * \fn copieMat() const;
-  * \brief Simple copie d'une matrice
+  * \brief Simple copie d'une matricegetMat
   */
   int** copieMat() const;
   /**
