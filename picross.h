@@ -20,8 +20,8 @@ class Picross
   //les lignes puis les colonnes
   void remplirTabListe(std::ifstream&);
   //accesseur
-  int getNbLignes() const;
-  int getNbColonnes() const;
+  sint getNbLignes() const;
+  sint getNbColonnes() const;
   TabListe getLignes() const;
   TabListe getColonnes() const;
   Matrice& getMatrice();
@@ -45,20 +45,20 @@ class Picross
   void copieBool(bool* L, bool* C);
   void recopieBool(bool* L, bool* C);
   /**
-  * \fn premiereCaseLibre(bool &poss, int &nl, int &nc) const;
+  * \fn premiereCaseLibre(bool &poss, sint &nl, sint &nc) const;
   * \brief parcours ligne par ligne qui donne la première case libre de mat
   */
-  void premiereCaseLibre(bool &poss, int &nl, int &nc) const;
+  void premiereCaseLibre(bool &poss, sint &nl, sint &nc) const;
   /**
-  * \fn Placer1noir(bool &poss, int &nl, int &nc);
+  * \fn Placer1noir(bool &poss, sint &nl, sint &nc);
   * \brief Place la premCaseLib(nl,nc) a noir sinon poss false
   */
-  void Placer1noir(bool &poss, int &nl, int &nc);
+  void Placer1noir(bool &poss, sint &nl, sint &nc);
   /**
-  * \fn Placer1blanc(int &nl, int &nc);
+  * \fn Placer1blanc(sint &nl, sint &nc);
   * \brief Place la case(nl,nc) a blanc
   */
-  void Placer1blanc(int &nl, int &nc);
+  void Placer1blanc(sint &nl, sint &nc);
   /**
   * \fn backtrack(bool &poss);
   * \brief Tant que le picross n'est pas rempli avec FAT il place un noir dans la
@@ -137,11 +137,11 @@ class Picross
   */
   void TINY_SOL_iter();
   /**
-  * \fn FAT_SOL(size_t nbIndLig);
+  * \fn FAT_SOL(sint nbIndLig);
   * \brief appel recursif FATCOL&FATLIG tq colModif et ligModif contiennent des cell
   * càd tant que l'on modifie des lignes ou des colonnes
   */
-  void FAT_SOL(size_t);
+  void FAT_SOL(sint);
   /**
   * \fn FAT_LIG();
   * \brief appel recursif sur tout les indices de ligModif

@@ -193,9 +193,9 @@ void Picross::isFini(int* T, size_t n, Liste &L)
 }
 bool Picross::chkSUM(int *T, Liste &L, size_t n)
 {
-  size_t nbcell=L.getLongueur();
-  size_t cpt=L.somCell();
-  size_t nbNoires=0;
+  sint nbcell=L.getLongueur();
+  sint cpt=L.somCell();
+  sint nbNoires=0;
   for(size_t i=0; i<n; i++)//on balaie la ligne
   {
     if(T[i]==1)//si on tombe sur un noir
@@ -256,7 +256,7 @@ void Picross::solLignes(size_t ind)
     int* TD=new int[taille];
     int* SAVE=new int[taille];
     int* Merge=new int[taille];
-    for(size_t i=0; i<taille;i++)
+    for(size_t i=0; i<taille; i++)
     {
       TG[i]=TD[i]=SAVE[i]=Merge[i]=mat.getValue(ind,i);
     }
@@ -306,12 +306,12 @@ void Picross::solColonnes(size_t ind)
 
 void Picross::TINY_SOL_iter()
 {
-  size_t ind=0;
-  size_t nbl=getNbLignes();
-  size_t nbc=getNbColonnes();
+  sint ind=0;
+  sint nbl=getNbLignes();
+  sint nbc=getNbColonnes();
   while(ind<nbl)
   {
-    size_t SUM=lignes[ind].somElem();
+    sint SUM=lignes[ind].somElem();
     if(SUM==0)
     {
       for(size_t i=0; i<nbc; i++)
@@ -346,7 +346,7 @@ void Picross::TINY_SOL_iter()
   }
 }
 
-void Picross::FAT_SOL(size_t nbIndLig)
+void Picross::FAT_SOL(sint nbIndLig)
 {
   if(nbIndLig>0)
   {
@@ -364,7 +364,7 @@ void Picross::FAT_LIG()
 {
   if(ligModif.getLongueur()>0)
   {
-    size_t indice=ligModif.cutHd();
+    sint indice=ligModif.cutHd();
     solLignes(indice);
     FAT_LIG();
   }
@@ -374,7 +374,7 @@ void Picross::FAT_COL()
 {
   if(colModif.getLongueur()>0)
   {
-    size_t indice=colModif.cutHd();
+    sint indice=colModif.cutHd();
     solColonnes(indice);
     FAT_COL();
   }
@@ -423,10 +423,10 @@ bool Picross::VerifMatrice(size_t ind, bool B) const
 {
   if(!B)
   {
-    size_t nbcell=lignes[ind].getLongueur();
-    size_t cpt=lignes[ind].somCell();
-    size_t nbNoires=0;
-    size_t taille=mat.getNbc();
+    sint nbcell=lignes[ind].getLongueur();
+    sint cpt=lignes[ind].somCell();
+    sint nbNoires=0;
+    sint taille=mat.getNbc();
     for(size_t i=0; i<taille; i++)//on balaie la ligne
     {
       if(mat.getValue(ind,i)==1)//si on tombe sur un noir
@@ -445,22 +445,22 @@ bool Picross::VerifMatrice(size_t ind, bool B) const
   }
   else
   {
-    size_t nbcell=colonnes[ind].getLongueur();
-    size_t cpt=colonnes[ind].somCell();
-    size_t nbNoires=0;
-    size_t taille=mat.getNbl();
-    for(size_t i=0; i<taille; i++)//on balaie la ligne
+    sint nbcell=colonnes[ind].getLongueur();
+    sint cpt=colonnes[ind].somCell();
+    sint nbNoires=0;
+    sint taille=mat.getNbl();
+    for(size_t i=0; i<taille; i++)
     {
-      if(mat.getValue(i,ind)==1)//si on tombe sur un noir
+      if(mat.getValue(i,ind)==1)
       {
         ++nbNoires;
         ++i;
-        while(i<taille && mat.getValue(i,ind)==1)//on le balaie
+        while(i<taille && mat.getValue(i,ind)==1)
         {
           ++nbNoires;
           ++i;
         }
-        --nbcell;//on decompte le nombre de cellules
+        --nbcell;
       }
     }
     return ((cpt==nbNoires)&&(nbcell==0));
@@ -468,7 +468,7 @@ bool Picross::VerifMatrice(size_t ind, bool B) const
 }
 void Picross::setLCFini()
 {
-  size_t taille=lignes.getTaille();
+  sint taille=lignes.getTaille();
   for(size_t i=0; i<taille; i++)
   {
     if(!lignes[i].getFini() && VerifMatrice(i,0))
@@ -488,7 +488,7 @@ void Picross::setLCFini()
 
 bool Picross::isPicrossFini() const
 {
-  size_t taille=lignes.getTaille();
+  sint taille=lignes.getTaille();
   for(size_t i=0; i<taille; i++)
   {
     if(!lignes[i].getFini())
@@ -507,24 +507,24 @@ bool Picross::isPicrossFini() const
   return true;
 }
 
-int Picross::getNbLignes() const
+sint Picross::getNbLignes() const
 {
-  return (int)mat.getNbl();
+  return mat.getNbl();
 }
-int Picross::getNbColonnes() const
+sint Picross::getNbColonnes() const
 {
-  return (int)mat.getNbc();
+  return mat.getNbc();
 }
 
 int** Picross::copieMat() const
 {
-  int nbL=getNbLignes();
-  int nbC=getNbColonnes();
+  sint nbL=getNbLignes();
+  sint nbC=getNbColonnes();
   int** save=new int* [nbL];
-  for(int i=0; i<nbL; i++)
+  for(sint i=0; i<nbL; i++)
   {
     save[i]=new int [nbC];
-    for(int j=0; j<nbC; j++)
+    for(sint j=0; j<nbC; j++)
     {
       save[i][j]=mat.getValue(i,j);
     }
@@ -534,23 +534,23 @@ int** Picross::copieMat() const
 
 void Picross::recopieMat(int** save)
 {
-  int nbL=getNbLignes();
-  int nbC=getNbColonnes();
-  for(int i=0; i<nbL; i++)
+  sint nbL=getNbLignes();
+  sint nbC=getNbColonnes();
+  for(sint i=0; i<nbL; i++)
   {
-    for(int j=0; j<nbC; j++)
+    for(sint j=0; j<nbC; j++)
     {
       mat.setValue(i,j,save[i][j]);
     }
   }
 }
 
-void Picross::premiereCaseLibre(bool &poss, int &nl, int &nc) const
+void Picross::premiereCaseLibre(bool &poss, sint &nl, sint &nc) const
 {
   poss=false;
-  int i=0,j=0;
-  int nbL=getNbLignes();
-  int nbC=getNbColonnes();
+  sint i=0,j=0;
+  sint nbL=getNbLignes();
+  sint nbC=getNbColonnes();
   while(i<nbL && !poss)
   {
     while(j<nbC && !poss)
@@ -568,21 +568,21 @@ void Picross::premiereCaseLibre(bool &poss, int &nl, int &nc) const
   }
 }
 
-void Picross::Placer1noir(bool &poss, int &nl, int &nc)
+void Picross::Placer1noir(bool &poss, sint &nl, sint &nc)
 {
   premiereCaseLibre(poss,nl,nc);
   if(poss)
   {
     mat.setValue(nl,nc,1);
-    ligModif.add((size_t)nl);
-    colModif.add((size_t)nc);
+    ligModif.add(nl);
+    colModif.add(nc);
   }
 }
-void Picross::Placer1blanc(int &nl, int &nc)
+void Picross::Placer1blanc(sint &nl, sint &nc)
 {
   mat.setValue(nl,nc,-1);
-  ligModif.add((size_t)nl);
-  colModif.add((size_t)nc);
+  ligModif.add(nl);
+  colModif.add(nc);
 }
 
 void Picross::copieBool(bool* L, bool* C)
@@ -622,7 +622,7 @@ void Picross::backtrack(bool &poss)
     bool* TL=new bool [getNbLignes()];
     bool* TC=new bool [getNbColonnes()];
     copieBool(TL,TC);
-    int i=0,j=0;
+    sint i=0,j=0;
     Placer1noir(poss,i,j);
     if(poss)
     {
@@ -635,7 +635,7 @@ void Picross::backtrack(bool &poss)
         backtrack(poss);
       }
     }
-    for(int k=0;k<getNbLignes();k++)
+    for(sint k=0; k<getNbLignes(); k++)
     {
       delete [] SAVE[k];
     }

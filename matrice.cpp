@@ -85,14 +85,11 @@ void Matrice::afficheM(std::ostream &os)const
       case(-1):
         os<<" "<<"\u25A7"<<" ";
         break;
-      case(0):
-        os<<" "<<"\u25A1"<<" ";
-        break;
       case(1):
         os<<" "<<"\u25A0"<<" ";
         break;
       default:
-        os<<" "<<"\u25A3"<<" ";
+        os<<" "<<"\u25A1"<<" ";
         break;
       }
     }
