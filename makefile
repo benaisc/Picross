@@ -1,17 +1,13 @@
 CXX = g++
-CXXFLAGS = -Wall -ansi -pedantic
-LDFLAGS= -Wall -g
+CXXFLAGS = -Wall -ansi -pedantic `pkg-config gtkmm-3.0 --cflags --libs`
+LDFLAGS=
 EXEC = main
 SRC = $(wildcard *.cpp)
-OBJ = $(SRC:.cpp=.o)
 
 all: $(EXEC)
 
-$(EXEC): $(OBJ)
-	$(CXX) $(LDFLAGS) -o $@ $^
-
-.o: $(SRC)
-	$(CXX) $(CXXFLAGS) -c $^
+$(EXEC): $(SRC)
+	$(CXX) $^ $(CXXFLAGS) -o $@
 
 clean:
 	rm *.o main
@@ -20,4 +16,4 @@ SRCsup = $(wildcard *.h)
 NAME = picross_src.tar.gz
 
 archive:
-	tar -czf $(NAME) $(SRCsup) $(SRC) makefile
+	tar -czf $(NAME) $(SRCsup) $(SRC) Fenetre.hpp makefile
