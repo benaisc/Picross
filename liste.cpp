@@ -190,6 +190,33 @@ void Liste::afficheL(std::ostream &os) const
   os << std::endl;
 }
 
+std::string Liste::afficheListe() const
+{
+  std::stringstream ss;
+  Cell* ptr=tete;
+  std::string sep="";
+  while(!isnull(ptr))
+  {
+    ss <<sep <<ptr->getVal();
+    ptr=ptr->getSuiv();
+    sep=" "; 
+  }
+  return ss.str(); 
+}
+
+std::string Liste::afficheListeV() const
+{
+  std::stringstream ss;
+  //  std::string str;
+  Cell* ptr=tete;
+  while(!isnull(ptr))
+  {
+    ss << ptr->getVal()<<std::endl;
+    ptr=ptr->getSuiv();
+  }
+  return ss.str(); 
+}
+
 std::ostream &operator<<(std::ostream &os, const Liste &L)
 {
   L.afficheL(os);

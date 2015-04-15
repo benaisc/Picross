@@ -11,6 +11,7 @@
 #include "cell.h"
 #include <iostream>	/**< \def Pour l'affichage,il sera utilisé par la suite */
 #include <stdlib.h>	/**< \def Pour la fonction exit() sortant du programme proprement */
+#include <sstream>
 
 class Liste
 {
@@ -84,6 +85,8 @@ public:
 	Liste* inverseL_cst() const;
 
 	void afficheL(std::ostream&) const; /**< 1->2->... */
+	std::string afficheListe() const;
+	std::string afficheListeV() const;
 };
 std::ostream &operator<<(std::ostream &os, const Liste &Li);	/**< 1->2->... */
 #endif

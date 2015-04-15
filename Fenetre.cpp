@@ -1,9 +1,10 @@
 #include "Fenetre.hpp"
+#include<vector>
 
 using namespace std;
 //Pour exécutér ces fichiers il faut télécharger apt-get install libgtkmm-3.0-dev 
 // J'utilise cette commande pour compiler g++ *.cpp -Wall -ansi -pedantic -o Main `pkg-config gtkmm-3.0 --cflags --libs`
-//Il y a quelques warning, je vais les enlever en utilisant un vector.
+//Il y a quelques warning, mais ça marche.
 
 Fenetre::Fenetre():
   P(),
@@ -55,39 +56,78 @@ Fenetre::Fenetre():
 
 Fenetre::~Fenetre(){}
 
-void Fenetre::creerTabPicross(size_t nbl,size_t nbc )
+void Fenetre::creerTabPicross(Picross *P,size_t nbl,size_t nbc )
 {  
-  Picross P(nbl,nbc);
   Gtk::Image *images[nbl][nbc];  
+ // std::vector<Glib::RefPtr<Gtk::Image>> images;
+ // Glib::RefPtr<Gtk::Image> im (new Gtk::Image("Images/carre_blanc.png"));
+
   Gtk::Table *tabPicross;
-  Gtk::Label *etiquettes[nbl];
-  tabPicross=manage(new Gtk::Table(nbl,nbc,true));
+  Gtk::Label *etiquettesH[nbl];
+  Gtk::Label *etiquettesV[nbc];
+  tabPicross=manage(new Gtk::Table(nbl,nbc));
 
   for (size_t i=1;i<=nbl; i++)  {
-    etiquettes[i-1]=manage(new Gtk::Label(" "));
-    tabPicross->attach(*etiquettes[i-1], 0, 1, i, i+1,Gtk::SHRINK, Gtk::SHRINK);
-    etiquettes[i-1]=manage(new Gtk::Label(" "));
-    tabPicross->attach(*etiquettes[i-1], i, i+1, 0, 1,Gtk::SHRINK, Gtk::SHRINK);
+    etiquettesH[i-1]=manage(new Gtk::Label(" "));
+    tabPicross->attach(*etiquettesH[i-1], 0, 1, i, i+1,Gtk::SHRINK, Gtk::SHRINK);}
+  for (size_t i=1;i<=nbc; i++)  {
+    etiquettesV[i-1]=manage(new Gtk::Label(" "));
+    tabPicross->attach(*etiquettesV[i-1], i, i+1, 0, 1,Gtk::SHRINK, Gtk::SHRINK);
+  }
+  
+  for (size_t i=0;i<nbl;i++){
+  etiquettesH[i]->set_text(P->getLignes()[i].afficheListe());
+  }
+  for (size_t j=0;j<nbc;j++){
+  etiquettesV[j]->set_text(P->getColonnes()[j].afficheListeV());
   }
 
-  // for(size_t i=0;i<nbl;i++){
-  //    for(size_t j=0;j<P.getLignes()[i].getLongueur();j++){
-  //  int ind=P.getLignes()[i](0)->getVal();
-  //   string indice = static_cast<ostringstream*>( &(ostringstream() << ind) )->str();
-  //   etiquettes[i]->set_text(indice);
-  //    }}
-
-  for (size_t i=1;i<=nbl; i++){
-    for (size_t j=1;j<=nbc; j++){  
-      images[i-1][j-1]=manage(new Gtk::Image("Images/carre_blanc.png")); 
+  for (size_t i=1;i<=nbc; i++){
+    for (size_t j=1;j<=nbl; j++){  
+      images[i-1][j-1]=manage(new Gtk::Image("Images/carre_blanc.png"));      
       tabPicross->attach(*images[i-1][j-1], i, i+1, j, j+1,Gtk::SHRINK, Gtk::SHRINK);
     }
   }
   
-  
-  tableau.attach(*tabPicross, 1, 2, 0, 1);
+  tableau.attach(*tabPicross, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
   show_all();
 
+}
+
+void Fenetre::creerTabRes(Picross *P,size_t nbl,size_t nbc )
+{  
+  Gtk::Image *images[nbl][nbc];  
+  Gtk::Table *tabPicross;
+  Gtk::Label *etiquettesH[nbl];
+  Gtk::Label *etiquettesV[nbc];
+  tabPicross=manage(new Gtk::Table(nbl,nbc));
+
+  for (size_t i=1;i<=nbl; i++)  {
+    etiquettesH[i-1]=manage(new Gtk::Label(" "));
+    tabPicross->attach(*etiquettesH[i-1], 0, 1, i, i+1,Gtk::SHRINK, Gtk::SHRINK);}
+  for (size_t i=1;i<=nbc; i++)  {
+    etiquettesV[i-1]=manage(new Gtk::Label(" "));
+    tabPicross->attach(*etiquettesV[i-1], i, i+1, 0, 1,Gtk::SHRINK, Gtk::SHRINK);
+  }
+  
+  for (size_t i=0;i<nbl;i++){
+  etiquettesH[i]->set_text(P->getLignes()[i].afficheListe());
+  }
+  for (size_t j=0;j<nbc;j++){
+  etiquettesV[j]->set_text(P->getColonnes()[j].afficheListeV());
+  }
+
+  for (size_t i=1;i<=nbc; i++){
+    for (size_t j=1;j<=nbl; j++){  
+       images[i-1][j-1]=manage(new Gtk::Image(P->getMatrice().afficheMatrice(j-1,i-1)));
+      tabPicross->attach(*images[i-1][j-1], i, i+1, j, j+1,Gtk::SHRINK, Gtk::SHRINK);
+    }}
+
+  
+  tableau.attach(*tabPicross, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
+  show_all();
+
+ 
 }
 
 
@@ -108,7 +148,7 @@ void Fenetre::clicker_sur_btnOuvrir(){
     case Gtk::RESPONSE_ACCEPT:{
 
       file = Glib::filename_to_utf8(dialog.get_filename());
-      etiquette1.set_text(file);
+       etiquette1.set_text(file);
 
 
       const char * fichier = file.c_str();   
@@ -118,32 +158,13 @@ void Fenetre::clicker_sur_btnOuvrir(){
       size_t nbl, nbc;
       f>>nbl>>nbc;
       Picross P(nbl,nbc);
-      //Je créé un tableau Picross vide et je vais faire l'affichage d'indices
-      creerTabPicross(nbl,nbc);
       
       f.ignore();// le '\n' l'affichage d'indice
         P.remplirTabListe(f);
 
-        P.TINY_SOL_iter(nbl,nbc);
-
-        cout << P << endl;
-
-        if(!P.isPicrossFini())
-        {
-          cout << P.getLigModif() << endl;
-          cout << P.getColModif() << endl;
-          P.FAT_SOL(P.getLigModif().getLongueur(),nbl,nbc);
-          cout << P.getMatrice() << endl;
-        }
-
-        if(!P.isPicrossFini())
-        {
-          bool R;
-          P.backtrack(R);
-          cout<<"On fini avec Res à : "<<boolalpha<<R<<noboolalpha<<endl;
-          cout<< P.getMatrice() << endl;
-        }
- 
+ //Je créé un tableau Picross vide
+    creerTabPicross(&P,nbl,nbc); 
+      	  
     }
       break;
     default:
@@ -155,6 +176,28 @@ void Fenetre::clicker_sur_btnOuvrir(){
 
 
 
-void Fenetre::clicker_sur_btnResolution(){
 
+void Fenetre::clicker_sur_btnResolution(){
+  
+std:: ifstream f;
+const char * fichier = file.c_str();
+f.open(fichier);
+ size_t nbl, nbc;
+ f>>nbl>>nbc;
+ Picross P(nbl,nbc); 
+ f.ignore();// le '\n' l'affichage d'indice
+ P.remplirTabListe(f);
+	P.TINY_SOL_iter(nbl,nbc);
+
+    cout << P << endl;
+
+    if(!P.isPicrossFini())
+    {
+      bool R;
+      P.backtrack(R);
+      cout<< P<< endl;
+    }
+ //Je créé un tableau Picross final
+       	creerTabRes(&P,nbl,nbc); 
+	
 }

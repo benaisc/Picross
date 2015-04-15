@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\begin{document}
+
+\title{Rapport de projet Picross}
+\author{CONNES Victor, saississez vos noms}
+\maketitle
+\tableofcontents 
+\newpage
+\section{Description de l'impl\'ementation}
+\subsection{ Les besoins du programme :}
+
+\subsubsection{Pour les indices de chaque ligne/colonne:}
+\begin{itemize}
+\item Imperatif \`a satisfaire:
+\begin{itemize}
+
+\item structure de taille dynamique (nombre variable d’indice par ligne)
+\item parcours en $\theta$(n) (plusieurs m\'ethodes recourant \`a  un parcours total ou partiel de la structure)
+\item relation d’ordre (le parcours ne sont r\'ealiser que dans l’ordre de l’indice le plus en haut vers celui le plus en bas respectivement gauche-droite pour les
+lignes)
+\end{itemize}
+\item Choix : la liste simplement chain\'es, car elle correspond parfaitement au sp\'ecification et parait finalement tr\`es proche de la r\'ealit\'e
+\end{itemize}
+\subsubsection{Pour repr\'esenter la grille du picross :}
+\begin{itemize}
+\item Imperatif \`a satisfaire:
+\begin{itemize}
+\item structure de taille fixe
+\item acc\`es en temps constant a chaque case
+\item faciliter de copie de la structure ($\theta$(n))
+\end{itemize}
+\item Choix: La matrice car tr\`es proche de la r\'ealit\'e
+\end{itemize}
+\subsubsection{Pour l’ensemble des indices de lignes/colonnes :}
+\begin{itemize}
+\item Imperatif \`a satisfaire:
+\begin{itemize}
+\item acc\'eder en temps constant a chaque liste
+\item garder un indicage coh\'erent avec la matrice
+\end{itemize}
+\item Choix :Un tableau
+\end{itemize}
+\subsubsection{Pour ligmodif /colmodif}
+\begin{itemize}
+\item Imperatif \`a satisfaire:
+\begin{itemize}
+\item ajout d’un \'el\'ement en temps constant
+\item retrait d’un \'el\'ement en temps constant
+\item taille dynamique
+\end{itemize}
+\item Choix : 
+Le choix naturel serait l’ensemble mais on choisit la liste simplement chain\'es car d\'ej\`a  impl\'ement\'es pour les indices de chaque ligne/colonne. Son
+comportement est similaire dans le cas d'un ajout et d'un retrait en d\'ebut de liste .
+\end{itemize}
+\subsection{ Les classes}
+L'ensemble de nos classes disposent d'une surcharge de l'operateur<< afin de faciliter l'affichage dans le terminal. De plus, il existe d'autres classes dans notre
+programme qui permettent d'am\'eliorer l'affichage en utilisant une interface graphique. Nous ne distinguerons ici seulement les classes permettant la
+resolution du picross.
+
+\subsubsection{La classe Cell :}
+Elle repr\'esente un indice logique
+\begin{itemize}
+\item Attributs :
+\begin{itemize}
+\item Val : qui repr\'esente la valeur de cette indice logique (cette valeur \'etant strictement enti\`ere positive et a priori non born\'e nous avons choisit de la repr\'esenter par un size\_t)
+\item Suiv : qui est pointeur sur la cellule suivante de la liste
+\end{itemize}
+\end{itemize}
+\subsubsection{La classe Liste :}
+\begin{itemize}
+\item Attributs :
+\begin{itemize}
+\item Longueur : qui repr\'esente la longueur de la liste. Cette attribut et incr\'ementer ou d\'ecr\'ementer automatiquement d\`es qu'il y a variations de la taille de la
+liste.
+\item Fini : Nous indique si la ligne/colonne a laquelle est rattach\'e la liste est enti\`erement rempli (bool\'een \`a  true) ou non (bool\'een \`a  false), cette attribut et
+notamment tr\`es utile pour v\'erifier la condition d'arrêt de notre r\'esolution (cf. main)
+\item Tête : Pointeur vers le premier \'el\'ement de la liste.
+\end{itemize}
+\item M\'ethode remarquable :
+\begin{itemize}
+\item Surcharge de l'op\'erateur() : Nous avons utiliser l'operateur() comme un operateur d'indexage d'une liste cela nous permet notamment de faciliter le
+parcours d'une liste.
+\end{itemize}
+\end{itemize}
+\subsubsection{La classe Tabliste :}
+\begin{itemize}
+\item Attributs :
+\begin{itemize}
+\item Tab : le tableau de liste
+\item Taille : la taille du tableau
+\end{itemize}
+\item M\'ethode remarquable :
+\begin{itemize}
+\item Surcharge de l'op\'erateur[]: Nous permet d'utiliser comme si elle \'etait simplement un tableau.
+\end{itemize}
+\end{itemize}
+\subsubsection{La classe Matrice :}
+\begin{itemize}
+\item Attributs:
+\begin{itemize}
+\item Tab : la matrice d'entier (-1 : blanc 0 : ind\'etermin\'e 1 : noir)
+\item Nbl : Nombre de ligne
+\item Nbc : Nombre de colonnes
+\end{itemize}
+\end{itemize}
+\subsection{ La classe Picross :}
+La classe picross est la classe dont les instances repr\'esente les picross c'est dans cette classe que sont impl\'ement\'e nos m\'ethodes de r\'esolution.
+\subsection{Les algorithmes remarquables :}
+\subsubsection{SLG :}
+\paragraph{Sp\'ecification :}
+\paragraph{Complexit\'e pire des cas : $\theta$($n^2$)}
+\paragraph{Complexit\'e meilleur des cas : $\theta$(n)}
+\end{document}

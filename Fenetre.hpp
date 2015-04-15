@@ -17,8 +17,9 @@ public:
   void clicker_sur_btnOuvrir();
   void clicker_sur_btnResolution();
 
-  void creerTabPicross(size_t nbl,size_t nbc);
-
+  void creerTabPicross(Picross *P,size_t nbl,size_t nbc);
+  void creerTabRes(Picross *P,size_t nbl,size_t nbc);
+ 
   Glib::ustring file;
  
 private:

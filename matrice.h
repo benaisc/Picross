@@ -2,6 +2,7 @@
 #define __MATRICE_H__
 #include <string>
 #include <iostream>
+#include <sstream>
 
 
 
@@ -27,6 +28,7 @@ class Matrice
     void setColonne(size_t nc, int* T);
 
     void   afficheM(std::ostream&) const;
+    std::string afficheMatrice(size_t i,size_t j)const;
 };
 std::ostream &operator<<(std::ostream&, const Matrice&);
 #endif
