@@ -30,7 +30,7 @@ class Picross
 
   /**
   * \fn copieMat() const;
-  * \brief Simple copie d'une matricegetMat
+  * \brief Simple copie d'une matrice
   */
   int** copieMat() const;
   /**
@@ -39,8 +39,8 @@ class Picross
   */
   void recopieMat(int** save);
   /**
-  * \fn (re)copieMat() const;
-  * \brief Simples copie/recopie des booléens des listes entre les backtracks
+  * \fn (re)copieBool() const;
+  * \brief Simples copie/recopie des booléens des listes de tabListe entre les backtracks
   */
   void copieBool(bool* L, bool* C);
   void recopieBool(bool* L, bool* C);
@@ -125,29 +125,29 @@ class Picross
   */
   void Push(int*,size_t,bool);
   /**
-  * \fn solLignes(size_t taille, size_t ind);
+  * \fn solLignes(size_t ind);
   * \brief appel sur la ligneMat[ind] de SLPG SLPD Fusion CasesBlanches AMODIF & Push
   */
-  void solLignes(size_t, size_t);
-  void solColonnes(size_t, size_t);
+  void solLignes(size_t);
+  void solColonnes(size_t);
   /**
-  * \fn TINY_SOL_iter(size_t nbl, size_t nbc, size_t rec);
+  * \fn TINY_SOL_iter();
   * \brief appel sur toutes les lignes et colonnes de solLignes et
   * solColonnes dans le but d'initialiser ligModif et colModif pour FAT_SOL
   */
-  void TINY_SOL_iter(size_t, size_t);
+  void TINY_SOL_iter();
   /**
-  * \fn FAT_SOL(size_t nbIndLig, size_t nbl, size_t nbc);
+  * \fn FAT_SOL(size_t nbIndLig);
   * \brief appel recursif FATCOL&FATLIG tq colModif et ligModif contiennent des cell
   * càd tant que l'on modifie des lignes ou des colonnes
   */
-  void FAT_SOL(size_t, size_t, size_t);
+  void FAT_SOL(size_t);
   /**
-  * \fn FAT_LIG(size_t chk, size_t taille);
+  * \fn FAT_LIG();
   * \brief appel recursif sur tout les indices de ligModif
   */
-  void FAT_LIG(size_t);
-  void FAT_COL(size_t);
+  void FAT_LIG();
+  void FAT_COL();
   /** \fn VerifMatrice(size_t ind, bool B) const;
   * \brief false si la ligne ou colonne de matrice n'est pas correctement rempli
   * càd si le nombre de blocs noirs et le nombre de cases noirs est différent de celui attendu

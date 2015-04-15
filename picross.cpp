@@ -247,10 +247,11 @@ void Picross::Push(int* T, size_t ind, bool b)
   }
 }
 
-void Picross::solLignes(size_t taille, size_t ind)
+void Picross::solLignes(size_t ind)
 {
   if(!lignes[ind].getFini())
   {
+    size_t taille=getNbColonnes();
     int* TG=new int[taille];
     int* TD=new int[taille];
     int* SAVE=new int[taille];
@@ -274,10 +275,11 @@ void Picross::solLignes(size_t taille, size_t ind)
     delete [] Merge;
   }
 }
-void Picross::solColonnes(size_t taille, size_t ind)
+void Picross::solColonnes(size_t ind)
 {
   if(!colonnes[ind].getFini())
   {
+    size_t taille=getNbLignes();
     int* TG=new int[taille];
     int* TD=new int[taille];
     int* SAVE=new int[taille];
@@ -302,9 +304,11 @@ void Picross::solColonnes(size_t taille, size_t ind)
   }
 }
 
-void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
+void Picross::TINY_SOL_iter()
 {
   size_t ind=0;
+  size_t nbl=getNbLignes();
+  size_t nbc=getNbColonnes();
   while(ind<nbl)
   {
     size_t SUM=lignes[ind].somElem();
@@ -318,7 +322,7 @@ void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
     }
     else if(SUM>nbc/2)
     {
-      solLignes(nbc,ind);
+      solLignes(ind);
     }
     ++ind;
   }
@@ -336,19 +340,19 @@ void Picross::TINY_SOL_iter(size_t nbl, size_t nbc)
     }
     else
     {
-      solColonnes(nbl,ind);
+      solColonnes(ind);
     }
     ++ind;
   }
 }
 
-void Picross::FAT_SOL(size_t nbIndLig, size_t nbl, size_t nbc)
+void Picross::FAT_SOL(size_t nbIndLig)
 {
   if(nbIndLig>0)
   {
-    FAT_LIG(nbc);
-    FAT_COL(nbl);
-    FAT_SOL(ligModif.getLongueur(),nbl,nbc);
+    FAT_LIG();
+    FAT_COL();
+    FAT_SOL(ligModif.getLongueur());
   }
   else
   {
@@ -356,23 +360,23 @@ void Picross::FAT_SOL(size_t nbIndLig, size_t nbl, size_t nbc)
   }
 }
 
-void Picross::FAT_LIG(size_t taille)
+void Picross::FAT_LIG()
 {
   if(ligModif.getLongueur()>0)
   {
     size_t indice=ligModif.cutHd();
-    solLignes(taille,indice);
-    FAT_LIG(taille);
+    solLignes(indice);
+    FAT_LIG();
   }
 }
 
-void Picross::FAT_COL(size_t taille)
+void Picross::FAT_COL()
 {
   if(colModif.getLongueur()>0)
   {
     size_t indice=colModif.cutHd();
-    solColonnes(taille,indice);
-    FAT_COL(taille);
+    solColonnes(indice);
+    FAT_COL();
   }
 }
 
@@ -611,7 +615,7 @@ void Picross::recopieBool(bool* L, bool* C)
 
 void Picross::backtrack(bool &poss)
 {
-  FAT_SOL(ligModif.getLongueur(),getNbLignes(),getNbColonnes());
+  FAT_SOL(ligModif.getLongueur());
   if(!isPicrossFini())
   {
     int** SAVE=copieMat();

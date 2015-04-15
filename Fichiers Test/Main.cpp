@@ -21,7 +21,7 @@ int main(int argc, char** argv)
     f.ignore(); //le '\n'
     P.remplirTabListe(f);
 
-    P.TINY_SOL_iter(nbl,nbc);
+    P.TINY_SOL_iter();
 
     cout << P << endl;
 
