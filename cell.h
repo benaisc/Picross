@@ -10,18 +10,20 @@
 
 #include <string>	/**< \def Pour NULL et size_t */
 
+typedef unsigned short int sint;
+
 class Cell{
 	private:
-		size_t val;	/**< size_t == short int (2 octets) */
+		sint val;	/**< size_t == short int (2 octets) */
 		Cell* suiv;
 
   public:
 		Cell();
-		Cell(size_t);
+		Cell(sint);
 
-		void setVal(size_t);
+		void setVal(sint);
 		void setSuiv(Cell*);
-		size_t getVal() const;
+		sint getVal() const;
 		Cell* getSuiv() const;
 		Cell& operator=(const Cell&);
 };

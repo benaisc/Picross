@@ -25,7 +25,7 @@ Cell* Liste::getPremier() const
   return tete;
 }
 
-size_t Liste::getLongueur() const
+sint Liste::getLongueur() const
 {
   return longueur;
 }
@@ -39,7 +39,7 @@ void Liste::setFini(bool b)
 {
   fini=b;
 }
-void Liste::add(size_t v)
+void Liste::add(sint v)
 {
   if(isnull(tete))
   {
@@ -53,7 +53,7 @@ void Liste::add(size_t v)
   }
   ++longueur;
 }
-void Liste::putFin(size_t v)
+void Liste::putFin(sint v)
 {
   if(isnull(tete))
   {
@@ -72,25 +72,21 @@ void Liste::putFin(size_t v)
   ++longueur;
 }
 
-void Liste::ajoutFin(Cell* c)
+sint Liste::cutHd()
 {
-  if(longueur==0)
+  sint val=0;
+  if(!isnull(tete))
   {
-    tete=c;
+    val=tete->getVal();
+    Cell* ptr=tete->getSuiv();
+    delete tete;
+    tete=ptr;
+    --longueur;
   }
-  else
-  {
-    Cell* ptr=tete;
-    for(size_t j=1; j<longueur; j++)
-    {
-      ptr=ptr->getSuiv();
-    }
-    ptr->setSuiv(c);
-  }
-  ++longueur;
+  return val;
 }
 
-size_t Liste::somElem() const
+sint Liste::somElem() const
 {
     int som = 0;
     Cell* ptr=tete;
@@ -102,9 +98,9 @@ size_t Liste::somElem() const
     return som+longueur-1;
 }
 
-size_t Liste::somCell() const
+sint Liste::somCell() const
 {
-  size_t som = 0;
+  sint som = 0;
   Cell* ptr=tete;
   while(!isnull(ptr))
   {
@@ -112,6 +108,16 @@ size_t Liste::somCell() const
     ptr = ptr->getSuiv();
   }
   return som;
+}
+
+bool Liste::appartient(sint val) const
+{
+  Cell* ptr = tete;
+  while (!isnull(ptr) && ptr->getVal() != val)
+  {
+    ptr = ptr->getSuiv();
+  }
+  return !isnull(ptr);
 }
 
 Liste& Liste::operator=(const Liste& c)
@@ -130,7 +136,7 @@ Liste& Liste::operator=(const Liste& c)
   return *this;
 }
 
-Cell* Liste::operator()(size_t i) const
+Cell* Liste::operator()(sint i) const
 {
   if(i>longueur)
   {
@@ -153,19 +159,7 @@ Cell* Liste::operator()(size_t i) const
     }
   }
 }
-size_t Liste::cutHd()
-{
-  size_t val=0;
-  if(!isnull(tete))
-  {
-    val=tete->getVal();
-    Cell* ptr=tete->getSuiv();
-    delete tete;
-    tete=ptr;
-    --longueur;
-  }
-  return val;
-}
+
 Liste* Liste::inverseL_cst() const
 {
   Liste* Res=new Liste();
@@ -199,9 +193,9 @@ std::string Liste::afficheListe() const
   {
     ss <<sep <<ptr->getVal();
     ptr=ptr->getSuiv();
-    sep=" "; 
+    sep=" ";
   }
-  return ss.str(); 
+  return ss.str();
 }
 
 std::string Liste::afficheListeV() const
@@ -214,20 +208,11 @@ std::string Liste::afficheListeV() const
     ss << ptr->getVal()<<std::endl;
     ptr=ptr->getSuiv();
   }
-  return ss.str(); 
+  return ss.str();
 }
 
 std::ostream &operator<<(std::ostream &os, const Liste &L)
 {
   L.afficheL(os);
   return os;
-}
-bool Liste::appartient(size_t val) const
-{
-  Cell* ptr = tete;
-  while (!isnull(ptr) && ptr->getVal() != val)
-    {
-      ptr = ptr->getSuiv();
-    }
-  return !isnull(ptr);
 }

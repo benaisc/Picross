@@ -1,4 +1,22 @@
 /*
+
+void Liste::ajoutFin(Cell* c)
+{
+if(longueur==0)
+{
+tete=c;
+}
+else
+{
+Cell* ptr=tete;
+for(size_t j=1; j<longueur; j++)
+{
+ptr=ptr->getSuiv();
+}
+ptr->setSuiv(c);
+}
+++longueur;
+}
 size_t Liste::cutTl()
 {
 size_t val=0;

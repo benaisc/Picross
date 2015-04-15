@@ -1,6 +1,6 @@
 # include "matrice.h"
 
-Matrice::Matrice(size_t nbl, size_t nbc) : nbl(nbl), nbc(nbc)
+Matrice::Matrice(sint nbl, sint nbc) : nbl(nbl), nbc(nbc)
 {
   if(nbc!=0 && nbl!=0)
   {
@@ -29,15 +29,15 @@ int** Matrice::getMat()const
 {
   return mat;
 }
-size_t Matrice::getNbc()const
+sint Matrice::getNbc()const
 {
   return nbc;
 }
-size_t Matrice::getNbl()const
+sint Matrice::getNbl()const
 {
   return nbl;
 }
-int Matrice::getValue(size_t nl, size_t nc) const
+int Matrice::getValue(sint nl, sint nc) const
 {
   int v=0;
   if(nl+nc<nbl+nbc)
@@ -46,14 +46,14 @@ int Matrice::getValue(size_t nl, size_t nc) const
   }
   return v;
 }
-void Matrice::setValue(size_t nl, size_t nc, size_t v)
+void Matrice::setValue(sint nl, sint nc, int v)
 {
   if(nl+nc<nbl+nbc)
   {
     mat[nl][nc]=v;
   }
 }
-void Matrice::setLigne(size_t nl, int* T)
+void Matrice::setLigne(sint nl, int* T)
 {
   if(nl<nbl)
   {
@@ -63,7 +63,7 @@ void Matrice::setLigne(size_t nl, int* T)
     }
   }
 }
-void Matrice::setColonne(size_t nc, int* T)
+void Matrice::setColonne(sint nc, int* T)
 {
   if(nc<nbc)
   {

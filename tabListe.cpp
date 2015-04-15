@@ -1,17 +1,17 @@
 #include "tabListe.h"
 
-TabListe::TabListe(size_t v) : taille(v), tab(new Liste [taille]){}
+TabListe::TabListe(sint v) : taille(v), tab(new Liste [taille]){}
 
-// TabListe::~TabListe()
-// {
-//   if(tab)
-//   {
-//     delete [] tab;
-//     taille=0;
-//   }
-// }
+TabListe::~TabListe()
+{
+  if(tab)
+  {
+    delete [] tab;
+    taille=0;
+  }
+}
 
-size_t TabListe::getTaille() const
+sint TabListe::getTaille() const
 {
   return taille;
 }
@@ -23,7 +23,7 @@ void TabListe::error() const
   exit(EXIT_FAILURE);
 }
 
-Liste& TabListe::operator[](size_t i) const
+Liste& TabListe::operator[](sint i) const
 {
   if(i>taille)
   {

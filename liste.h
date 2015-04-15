@@ -4,7 +4,7 @@
 /**
 * \class Liste
 * \brief Classe représentant la liste par une tete et son nombre de cellules
-*
+* Ainsi qu'un booleen indiquant si toutes les cellules ont été placées
 * Elle sera utilisée via un Tableau de listes
 */
 
@@ -17,7 +17,7 @@ class Liste
 {
 private:
 	Cell* tete;
-	size_t longueur;
+	sint longueur;
 	bool fini;
 
 public:
@@ -25,45 +25,36 @@ public:
 	~Liste();
 	/**
 	* \fn isnull(Cell*) const
-	* \brief Test de liste nulle
-	*
-	* \param Pointeur sur une Cellule
-	* \return 1 si la liste est vide, 0 sinon
+	* \brief 1 si la liste est vide, 0 sinon
 	*/
 	bool isnull(Cell*) const;	/**< \return 1 si vide, 0 sinon */
 	Cell* getPremier() const;	/**< \return la tete de liste */
-	size_t getLongueur() const;	/**< \return le nombre de cellules de la liste */
+	sint getLongueur() const;	/**< \return le nombre de cellules de la liste */
 	bool getFini() const; /**< \return le booleen indiquant si liste validee */
-	void cutTail();
-	size_t cutHd(); /**< \brief supprime le premier element de la liste et renvoie sa valeur */
-	size_t cutTl(); /**< \brief supprime le dernier element de la liste et renvoie sa valeur */
 	void setFini(bool);
 	/**
-	* \fn putFin(Cell&)
+	* \fn putFin(sint)
 	* \brief Ajout d'une cellule en queue de liste
 	* \param Valeur de la cellule à placer
 	*/
-	void putFin(size_t);
+	void putFin(sint);
 	/**
-	* \fn putFin(Cell&)
+	* \fn add(sint)
 	* \brief Ajout d'une cellule en tete de liste
 	*/
-	void add(size_t);
-	/**
-	* \fn ajoutFin(Cell&)
-	* \brief Ajout d'une cellule en queue de liste
-	* \param Cellule à placer
+	void add(sint);
+	/** \fn cutHd();
+	* \brief supprime la tete de la liste et renvoie sa valeur
 	*/
-	void ajoutFin(Cell*);
+	sint cutHd();
 	/**
-	* \fn operator()(size_t i)
+	* \fn operator()(sint i)
 	* \brief Sucre syntaxique permettant l'accès aux éléments d'une liste
-	* L(1)=tete
-	* \param i "l'indice" de la cellule dans la liste
+	* \param i "l'indice" de la cellule dans la liste; L(1)=tete
 	* Si i>longueur, le programme s'arrête, évitant la seg fault
 	* \return Un pointeur sur la cellule
 	*/
-	Cell* operator()(size_t) const;
+	Cell* operator()(sint) const;
 	/**
 	* \fn operator=(const Liste&)
 	* \brief Operateur par copie
@@ -73,15 +64,15 @@ public:
 	Liste& operator=(const Liste&);
 	/**
 	* \fn somCell()
-	* \brief renvoie la valeur des blocs de case à placer
+	* \brief renvoie la valeur des blocs de cases à placer
 	*/
-	size_t somCell() const;
+	sint somCell() const;
 	/**
 	* \fn somElem()
-	* \brief renvoie la valeur du bloc de cases à placer (avec blancs)
+	* \brief renvoie la valeur du bloc de cases à placer (avec 1 blanc entre chaque bloc)
 	*/
-	size_t somElem() const;
-	bool appartient(size_t) const; 	/**< \return 1 si la valeur est dans la liste, 0 sinon */
+	sint somElem() const;
+	bool appartient(sint) const; 	/**< \return 1 si la valeur est dans la liste, 0 sinon */
 	Liste* inverseL_cst() const;
 
 	void afficheL(std::ostream&) const; /**< 1->2->... */

@@ -1,8 +1,6 @@
 #ifndef __MATRICE_H__
 #define __MATRICE_H__
-#include <string>
-#include <iostream>
-#include <sstream>
+#include "liste.h"
 
 
 
@@ -11,21 +9,21 @@
 class Matrice
 {
   private:
-    size_t nbl;
-    size_t nbc;
+    sint nbl;
+    sint nbc;
     int** mat;
 
   public:
-    Matrice(size_t nbl, size_t nbc);
+    Matrice(sint nbl, sint nbc);
     ~Matrice();
 
     int**  getMat() const;
-    size_t getNbc() const;
-    size_t getNbl() const;
-    int getValue(size_t nl, size_t nc) const;
-    void setValue(size_t nl, size_t nc, size_t v);
-    void setLigne(size_t nl, int* T);
-    void setColonne(size_t nc, int* T);
+    sint getNbc() const;
+    sint getNbl() const;
+    int getValue(sint nl, sint nc) const;
+    void setValue(sint nl, sint nc, int v);
+    void setLigne(sint nl, int* T);
+    void setColonne(sint nc, int* T);
 
     void   afficheM(std::ostream&) const;
     std::string afficheMatrice(size_t i,size_t j)const;

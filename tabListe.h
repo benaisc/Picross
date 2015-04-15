@@ -11,13 +11,13 @@
 class TabListe
 {
 private:
-	size_t taille;
+	sint taille;
 	Liste* tab;
 
 public:
-	TabListe(size_t);
-	//	~TabListe();
-	size_t getTaille() const;
+	TabListe(sint);
+	~TabListe();
+	sint getTaille() const;
 	/**
 	* \fn error()
 	* \brief Stratagème pour sortir du programme avec élégance
@@ -25,12 +25,12 @@ public:
 	*/
 	void error() const;
 	/**
-	* \fn operator[](size_t)
+	* \fn operator[](sint)
 	* \brief Sucre syntaxique évitant les seg. fault
 	* \param i l'indice de la liste dans le tableau[O..taille-1]
 	* \return tab[i]
 	*/
-	Liste &operator[](size_t) const;
+	Liste &operator[](sint) const;
 	/**
 	* \fn operator=()
 	* \brief Surcharge opérateur
@@ -42,5 +42,4 @@ public:
 * \brief Sucre syntaxique permettant l'affichage d'un tabListe
 */
 std::ostream &operator<<(std::ostream&, const TabListe&);
-
 #endif

@@ -3,9 +3,9 @@
 
 Cell::Cell() : val(0), suiv(NULL){}
 
-Cell::Cell(size_t v) : val(v), suiv(NULL){}
+Cell::Cell(sint v) : val(v), suiv(NULL){}
 
-void Cell::setVal(size_t v)
+void Cell::setVal(sint v)
 {
 	val=v;
 }
@@ -15,7 +15,7 @@ void Cell::setSuiv(Cell* c)
 	suiv=c;
 }
 
-size_t Cell::getVal() const
+sint Cell::getVal() const
 {
 	return val;
 }
