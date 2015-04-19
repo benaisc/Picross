@@ -389,7 +389,7 @@ void Picross::remplirCasesSureBl(int* Res,int *Tg, int *Td,size_t n, Liste & L)
   {
     Te[i]=-1;
   }
-  for(size_t j=1; j<L.getLongueur()+1 ;j++)
+  for(size_t j=1; j<(unsigned)L.getLongueur()+1 ;j++)
   {//j=numerodubloc 1.2.3...
     while(minG<n && (size_t)Tg[minG]!=j)
     {

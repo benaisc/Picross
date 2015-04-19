@@ -14,24 +14,28 @@ public:
   ~Fenetre();
   //Signals
 
-  void clicker_sur_btnOuvrir();
-  void clicker_sur_btnResolution();
+  void cliquer_sur_btnOuvrir();
+  void cliquer_sur_btnResolution();
+  void cliquer_sur_btnDescription();
 
+  // void ouverturePicross(Picross *P);
   void creerTabPicross(Picross *P,size_t nbl,size_t nbc);
   void creerTabRes(Picross *P,size_t nbl,size_t nbc);
- 
+  void afficherErreur();
+
   Glib::ustring file;
  
 private:
-  Picross *P;
   Gtk::Image image;
   Gtk::Table tableau;
   Gtk::Button btnQuitter;
   Gtk::Button btnOuvrir;
   Gtk::Button btnResolution;
+  Gtk::Button btnDescription;
   
   Gtk::VButtonBox boiteV;
   Gtk::Label etiquette1;
+  Gtk::Label etiquette2;
   
 };
 
