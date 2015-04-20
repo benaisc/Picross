@@ -19,8 +19,8 @@ public:
   void cliquer_sur_btnDescription();
 
   // void ouverturePicross(Picross *P);
-  void creerTabPicross(Picross *P,size_t nbl,size_t nbc);
-  void creerTabRes(Picross *P,size_t nbl,size_t nbc);
+  void creerTabPicross(Picross &P,size_t nbl,size_t nbc);
+  void creerTabRes(Picross &P,size_t nbl,size_t nbc);
   void afficherErreur();
 
   Glib::ustring file;

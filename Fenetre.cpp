@@ -20,7 +20,7 @@ Fenetre::Fenetre():
 	
   set_title("Solveur de picross");
   set_icon_from_file("Images/im_picross.png");
-  set_default_size(970,600);
+  set_default_size(900,600);
   set_position(Gtk::WIN_POS_CENTER);
   set_border_width(15);
 
@@ -61,7 +61,7 @@ Fenetre::Fenetre():
 Fenetre::~Fenetre(){}
 
 
-void Fenetre::creerTabPicross(Picross *P,size_t nbl,size_t nbc )
+void Fenetre::creerTabPicross(Picross &P,size_t nbl,size_t nbc )
 {  
   etiquette1.set_text(" ");
   Gtk::Image *images[nbl][nbc];  
@@ -79,10 +79,10 @@ void Fenetre::creerTabPicross(Picross *P,size_t nbl,size_t nbc )
   }
   
   for (size_t i=0;i<nbl;i++){
-    etiquettesH[i]->set_text(P->getLignes()[i].afficheListe());
+    etiquettesH[i]->set_text(P.getLignes()[i].afficheListe());
   }
   for (size_t j=0;j<nbc;j++){
-    etiquettesV[j]->set_text(P->getColonnes()[j].afficheListeV());
+    etiquettesV[j]->set_text(P.getColonnes()[j].afficheListeV());
   }
 
   for (size_t i=1;i<=nbc; i++){
@@ -97,8 +97,9 @@ void Fenetre::creerTabPicross(Picross *P,size_t nbl,size_t nbc )
 
 }
 
-void Fenetre::creerTabRes(Picross *P,size_t nbl,size_t nbc )
+void Fenetre::creerTabRes(Picross &P,size_t nbl,size_t nbc )
 {  
+  etiquette1.set_text(" ");
   Gtk::Image *images[nbl][nbc];  
   Gtk::Table *tabPicross;
   Gtk::Label *etiquettesH[nbl];
@@ -114,15 +115,15 @@ void Fenetre::creerTabRes(Picross *P,size_t nbl,size_t nbc )
   }
   
   for (size_t i=0;i<nbl;i++){
-    etiquettesH[i]->set_text(P->getLignes()[i].afficheListe());
+    etiquettesH[i]->set_text(P.getLignes()[i].afficheListe());
   }
   for (size_t j=0;j<nbc;j++){
-    etiquettesV[j]->set_text(P->getColonnes()[j].afficheListeV());
+    etiquettesV[j]->set_text(P.getColonnes()[j].afficheListeV());
   }
 
   for (size_t i=1;i<=nbc; i++){
     for (size_t j=1;j<=nbl; j++){  
-      images[i-1][j-1]=manage(new Gtk::Image(P->getMatrice().afficheMatrice(j-1,i-1)));
+      images[i-1][j-1]=manage(new Gtk::Image(P.getMatrice().afficheMatrice(j-1,i-1)));
       tabPicross->attach(*images[i-1][j-1], i, i+1, j, j+1,Gtk::SHRINK, Gtk::SHRINK);
     }
   }
@@ -167,7 +168,7 @@ void Fenetre::cliquer_sur_btnOuvrir(){
       P.remplirTabListe(f);
 
       //Je créé un tableau Picross vide
-      creerTabPicross(&P,nbl,nbc); 
+      creerTabPicross(P,nbl,nbc); 
       btnOuvrir.set_focus_on_click(true);
       	  
     }
@@ -181,7 +182,7 @@ void Fenetre::cliquer_sur_btnOuvrir(){
 
 
 void Fenetre::cliquer_sur_btnResolution(){
-  if  (btnOuvrir.get_focus_on_click()==true){
+  if (btnOuvrir.get_focus_on_click()==true){
     std:: ifstream f;
     const char * fichier = file.c_str();
     f.open(fichier);
@@ -196,12 +197,14 @@ void Fenetre::cliquer_sur_btnResolution(){
 
     if(!P.isPicrossFini())
       {
-	bool R;
-	P.backtrack(R);
-	cout<< P<< endl;
+	 bool R;
+          P.backtrack(R);
+          cout<<"On fini avec Res Ã  : "<<boolalpha<<R<<noboolalpha<<endl;
+	  creerTabRes(P,nbl,nbc);
+	  cout<< P.getMatrice() << endl;
       }
     //Je créé un tableau Picross final
-    creerTabRes(&P,nbl,nbc); 
+    creerTabRes(P,nbl,nbc); 
   }else{ 
     afficherErreur(); 
   }
@@ -210,7 +213,7 @@ void Fenetre::cliquer_sur_btnResolution(){
 void Fenetre::cliquer_sur_btnDescription(){
   if (btnOuvrir.get_focus_on_click()==false){
     etiquette1.set_justify(Gtk::JUSTIFY_CENTER);
-    etiquette1.set_markup("<span font='12.5' style='oblique' face='Comic sans MS'><b>Solveur de picross </b>\n  Le Picross est un casse-tête qui consiste à retrouver une figure à partir d’indices.\nLa figure à découvir est une grille dans laquelle chaque case est de couleur noire ou blanche.\n Pour chacune des lignes et colonnes on dispose d’un indice qui est une séquence de nombres\n représentant les longueurs des blocs de cases noires contigües de la ligne/colonne. Les blocs\n de cases noires sont séparées par au moins une case blanche.</span>  ");
+    etiquette1.set_markup("<span font='11.5' style='oblique' face='Comic sans MS'><b>Solveur de picross </b>\n  Le Picross est un casse-tête qui consiste à retrouver une figure à partir d’indices.\nLa figure à découvir est une grille dans laquelle chaque case est de couleur noire ou blanche.\n Pour chacune des lignes et colonnes on dispose d’un indice qui est une séquence de nombres\n représentant les longueurs des blocs de cases noires contigües de la ligne/colonne. Les blocs\n de cases noires sont séparées par au moins une case blanche.</span>  ");
 
   }
 }
