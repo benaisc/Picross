@@ -20,7 +20,7 @@ Fenetre::Fenetre():
 	
   set_title("Solveur de picross");
   set_icon_from_file("Images/im_picross.png");
-  set_default_size(900,600);
+  set_default_size(970,600);
   set_position(Gtk::WIN_POS_CENTER);
   set_border_width(15);
 
@@ -50,7 +50,7 @@ Fenetre::Fenetre():
  
   tableau.attach(boiteV,0,1,0,1, Gtk::FILL, Gtk::FILL, 10, 10); 
   tableau.attach(etiquette1, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK); 
-  tableau.attach(etiquette2, 1, 2, 2, 3, Gtk::SHRINK, Gtk::SHRINK); 
+  tableau.attach(etiquette2, 1, 2, 2, 3, Gtk::FILL, Gtk::FILL, 0, 5); 
   
   add(tableau);  
  
@@ -92,7 +92,7 @@ void Fenetre::creerTabPicross(Picross *P,size_t nbl,size_t nbc )
     }
   }
   
-  tableau.attach(*tabPicross, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
+  tableau.attach(*tabPicross, 1, 2, 0, 1, Gtk::FILL, Gtk::FILL, 70, 0);
   show_all();
 
 }
@@ -127,7 +127,7 @@ void Fenetre::creerTabRes(Picross *P,size_t nbl,size_t nbc )
     }
   }
   
-  tableau.attach(*tabPicross, 1, 2, 0, 1, Gtk::SHRINK, Gtk::SHRINK);
+  tableau.attach(*tabPicross, 1, 2, 0, 1,  Gtk::FILL, Gtk::FILL, 70, 0);
   show_all();
 
  
@@ -153,6 +153,7 @@ void Fenetre::cliquer_sur_btnOuvrir(){
     case Gtk::RESPONSE_ACCEPT:{
 
       file = Glib::filename_to_utf8(dialog.get_filename());
+      etiquette2.set_justify(Gtk::JUSTIFY_CENTER);
       etiquette2.set_text(file);
       const char * fichier = file.c_str();   
       std::ifstream f; 

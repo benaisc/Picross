@@ -29,11 +29,11 @@ void Picross::remplirTabListe(std::ifstream& f)
   }
 }
 //accesseur
-TabListe Picross::getLignes() const
+TabListe& Picross::getLignes() 
 {
   return lignes;
 }
-TabListe Picross::getColonnes() const
+TabListe& Picross::getColonnes() 
 {
   return colonnes;
 }

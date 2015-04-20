@@ -22,8 +22,8 @@ class Picross
   //accesseur
   sint getNbLignes() const;
   sint getNbColonnes() const;
-  TabListe getLignes() const;
-  TabListe getColonnes() const;
+  TabListe& getLignes();
+  TabListe& getColonnes();
   Matrice& getMatrice();
   Liste& getColModif();
   Liste& getLigModif();
