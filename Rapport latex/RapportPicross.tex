@@ -6,7 +6,7 @@
 \title{Rapport de projet Picross}
 \author{CONNES Victor, saississez vos noms}
 \maketitle
-\tableofcontents 
+\tableofcontents
 \newpage
 \section{Description de l'impl\'ementation}
 \subsection{ Les besoins du programme :}
@@ -50,7 +50,7 @@ lignes)
 \item retrait d’un \'el\'ement en temps constant
 \item taille dynamique
 \end{itemize}
-\item Choix : 
+\item Choix :
 Le choix naturel serait l’ensemble mais on choisit la liste simplement chain\'es car d\'ej\`a  impl\'ement\'es pour les indices de chaque ligne/colonne. Son
 comportement est similaire dans le cas d'un ajout et d'un retrait en d\'ebut de liste .
 \end{itemize}
@@ -121,11 +121,11 @@ La classe picross est la classe dont les instances repr\'esente les picross c'es
 \item Un bool\'een passé par r\'ef\'erence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compt\'e a partir de l'indice courant dans le tableau.
 \end{itemize}
 \item Retour de la fonction.
-\end{itemize} 
+\end{itemize}
 Le retour ce fait par linterm\'ediaire du tableau  et du bool\'een. Si le bool\'een est \`a false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution.Dans le cas contraire, la solution la plus \`a gauche nous est don\'ée dans le tableau.
 
 \paragraph{Complexit\'e pire des cas : $\theta$($n^2$)\\ }
- Notons :                                               
+ Notons :
 \begin{itemize}
 \item i: l'indice dans notre tableau
 \item n: la taille du dit tableau
@@ -138,4 +138,19 @@ n + SLG(i+1)
 \newline
 Soit une complexit\'e inf\'erieure \`a $n^2$.
 \paragraph{Complexit\'e meilleur des cas : $\theta$(n)}
+
+\subsubsection{Backtrack :}
+\paragraph{Sp\'ecification :}
+ void backtrack(bool &poss);
+\begin{itemize}
+\item Param\`etre:
+\begin{itemize}
+\item Un booléen signalant la possibilitée de placer une case dans un picross non fini
+\end{itemize}
+Dans le cas ou cela est possible, on "backtrack" une case
+Dans le cas ou cela n'est pas possible, on revient à l'environnement de la dernière case backtrackée et on l'inverse
+\item Retour de la fonction.
+\end{itemize}
+La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
+Cela à pour conséquence une complexité élevée ($\theta$(n)) lors de la recopie de celle-ci.
 \end{document}
