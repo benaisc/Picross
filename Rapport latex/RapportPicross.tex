@@ -1,13 +1,127 @@
 \documentclass{article}
 \usepackage{hyperref}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{xcolor}
 \begin{document}
-
 \title{Rapport de projet Picross}
-\author{CONNES Victor, saississez vos noms}
+\author{CONNES Victor, PRYSIAZHNIUK Anastasiia, saississez vos noms}
 \maketitle
-\tableofcontents
+\tableofcontents 
 \newpage
+\section{Description du probl\`eme}
+
+Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure \`a partir d’indices. La figure \`a d\’ecouvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une s\'equence de nombres repr\'esentant les longueurs des blocs de cases noires contigues de la ligne/colonne. Les blocs de cases noires sont s\'epar\'ees par au moins une case blanche.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccccc}
+\textbf{}  & \textbf{}                       & \textbf{3}                     & \textbf{4}                     & \textbf{4}                     & \textbf{4}                     & \textbf{3}                     \\ \cline{3-7} 
+\textbf{2} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ccccccc}
+\textbf{}  & \textbf{}                       & \textbf{3}                                                                    & \textbf{4}                                                                    & \textbf{4}                                                                    & \textbf{4}                                                                    & \textbf{3}                                                                    \\ \cline{3-7} 
+\textbf{2} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\textbf{}}                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{}}                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\textbf{}}                                                \\ \cline{3-7} 
+\textbf{}  & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{}}                                                & \multicolumn{1}{c|}{\textbf{}}                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\textbf{}}                                                & \multicolumn{1}{c|}{\textbf{}}   
+                                             \\ \cline{3-7} 
+\end{tabular}
+\caption{Un exemple de Picross et sa solution.}
+\end{table}
+
+Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
+\begin{table}[h]
+\centering
+\begin{tabular}{
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c }
+\textbf{}                                               & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    \\ \cline{2-5} 
+\multicolumn{1}{r|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c }
+\textbf{}                                               & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    \\ \cline{2-5} 
+\multicolumn{1}{r|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{2-5} 
+\end{tabular}
+\end{table}
+\newpage
+
+\begin{table}[h]
+\centering
+\begin{tabular}{
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c 
+>{\columncolor[HTML]{FFFFFF}}c }
+\textbf{}                                               & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    \\ \cline{2-5} 
+\multicolumn{1}{r|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{2-5} 
+\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\end{tabular}
+\caption{Un exemple de Picross qui a deux solutions.}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccccc}
+                   & \multicolumn{1}{l}{}                                    & \multicolumn{1}{l}{\textbf{1}}                                                & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{1}}                                                \\
+                   & \cellcolor[HTML]{FFFFFF}\textbf{}                       & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            \\ \cline{3-6} 
+\textbf{1}         & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
+\rowcolor[HTML]{FFFFFF} 
+\textit{\textbf{}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{3}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
+\textbf{1}         & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{3-6} 
+\end{tabular}
+\end{table}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lccccc}
+                                           & \multicolumn{1}{l}{}                                             & \multicolumn{1}{l}{\textbf{1}}                                                & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{1}}                                                \\
+                                           & \cellcolor[HTML]{FFFFFF}\textbf{}                                & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            \\ \cline{3-6} 
+\textbf{1}                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}}          & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
+\cellcolor[HTML]{FFFFFF}\textit{\textbf{}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textit{\textbf{3}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
+\textbf{1}                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}}          & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{3-6} 
+\end{tabular}
+\caption{Un exemple de Picross qui n'a pas de solution.}
+\end{table}
+\newpage
+La r\'esolution du Picross est un probl\`eme NP-complet( NP-Complet est un probl\`eme difficile \`a r\'esoudre, par exemple, le probl\`eme SAT). Pour le probl\`eme du Picross cela signifie qu\'il ne faut pas esp\'erer un algorithme qui r\'esout n\'importe quelle grille de Picross avec une complexit\'e polynomiale (en fonction de la taille de la grille) dans le pire des cas. En plus, la difficult\`e de r\'esolution varie selon la taille du grille.
+
+Le but du projet s'agit d'implanter un solveur de Picross en C++ qui lit les donn\'ees d'un probl\`eme Picross, calcule puis affiche sa solution. On ne consid\`ere que des Picross qui ont une solution unique (contrainte donn\'ee dans le cahier des charges).
+
+
+
+
+
 \section{Description de l'impl\'ementation}
 \subsection{ Les besoins du programme :}
 
