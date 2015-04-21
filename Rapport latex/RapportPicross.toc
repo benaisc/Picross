@@ -13,5 +13,5 @@
 \contentsline {subsection}{\numberline {1.4}Les algorithmes remarquables :}{4}{subsection.1.4}
 \contentsline {subsubsection}{\numberline {1.4.1}SLG :}{4}{subsubsection.1.4.1}
 \contentsline {paragraph}{Sp\'ecification :}{4}{section*.2}
-\contentsline {paragraph}{Complexit\'e pire des cas : $\theta $($n^2$)}{4}{section*.3}
-\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)}{4}{section*.4}
+\contentsline {paragraph}{Complexit\'e pire des cas : $\theta $($n^2$)\\ }{4}{section*.3}
+\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)}{5}{section*.4}

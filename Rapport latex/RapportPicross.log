@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.2)  14 APR 2015 16:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.2)  21 APR 2015 11:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -278,24 +278,40 @@ Missing character: There is no ª in font cmr10!
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ª in font cmr10!
  [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 115.
- [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 115.
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+
+Overfull \hbox (7.50053pt too wide) in paragraph at lines 119--120
+\OT1/cmr/m/n/10 tableau, ini-tiale-ment la premi^^Rere cel-lule as-soci^^Se ^^R
+a la dites ligne/colonnes 
+ []
+
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+[4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
+ [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
  (./RapportPicross.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 115.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 115.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 141.
 Package rerunfilecheck Info: File `RapportPicross.out' has not changed.
 (rerunfilecheck)             Checksum: 93394A55121686DB11889B1DB9BECBDD;1123.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 115.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
  ) 
 Here is how much of TeX's memory you used:
- 5274 strings out of 494958
- 76637 string characters out of 6179213
+ 5277 strings out of 494958
+ 76659 string characters out of 6179213
  158889 words of memory out of 5000000
- 8479 multiletter control sequences out of 15000+600000
+ 8481 multiletter control sequences out of 15000+600000
  7895 words of font info for 28 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 29i,6n,35p,234b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,6n,35p,295b,434s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
@@ -304,10 +320,10 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb>
-Output written on RapportPicross.pdf (4 pages, 99398 bytes).
+Output written on RapportPicross.pdf (5 pages, 102557 bytes).
 PDF statistics:
- 137 PDF objects out of 1000 (max. 8388607)
- 121 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
+ 141 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

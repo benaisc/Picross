@@ -110,6 +110,32 @@ La classe picross est la classe dont les instances repr\'esente les picross c'es
 \subsection{Les algorithmes remarquables :}
 \subsubsection{SLG :}
 \paragraph{Sp\'ecification :}
-\paragraph{Complexit\'e pire des cas : $\theta$($n^2$)}
+ void SLG(int*, size\_t, Cell*, size\_t, bool\&);
+\begin{itemize}
+\item Param\`etre:
+\begin{itemize}
+\item Un tableau d'entier: (Donée/resultat) il repr\'esente une ligne/colonne de notre matrice, initialement il peut contenir des cellules \`a 1,-1,0
+\item Un size\_t : repr\'esentant la taille du tableau
+\item Une cellule de liste: il rep\'esente le prochain indice a placer dans le tableau, initialement la premi\`ere cellule associ\'e \`a la dites ligne/colonnes
+\item Un size\_t : repr\'esentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
+\item Un bool\'een passé par r\'ef\'erence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compt\'e a partir de l'indice courant dans le tableau.
+\end{itemize}
+\item Retour de la fonction.
+\end{itemize} 
+Le retour ce fait par linterm\'ediaire du tableau  et du bool\'een. Si le bool\'een est \`a false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution.Dans le cas contraire, la solution la plus \`a gauche nous est don\'ée dans le tableau.
+
+\paragraph{Complexit\'e pire des cas : $\theta$($n^2$)\\ }
+ Notons :                                               
+\begin{itemize}
+\item i: l'indice dans notre tableau
+\item n: la taille du dit tableau
+\item T: le dit tableau
+\item m: la taille de l'indice courant dans la liste
+\end{itemize}
+Dans le pire des cas de notre algorythme, on peut imaginer que chaque hypoth\'ese faites par notre algorythme soit fausse notre fonction serait donc appeler: n-(i+1) \'a chaque case en effet,la premi\'ere case entrainerait n-1 appel, la deuxieme n-2 ainsi de suite.
+Sans compter l'appel r\'ecursif notre algorythme \`a un coup de m pour placer un bloc mais comme pas definition m<n on considerera son coup \'a n. Ainsi on obtient l'\'equation recursive suivant:\newline
+n + SLG(i+1)
+\newline
+Soit une complexit\'e inf\'erieure \`a $n^2$.
 \paragraph{Complexit\'e meilleur des cas : $\theta$(n)}
 \end{document}
