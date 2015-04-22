@@ -327,8 +327,8 @@ Une premi\`ere m\'ethode de r\'esolution consisterait \`a g\'en\`erer toutes les
 Une telle m\'ethode permettrait de d\'eterminer un grand nombre de cases. En revanche, c'est une m\'ethode tr\`es co\^uteuse.
 \newline
 C'est pourquoi, au lieu de g\'en\`erer toutes les solutions, nous avons choisi d'en g\'en\`erer deux; la plus \`a gauche et la plus \`a droite. Cette m\'ethode ne permet pas de d\'eterminer autant de cases que la pr\'ec\'edente mais elle est nettement moins co\^uteuse.
-\subsection{ La m\'ethode SLG}
-Cette m\'ethode a pour but de g\'en\`erer une solution \`a une ligne contenant ou non des cases d\'ej\`a d\'etermin\'ees.
+\subsection{La m\'ethode SLG}
+La m\'ethode SLG a pour but de g\'en\`erer une solution \`a une ligne contenant ou non des cases d\'ej\`a d\'etermin\'ees.
 Elle cherchera \`a placer chacun des blocs de la liste d'indices \`a partir d'un indice i dans la ligne.
 Une fois un bloc plac\'e, elle cherchera \`a placer le suivant. Si elle n'y parvient pas, elle recommence en i+1.
 Afin d'expliciter son fonctionnement, son algorithme est d\'etaill\'ee ci-dessous.
@@ -363,4 +363,17 @@ Afin d'expliciter son fonctionnement, son algorithme est d\'etaill\'ee ci-dessou
   \end{itemize}
 \item[Fin algorithme]
 \end{description}
+\subsection{R\'esolution d'une ligne}
+\subsubsection{Les m\'ethodes SLPG et SLPD}
+Les m\'ethodes SLPG et SLPD g\'en\`erent respectivement pour une ligne, sa solution la plus \`a gauche et sa solution la plus \`a droite. Elle font toutes deux appel \`a SLG avec i=0 et possible = faux. 
+\newline
+Pour la solution droite, SLG est appel\'e sur une ligne et une liste d'indices pr\'ealablement invers\'ees.
+\subsubsection{La m\'ethode Fusion}
+A la suite des appels \`a SLPG et SLPD, nous aurons deux solutions possibles pour une ligne; or, pour parvenir \`a la r\'esolution de notre Picross, il nous faut d\'et\`erminer les cases n'ayant qu'une solution. 
+Pour ce faire, on fait appel \`a Fusion qui ne gardera que les cases noires communes aux deux solutions.
+Cette derni\`ere n\'ecessite que nos blocs de cases noires soient num\'erot\'ees (appel \`a la m\'ethode Numeroter).
+\newline
+En effet, l'unicit\'e de la position d'une case noire ne peut etre d\'eterminer qui si elle appartient \`a un m\^eme bloc d'indice.
+\newline
+\includegraphics[height=6.5cm,width=12cm]{Exemple1}
 \end{document}
