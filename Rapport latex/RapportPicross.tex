@@ -10,7 +10,7 @@
 \newpage
 \section{Description du probl\`eme}
 
-Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure \`a partir d’indices. La figure \`a d\’ecouvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une s\'equence de nombres repr\'esentant les longueurs des blocs de cases noires contigues de la ligne/colonne. Les blocs de cases noires sont s\'epar\'ees par au moins une case blanche.
+Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure depuis les indices. La figure \`a d’ecouvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une s\'equence de nombres repr\'esentant les longueurs des blocs de cases noires contigues de la ligne/colonne. Les blocs de cases noires sont s\'epar\'ees par au moins une case blanche.
 
 \begin{table}[h]
 \centering
@@ -178,7 +178,7 @@ Elle repr\'esente un indice logique
 \begin{itemize}
 \item Attributs :
 \begin{itemize}
-\item Val : qui repr\'esente la valeur de cette indice logique (cette valeur \'etant strictement enti\`ere positive et a priori non born\'e nous avons choisit de la repr\'esenter par un size\_t)
+\item Val : qui repr\'esente la valeur de cette indice logique (cette valeur \'etant strictement enti\`ere positive et a priori non born\'e nous avons choisit de la repr\'esenter par un short int)
 \item Suiv : qui est pointeur sur la cellule suivante de la liste
 \end{itemize}
 \end{itemize}
@@ -224,38 +224,44 @@ La classe picross est la classe dont les instances repr\'esente les picross c'es
 \subsection{Les algorithmes remarquables :}
 \subsubsection{SLG :}
 \paragraph{Sp\'ecification :}
- void SLG(int*, size\_t, Cell*, size\_t, bool\&);
+ void SLG(int*, short int, Cell*, short int, bool\&);
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
 \item Un tableau d'entier: (Donée/resultat) il repr\'esente une ligne/colonne de notre matrice, initialement il peut contenir des cellules \`a 1,-1,0
-\item Un size\_t : repr\'esentant la taille du tableau
+\item Un short int : repr\'esentant la taille du tableau
 \item Une cellule de liste: il rep\'esente le prochain indice a placer dans le tableau, initialement la premi\`ere cellule associ\'e \`a la dites ligne/colonnes
-\item Un size\_t : repr\'esentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
+\item Un short int : repr\'esentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
 \item Un bool\'een passé par r\'ef\'erence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compt\'e a partir de l'indice courant dans le tableau.
 \end{itemize}
 \item Retour de la fonction.
 \end{itemize}
 Le retour ce fait par linterm\'ediaire du tableau  et du bool\'een. Si le bool\'een est \`a false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution.Dans le cas contraire, la solution la plus \`a gauche nous est don\'ée dans le tableau.
 
-\paragraph{Complexit\'e pire des cas : $\theta$($n^2$)\\ }
+\paragraph{Complexit\'e c pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
  Notons :
 \begin{itemize}
 \item i: l'indice dans notre tableau
 \item n: la taille du dit tableau
 \item T: le dit tableau
-\item m: la taille de l'indice courant dans la liste
+\item l: la taille de la liste d'indice (le nombre d'indices)
+\item $m_i$: l'envergure d'un indice i
 \end{itemize}
-Dans le pire des cas de notre algorythme, on peut imaginer que chaque hypoth\'ese faites par notre algorythme soit fausse notre fonction serait donc appeler: n-(i+1) \'a chaque case en effet,la premi\'ere case entrainerait n-1 appel, la deuxieme n-2 ainsi de suite.
-Sans compter l'appel r\'ecursif notre algorythme \`a un coup de m pour placer un bloc mais comme pas definition m<n on considerera son coup \'a n. Ainsi on obtient l'\'equation recursive suivant:\newline
-n + SLG(i+1)
+Dans le pire des cas de notre algorythme, on peut imaginer que chaque hypoth\'ese faites par notre algorythme soit fausse notre fonction: Pour cela,il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1) en effet,plus les indices sont grand moins il ont de position possible pour une m\^eme taille de tableau, et donc moins d'hypothèse.
+\newline Enfin,on voit bien que la complexit\'e vas d\'ependre de taille de la liste ,en effet,chaque cellule appelle la fonction au moins une fois pour chaque maillons placer après dans liste.Au plus,pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
+\newline En outre, on sait que le co\^ut de SLG sans les appels r\'ecursif reviens a n puisque dans tous les cas o\`u la liste n'est pas vide ont recopie le tableau.Sinon, si la liste est vide on parcours le tableau de l'indice i à n, ici, on considerera cette valeur cst=n, n\'eanmoins bien que ce cas soit defavorable il n'est pas r\'ealiste en effet, dans le cas d'une liste non-vide ( ce qui notre cas) alors cette valeur est necessairement inférieure et decroit tout au long des appels de SLG.
+Soit une complexit\'e inf\'erieure \`a $2^n$.
 \newline
-Soit une complexit\'e inf\'erieure \`a $n^2$.
-\paragraph{Complexit\'e meilleur des cas : $\theta$(n)}
-
+Avec ce modèle défavorable on obtient l'equation de recursion suivante:
+\begin{center}
+ \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
+\end{center}
+Ainsi en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$,en effet, pour chaque case on parcours au minimun un fois le tableau (la recopie) pour chaque cellule après ici cela fait d\'ej\`a $\theta(n^2)$ et on doit le faire pour chaque indice.
+\paragraph{Complexit\'e meilleur des cas : $\theta$(n)\newline}
+Dans le meilleur des cas la liste est vide on doit pacourir une fois le tableau pour pouvoir v\'erifi\'e .
 \subsubsection{Backtrack :}
 \paragraph{Sp\'ecification :}
- void backtrack(bool &poss);
+ void backtrack(bool \&poss);
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
@@ -267,4 +273,35 @@ Dans le cas ou cela n'est pas possible, on revient à l'environnement de la dern
 \end{itemize}
 La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
 Cela à pour conséquence une complexité élevée ($\theta$(n)) lors de la recopie de celle-ci.
+\subsubsection{Fusion :}
+\paragraph{Sp\'ecification :}Fusion(int* Merge,int* TG,int* TD,sint taille);
+\begin{itemize}
+\item Param\`etre:
+\begin{itemize}
+\item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice,après la resolution de notre fonction, initialisé avec la ligne/colonne existante
+\item Un tableau d'entier TG: (Donn\'ee) il repr\'esente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des information à notre disposition
+\item Un tableau d'entier TD: (Donn\'ee) idem pour la solution la plus à droite
+\item Un short int taille: représentant la taille du tableau
+\end{itemize}
+\item Retour de la fonction:
+\end{itemize}
+La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case noire "sures".
+\paragraph{Comlexit\'e : $\theta$(n)\newline}
+Nous parcourons chaque case du tableau pour v\'erifier si nous avons des informations suplementaires. Remarque: on aurait pu gérer une liste des indices qui était encore ind\'etermin\'e pour chaque ligne/colonne ce qui aurait am\'eliorer notre complexit\'e moyenne. N\'eanmoins, nous avons juger cela peut indispensable au vue du caract\`ere negligeble de cette complexit\'e par rapport au autre fonctions du programme. 
+\subsubsection{Fusion :}
+\paragraph{Sp\'ecification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
+\begin{itemize}
+\item Param\`etre:
+\begin{itemize}
+\item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice,après la resolution de notre fonction, initialisé avec le retour de fusion.
+\item Un tableau d'entier TG: (Donn\'ee) il repr\'esente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des information à notre disposition
+\item Un tableau d'entier TD: (Donn\'ee) idem pour la solution la plus à droite
+\item Un short int taille: représentant la taille du tableau
+\item Une liste d'indices L: La liste d'indices associ\'es a la ligne/colonne
+\end{itemize}
+\item Retour de la fonction:
+La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case blanche "sures".
+\paragraph{Comlexit\'e : $\theta$(n)\newline}
+
+\end{itemize}
 \end{document}

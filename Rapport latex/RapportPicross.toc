@@ -1,17 +1,25 @@
-\contentsline {section}{\numberline {1}Description de l'impl\'ementation}{2}{section.1}
-\contentsline {subsection}{\numberline {1.1} Les besoins du programme :}{2}{subsection.1.1}
-\contentsline {subsubsection}{\numberline {1.1.1}Pour les indices de chaque ligne/colonne:}{2}{subsubsection.1.1.1}
-\contentsline {subsubsection}{\numberline {1.1.2}Pour repr\'esenter la grille du picross :}{2}{subsubsection.1.1.2}
-\contentsline {subsubsection}{\numberline {1.1.3}Pour l’ensemble des indices de lignes/colonnes :}{2}{subsubsection.1.1.3}
-\contentsline {subsubsection}{\numberline {1.1.4}Pour ligmodif /colmodif}{2}{subsubsection.1.1.4}
-\contentsline {subsection}{\numberline {1.2} Les classes}{3}{subsection.1.2}
-\contentsline {subsubsection}{\numberline {1.2.1}La classe Cell :}{3}{subsubsection.1.2.1}
-\contentsline {subsubsection}{\numberline {1.2.2}La classe Liste :}{3}{subsubsection.1.2.2}
-\contentsline {subsubsection}{\numberline {1.2.3}La classe Tabliste :}{3}{subsubsection.1.2.3}
-\contentsline {subsubsection}{\numberline {1.2.4}La classe Matrice :}{4}{subsubsection.1.2.4}
-\contentsline {subsection}{\numberline {1.3} La classe Picross :}{4}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Les algorithmes remarquables :}{4}{subsection.1.4}
-\contentsline {subsubsection}{\numberline {1.4.1}SLG :}{4}{subsubsection.1.4.1}
-\contentsline {paragraph}{Sp\'ecification :}{4}{section*.2}
-\contentsline {paragraph}{Complexit\'e pire des cas : $\theta $($n^2$)\\ }{4}{section*.3}
-\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)}{5}{section*.4}
+\contentsline {section}{\numberline {1}Description du probl\`eme}{2}{section.1}
+\contentsline {section}{\numberline {2}Description de l'impl\'ementation}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1} Les besoins du programme :}{4}{subsection.2.1}
+\contentsline {subsubsection}{\numberline {2.1.1}Pour les indices de chaque ligne/colonne:}{4}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\numberline {2.1.2}Pour repr\'esenter la grille du picross :}{4}{subsubsection.2.1.2}
+\contentsline {subsubsection}{\numberline {2.1.3}Pour l’ensemble des indices de lignes/colonnes :}{5}{subsubsection.2.1.3}
+\contentsline {subsubsection}{\numberline {2.1.4}Pour ligmodif /colmodif}{5}{subsubsection.2.1.4}
+\contentsline {subsection}{\numberline {2.2} Les classes}{5}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}La classe Cell :}{5}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}La classe Liste :}{5}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}La classe Tabliste :}{6}{subsubsection.2.2.3}
+\contentsline {subsubsection}{\numberline {2.2.4}La classe Matrice :}{6}{subsubsection.2.2.4}
+\contentsline {subsection}{\numberline {2.3} La classe Picross :}{6}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Les algorithmes remarquables :}{6}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}SLG :}{6}{subsubsection.2.4.1}
+\contentsline {paragraph}{Sp\'ecification :}{6}{section*.2}
+\contentsline {paragraph}{Complexit\'e c pire des cas : $\theta (n^2) <$c$\leq \theta (2^n)$\\ }{7}{section*.3}
+\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)\newline }{8}{section*.4}
+\contentsline {subsubsection}{\numberline {2.4.2}Backtrack :}{8}{subsubsection.2.4.2}
+\contentsline {paragraph}{Sp\'ecification :}{8}{section*.5}
+\contentsline {subsubsection}{\numberline {2.4.3}Fusion :}{8}{subsubsection.2.4.3}
+\contentsline {paragraph}{Sp\'ecification :}{8}{section*.6}
+\contentsline {paragraph}{Comlexit\'e : $\theta $(n)\newline }{8}{section*.7}
+\contentsline {subsubsection}{\numberline {2.4.4}Fusion :}{9}{subsubsection.2.4.4}
+\contentsline {paragraph}{Sp\'ecification :}{9}{section*.8}
