@@ -21,5 +21,9 @@
 \contentsline {subsubsection}{\numberline {2.4.3}Fusion :}{8}{subsubsection.2.4.3}
 \contentsline {paragraph}{Sp\'ecification :}{8}{section*.6}
 \contentsline {paragraph}{Comlexit\'e : $\theta $(n)\newline }{8}{section*.7}
-\contentsline {subsubsection}{\numberline {2.4.4}Fusion :}{9}{subsubsection.2.4.4}
+\contentsline {subsubsection}{\numberline {2.4.4}remplirCasesSureBl :}{9}{subsubsection.2.4.4}
 \contentsline {paragraph}{Sp\'ecification :}{9}{section*.8}
+\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline }{9}{section*.9}
+\contentsline {subsubsection}{\numberline {2.4.5}remplirCaseBlcoince :}{9}{subsubsection.2.4.5}
+\contentsline {paragraph}{Sp\'ecification :}{9}{section*.10}
+\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline }{10}{section*.11}

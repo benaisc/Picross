@@ -288,7 +288,7 @@ Cela à pour conséquence une complexité élevée ($\theta$(n)) lors de la reco
 La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case noire "sures".
 \paragraph{Comlexit\'e : $\theta$(n)\newline}
 Nous parcourons chaque case du tableau pour v\'erifier si nous avons des informations suplementaires. Remarque: on aurait pu gérer une liste des indices qui était encore ind\'etermin\'e pour chaque ligne/colonne ce qui aurait am\'eliorer notre complexit\'e moyenne. N\'eanmoins, nous avons juger cela peut indispensable au vue du caract\`ere negligeble de cette complexit\'e par rapport au autre fonctions du programme. 
-\subsubsection{Fusion :}
+\subsubsection{remplirCasesSureBl :}
 \paragraph{Sp\'ecification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
 \begin{itemize}
 \item Param\`etre:
@@ -300,8 +300,25 @@ Nous parcourons chaque case du tableau pour v\'erifier si nous avons des informa
 \item Une liste d'indices L: La liste d'indices associ\'es a la ligne/colonne
 \end{itemize}
 \item Retour de la fonction:
-La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case blanche "sures".
-\paragraph{Comlexit\'e : $\theta$(n)\newline}
-
 \end{itemize}
+La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case blanche "sures" en se basant sur l'envergure des blocs.
+\paragraph{Comlexit\'e : $\theta(n)$\newline}
+On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermediaire pour cela il nous faut parcourir SLG puis SLD mais pas en totalit\'e ,en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0,c'est alors, qu'on parcours SLD \`a partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. On a alors l'envergure du premier bloc.Pour le deuxi\'eme on peut commencer notre parcours dans SLG \'a partir de i2 car il est forc\'ement \`a droite du premier.\newline On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors \'a partir du nouveau i2 et ainsi de suite.Au final, on aura parcouru entre n et 2n case du tableau.
+
+\subsubsection{remplirCaseBlcoince :}
+\paragraph{Sp\'ecification :}CaseBlcoince(int* Merge, sint taille, Liste \&L);
+\begin{itemize}
+\item Param\`etre:
+\begin{itemize}
+\item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice.
+\item Un short int taille: représentant la taille du tableau
+\item Une liste d'indices L: La liste d'indices associ\'es a la ligne/colonne
+\end{itemize}
+\item Retour de la fonction:
+\end{itemize}
+La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'\'eventuelle case blanche "sures" en se basant sur les tailles des blocs.
+\paragraph{Comlexit\'e : $\theta(n)$\newline}
+
+
+
 \end{document}
