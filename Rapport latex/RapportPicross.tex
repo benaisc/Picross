@@ -2,6 +2,7 @@
 \usepackage{hyperref}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{xcolor}
+\usepackage{graphicx}
 \begin{document}
 \title{Rapport de projet Picross}
 \author{CONNES Victor, PRYSIAZHNIUK Anastasiia, saississez vos noms}
@@ -318,7 +319,67 @@ On doit pour chaque indice de la liste inscrire son envergure dans un tableau in
 \end{itemize}
 La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'\'eventuelle case blanche "sures" en se basant sur les tailles des blocs.
 \paragraph{Comlexit\'e : $\theta(n)$\newline}
-
-
+\section{Description de la m\'ethode de r\'esolution utilis\'ee}
+Afin de r\'esoudre une grille de Picross donn\'ee, nous traitons ses lignes ind\'ependamment de ses colonnes. 
+Le traitement des lignes et des colonnes se faisant de la m\^eme mani\`ere; nous n'\'evoquerons par la suite que le traitement des lignes.
+\newline
+Une premi\`ere m\'ethode de r\'esolution consisterait \`a g\'en\`erer toutes les solutions d'une ligne, partiellement remplie ou non; et de d\'eterminer les cases noires ou blanches communes \`a chacune des solutions.
+\newline
+Une telle m\'ethode permettrait de d\'eterminer un grand nombre de cases. En revanche, c'est une m\'ethode tr\`es co\^uteuse.
+\newline
+C'est pourquoi, au lieu de g\'en\`erer toutes les solutions, nous avons choisi d'en g\'en\`erer deux; la plus \`a gauche et la plus \`a droite. Cette m\'ethode ne permet pas de d\'eterminer autant de cases que la pr\'ec\'edente mais elle est nettement moins co\^uteuse.
+\subsection{La m\'ethode SLG}
+La m\'ethode SLG a pour but de g\'en\`erer une solution \`a une ligne contenant ou non des cases d\'ej\`a d\'etermin\'ees.
+Elle cherchera \`a placer chacun des blocs de la liste d'indices \`a partir d'un indice i dans la ligne.
+Une fois un bloc plac\'e, elle cherchera \`a placer le suivant. Si elle n'y parvient pas, elle recommence en i+1.
+Afin d'expliciter son fonctionnement, son algorithme est d\'etaill\'ee ci-dessous.
+\paragraph{Algorithme : SLG}(L: ligne; n: taille de la ligne; Lind: liste d'indices; i: entier; possible: booleen)
+\begin{description}
+\item[Debut]
+\item[]
+  \begin{itemize}
+  \item[Si] Lind est vide alors 
+    \begin{itemize}
+    \item[Si] L ne contient pas de cases noires alors
+      \begin{itemize}
+      \item possible == vrai;
+      \end{itemize}
+    \item[Si] possible alors
+      \begin{itemize}
+      \item on blanchit toutes les cases de L;
+      \end{itemize}
+    \end{itemize}
+  \item[Sinon]
+    \begin{itemize}
+    \item[Si] l'espace entre i et n est insuffisant pour placer le bloc ou qu'on ne peut pas placer de case blanche apr\`es le bloc ou que l'espace entre i \`a la taille du bloc contient une case blanche alors
+      \begin{itemize}
+      \item possible == faux;
+      \end{itemize}
+    \item[Si] possible alors 
+      \begin{itemize}
+    \item On place le bloc \`a partir de i;
+    \item On rappelle SLG pour l'indice de bloc suivant avec i+valeur d'indice pr\'ec\'edent+1;
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\item[Fin algorithme]
+\end{description}
+\subsection{R\'esolution d'une ligne}
+\subsubsection{Les m\'ethodes SLPG et SLPD}
+Les m\'ethodes SLPG et SLPD g\'en\`erent respectivement pour une ligne, sa solution la plus \`a gauche et sa solution la plus \`a droite. Elle font toutes deux appel \`a SLG avec i=0 et possible = faux. 
+\newline
+Pour la solution droite, SLG est appel\'e sur une ligne et une liste d'indices pr\'ealablement invers\'ees.
+\subsubsection{La m\'ethode Fusion}
+A la suite des appels \`a SLPG et SLPD, nous aurons deux solutions possibles pour une ligne; or, pour parvenir \`a la r\'esolution de notre Picross, il nous faut d\'et\`erminer les cases n'ayant qu'une solution. 
+\newline
+Pour ce faire, on fait appel \`a Fusion qui ne gardera que les cases noires communes aux deux solutions.
+Cette derni\`ere n\'ecessite que nos blocs de cases noires soient num\'erot\'ees (appel \`a la m\'ethode Numeroter).
+\newline
+En effet, le status de case noire s\^ure ne peut \^etre d\'efini que si une case noire commune aux deux solutions appartient au un m\^eme et une unique bloc.
+\newline
+L'exemple ci-dessous illustre l'importance de cette sp\'ecification.  
+\newline
+\includegraphics[height=6.5cm,width=12cm]{Exemple1}
+\subsubsection{La m\'ethode remplirCasesSureBl}
 
 \end{document}
