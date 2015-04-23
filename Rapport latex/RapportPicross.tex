@@ -11,7 +11,7 @@
 \newpage
 \section{Description du probl\`eme}
 
-Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure depuis les indices. La figure \`a d’ecouvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une s\'equence de nombres repr\'esentant les longueurs des blocs de cases noires contigues de la ligne/colonne. Les blocs de cases noires sont s\'epar\'ees par au moins une case blanche.
+Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure depuis les indices. La figure \`a d'ecouvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une s\'equence de nombres repr\'esentant les longueurs des blocs de cases noires contigues de la ligne/colonne. Les blocs de cases noires sont s\'epar\'ees par au moins une case blanche.
 
 \begin{table}[h]
 \centering
@@ -42,80 +42,63 @@ Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure depuis les 
 Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
 \begin{table}[h]
 \centering
-\begin{tabular}{
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c }
-\textbf{}                                               & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    \\ \cline{2-5} 
-\multicolumn{1}{r|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\begin{tabular}{ccccc}
+\textbf{}                       & \textbf{2}            & \textbf{2}            & \textbf{2}            & \textbf{2}            \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{2-5} 
+\multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-5} 
 \end{tabular}
 \end{table}
 
 \begin{table}[h]
 \centering
-\begin{tabular}{
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c }
-\textbf{}                                               & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    \\ \cline{2-5} 
-\multicolumn{1}{r|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{2-5} 
+\begin{tabular}{ccccc}
+\textbf{}                       & \textbf{2}                                    & \textbf{2}                                    & \textbf{2}                                    & \textbf{2}                                    \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         \\ \cline{2-5} 
+\multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{l|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         \\ \cline{2-5} 
 \end{tabular}
 \end{table}
 \newpage
 
 \begin{table}[h]
 \centering
-\begin{tabular}{
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c 
->{\columncolor[HTML]{FFFFFF}}c }
-\textbf{}                                               & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    & \textbf{2}                                                                    \\ \cline{2-5} 
-\multicolumn{1}{r|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{2-5} 
-\multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{2-5} 
+\begin{tabular}{ccccc}
+\textbf{}                       & \textbf{2}                                    & \textbf{2}                                    & \textbf{2}                                    & \textbf{2}                                    \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         \\ \cline{2-5} 
+\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} \\ \cline{2-5} 
+\multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{l|}{\cellcolor[HTML]{000000}} \\ \cline{2-5} 
 \end{tabular}
 \caption{Un exemple de Picross qui a deux solutions.}
 \end{table}
 
 \begin{table}[h]
 \centering
-\begin{tabular}{lccccc}
-                   & \multicolumn{1}{l}{}                                    & \multicolumn{1}{l}{\textbf{1}}                                                & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{1}}                                                \\
-                   & \cellcolor[HTML]{FFFFFF}\textbf{}                       & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            \\ \cline{3-6} 
-\textbf{1}         & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
-\rowcolor[HTML]{FFFFFF} 
-\textit{\textbf{}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{3}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
-\textbf{1}         & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        \\ \cline{3-6} 
+\begin{tabular}{cccccc}
+                   &                                 & \textbf{1}            & \textbf{}             & \textbf{}             & \textbf{1}            \\
+                   & \textbf{}                       & \textbf{1}            & \textbf{1}            & \textbf{1}            & \textbf{1}            \\ \cline{3-6} 
+\textbf{1}         & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{3-6} 
+\textit{\textbf{}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{3-6} 
+\textbf{1}         & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{3-6} 
 \end{tabular}
 \end{table}
 
-
 \begin{table}[h]
 \centering
-\begin{tabular}{lccccc}
-                                           & \multicolumn{1}{l}{}                                             & \multicolumn{1}{l}{\textbf{1}}                                                & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{}}                                                 & \multicolumn{1}{l}{\textbf{1}}                                                \\
-                                           & \cellcolor[HTML]{FFFFFF}\textbf{}                                & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            & \cellcolor[HTML]{FFFFFF}\textbf{1}                                            \\ \cline{3-6} 
-\textbf{1}                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}}          & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
-\cellcolor[HTML]{FFFFFF}\textit{\textbf{}} & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textit{\textbf{3}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{9B9B9B}{\color[HTML]{000000} \textbf{}}} \\ \cline{3-6} 
-\textbf{1}                                 & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{1}}          & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{3-6} 
+\begin{tabular}{cccccc}
+                   &                                 & \textbf{1}                                                           & \textbf{}                                     & \textbf{}                                     & \textbf{1}                                                           \\
+                   & \textbf{}                       & \textbf{1}                                                           & \textbf{1}                                    & \textbf{1}                                    & \textbf{1}                                                           \\ \cline{3-6} 
+\textbf{1}         & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}}                        & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}}                        \\ \cline{3-6} 
+\textit{\textbf{}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{9B9B9B} }} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}{\color[HTML]{9B9B9B} }} \\ \cline{3-6} 
+\textbf{1}         & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}}                        & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{}                         & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}}                        \\ \cline{3-6} 
 \end{tabular}
 \caption{Un exemple de Picross qui n'a pas de solution.}
 \end{table}
 \newpage
-La r\'esolution du Picross est un probl\`eme NP-complet( NP-Complet est un probl\`eme difficile \`a r\'esoudre, par exemple, le probl\`eme SAT). Pour le probl\`eme du Picross cela signifie qu\'il ne faut pas esp\'erer un algorithme qui r\'esout n\'importe quelle grille de Picross avec une complexit\'e polynomiale (en fonction de la taille de la grille) dans le pire des cas. En plus, la difficult\`e de r\'esolution varie selon la taille du grille.
+La r\'esolution du Picross est un probl\`eme NP-complet( NP-Complet est un probl\`eme difficile \`a r\'esoudre, par exemple, le probl\`eme SAT). Pour le probl\`eme du Picross cela signifie qu'il ne faut pas esp\'erer un algorithme qui r\'esout n'importe quelle grille de Picross avec une complexit\'e polynomiale (en fonction de la taille de la grille) dans le pire des cas. En plus, la difficult\`e de r\'esolution varie selon la taille du grille.
 
 Le but du projet s'agit d'implanter un solveur de Picross en C++ qui lit les donn\'ees d'un probl\`eme Picross, calcule puis affiche sa solution. On ne consid\`ere que des Picross qui ont une solution unique (contrainte donn\'ee dans le cahier des charges).
 
@@ -131,9 +114,9 @@ Le but du projet s'agit d'implanter un solveur de Picross en C++ qui lit les don
 \item Imperatif \`a satisfaire:
 \begin{itemize}
 
-\item structure de taille dynamique (nombre variable d’indice par ligne)
+\item structure de taille dynamique (nombre variable d'indice par ligne)
 \item parcours en $\theta$(n) (plusieurs m\'ethodes recourant \`a  un parcours total ou partiel de la structure)
-\item relation d’ordre (le parcours ne sont r\'ealiser que dans l’ordre de l’indice le plus en haut vers celui le plus en bas respectivement gauche-droite pour les
+\item relation d'ordre (le parcours ne sont r\'ealiser que dans l'ordre de l'indice le plus en haut vers celui le plus en bas respectivement gauche-droite pour les
 lignes)
 \end{itemize}
 \item Choix : la liste simplement chain\'es, car elle correspond parfaitement au sp\'ecification et parait finalement tr\`es proche de la r\'ealit\'e
@@ -148,7 +131,7 @@ lignes)
 \end{itemize}
 \item Choix: La matrice car tr\`es proche de la r\'ealit\'e
 \end{itemize}
-\subsubsection{Pour l’ensemble des indices de lignes/colonnes :}
+\subsubsection{Pour l'ensemble des indices de lignes/colonnes :}
 \begin{itemize}
 \item Imperatif \`a satisfaire:
 \begin{itemize}
@@ -161,12 +144,12 @@ lignes)
 \begin{itemize}
 \item Imperatif \`a satisfaire:
 \begin{itemize}
-\item ajout d’un \'el\'ement en temps constant
-\item retrait d’un \'el\'ement en temps constant
+\item ajout d'un \'el\'ement en temps constant
+\item retrait d'un \'el\'ement en temps constant
 \item taille dynamique
 \end{itemize}
 \item Choix :
-Le choix naturel serait l’ensemble mais on choisit la liste simplement chain\'es car d\'ej\`a  impl\'ement\'es pour les indices de chaque ligne/colonne. Son
+Le choix naturel serait l'ensemble mais on choisit la liste simplement chain\'es car d\'ej\`a  impl\'ement\'es pour les indices de chaque ligne/colonne. Son
 comportement est similaire dans le cas d'un ajout et d'un retrait en d\'ebut de liste .
 \end{itemize}
 \subsection{ Les classes}
@@ -229,15 +212,15 @@ La classe picross est la classe dont les instances repr\'esente les picross c'es
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
-\item Un tableau d'entier: (Donée/resultat) il repr\'esente une ligne/colonne de notre matrice, initialement il peut contenir des cellules \`a 1,-1,0
+\item Un tableau d'entier: (Don\'ee/resultat) il repr\'esente une ligne/colonne de notre matrice, initialement il peut contenir des cellules \`a 1,-1,0
 \item Un short int : repr\'esentant la taille du tableau
 \item Une cellule de liste: il rep\'esente le prochain indice a placer dans le tableau, initialement la premi\`ere cellule associ\'e \`a la dites ligne/colonnes
 \item Un short int : repr\'esentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
-\item Un bool\'een passé par r\'ef\'erence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compt\'e a partir de l'indice courant dans le tableau.
+\item Un bool\'een pass\'e par r\'ef\'erence : repr\'esentant si il est possible ou non de placer la fin de la liste d'indices indice courant compt\'e a partir de l'indice courant dans le tableau.
 \end{itemize}
 \item Retour de la fonction.
 \end{itemize}
-Le retour ce fait par linterm\'ediaire du tableau  et du bool\'een. Si le bool\'een est \`a false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution.Dans le cas contraire, la solution la plus \`a gauche nous est don\'ée dans le tableau.
+Le retour ce fait par linterm\'ediaire du tableau  et du bool\'een. Si le bool\'een est \`a false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution.Dans le cas contraire, la solution la plus \`a gauche nous est don\'\'ee dans le tableau.
 
 \paragraph{Complexit\'e c pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
  Notons :
@@ -249,15 +232,15 @@ Le retour ce fait par linterm\'ediaire du tableau  et du bool\'een. Si le bool\'
 \item $m_i$: l'envergure d'un indice i
 \end{itemize}
 Dans le pire des cas de notre algorythme, on peut imaginer que chaque hypoth\'ese faites par notre algorythme soit fausse notre fonction: Pour cela,il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1) en effet,plus les indices sont grand moins il ont de position possible pour une m\^eme taille de tableau, et donc moins d'hypothèse.
-\newline Enfin,on voit bien que la complexit\'e vas d\'ependre de taille de la liste ,en effet,chaque cellule appelle la fonction au moins une fois pour chaque maillons placer après dans liste.Au plus,pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
-\newline En outre, on sait que le co\^ut de SLG sans les appels r\'ecursif reviens a n puisque dans tous les cas o\`u la liste n'est pas vide ont recopie le tableau.Sinon, si la liste est vide on parcours le tableau de l'indice i à n, ici, on considerera cette valeur cst=n, n\'eanmoins bien que ce cas soit defavorable il n'est pas r\'ealiste en effet, dans le cas d'une liste non-vide ( ce qui notre cas) alors cette valeur est necessairement inférieure et decroit tout au long des appels de SLG.
+\newline Enfin,on voit bien que la complexit\'e vas d\'ependre de taille de la liste ,en effet,chaque cellule appelle la fonction au moins une fois pour chaque maillons placer après dans liste.Au plus,pour un indice j de la liste SLG sera appe\'e $\sum_{i=l-j}^{l} (i)$ fois c'est \`a dire l-i fois $\forall$i $\in$[j,l[.
+\newline En outre, on sait que le co\^ut de SLG sans les appels r\'ecursif reviens a n puisque dans tous les cas o\`u la liste n'est pas vide ont recopie le tableau.Sinon, si la liste est vide on parcours le tableau de l'indice i \`a n, ici, on considerera cette valeur cst=n, n\'eanmoins bien que ce cas soit defavorable il n'est pas r\'ealiste en effet, dans le cas d'une liste non-vide ( ce qui notre cas) alors cette valeur est necessairement inf\'erieure et decroit tout au long des appels de SLG.
 Soit une complexit\'e inf\'erieure \`a $2^n$.
 \newline
-Avec ce modèle défavorable on obtient l'equation de recursion suivante:
+Avec ce modèle d\'efavorable on obtient l'equation de recursion suivante:
 \begin{center}
  \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
 \end{center}
-Ainsi en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$,en effet, pour chaque case on parcours au minimun un fois le tableau (la recopie) pour chaque cellule après ici cela fait d\'ej\`a $\theta(n^2)$ et on doit le faire pour chaque indice.
+Ainsi en notant c la complexit\'e dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$,en effet, pour chaque case on parcours au minimun un fois le tableau (la recopie) pour chaque cellule après ici cela fait d\'ej\`a $\theta(n^2)$ et on doit le faire pour chaque indice.
 \paragraph{Complexit\'e meilleur des cas : $\theta$(n)\newline}
 Dans le meilleur des cas la liste est vide on doit pacourir une fois le tableau pour pouvoir v\'erifi\'e .
 \subsubsection{Backtrack :}
@@ -266,38 +249,38 @@ Dans le meilleur des cas la liste est vide on doit pacourir une fois le tableau 
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
-\item Un booléen signalant la possibilitée de placer une case dans un picross non fini
+\item Un bool\'een signalant la possibilit\'ee de placer une case dans un picross non fini
 \end{itemize}
 Dans le cas ou cela est possible, on "backtrack" une case
-Dans le cas ou cela n'est pas possible, on revient à l'environnement de la dernière case backtrackée et on l'inverse
+Dans le cas ou cela n'est pas possible, on revient \`a l'environnement de la derni\`ere case backtrack\'ee et on l'inverse
 \item Retour de la fonction.
 \end{itemize}
 La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
-Cela à pour conséquence une complexité élevée ($\theta$(n)) lors de la recopie de celle-ci.
+Cela \`a pour cons\'equence une complexit\'e \'elev\'ee ($\theta$(n)) lors de la recopie de celle-ci.
 \subsubsection{Fusion :}
 \paragraph{Sp\'ecification :}Fusion(int* Merge,int* TG,int* TD,sint taille);
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
-\item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice,après la resolution de notre fonction, initialisé avec la ligne/colonne existante
-\item Un tableau d'entier TG: (Donn\'ee) il repr\'esente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des information à notre disposition
-\item Un tableau d'entier TD: (Donn\'ee) idem pour la solution la plus à droite
-\item Un short int taille: représentant la taille du tableau
+\item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice,après la resolution de notre fonction, initialis\'e avec la ligne/colonne existante
+\item Un tableau d'entier TG: (Donn\'ee) il repr\'esente la solution la plus \`a gauche qui r\'esout notre ligne/colonne en fonction de sa liste d'indices et des information \`a notre disposition
+\item Un tableau d'entier TD: (Donn\'ee) idem pour la solution la plus \`a droite
+\item Un short int taille: repr\'esentant la taille du tableau
 \end{itemize}
 \item Retour de la fonction:
 \end{itemize}
 La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case noire "sures".
 \paragraph{Comlexit\'e : $\theta$(n)\newline}
-Nous parcourons chaque case du tableau pour v\'erifier si nous avons des informations suplementaires. Remarque: on aurait pu gérer une liste des indices qui était encore ind\'etermin\'e pour chaque ligne/colonne ce qui aurait am\'eliorer notre complexit\'e moyenne. N\'eanmoins, nous avons juger cela peut indispensable au vue du caract\`ere negligeble de cette complexit\'e par rapport au autre fonctions du programme. 
+Nous parcourons chaque case du tableau pour v\'erifier si nous avons des informations suplementaires. Remarque: on aurait pu g\'erer une liste des indices qui \'etait encore ind\'etermin\'e pour chaque ligne/colonne ce qui aurait am\'eliorer notre complexit\'e moyenne. N\'eanmoins, nous avons juger cela peut indispensable au vue du caract\`ere negligeble de cette complexit\'e par rapport au autre fonctions du programme. 
 \subsubsection{remplirCasesSureBl :}
 \paragraph{Sp\'ecification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
-\item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice,après la resolution de notre fonction, initialisé avec le retour de fusion.
-\item Un tableau d'entier TG: (Donn\'ee) il repr\'esente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des information à notre disposition
-\item Un tableau d'entier TD: (Donn\'ee) idem pour la solution la plus à droite
-\item Un short int taille: représentant la taille du tableau
+\item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice,après la resolution de notre fonction, initialis\'e avec le retour de fusion.
+\item Un tableau d'entier TG: (Donn\'ee) il repr\'esente la solution la plus \`a gauche qui r\'esout notre ligne/colonne en fonction de sa liste d'indices et des information \`a notre disposition
+\item Un tableau d'entier TD: (Donn\'ee) idem pour la solution la plus \`a droite
+\item Un short int taille: repr\'esentant la taille du tableau
 \item Une liste d'indices L: La liste d'indices associ\'es a la ligne/colonne
 \end{itemize}
 \item Retour de la fonction:
@@ -312,7 +295,7 @@ On doit pour chaque indice de la liste inscrire son envergure dans un tableau in
 \item Param\`etre:
 \begin{itemize}
 \item Un tableau d'entier Merge: (Resultat) il repr\'esente la ligne/colonne de la matrice.
-\item Un short int taille: représentant la taille du tableau
+\item Un short int taille: repr\'esentant la taille du tableau
 \item Une liste d'indices L: La liste d'indices associ\'es a la ligne/colonne
 \end{itemize}
 \item Retour de la fonction:
