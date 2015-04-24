@@ -13,7 +13,7 @@
 \newpage
 \section{Description du probl\`eme}
 
-Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure depuis les indices. La figure \`a d'ecouvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une s\'equence de nombres repr\'esentant les longueurs des blocs de cases noires contigues de la ligne/colonne. Les blocs de cases noires sont s\'epar\'ees par au moins une case blanche.
+Le Picross est un casse-t\^ete qui consiste \`a retrouver une figure depuis les indices. La figure \`a d'ecouvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une s\'equence de nombres repr\'esentant les longueurs des blocs de cases noires contigues de la ligne/colonne. Les blocs de cases noires sont s\'epar\'es par au moins une case blanche.
 
 \begin{table}[h]
 \centering
@@ -101,9 +101,9 @@ Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
 \end{table}
 \newpage
 
-La r\'esolution du Picross est un probl\`eme NP-complet( NP-Complet est un probl\`eme difficile \`a r\'esoudre, par exemple, le probl\`eme SAT). Pour le probl\`eme du Picross cela signifie qu'il ne faut pas esp\'erer un algorithme qui r\'esout n'importe quelle grille de Picross avec une complexit\'e polynomiale (en fonction de la taille de la grille).
 
-Le but du projet s'agit d'impl\'ementer un solveur de Picross en C++ qui lit les donn\'ees d'un probl\`eme Picross, calcule puis affiche sa solution. On ne consid\`ere que des Picross qui ont une solution.
+Le but du projet s'agit d'impl\'ementer un solveur de Picross en C++ qui, etant donné une matrice et des indices liés à ses lignes/colonnes, calcule puis affiche sa solution. On ne consid\`ere que des Picross qui ont une solution.\newline
+La r\'esolution du Picross est un probl\`eme NP-complet (en temps Non-déterministe Polynomial). Pour le probl\`eme du Picross cela signifie qu'il ne faut pas esp\'erer un algorithme qui r\'esout n'importe quelle grille de Picross avec une complexit\'e polynomiale (en fonction de la taille de la grille), mais trouver une solution peut être beaucoup plus coûteux.
 
 \section{Description de la m\'ethode de r\'esolution utilis\'ee}
 Afin de r\'esoudre une grille de Picross donn\'ee, nous traitons ses lignes ind\'ependamment de ses colonnes. 
@@ -332,10 +332,10 @@ Dans le meilleur des cas la liste est vide on doit pacourir une fois le tableau 
 \end{itemize}
 Dans le cas ou cela est possible, on "backtrack" une case
 Dans le cas ou cela n'est pas possible, on revient \`a l'environnement de la derni\`ere case backtrack\'ee et on l'inverse
-\item Retour de la fonction.
+\item Retour de la fonction :
 \end{itemize}
 La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
-Cela \`a pour cons\'equence une complexit\'e \'elev\'ee ($\theta$(n)) lors de la recopie de celle-ci.
+Cela \`a pour cons\'equence une complexit\'e \'elev\'ee ($\theta(n^2)$) lors de la recopie de celle-ci.
 \subsubsection{Fusion :}
 \paragraph{Sp\'ecification :}Fusion(int* Merge,int* TG,int* TD,sint taille);
 \begin{itemize}
@@ -381,4 +381,9 @@ On doit pour chaque indice de la liste inscrire son envergure dans un tableau in
 \end{itemize}
 La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'\'eventuelle case blanche "sures" en se basant sur les tailles des blocs.
 \paragraph{Comlexit\'e : $\theta(n)$\newline}
+
+\section{Remerciements :}
+\begin{itemize}
+\item Nous tenions à remercier M.Janssen pour son implication dans le projet, ainsi qu'à l'équipe pédagogique de l'Université.
+\end{itemize}
 \end{document}
