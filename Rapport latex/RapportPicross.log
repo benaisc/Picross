@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.2)  23 APR 2015 16:25
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.2)  24 APR 2015 11:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -196,25 +196,53 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 \Gin@req@height=\dimen109
 \Gin@req@width=\dimen110
 )
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/12/03 3.9h The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-french/frenchb.ldf
+Language: frenchb 2013/12/30 v2.6g French support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/12/03 3.9h Babel common definitions
+\babel@savecnt=\count99
+\U@D=\dimen111
+)
+\FB@interchartokenstateORI=\count100
+Package babel Info: Making : an active character on input line 244.
+Package babel Info: Making ; an active character on input line 245.
+Package babel Info: Making ! an active character on input line 246.
+Package babel Info: Making ? an active character on input line 247.
+\FB@Mht=\dimen112
+\std@mcc=\count101
+\dec@mcc=\count102
+\listindentFB=\skip47
+\labelwidthFB=\skip48
+\leftmarginFB=\skip49
+\parindentFFN=\dimen113
+))
+(/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty)
 (./RapportPicross.aux)
 \openout1 = `RapportPicross.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 6.
-LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
 \AtBeginShipoutBox=\box26
-Package hyperref Info: Link coloring OFF on input line 6.
+Package hyperref Info: Link coloring OFF on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -222,11 +250,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count99
+\c@section@level=\count103
 )
-LaTeX Info: Redefining \ref on input line 6.
-LaTeX Info: Redefining \pageref on input line 6.
-LaTeX Info: Redefining \nameref on input line 6.
+LaTeX Info: Redefining \ref on input line 8.
+LaTeX Info: Redefining \pageref on input line 8.
+LaTeX Info: Redefining \nameref on input line 8.
 
 (./RapportPicross.out) (./RapportPicross.out)
 \@outlinefile=\write3
@@ -235,16 +263,16 @@ LaTeX Info: Redefining \nameref on input line 6.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count100
-\scratchdimen=\dimen111
+\scratchcounter=\count104
+\scratchdimen=\dimen114
 \scratchbox=\box27
-\nofMPsegments=\count101
-\nofMParguments=\count102
+\nofMPsegments=\count105
+\nofMParguments=\count106
 \everyMPshowfont=\toks17
-\MPscratchCnt=\count103
-\MPscratchDim=\dimen112
-\MPnumerator=\count104
-\makeMPintoPDFobject=\count105
+\MPscratchCnt=\count107
+\MPscratchDim=\dimen115
+\MPnumerator=\count108
+\makeMPintoPDFobject=\count109
 \everyMPtoPDFconversion=\toks18
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -261,25 +289,26 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 10.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 10.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 10.
+LaTeX Info: Redefining \degres on input line 8.
+LaTeX Info: Redefining \dots on input line 8.
+LaTeX Info: Redefining \up on input line 8.
 
-Overfull \hbox (12.68394pt too wide) in paragraph at lines 10--10
- [][] 
- []
 
+Package frenchb.ldf Warning: OT1 encoding should not be used for French. 
+(frenchb.ldf)                Add \usepackage[T1]{fontenc} to the preamble
+(frenchb.ldf)                of your document, on input line 8.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 12.
 (./RapportPicross.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
+(Font)              <7> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
+(Font)              <5> on input line 4.
 )
 \tf@toc=\write4
 \openout4 = `RapportPicross.toc'.
@@ -287,10 +316,6 @@ Missing character: There is no ™ in font cmr10!
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -298,207 +323,84 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 131.
-
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 131.
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmbx10!
-Missing character: There is no € in font cmbx10!
-Missing character: There is no ™ in font cmbx10!
- [4]
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-
-Overfull \hbox (3.33385pt too wide) in paragraph at lines 168--171
+[3] [4]
+Overfull \hbox (8.33383pt too wide) in paragraph at lines 149--152
 \OT1/cmr/m/n/10 ment chain^^Ses car d^^Sej^^Ra impl^^Sement^^Ses pour les in-di
 ces de chaque ligne/colonne.
  []
 
+[5] <./images/recapitulatif_stucture.png, id=167, 730.73pt x 831.105pt>
+File: ./images/recapitulatif_stucture.png Graphic file (type png)
+
+<use ./images/recapitulatif_stucture.png>
+Package pdftex.def Info: ./images/recapitulatif_stucture.png used on input line
+ 156.
+(pdftex.def)             Requested size: 398.33858pt x 453.05104pt.
+
+
+LaTeX Warning: Float too large for page by 118.05104pt on input line 158.
+
+[6 <./images/recapitulatif_stucture.png>]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ª in font cmr10!
-[5]
 Missing character: There is no Ã in font cmr10!
 Missing character: There is no ª in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
+ [7
 
-Overfull \hbox (7.50053pt too wide) in paragraph at lines 234--235
-\OT1/cmr/m/n/10 tableau, ini-tiale-ment la premi^^Rere cel-lule as-soci^^Se ^^R
-a la dites ligne/colonnes 
+
+] [8] [9]
+Overfull \hbox (0.90227pt too wide) in paragraph at lines 296--297
+\OT1/cmr/m/n/10 qu'on par-cours SLD ^^Ra par-tir de i2-1 jus-qu'a trou-ver un i
+n-dice i3 tel que TG[i3]=0.
  []
 
-[6]
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
- [7]
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
- [8]
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no ¨ in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no   in font cmr10!
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-
-Overfull \hbox (0.90227pt too wide) in paragraph at lines 307--308
-\OT1/cmr/m/n/10 qu'on par-cours SLD ^^Ra par-tir de i2-1 jusqu'a trou-ver un in
--dice i3 tel que TG[i3]=0.
+[10]
+Overfull \hbox (39.33391pt too wide) in paragraph at lines 312--320
+[]\OT1/cmr/m/n/10 Afin de r^^Sesoudre une grille de Pi-cross donn^^See, nous tr
+ai-tons ses lignes ind^^Sependamment
  []
 
-Missing character: There is no Ã in font cmr10!
-Missing character: There is no © in font cmr10!
-[9]
-Overfull \hbox (8.47798pt too wide) in paragraph at lines 322--322
-[]\OT1/cmr/bx/n/14.4 Description de la m^^Sethode de r^^Sesolution utilis^^See 
-
- []
-
-
-Overfull \hbox (24.55614pt too wide) in paragraph at lines 323--331
-\OT1/cmr/m/n/10 Afin de r^^Sesoudre une grille de Pi-cross donn^^See, nous trai
-tons ses lignes ind^^Sependamment
- []
-
-[10] <Exemple1.png, id=194, 512.66531pt x 267.24844pt>
+[11] <Exemple1.png, id=211, 512.66531pt x 267.24844pt>
 File: Exemple1.png Graphic file (type png)
  <use Exemple1.png>
-Package pdftex.def Info: Exemple1.png used on input line 382.
+Package pdftex.def Info: Exemple1.png used on input line 372.
 (pdftex.def)             Requested size: 341.43443pt x 184.95213pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 385.
 
-[11 <./Exemple1.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 385.
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 384.
+ [13 <./Exemple1.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 384.
  (./RapportPicross.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 385.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 385.
-
-
-Package rerunfilecheck Warning: File `RapportPicross.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `RapportPicross.out':
-(rerunfilecheck)             Before: DB75383106C708BDA7AF27BC899B5044;1888
-(rerunfilecheck)             After:  E801D0CCB84F59687480214EF7807956;1980.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 385.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 384.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 384.
+Package rerunfilecheck Info: File `RapportPicross.out' has not changed.
+(rerunfilecheck)             Checksum: EF7D63F10F0F54E7E08D311D58C258C6;2081.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 384.
  ) 
 Here is how much of TeX's memory you used:
- 5697 strings out of 494958
- 82823 string characters out of 6179213
- 178478 words of memory out of 5000000
- 8841 multiletter control sequences out of 15000+600000
- 8600 words of font info for 30 fonts, out of 8000000 for 9000
+ 6531 strings out of 494958
+ 94818 string characters out of 6179213
+ 195922 words of memory out of 5000000
+ 9653 multiletter control sequences out of 15000+600000
+ 8901 words of font info for 31 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 41i,10n,35p,790b,556s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,10n,35p,790b,619s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
-pfb>
-Output written on RapportPicross.pdf (11 pages, 165628 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
+fb>
+Output written on RapportPicross.pdf (13 pages, 274143 bytes).
 PDF statistics:
- 254 PDF objects out of 1000 (max. 8388607)
- 225 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 277 PDF objects out of 1000 (max. 8388607)
+ 244 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 219 words of extra memory for PDF output out of 10000 (max. 10000000)
 

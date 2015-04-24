@@ -3,9 +3,11 @@
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{lscape}
+\usepackage[francais]{babel} 
 \begin{document}
 \title{Rapport de projet Picross}
-\author{CONNES Victor, PRYSIAZHNIUK Anastasiia, BENAIS-HUGOT Charles, RIVIERE Cecili}
+\author{CONNES Victor \and PRYSIAZHNIUK Anastasiia \and BENAIS-HUGOT Charles \and RIVIERE Cecilie}
 \maketitle
 \tableofcontents 
 \newpage
@@ -148,6 +150,14 @@ Le but du projet s'agit d'impl\'ementer un solveur de Picross en C++ qui lit les
 Le choix naturel serait l'ensemble mais on choisit la liste simplement chain\'es car d\'ej\`a  impl\'ement\'es pour les indices de chaque ligne/colonne. Son
 comportement est similaire dans le cas d'un ajout et d'un retrait en d\'ebut de liste .
 \end{itemize}
+\begin{landscape}
+\begin{figure}
+\begin{center}
+\includegraphics[width=14cm]{./images/recapitulatif_stucture.png}
+\end{center}
+\end{figure}
+\end{landscape}
+\newpage
 \subsection{ Les classes}
 L'ensemble de nos classes disposent d'une surcharge de l'operateur<< afin de faciliter l'affichage dans le terminal. De plus, il existe d'autres classes dans notre
 programme qui permettent d'am\'eliorer l'affichage en utilisant une interface graphique. Nous ne distinguerons ici seulement les classes permettant la

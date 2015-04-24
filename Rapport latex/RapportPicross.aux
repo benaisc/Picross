@@ -16,6 +16,14 @@
 \gdef\HyperFirstAtBeginDocument#1{#1}
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
+\catcode `:\active 
+\catcode `;\active 
+\catcode `!\active 
+\catcode `?\active 
+\select@language{french}
+\@writefile{toc}{\select@language{french}}
+\@writefile{lof}{\select@language{french}}
+\@writefile{lot}{\select@language{french}}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Description du probl\`eme}{2}{section.1}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Un exemple de Picross et sa solution.}}{2}{table.1}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Un exemple de Picross qui a deux solutions.}}{3}{table.2}}
@@ -24,34 +32,36 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.1} Les besoins du programme :}{4}{subsection.2.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}Pour les indices de chaque ligne/colonne:}{4}{subsubsection.2.1.1}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}Pour repr\'esenter la grille du picross :}{4}{subsubsection.2.1.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Pour l’ensemble des indices de lignes/colonnes :}{5}{subsubsection.2.1.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}Pour l'ensemble des indices de lignes/colonnes :}{4}{subsubsection.2.1.3}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.4}Pour ligmodif /colmodif}{5}{subsubsection.2.1.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2} Les classes}{5}{subsection.2.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}La classe Cell :}{5}{subsubsection.2.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}La classe Liste :}{5}{subsubsection.2.2.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}La classe Tabliste :}{6}{subsubsection.2.2.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}La classe Matrice :}{6}{subsubsection.2.2.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3} La classe Picross :}{6}{subsection.2.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Les algorithmes remarquables :}{6}{subsection.2.4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}SLG :}{6}{subsubsection.2.4.1}}
-\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{6}{section*.2}}
-\@writefile{toc}{\contentsline {paragraph}{Complexit\'e c pire des cas : $\theta (n^2) <$c$\leq \theta (2^n)$\\ }{7}{section*.3}}
-\@writefile{toc}{\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)\newline  }{8}{section*.4}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Backtrack :}{8}{subsubsection.2.4.2}}
-\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{8}{section*.5}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}Fusion :}{8}{subsubsection.2.4.3}}
-\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{8}{section*.6}}
-\@writefile{toc}{\contentsline {paragraph}{Comlexit\'e : $\theta $(n)\newline  }{8}{section*.7}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.4}remplirCasesSureBl :}{9}{subsubsection.2.4.4}}
-\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{9}{section*.8}}
-\@writefile{toc}{\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline  }{9}{section*.9}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.5}remplirCaseBlcoince :}{9}{subsubsection.2.4.5}}
-\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{9}{section*.10}}
-\@writefile{toc}{\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline  }{10}{section*.11}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Description de la m\'ethode de r\'esolution utilis\'ee}{10}{section.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}La m\'ethode SLG}{10}{subsection.3.1}}
-\@writefile{toc}{\contentsline {paragraph}{Algorithme : SLG}{10}{section*.12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}R\'esolution d'une ligne}{11}{subsection.3.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Les m\'ethodes SLPG et SLPD}{11}{subsubsection.3.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}La m\'ethode Fusion}{11}{subsubsection.3.2.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}La m\'ethode remplirCasesSureBl}{11}{subsubsection.3.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2} Les classes}{7}{subsection.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}La classe Cell :}{7}{subsubsection.2.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}La classe Liste :}{7}{subsubsection.2.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}La classe Tabliste :}{7}{subsubsection.2.2.3}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}La classe Matrice :}{7}{subsubsection.2.2.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3} La classe Picross :}{8}{subsection.2.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Les algorithmes remarquables :}{8}{subsection.2.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}SLG :}{8}{subsubsection.2.4.1}}
+\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{8}{section*.2}}
+\@writefile{toc}{\contentsline {paragraph}{Complexit\'e pire des cas : $\theta (n^2) <$c$\leq \theta (2^n)$\\ }{8}{section*.3}}
+\@writefile{toc}{\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)\newline  }{9}{section*.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Backtrack :}{9}{subsubsection.2.4.2}}
+\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{9}{section*.5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}Fusion :}{9}{subsubsection.2.4.3}}
+\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{9}{section*.6}}
+\@writefile{toc}{\contentsline {paragraph}{Comlexit\'e : $\theta $(n)\newline  }{10}{section*.7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.4}remplirCasesSureBl :}{10}{subsubsection.2.4.4}}
+\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{10}{section*.8}}
+\@writefile{toc}{\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline  }{10}{section*.9}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.5}remplirCaseBlcoince :}{10}{subsubsection.2.4.5}}
+\@writefile{toc}{\contentsline {paragraph}{Sp\'ecification :}{10}{section*.10}}
+\@writefile{toc}{\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline  }{11}{section*.11}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Description de la m\'ethode de r\'esolution utilis\'ee}{11}{section.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}La m\'ethode SLG}{11}{subsection.3.1}}
+\@writefile{toc}{\contentsline {paragraph}{Algorithme : SLG}{11}{section*.12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}R\'esolution d'une ligne}{12}{subsection.3.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Les m\'ethodes SLPG et SLPD}{12}{subsubsection.3.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}La m\'ethode Fusion}{12}{subsubsection.3.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}La m\'ethode remplirCasesSureBl}{13}{subsubsection.3.2.3}}
+\@writefile{toc}{\contentsline {paragraph}{remplirCasesSureBl}{13}{section*.13}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Ajout de la ligne \`a la grille de Picross}{13}{subsubsection.3.2.4}}
