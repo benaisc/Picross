@@ -6,6 +6,7 @@
 \usepackage{lscape}
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \begin{document}
 \title{Rapport de projet Picross}
 \author{CONNES Victor \and PRYSIAZHNIUK Anastasiia \and BENAIS-HUGOT Charles \and RIVIERE Cecilie}
@@ -398,6 +399,16 @@ On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à pa
 \end{itemize}
 La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles cases blanches "sûres" en se basant sur les tailles des blocs.
 \paragraph{Comlexité : $\theta(n)$\newline}
+\subsection{ L'interface graphique:}
+Pour implémenter une interface utilisateur graphique et afficher une grille Picross résolue on utilise une bibliothèque Gtkmm, qui est une surcouche de GTK+ pour le langage C++.
+
+Dans une fenêtre du programme on a quatre boutons:
+\begin{itemize}
+\item  ``Description'' contient une brève description du programme;
+\item ``Ouvrir'' pour ouvrir un fichier ``*.txt'' (ou on a mit la taille et les indices d'une grille Picross), qui permet l'initialisation d'une grille vide avec ses indices;
+\item ``Résolution'' permet le déclenchement de nos méthodes de résolution et affiche la grille ainsi résolue;
+\item ``Quitter'' appel une fonction GTK permettant la fermeture d'une fenêtre.
+\end{itemize}
 
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
@@ -412,4 +423,12 @@ Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité 
 \end{itemize}
 \section{Bibliographie :}
 \section{Annexes :}
+\subsection{Lecture d'un fichier pour construire une grille:}
+Dans le but de construire une grille Picross nous avons choisi du structurer un fichier texte de la manière suivante :\newline
+Les deux premiers nombres séparés d'un espaces représentent nos Lignes | Colonnes.
+La méthode passe ensuite sur toutes les lignes du fichier, ou chaque saut de ligne correspond à une nouvelle liste de tabListe.
+\begin{center}
+\includegraphics[width=8cm]{ex2}
+\end{center}
+
 \end{document}
