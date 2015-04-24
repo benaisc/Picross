@@ -4,7 +4,7 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{lscape}
-\usepackage[francais]{babel} 
+\usepackage[francais]{babel}
 \begin{document}
 \title{Rapport de projet Picross}
 \author{CONNES Victor \and PRYSIAZHNIUK Anastasiia \and BENAIS-HUGOT Charles \and RIVIERE Cecilie}
@@ -179,6 +179,21 @@ Ensuite, on ajoute les indices des cases qui ont \'et\'e modifi\'ees \`a une lis
 \newline
 Pour finir, on recopie notre ligne ainsi compl\'et\'ee dans la grille de Picross.
 
+\subsubsection{la méthode de Backtracking}
+A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
+Nous avons choisi d'implémenter une méthode de backtracking `simple' qui : 
+\begin{itemize}
+\item Recherche la 1ere case indeterminée de la matrice (parcours par les lignes)
+\item On place cette case à noir
+\begin{itemize}
+\item On étudie la conséquence de cette coloration arbitraire : 
+\begin{itemize}
+\item Si cela mène à un picross résolu, on sort
+\item Si cela mène à un picross non rempli, on réitère sur une nouvelle case que l'on backtrack
+\item Si cela mène à un picross rempli mais non résolu, on sort de nos environnements successifs avec un booléen à false, on effectue alors une recopie de notre matrice qui avait été sauvegardée, et on réitère, cette fois avec la case backtrackée à blanc
+\end{itemize}
+\end{itemize}
+\end{itemize}
 \section{Description de l'impl\'ementation}
 \subsection{ Les besoins du programme :}
 
@@ -367,7 +382,6 @@ Nous parcourons chaque case du tableau pour v\'erifier si nous avons des informa
 La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case blanche "sures" en se basant sur l'envergure des blocs.
 \paragraph{Comlexit\'e : $\theta(n)$\newline}
 On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermediaire pour cela il nous faut parcourir SLG puis SLD mais pas en totalit\'e ,en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0,c'est alors, qu'on parcours SLD \`a partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. On a alors l'envergure du premier bloc.Pour le deuxi\'eme on peut commencer notre parcours dans SLG \'a partir de i2 car il est forc\'ement \`a droite du premier.\newline On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors \'a partir du nouveau i2 et ainsi de suite.Au final, on aura parcouru entre n et 2n case du tableau.
-
 \subsubsection{remplirCaseBlcoince :}
 \paragraph{Sp\'ecification :}CaseBlcoince(int* Merge, sint taille, Liste \&L);
 \begin{itemize}
@@ -382,8 +396,17 @@ On doit pour chaque indice de la liste inscrire son envergure dans un tableau in
 La fonction retourne par l'interm\'ediaire du tableau Merge notre ligne/colonne de depart avec en plus d'\'eventuelle case blanche "sures" en se basant sur les tailles des blocs.
 \paragraph{Comlexit\'e : $\theta(n)$\newline}
 
+\section{Ameliorations/Evolution du programme:}
+\begin{itemize}
+\item Dans le cas ou le picross nécéssite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
+\item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en Moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
+Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité reste équivalente ($theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
+\item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic)
+\end{itemize}
 \section{Remerciements :}
 \begin{itemize}
 \item Nous tenions à remercier M.Janssen pour son implication dans le projet, ainsi qu'à l'équipe pédagogique de l'Université.
 \end{itemize}
+\section{Bibliographie :}
+\section{Annexes :}
 \end{document}
