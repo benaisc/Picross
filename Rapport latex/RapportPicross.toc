@@ -1,39 +1,39 @@
 \select@language {french}
 \contentsline {section}{\numberline {1}Description du probl\`eme}{2}{section.1}
-\contentsline {section}{\numberline {2}Description de l'impl\'ementation}{4}{section.2}
-\contentsline {subsection}{\numberline {2.1} Les besoins du programme :}{4}{subsection.2.1}
-\contentsline {subsubsection}{\numberline {2.1.1}Pour les indices de chaque ligne/colonne:}{4}{subsubsection.2.1.1}
-\contentsline {subsubsection}{\numberline {2.1.2}Pour repr\'esenter la grille du picross :}{4}{subsubsection.2.1.2}
-\contentsline {subsubsection}{\numberline {2.1.3}Pour l'ensemble des indices de lignes/colonnes :}{4}{subsubsection.2.1.3}
-\contentsline {subsubsection}{\numberline {2.1.4}Pour ligmodif /colmodif}{5}{subsubsection.2.1.4}
-\contentsline {subsection}{\numberline {2.2} Les classes}{7}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}La classe Cell :}{7}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}La classe Liste :}{7}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}La classe Tabliste :}{7}{subsubsection.2.2.3}
-\contentsline {subsubsection}{\numberline {2.2.4}La classe Matrice :}{7}{subsubsection.2.2.4}
-\contentsline {subsection}{\numberline {2.3} La classe Picross :}{8}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Les algorithmes remarquables :}{8}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}SLG :}{8}{subsubsection.2.4.1}
-\contentsline {paragraph}{Sp\'ecification :}{8}{section*.2}
-\contentsline {paragraph}{Complexit\'e pire des cas : $\theta (n^2) <$c$\leq \theta (2^n)$\\ }{8}{section*.3}
-\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)\newline }{9}{section*.4}
-\contentsline {subsubsection}{\numberline {2.4.2}Backtrack :}{9}{subsubsection.2.4.2}
-\contentsline {paragraph}{Sp\'ecification :}{9}{section*.5}
-\contentsline {subsubsection}{\numberline {2.4.3}Fusion :}{9}{subsubsection.2.4.3}
-\contentsline {paragraph}{Sp\'ecification :}{9}{section*.6}
-\contentsline {paragraph}{Comlexit\'e : $\theta $(n)\newline }{10}{section*.7}
-\contentsline {subsubsection}{\numberline {2.4.4}remplirCasesSureBl :}{10}{subsubsection.2.4.4}
-\contentsline {paragraph}{Sp\'ecification :}{10}{section*.8}
-\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline }{10}{section*.9}
-\contentsline {subsubsection}{\numberline {2.4.5}remplirCaseBlcoince :}{10}{subsubsection.2.4.5}
-\contentsline {paragraph}{Sp\'ecification :}{10}{section*.10}
-\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline }{11}{section*.11}
-\contentsline {section}{\numberline {3}Description de la m\'ethode de r\'esolution utilis\'ee}{11}{section.3}
-\contentsline {subsection}{\numberline {3.1}La m\'ethode SLG}{11}{subsection.3.1}
-\contentsline {paragraph}{Algorithme : SLG}{11}{section*.12}
-\contentsline {subsection}{\numberline {3.2}R\'esolution d'une ligne}{12}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}Les m\'ethodes SLPG et SLPD}{12}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}La m\'ethode Fusion}{12}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}La m\'ethode remplirCasesSureBl}{13}{subsubsection.3.2.3}
-\contentsline {paragraph}{remplirCasesSureBl}{13}{section*.13}
-\contentsline {subsubsection}{\numberline {3.2.4}Ajout de la ligne \`a la grille de Picross}{13}{subsubsection.3.2.4}
+\contentsline {section}{\numberline {2}Description de la m\'ethode de r\'esolution utilis\'ee}{4}{section.2}
+\contentsline {subsection}{\numberline {2.1}La m\'ethode SLG}{4}{subsection.2.1}
+\contentsline {paragraph}{Algorithme : SLG}{4}{section*.2}
+\contentsline {subsection}{\numberline {2.2}R\'esolution d'une ligne}{5}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Les m\'ethodes SLPG et SLPD}{5}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}La m\'ethode Fusion}{5}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}La m\'ethode remplirCasesSureBl}{6}{subsubsection.2.2.3}
+\contentsline {paragraph}{remplirCasesSureBl}{6}{section*.3}
+\contentsline {subsubsection}{\numberline {2.2.4}Ajout de la ligne \`a la grille de Picross}{6}{subsubsection.2.2.4}
+\contentsline {section}{\numberline {3}Description de l'impl\'ementation}{7}{section.3}
+\contentsline {subsection}{\numberline {3.1} Les besoins du programme :}{7}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Pour les indices de chaque ligne/colonne:}{7}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Pour repr\'esenter la grille du picross :}{7}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Pour l'ensemble des indices de lignes/colonnes :}{7}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Pour ligmodif /colmodif}{7}{subsubsection.3.1.4}
+\contentsline {subsection}{\numberline {3.2} Les classes}{9}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}La classe Cell :}{9}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}La classe Liste :}{9}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}La classe Tabliste :}{9}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}La classe Matrice :}{9}{subsubsection.3.2.4}
+\contentsline {subsection}{\numberline {3.3} La classe Picross :}{10}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Les algorithmes remarquables :}{10}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}SLG :}{10}{subsubsection.3.4.1}
+\contentsline {paragraph}{Sp\'ecification :}{10}{section*.4}
+\contentsline {paragraph}{Complexit\'e pire des cas : $\theta (n^2) <$c$\leq \theta (2^n)$\\ }{10}{section*.5}
+\contentsline {paragraph}{Complexit\'e meilleur des cas : $\theta $(n)\newline }{11}{section*.6}
+\contentsline {subsubsection}{\numberline {3.4.2}Backtrack :}{11}{subsubsection.3.4.2}
+\contentsline {paragraph}{Sp\'ecification :}{11}{section*.7}
+\contentsline {subsubsection}{\numberline {3.4.3}Fusion :}{11}{subsubsection.3.4.3}
+\contentsline {paragraph}{Sp\'ecification :}{11}{section*.8}
+\contentsline {paragraph}{Comlexit\'e : $\theta $(n)\newline }{12}{section*.9}
+\contentsline {subsubsection}{\numberline {3.4.4}remplirCasesSureBl :}{12}{subsubsection.3.4.4}
+\contentsline {paragraph}{Sp\'ecification :}{12}{section*.10}
+\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline }{12}{section*.11}
+\contentsline {subsubsection}{\numberline {3.4.5}remplirCaseBlcoince :}{12}{subsubsection.3.4.5}
+\contentsline {paragraph}{Sp\'ecification :}{12}{section*.12}
+\contentsline {paragraph}{Comlexit\'e : $\theta (n)$\newline }{13}{section*.13}
