@@ -4,6 +4,7 @@
 \usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{lscape}
+\usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
 \begin{document}
 \title{Rapport de projet Picross}
@@ -304,7 +305,7 @@ La classe picross est la classe dont les instances représentent les picross; S'
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
-\item Un tableau d'entier: (Donée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
+\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
 \item Un short int : représentant la taille du tableau
 \item Une cellule de liste: il repésente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
 \item Un short int : représentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
@@ -312,7 +313,7 @@ La classe picross est la classe dont les instances représentent les picross; S'
 \end{itemize}
 \item Retour de la fonction.
 \end{itemize}
-Le retour ce fait par lintermédiaire du tableau et du booléen. Si le booléen est à false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution.Dans le cas contraire, la solution la plus à gauche nous est donée dans le tableau.
+Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen est à false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution. Dans le cas contraire, la solution la plus à gauche nous est donnée dans le tableau.
 
 \paragraph{Complexité pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
  Notons :
@@ -323,28 +324,28 @@ Le retour ce fait par lintermédiaire du tableau et du booléen. Si le booléen 
 \item l: la taille de la liste d'indice (le nombre d'indices)
 \item $m_i$: l'envergure d'un indice i
 \end{itemize}
-Dans le pire des cas de notre algorithme, on peut imaginer que chaque hypothéses faites par notre algorithme soit fausse notre fonction: Pour cela, il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1) en effet,plus les indices sont grand moins il ont de position possible pour une même taille de tableau, et donc moins d'hypoth\`ese.
-\newline Enfin,on voit bien que la complexité vas dépendre de taille de la liste ,en effet,chaque cellule appelle la fonction au moins une fois pour chaque maillons placer apr\`es dans liste.Au plus,pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
-\newline En outre, on sait que le co\^ut de SLG sans les appels récursif reviens a n puisque dans tous les cas o\`u la liste n'est pas vide ont recopie le tableau.Sinon, si la liste est vide on parcours le tableau de l'indice i à n, ici, on considerera cette valeur cst=n, néanmoins bien que ce cas soit defavorable il n'est pas réaliste en effet, dans le cas d'une liste non-vide ( ce qui notre cas) alors cette valeur est necessairement inférieure et decroit tout au long des appels de SLG.
+Dans le pire des cas de notre algorithme, on peut imaginer que chaque hypothèse faite par notre algorithme soit fausse. Pour cela, il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1) en effet, plus les indices sont grands moins ils ont de positions possibles pour une même taille de tableau, et donc moins d'hypothèses.
+\newline Enfin, on voit bien que la complexité vas dépendre de la taille de la liste, en effet, chaque cellule appelle la fonction au moins une fois pour chaque maillons placer après dans liste. Au plus, pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
+\newline En outre, on sait que le coût de SLG sans les appels récursifs reviens a n puisque dans tous les cas où la liste n'est pas vide, on recopie le tableau. Sinon, si la liste est vide on parcours le tableau de l'indice i à n, ici, on considerera cette valeur cst=n, néanmoins bien que ce cas soit défavorable, il n'est pas réaliste en effet, dans le cas d'une liste non-vide (ce qui est notre cas) alors cette valeur est nécessairement inférieure et decroit tout au long des appels de SLG.
 Soit une complexité inférieure à $2^n$.
 \newline
-Avec ce mod\`ele défavorable on obtient l'equation de recursion suivante:
+Avec ce modèle défavorable on obtient l'équation de recursion suivante:
 \begin{center}
  \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
 \end{center}
-Ainsi en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$,en effet, pour chaque case on parcours au minimun un fois le tableau (la recopie) pour chaque cellule apr\`es ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
+Ainsi en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$, en effet, pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
 \paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
-Dans le meilleur des cas la liste est vide on doit pacourir une fois le tableau pour pouvoir vérifié .
+Dans le meilleur des cas la liste est vide on doit pacourir une fois le tableau pour pouvoir vérifié.
 \subsubsection{Backtrack :}
 \paragraph{Spécification :}
  void backtrack(bool \&poss);
 \begin{itemize}
 \item Param\`etre:
 \begin{itemize}
-\item Un booléen signalant la possibilitée de placer une case dans un picross non fini
+\item Un booléen signalant la possibilité de placer une case dans un picross non fini
 \end{itemize}
 Dans le cas ou cela est possible, on "backtrack" une case
-Dans le cas ou cela n'est pas possible, on revient à l'environnement de la derni\`ere case backtrackée et on l'inverse
+Dans le cas ou cela n'est pas possible, on revient à l'environnement de la dernière case backtrackée et on l'inverse
 \item Retour de la fonction :
 \end{itemize}
 La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
@@ -355,31 +356,35 @@ Cela à pour conséquence une complexité élevée ($\theta(n^2)$) lors de la re
 \item Param\`etre:
 \begin{itemize}
 \item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice,apr\`es la resolution de notre fonction, initialisé avec la ligne/colonne existante
-\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des information à notre disposition
+\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des informations à notre disposition
 \item Un tableau d'entier TD: (Donnée) idem pour la solution la plus à droite
 \item Un short int taille: représentant la taille du tableau
 \end{itemize}
 \item Retour de la fonction:
 \end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case noire "sures".
+La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles cases noires "sûres".
 \paragraph{Comlexité : $\theta$(n)\newline}
-Nous parcourons chaque case du tableau pour vérifier si nous avons des informations suplementaires. Remarque: on aurait pu gérer une liste des indices qui était encore indéterminé pour chaque ligne/colonne ce qui aurait améliorer notre complexité moyenne. Néanmoins, nous avons juger cela peut indispensable au vue du caract\`ere negligeble de cette complexité par rapport au autre fonctions du programme. 
+Nous parcourons chaque case du tableau pour vérifier si nous avons des informations supplémentaires. Remarque: on aurait pu gérer une liste des indices qui était encore indéterminé pour chaque ligne/colonne ce qui aurait améliorer notre complexité moyenne. 
+Néanmoins, nous avons juger cela peut indispensable au vue du caractère negligeble de cette complexité par rapport aux autres fonctions du programme. 
 \subsubsection{remplirCasesSureBl :}
 \paragraph{Spécification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
 \begin{itemize}
-\item Param\`etre:
+\item Paramètres:
 \begin{itemize}
-\item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice,apr\`es la resolution de notre fonction, initialisé avec le retour de fusion.
-\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des information à notre disposition
+\item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice,après la résolution de notre fonction, initialisé avec le retour de fusion.
+\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des informations à notre disposition
 \item Un tableau d'entier TD: (Donnée) idem pour la solution la plus à droite
 \item Un short int taille: représentant la taille du tableau
 \item Une liste d'indices L: La liste d'indices associés a la ligne/colonne
 \end{itemize}
 \item Retour de la fonction:
 \end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'enventuelle case blanche "sures" en se basant sur l'envergure des blocs.
+La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles case blanches "sures" en se basant sur l'envergure des blocs.
 \paragraph{Comlexité : $\theta(n)$\newline}
-On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermediaire pour cela il nous faut parcourir SLG puis SLD mais pas en totalité ,en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0,c'est alors, qu'on parcours SLD à partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. On a alors l'envergure du premier bloc.Pour le deuxiéme on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à partir du nouveau i2 et ainsi de suite.Au final, on aura parcouru entre n et 2n case du tableau.
+On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermediaire, pour cela il nous faut parcourir SLG puis SLD mais pas en totalité, en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.
+On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0, c'est alors qu'on parcours SLD à partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. 
+On a alors l'envergure du premier bloc. Pour le deuxiéme on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline 
+On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à partir du nouveau i2 et ainsi de suite. Au final, on aura parcouru entre n et 2n case du tableau.
 \subsubsection{remplirCaseBlcoince :}
 \paragraph{Spécification :}CaseBlcoince(int* Merge, sint taille, Liste \&L);
 \begin{itemize}
@@ -391,13 +396,13 @@ On doit pour chaque indice de la liste inscrire son envergure dans un tableau in
 \end{itemize}
 \item Retour de la fonction:
 \end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelle case blanche "sûres" en se basant sur les tailles des blocs.
+La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles cases blanches "sûres" en se basant sur les tailles des blocs.
 \paragraph{Comlexité : $\theta(n)$\newline}
 
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
-\item Dans le cas ou le picross nécéssite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
-\item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en Moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
+\item Dans le cas ou le picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisie pour lancer le backtracking.
+\item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
 Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité reste équivalente ($theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
 \item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic)
 \end{itemize}
