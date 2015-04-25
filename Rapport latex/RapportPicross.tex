@@ -116,7 +116,7 @@ Une telle méthode permettrait de déterminer un grand nombre de cases. En revan
 \newline
 C'est pourquoi, au lieu de générer toutes les solutions, nous avons choisi d'en générer deux; la plus à gauche et la plus à droite. Cette méthode ne permet pas de déterminer autant de cases que la précédente mais elle est nettement moins coûteuse.
 \subsection{Résolution d'une ligne}
-La résolution d'une ligne passe par l'appel des fonctions SLPG et SLPD donnant respectivement la solution la plus à gauche et la solution la plus à droite de la ligne.
+La résolution d'une ligne passe par l'appel de deux méthodes donnant respectivement la solution la plus à gauche et la solution la plus à droite de la ligne.
 \newline
 On fait ensuite la fusion de ces deux solutions afin de déterminer les cases nécessairement noires et celles nécessairement blanches.
 \subsubsection{La méthode SLG}
@@ -208,31 +208,50 @@ Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\th
 \paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
 Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau pour pouvoir vérifier.
 \subsubsection{Les méthodes SLPG et SLPD}
-Les méthodes SLPG et SLPD génèrent respectivement pour une ligne, sa solution la plus à gauche et sa solution la plus à droite. Elles font toutes deux appel à SLG avec i=0. 
+Les méthodes SLPG et SLPD sont les méthodes qui génèrent les deux solutions nécessaires à la résolution d'une ligne. Elles font toutes deux appel à SLG avec i=0. 
 \newline
 Pour la solution droite, SLG est appelé sur une ligne et une liste d'indices préalablement inversées.
 \subsubsection{La méthode Fusion}
 A la suite des appels à SLPG et SLPD, nous aurons deux solutions possibles pour une ligne; or, pour parvenir à la résolution de notre Picross, il nous faut déterminer les cases n'ayant qu'une solution. 
 \newline
-Pour ce faire, on fait appel à Fusion qui ne gardera que les cases noires communes aux deux solutions.
-Cette dernière nécessite que nos blocs de cases noires soient numérotées (appel à la méthode Numeroter).
+Pour ce faire, on fait appel à Fusion qui placera les cases nécessairement noires.
+Cette dernière nécessite que nos blocs de cases noires soient numérotées. Pour cela, on fait donc appel à une méthode Numeroter qui consiste à numéroter avec les numéros de blocs, les cases noires de nos solutions SLPG-SLPD.
 \newline
-En effet, le status de case noire sûre ne peut être défini que si une case noire commune aux deux solutions appartient à un même et une unique bloc.
+Fusion sera ainsi en mesure de noircir les cases qui sont noires dans SLPG et SLPD et qui ont le même numéro de bloc.
+En effet, le status de case noire sûre ne peut être défini que si une case noire commune aux deux solutions appartient à un même et unique bloc.
 \newline
 L'exemple ci-dessous illustre l'importance de cette spécification.  
 \newline
 \includegraphics[height=6.5cm,width=12cm]{Exemple1}
 \subsubsection{La méthode remplirCasesSureBl}
 Cette méthode est appelée après Fusion dans le but de placer les cases blanches sûres. Elle est en mesure de les déterminer grâce aux solutions SLPG-SLPD en calculant les envergures des blocs de cases noires. Dès lors, les espaces situés entre les intervalles trouvés sont des cases blanches sûres.
-\paragraph{remplirCasesSureBl} commence par générer une ligne de cases blanche de la même taille que celles prises en paramétre; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noircit'' les cases correspantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
+\paragraph{remplirCasesSureBl} commence par générer une ligne de cases blanche de la même taille que celles prises en paramétres; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noircit'' les cases correspantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
 \newline
 A la fin de ce procédé, elle copie les cases blanches restantes dans le résultat de Fusion.
-\subsubsection{Ajout de la ligne à la grille de Picross}
-Une fois les cases sûres noires et blanches ajoutées à notre ligne, on vérifie par la méthode isFini si elle complète ou non, afin de ne plus la traiter si tel est le cas.
+\subsection{Résolution du Picross}
+Pour résoudre un Picross, les méthodes précédentes sont appelées sur les lignes et colonnes du Picross tant qu'une case est modifiée. En effet, pour éviter de traiter une ligne ou colonne où aucune case n'a été modifiée, on conserve l'ensemble des indices de case modifiée afin de rappeler les méthodes sur les lignes/colonnes correspondantes.
 \newline
-Ensuite, on ajoute les indices des cases qui ont été modifiées à une liste appelées colModif. Celle-ci permettra de traiter par la suite les colonnes où une case à été ajoutée.
-\newline
-Pour finir, on recopie notre ligne ainsi complétée dans la grille de Picross.
+La méthode de résolution du Picross se résume donc ainsi : 
+\begin{itemize}
+\item traiter ligne;
+\item liste C == colonnes à traiter;
+\item tant que la liste n'est pas vide 
+  \begin{itemize}
+  \item liste L == vide;
+  \item pour chaque i de C faire
+    \begin{itemize}
+    \item L == L + traiter ligne(i);
+    \end{itemize}
+  \item fin pour;
+  \item C == vide;
+  \item pour chaque i de L faire
+    \begin{itemize}
+    \item C == C + traiter colonne(i);
+    \end{itemize}
+  \item fin pour;
+  \end{itemize}
+\item fin tant que;
+\end{itemize}
 \subsection{Algorithmes remarquables}
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
@@ -317,16 +336,14 @@ Elle représente un indice logique
 \begin{itemize}
 \item Attributs :
 \begin{itemize}
-\item Longueur : qui représente la longueur de la liste. Cette attribut et incrémenter ou décrémenter automatiquement d\`es qu'il y a variations de la taille de la
-liste.
+\item Longueur : qui représente la longueur de la liste. Cette attribut et incrémenter ou décrémenter automatiquement d\`es qu'il y a variations de la taille de la liste.
 \item Fini : Nous indique si la ligne/colonne a laquelle est rattaché la liste est enti\`erement remplie (booléen à  true) ou non (booléen à  false), cette attribut est
 notamment tr\`es utile pour vérifier la condition d'arrêt de notre résolution (cf. main)
 \item Tête : Pointeur vers le premier élément de la liste.
 \end{itemize}
 \item Méthode remarquable :
 \begin{itemize}
-\item Surcharge de l'opérateur() : Nous avons utiliser l'operateur() comme un operateur d'indexage d'une liste cela nous permet notamment de faciliter l'acc\`es
-à un element de la liste
+\item Surcharge de l'opérateur() : Nous avons utiliser l'operateur() comme un operateur d'indexage d'une liste cela nous permet notamment de faciliter l'accès à un element de la liste.
 \end{itemize}
 \end{itemize}
 \subsubsection{La classe Tabliste :}
