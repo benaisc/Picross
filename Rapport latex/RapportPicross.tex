@@ -115,11 +115,29 @@ Une première méthode de résolution consisterait à générer toutes les solut
 Une telle méthode permettrait de déterminer un grand nombre de cases. En revanche, c'est une méthode très coûteuse.
 \newline
 C'est pourquoi, au lieu de générer toutes les solutions, nous avons choisi d'en générer deux; la plus à gauche et la plus à droite. Cette méthode ne permet pas de déterminer autant de cases que la précédente mais elle est nettement moins coûteuse.
-\subsection{La méthode SLG}
+\subsection{Résolution d'une ligne}
+La résolution d'une ligne passe par l'appel des fonctions SLPG et SLPD donnant respectivement la solution la plus à gauche et la solution la plus à droite de la ligne.
+\newline
+On fait ensuite la fusion de ces deux solutions afin de déterminer les cases nécessairement noires et celles nécessairement blanches.
+\subsubsection{La méthode SLG}
 La méthode SLG a pour but de générer une solution à une ligne contenant ou non des cases déjà déterminées.
 Elle cherchera à placer chacun des blocs de la liste d'indices à partir d'un indice i dans la ligne.
 Une fois un bloc placé, elle cherchera à placer le suivant. Si elle n'y parvient pas, elle recommence en i+1.
 Afin d'expliciter son fonctionnement, son algorithme est détaillée ci-dessous.
+\paragraph{Spécification :}
+ void SLG(int*, short int, Cell*, short int, bool\&);
+\begin{itemize}
+\item Paramètres:
+\begin{itemize}
+\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
+\item Un short int : représentant la taille du tableau
+\item Une cellule de liste: il repésente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
+\item Un short int : représentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
+\item Un booléen passé par référence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compté a partir de l'indice courant dans le tableau.
+\end{itemize}
+\item Retour de la fonction.
+\end{itemize}
+Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen est à false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution. Dans le cas contraire, la solution la plus à gauche nous est donnée dans le tableau.
 \paragraph{Algorithme : SLG}(L: ligne; n: taille de la ligne; Lind: liste d'indices; i: entier; possible: booleen)
 \begin{description}
 \item[Debut]
@@ -127,34 +145,70 @@ Afin d'expliciter son fonctionnement, son algorithme est détaillée ci-dessous.
   \begin{itemize}
   \item[Si] Lind est vide alors 
     \begin{itemize}
-    \item[Si] L ne contient pas de cases noires alors
+    \item Si L ne contient pas de cases noires après l'indice i alors
       \begin{itemize}
-      \item possible == vrai;
+      \item on blanchit toutes les cases de L d'indices supérieurs à i;
       \end{itemize}
-    \item[Si] possible alors
-      \begin{itemize}
-      \item on blanchit toutes les cases de L;
-      \end{itemize}
-    \end{itemize}
-  \item[Sinon]
-    \begin{itemize}
-    \item[Si] l'espace entre i et n est insuffisant pour placer le bloc ou qu'on ne peut pas placer de case blanche apr\`es le bloc ou que l'espace entre i à la taille du bloc contient une case blanche alors
+    \item Sinon 
       \begin{itemize}
       \item possible == faux;
-      \item On rappelle SLG avec i = i+1;
       \end{itemize}
-    \item[Si] possible alors 
+    \end{itemize}
+  \item[Sinon] on essaie de placer le 1er bloc de Lind à l'indice i
+    \begin{itemize}
+    \item Si on y arrive pas alors
       \begin{itemize}
-    \item On place le bloc à partir de i;
-    \item On rappelle SLG pour l'indice de bloc suivant avec i = i+valeur d'indice précédent+1;
+      \item si L[i] n'est pas noir alors 
+        \begin{itemize}
+        \item SLG(L, n, Lind, i+1, possible);
+        \end{itemize}
+      \item sinon 
+        \begin{itemize}
+        \item possible == faux;
+        \end{itemize}
+      \end{itemize}
+    \item Sinon
+      \begin{itemize}
+      \item SLG(L, n, queue(L), i+tête(L)+1, possible);
+      \end{itemize}
+    \end{itemize}
+  \item[Si] non possible alors 
+    \begin{itemize}
+    \item Si L[i] n'est pas noir alors
+      \begin{itemize}
+      \item SLG(L, n, Lind, i+1, possible);
+      \end{itemize}
+    \item Sinon 
+      \begin{itemize}
+      \item possible == faux;
       \end{itemize}
     \end{itemize}
   \end{itemize}
 \item[Fin algorithme]
 \end{description}
-\subsection{Résolution d'une ligne}
+\paragraph{Complexité pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
+ Notons :
+\begin{itemize}
+\item i: l'indice dans notre tableau
+\item n: la taille du dit tableau
+\item T: le dit tableau
+\item l: la taille de la liste d'indice (le nombre d'indices)
+\item $m_i$: l'envergure d'un indice i
+\end{itemize}
+Dans le pire des cas de notre algorithme, on peut imaginer que chaque hypothèse faite par notre algorithme soit fausse. Pour cela, il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1). En effet, plus les indices sont grands moins ils ont de positions possibles pour une même taille de tableau, et donc moins d'hypothèses.
+\newline Enfin, on voit bien que la complexité va dépendre de la taille de la liste; en effet, chaque cellule appelle la fonction au moins une fois pour chaque maillons placé après dans liste. Au plus, pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
+\newline En outre, on sait que le coût de SLG sans les appels récursifs revient à n puisque dans tous les cas où la liste n'est pas vide, on recopie le tableau. Sinon, si la liste est vide, on parcours le tableau de l'indice i à n. Ici, on considérera cette valeur cst=n, bien que ce cas soit défavorable. Il n'est pas réaliste en effet, dans le cas d'une liste non-vide (ce qui est notre cas) cette valeur est nécessairement inférieure et decroit tout au long des appels de SLG.
+Soit une complexité inférieure à $2^n$.
+\newline
+Avec ce modèle défavorable on obtient l'équation de recursion suivante:
+\begin{center}
+ \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
+\end{center}
+Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
+\paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
+Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau pour pouvoir vérifier.
 \subsubsection{Les méthodes SLPG et SLPD}
-Les méthodes SLPG et SLPD génèrent respectivement pour une ligne, sa solution la plus à gauche et sa solution la plus à droite. Elles font toutes deux appel à SLG avec i=0 et possible = faux. 
+Les méthodes SLPG et SLPD génèrent respectivement pour une ligne, sa solution la plus à gauche et sa solution la plus à droite. Elles font toutes deux appel à SLG avec i=0. 
 \newline
 Pour la solution droite, SLG est appelé sur une ligne et une liste d'indices préalablement inversées.
 \subsubsection{La méthode Fusion}
@@ -179,7 +233,7 @@ Une fois les cases sûres noires et blanches ajoutées à notre ligne, on vérif
 Ensuite, on ajoute les indices des cases qui ont été modifiées à une liste appelées colModif. Celle-ci permettra de traiter par la suite les colonnes où une case à été ajoutée.
 \newline
 Pour finir, on recopie notre ligne ainsi complétée dans la grille de Picross.
-
+\subsection{Algorithmes remarquables}
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
 Nous avons choisi d'implémenter une méthode de backtracking `simple' qui : 
@@ -299,43 +353,6 @@ notamment tr\`es utile pour vérifier la condition d'arrêt de notre résolution
 \subsection{ La classe Picross :}
 La classe picross est la classe dont les instances représentent les picross; S'est dans cette classe que sont implémenté nos méthodes de résolution.
 \subsection{Les algorithmes remarquables :}
-\subsubsection{SLG :}
-\paragraph{Spécification :}
- void SLG(int*, short int, Cell*, short int, bool\&);
-\begin{itemize}
-\item Param\`etre:
-\begin{itemize}
-\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
-\item Un short int : représentant la taille du tableau
-\item Une cellule de liste: il repésente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
-\item Un short int : représentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
-\item Un booléen passé par référence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compté a partir de l'indice courant dans le tableau.
-\end{itemize}
-\item Retour de la fonction.
-\end{itemize}
-Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen est à false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution. Dans le cas contraire, la solution la plus à gauche nous est donnée dans le tableau.
-
-\paragraph{Complexité pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
- Notons :
-\begin{itemize}
-\item i: l'indice dans notre tableau
-\item n: la taille du dit tableau
-\item T: le dit tableau
-\item l: la taille de la liste d'indice (le nombre d'indices)
-\item $m_i$: l'envergure d'un indice i
-\end{itemize}
-Dans le pire des cas de notre algorithme, on peut imaginer que chaque hypothèse faite par notre algorithme soit fausse. Pour cela, il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1) en effet, plus les indices sont grands moins ils ont de positions possibles pour une même taille de tableau, et donc moins d'hypothèses.
-\newline Enfin, on voit bien que la complexité vas dépendre de la taille de la liste, en effet, chaque cellule appelle la fonction au moins une fois pour chaque maillons placer après dans liste. Au plus, pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
-\newline En outre, on sait que le coût de SLG sans les appels récursifs reviens a n puisque dans tous les cas où la liste n'est pas vide, on recopie le tableau. Sinon, si la liste est vide on parcours le tableau de l'indice i à n, ici, on considerera cette valeur cst=n, néanmoins bien que ce cas soit défavorable, il n'est pas réaliste en effet, dans le cas d'une liste non-vide (ce qui est notre cas) alors cette valeur est nécessairement inférieure et decroit tout au long des appels de SLG.
-Soit une complexité inférieure à $2^n$.
-\newline
-Avec ce modèle défavorable on obtient l'équation de recursion suivante:
-\begin{center}
- \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
-\end{center}
-Ainsi en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$, en effet, pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
-\paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
-Dans le meilleur des cas la liste est vide on doit pacourir une fois le tableau pour pouvoir vérifié.
 \subsubsection{Backtrack :}
 \paragraph{Spécification :}
  void backtrack(bool \&poss);
