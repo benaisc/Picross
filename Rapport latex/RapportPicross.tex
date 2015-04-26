@@ -6,6 +6,7 @@
 \usepackage{lscape}
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{verbatim}
 \begin{document}
 \title{Rapport de projet Picross}
 \author{CONNES Victor \and PRYSIAZHNIUK Anastasiia \and BENAIS-HUGOT Charles \and RIVIERE Cecilie}
@@ -103,8 +104,8 @@ Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
 \newpage
 
 
-Le but du projet est d'implémenter un solveur de Picross en C++ qui, étant donné une matrice et des indices liés à ses lignes/colonnes, calcule puis affiche sa solution. On ne considère que des Picross qui ont une solution.\newline
-La résolution du Picross est un problème NP-complet (en temps Non-déterministe Polynomial). Pour le problème du Picross cela signifie qu'il ne faut pas espérer un algorithme qui résout n'importe quelle grille de Picross avec une complexité polynomiale (en fonction de la taille de la grille), mais trouver une solution peut être beaucoup plus coûteux.
+Le but du projet est d'implémenter un solveur de Picross en C++ qui, étant donnée une matrice et des indices liés à ses lignes/colonnes, calcule, puis affiche la solution. On ne considère que des Picross qui ont (au moins) une solution.\newline
+La résolution d'une grille de Picross est un problème NP-complet (en temps Non-déterministe Polynomial). Pour le problème du Picross cela signifie qu'il ne faut pas espérer un algorithme qui résout n'importe quelle grille de Picross avec une complexité polynomiale, trouver une solution peut être très coûteux.
 
 \section{Description de la méthode de résolution utilisée}
 Afin de résoudre une grille de Picross donnée, nous traitons ses lignes indépendamment de ses colonnes. 
@@ -121,92 +122,9 @@ La résolution d'une ligne passe par l'appel de deux méthodes donnant respectiv
 On fait ensuite la fusion de ces deux solutions afin de déterminer les cases nécessairement noires et celles nécessairement blanches.
 \subsubsection{La méthode SLG}
 La méthode SLG a pour but de générer une solution à une ligne contenant ou non des cases déjà déterminées.
-Elle cherchera à placer chacun des blocs de la liste d'indices à partir d'un indice i dans la ligne.
+Elle cherchera à placer chaque blocs de la liste d'indices dans la ligne.
 Une fois un bloc placé, elle cherchera à placer le suivant. Si elle n'y parvient pas, elle recommence en i+1.
-Afin d'expliciter son fonctionnement, son algorithme est détaillée ci-dessous.
-\paragraph{Spécification :}
- void SLG(int*, short int, Cell*, short int, bool\&);
-\begin{itemize}
-\item Paramètres:
-\begin{itemize}
-\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
-\item Un short int : représentant la taille du tableau
-\item Une cellule de liste: il repésente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
-\item Un short int : représentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
-\item Un booléen passé par référence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compté a partir de l'indice courant dans le tableau.
-\end{itemize}
-\item Retour de la fonction.
-\end{itemize}
-Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen est à false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution. Dans le cas contraire, la solution la plus à gauche nous est donnée dans le tableau.
-\paragraph{Algorithme : SLG}(L: ligne; n: taille de la ligne; Lind: liste d'indices; i: entier; possible: booleen)
-\begin{description}
-\item[Debut]
-\item[]
-  \begin{itemize}
-  \item[Si] Lind est vide alors 
-    \begin{itemize}
-    \item Si L ne contient pas de cases noires après l'indice i alors
-      \begin{itemize}
-      \item on blanchit toutes les cases de L d'indices supérieurs à i;
-      \end{itemize}
-    \item Sinon 
-      \begin{itemize}
-      \item possible == faux;
-      \end{itemize}
-    \end{itemize}
-  \item[Sinon] on essaie de placer le 1er bloc de Lind à l'indice i
-    \begin{itemize}
-    \item Si on y arrive pas alors
-      \begin{itemize}
-      \item si L[i] n'est pas noir alors 
-        \begin{itemize}
-        \item SLG(L, n, Lind, i+1, possible);
-        \end{itemize}
-      \item sinon 
-        \begin{itemize}
-        \item possible == faux;
-        \end{itemize}
-      \end{itemize}
-    \item Sinon
-      \begin{itemize}
-      \item SLG(L, n, queue(L), i+tête(L)+1, possible);
-      \end{itemize}
-    \end{itemize}
-  \item[Si] non possible alors 
-    \begin{itemize}
-    \item Si L[i] n'est pas noir alors
-      \begin{itemize}
-      \item SLG(L, n, Lind, i+1, possible);
-      \end{itemize}
-    \item Sinon 
-      \begin{itemize}
-      \item possible == faux;
-      \end{itemize}
-    \end{itemize}
-  \end{itemize}
-\item[Fin algorithme]
-\end{description}
-\paragraph{Complexité pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
- Notons :
-\begin{itemize}
-\item i: l'indice dans notre tableau
-\item n: la taille du dit tableau
-\item T: le dit tableau
-\item l: la taille de la liste d'indice (le nombre d'indices)
-\item $m_i$: l'envergure d'un indice i
-\end{itemize}
-Dans le pire des cas de notre algorithme, on peut imaginer que chaque hypothèse faite par notre algorithme soit fausse. Pour cela, il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1). En effet, plus les indices sont grands moins ils ont de positions possibles pour une même taille de tableau, et donc moins d'hypothèses.
-\newline Enfin, on voit bien que la complexité va dépendre de la taille de la liste; en effet, chaque cellule appelle la fonction au moins une fois pour chaque maillons placé après dans liste. Au plus, pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
-\newline En outre, on sait que le coût de SLG sans les appels récursifs revient à n puisque dans tous les cas où la liste n'est pas vide, on recopie le tableau. Sinon, si la liste est vide, on parcours le tableau de l'indice i à n. Ici, on considérera cette valeur cst=n, bien que ce cas soit défavorable. Il n'est pas réaliste en effet, dans le cas d'une liste non-vide (ce qui est notre cas) cette valeur est nécessairement inférieure et decroit tout au long des appels de SLG.
-Soit une complexité inférieure à $2^n$.
-\newline
-Avec ce modèle défavorable on obtient l'équation de recursion suivante:
-\begin{center}
- \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
-\end{center}
-Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
-\paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
-Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau pour pouvoir vérifier.
+Afin d'expliciter son fonctionnement, son algorithme est détaillé en annexe.
 \subsubsection{Les méthodes SLPG et SLPD}
 Les méthodes SLPG et SLPD sont les méthodes qui génèrent les deux solutions nécessaires à la résolution d'une ligne. Elles font toutes deux appel à SLG avec i=0. 
 \newline
@@ -224,38 +142,16 @@ L'exemple ci-dessous illustre l'importance de cette spécification.
 \newline
 \includegraphics[height=6.5cm,width=12cm]{Exemple1}
 \subsubsection{La méthode remplirCasesSureBl}
-Cette méthode est appelée après Fusion dans le but de placer les cases blanches sûres. Elle est en mesure de les déterminer grâce aux solutions SLPG-SLPD en calculant les envergures des blocs de cases noires. Dès lors, les espaces situés entre les intervalles trouvés sont des cases blanches sûres.
-\paragraph{remplirCasesSureBl} commence par générer une ligne de cases blanche de la même taille que celles prises en paramétres; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noircit'' les cases correspantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
+Cette méthode est appelée après Fusion dans le but de placer les cases blanches sûres. Elle est en mesure de les déterminer grâce aux solutions SLPG-SLPD en calculant les envergures des blocs de cases noires. Dès lors, les espaces situés entre les intervalles trouvés sont des cases blanches sûres.\newline
+Elle commence par générer une ligne de cases blanche de la même taille que celles prises en paramétres; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noirci'' les cases correspantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
 \newline
 A la fin de ce procédé, elle copie les cases blanches restantes dans le résultat de Fusion.
 \subsection{Résolution du Picross}
-Pour résoudre un Picross, les méthodes précédentes sont appelées sur les lignes et colonnes du Picross tant qu'une case est modifiée. En effet, pour éviter de traiter une ligne ou colonne où aucune case n'a été modifiée, on conserve l'ensemble des indices de case modifiée afin de rappeler les méthodes sur les lignes/colonnes correspondantes.
+Pour résoudre un Picross, un appel initial des méthodes précédentes sur toutes les lignes et colonnes est effectuer (cf. TINY\_SOL), cela pour but d'initialiser nos listes d'indices de lignes/colonnes modifiées afin de rappeler les méthodes sur les lignes/colonnes correspondantes, et ce tant que les listes contiennent des cases modifiées (cf. FAT\_SOL).
 \newline
-La méthode de résolution du Picross se résume donc ainsi : 
-\begin{itemize}
-\item traiter ligne;
-\item liste C == colonnes à traiter;
-\item tant que la liste n'est pas vide 
-  \begin{itemize}
-  \item liste L == vide;
-  \item pour chaque i de C faire
-    \begin{itemize}
-    \item L == L + traiter ligne(i);
-    \end{itemize}
-  \item fin pour;
-  \item C == vide;
-  \item pour chaque i de L faire
-    \begin{itemize}
-    \item C == C + traiter colonne(i);
-    \end{itemize}
-  \item fin pour;
-  \end{itemize}
-\item fin tant que;
-\end{itemize}
-\subsection{Algorithmes remarquables}
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
-Nous avons choisi d'implémenter une méthode de backtracking `simple' qui : 
+Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place des cases choisies arbitrairement à noir et étudie les conséquences de cette coloration : 
 \begin{itemize}
 \item Recherche la 1ere case indeterminée de la matrice (parcours par les lignes)
 \item On place cette case à noir
@@ -269,8 +165,7 @@ Nous avons choisi d'implémenter une méthode de backtracking `simple' qui :
 \end{itemize}
 \end{itemize}
 \section{Description de l'implémentation}
-\subsection{ Les besoins du programme :}
-
+\subsection{Les besoins du programme :}
 \subsubsection{Pour les indices de chaque ligne/colonne:}
 \begin{itemize}
 \item Imperatif à satisfaire:
@@ -286,7 +181,7 @@ Nous avons choisi d'implémenter une méthode de backtracking `simple' qui :
 \item Imperatif à satisfaire:
 \begin{itemize}
 \item structure de taille fixe
-\item acc\`es en temps constant a chaque case
+\item accèes en temps constant a chaque case
 \item faciliter de copie de la structure ($\theta$(n))
 \end{itemize}
 \item Choix: La matrice car très proche de la réalité
@@ -312,13 +207,6 @@ Nous avons choisi d'implémenter une méthode de backtracking `simple' qui :
 Le choix naturel serait l'ensemble mais on choisit la liste simplement chainés car déjà  implémentés pour les indices de chaque ligne/colonne. Son
 comportement est similaire dans le cas d'un ajout et d'un retrait en début de liste .
 \end{itemize}
-\begin{landscape}
-\begin{figure}
-\begin{center}
-\includegraphics[width=14cm]{./images/recapitulatif_stucture.png}
-\end{center}
-\end{figure}
-\end{landscape}
 \newpage
 \subsection{ Les classes}
 L'ensemble de nos classes disposent d'une surcharge de l'operateur<< afin de faciliter l'affichage dans le terminal. De plus, il existe d'autres classes dans notre programme qui permettent d'améliorer l'affichage en utilisant une interface graphique. Nous ne distinguerons ici seulement les classes permettant la resolution du picross.
@@ -419,19 +307,90 @@ On doit pour chaque indice de la liste inscrire son envergure dans un tableau in
 On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0, c'est alors qu'on parcours SLD à partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. 
 On a alors l'envergure du premier bloc. Pour le deuxiéme on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline 
 On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à partir du nouveau i2 et ainsi de suite. Au final, on aura parcouru entre n et 2n case du tableau.
-\subsubsection{remplirCaseBlcoince :}
-\paragraph{Spécification :}CaseBlcoince(int* Merge, sint taille, Liste \&L);
+\subsubsection{SLG :}
+\paragraph{Spécification :}
+ void SLG(int*, short int, Cell*, short int, bool\&);
 \begin{itemize}
-\item Param\`etre:
+\item Paramètres:
 \begin{itemize}
-\item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice.
-\item Un short int taille: représentant la taille du tableau
-\item Une liste d'indices L: La liste d'indices associés a la ligne/colonne
+\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
+\item Un short int : représentant la taille du tableau
+\item Une cellule de liste: il repésente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
+\item Un short int : représentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
+\item Un booléen passé par référence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compté a partir de l'indice courant dans le tableau.
 \end{itemize}
-\item Retour de la fonction:
+\item Retour de la fonction.
 \end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles cases blanches "sûres" en se basant sur les tailles des blocs.
-\paragraph{Comlexité : $\theta(n)$\newline}
+Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen est à false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution. Dans le cas contraire, la solution la plus à gauche nous est donnée dans le tableau.
+\paragraph{Algorithme : SLG}(L: ligne; n: taille de la ligne; Lind: liste d'indices; i: entier; possible: booleen)
+\begin{description}
+\item[Debut]
+\item[]
+  \begin{itemize}
+  \item[Si] Lind est vide alors 
+    \begin{itemize}
+    \item Si L ne contient pas de cases noires après l'indice i alors
+      \begin{itemize}
+      \item on blanchit toutes les cases de L d'indices supérieurs à i;
+      \end{itemize}
+    \item Sinon 
+      \begin{itemize}
+      \item possible == faux;
+      \end{itemize}
+    \end{itemize}
+  \item[Sinon] on essaie de placer le 1er bloc de Lind à l'indice i
+    \begin{itemize}
+    \item Si on y arrive pas alors
+      \begin{itemize}
+      \item si L[i] n'est pas noir alors 
+        \begin{itemize}
+        \item SLG(L, n, Lind, i+1, possible);
+        \end{itemize}
+      \item sinon 
+        \begin{itemize}
+        \item possible == faux;
+        \end{itemize}
+      \end{itemize}
+    \item Sinon
+      \begin{itemize}
+      \item SLG(L, n, queue(L), i+tête(L)+1, possible);
+      \end{itemize}
+    \end{itemize}
+  \item[Si] non possible alors 
+    \begin{itemize}
+    \item Si L[i] n'est pas noir alors
+      \begin{itemize}
+      \item SLG(L, n, Lind, i+1, possible);
+      \end{itemize}
+    \item Sinon 
+      \begin{itemize}
+      \item possible == faux;
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\item[Fin algorithme]
+\end{description}
+\paragraph{Complexité pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
+ Notons :
+\begin{itemize}
+\item i: l'indice dans notre tableau
+\item n: la taille du dit tableau
+\item T: le dit tableau
+\item l: la taille de la liste d'indice (le nombre d'indices)
+\item $m_i$: l'envergure d'un indice i
+\end{itemize}
+Dans le pire des cas de notre algorithme, on peut imaginer que chaque hypothèse faite par notre algorithme soit fausse. Pour cela, il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1). En effet, plus les indices sont grands moins ils ont de positions possibles pour une même taille de tableau, et donc moins d'hypothèses.
+\newline Enfin, on voit bien que la complexité va dépendre de la taille de la liste; en effet, chaque cellule appelle la fonction au moins une fois pour chaque maillons placé après dans liste. Au plus, pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
+\newline En outre, on sait que le coût de SLG sans les appels récursifs revient à n puisque dans tous les cas où la liste n'est pas vide, on recopie le tableau. Sinon, si la liste est vide, on parcours le tableau de l'indice i à n. Ici, on considérera cette valeur cst=n, bien que ce cas soit défavorable. Il n'est pas réaliste en effet, dans le cas d'une liste non-vide (ce qui est notre cas) cette valeur est nécessairement inférieure et decroit tout au long des appels de SLG.
+Soit une complexité inférieure à $2^n$.
+\newline
+Avec ce modèle défavorable on obtient l'équation de recursion suivante:
+\begin{center}
+ \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
+\end{center}
+Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
+\paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
+Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau pour pouvoir vérifier.
 \subsection{ L'interface graphique:}
 Pour implémenter une interface utilisateur graphique et afficher une grille Picross résolue on utilise une bibliothèque Gtkmm, qui est une surcouche de GTK+ pour le langage C++.
 
@@ -442,13 +401,14 @@ Dans une fenêtre du programme on a quatre boutons:
 \item ``Résolution'' permet le déclenchement de nos méthodes de résolution et affiche la grille ainsi résolue;
 \item ``Quitter'' appel une fonction GTK permettant la fermeture d'une fenêtre.
 \end{itemize}
-\begin{figure}[h]
+\begin{landscape}
+\begin{figure}
 \begin{center}
 \includegraphics[width=15cm]{picross}
 \end{center}
 \caption{Un exemple de solution Picross.}
 \end{figure}
-
+\end{landscape}
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
 \item Dans le cas ou le picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisie pour lancer le backtracking.
@@ -456,12 +416,16 @@ Dans une fenêtre du programme on a quatre boutons:
 Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité reste équivalente ($theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
 \item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic)
 \end{itemize}
-\section{Remerciements :}
-\begin{itemize}
-\item Nous tenions à remercier M.Janssen pour son implication dans le projet, ainsi qu'à l'équipe pédagogique de l'Université.
-\end{itemize}
-\section{Bibliographie :}
 \section{Annexes :}
+\subsection{Schéma de l'implémentation : }
+\begin{landscape}
+\begin{figure}
+\begin{center}
+\includegraphics[width=14cm]{./images/recapitulatif_stucture.png}
+\end{center}
+\end{figure}
+\end{landscape}
+\newpage
 \subsection{Lecture d'un fichier pour construire une grille:}
 Dans le but de construire une grille Picross nous avons choisi du structurer un fichier texte de la manière suivante :\newline
 Les deux premiers nombres séparés d'un espaces représentent nos Lignes | Colonnes.
@@ -472,5 +436,77 @@ La méthode passe ensuite sur toutes les lignes du fichier, ou chaque saut de li
 \end{center}
 \caption{Un exemple de fichier.}
 \end{figure}
-
+\newpage
+\subsection{Algorithme SLG :}
+\begin{verbatim}
+void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
+{
+  if(P && i<n)
+  {
+    int* Tab2=new int [n];
+    for(size_t j=0;j<n;j++)
+    {
+      Tab2[j]=Tab[j];
+    }
+    PlacerBloc(Tab,n,P->getVal(),i,poss);
+    if(poss)//si j'ai placer mon bloc
+    {
+      SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss);//bloc suivant
+      if(!poss)
+      {
+        for(size_t j=0;j<n;j++)
+        {
+          Tab[j]=Tab2[j];
+        }
+	      if(Tab[i]==1){poss=false;}
+        else{SLG(Tab,n,P,i+1,poss);}
+      }
+    }
+    else
+    {
+      if(Tab[i]==1){poss=false;}
+      else{SLG(Tab,n,P,i+1,poss);}
+    }
+    delete [] Tab2;
+  }
+  else
+  {
+    poss=Verification(Tab,i,n);
+    if(poss)
+    {
+	    for(size_t i=0; i<n; i++){if(Tab[i]==0){Tab[i]=-1;}}
+    }
+  }
+}
+\end{verbatim}
+\newpage
+\subsection{Algorithme de backtracking :}
+\begin{verbatim}
+void Picross::backtrack(bool &poss)
+{
+  FAT\_SOL(ligModif.getLongueur()); //méthode de résolution
+  if(!isPicrossFini())
+  {
+    int** SAVE=copieMat();	//Copie de la matrice
+    bool* TL=new bool [getNbLignes()];
+    bool* TC=new bool [getNbColonnes()];
+    copieBool(TL,TC);	//Copie de nos booléens lignes|colonnes finies
+    sint i=0,j=0;	//Indices utilisés pour le placement de la case noire
+    Placer1noir(poss,i,j);	//poss à true ssi la matrice contient un indeterminé(0) qu'on à pu mettre à noir(1)
+    if(poss)
+    {
+      backtrack(poss);	//On recommence
+	//Si, a la suite des appels recursifs, le picross n'est pas correctement rempli et on ne peut pas Placer1noir:
+	//A ce niveau nous sommes dans le dernier environnement où on à Placer1noir en (i,j)
+      if(!poss)
+      {
+        recopieMat(SAVE);	//Recopie de la matrice sauvegardée avant le placement du noir
+        recopieBool(TL,TC);	//Recopie de nos booléens de lignes|colonnes finies qui aurait pu être modifiés par FAT_SOL de l'environnement précédent
+        Placer1blanc(i,j);	//On place la case (i,j) à blanc, car on est sûr qu'elle n'est pas noire
+        backtrack(poss);	//On recommence
+      }
+    }
+  }
+}
+\end{verbatim}
 \end{document}
