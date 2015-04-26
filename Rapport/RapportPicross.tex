@@ -324,7 +324,7 @@ Dans une fenêtre du programme on a quatre boutons:
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
 \item Dans le cas où le picross nécessite un backtrack pour sa résolution, les cases restantes peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
-\item Dans le souci d'améliorer la compléxité de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
+\item Dans le souci d'améliorer la complexité de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
 Cela dit, dans le pire des cas (1ere hypothese fausse), la complexité reste équivalente ($\theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
 \item L'implémentation de méthodes permettant de rentrer des grilles de picross graphiquement (au clic).
 \item L'implémentation de méthodes permettant de résoudre des grilles de picross graphiquement (au clic).
@@ -335,23 +335,6 @@ Cela dit, dans le pire des cas (1ere hypothese fausse), la complexité reste éq
 En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et aucun blanc qui ne soit dans l’envergure des blocs. Pourtant on peut aisément voir que la case d’indice 4 (indice débutant à 0) est blanche puisqu’elle est coincée entre deux blanches et que la taille minimum des blocs est de deux. On pourrait donc imaginer un algorithme qui teste pour chaque blocs d’indéterminés coincés entre deux blancs si sa taille est inferieure au plus petit indice à rentrer,  dans ce cas on le blanchit.
 \end{itemize}
 \section{Annexes :}
-\subsection{Schéma de l'implémentation :}
-\begin{landscape}
-\begin{figure}
-\begin{center}
-\includegraphics[width=15cm]{./images/recapitulatif_stucture.png}
-\end{center}
-\end{figure}
-\end{landscape}
-\newpage
-\subsection{Construire une grille de Picross :}
-\begin{figure}[h]
-\begin{center}
-\includegraphics[width=8cm]{ex2}
-\end{center}
-\caption{Un exemple de fichier.}
-\end{figure}
-\newpage
 \subsection{Algorithme de backtracking :}
 \begin{verbatim}
 void Picross::backtrack(bool &poss)
@@ -382,4 +365,20 @@ void Picross::backtrack(bool &poss)
   }
 }
 \end{verbatim}
+\subsection{Schéma de l'implémentation :}
+\begin{landscape}
+\begin{figure}
+\begin{center}
+\includegraphics[width=15cm]{./images/recapitulatif_stucture.png}
+\end{center}
+\end{figure}
+\end{landscape}
+\newpage
+\subsection{Construire une grille de Picross :}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=8cm]{ex2}
+\end{center}
+\caption{Un exemple de fichier.}
+\end{figure}
 \end{document}
