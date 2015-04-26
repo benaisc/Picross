@@ -15,7 +15,7 @@
 \newpage
 \section{Description du problème}
 
-Le Picross est un casse-tête qui consiste à retrouver une figure depuis les indices. La figure à découvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une séquence de nombres représentant les longueurs des blocs de cases noires contigũes de la ligne/colonne. Les blocs de cases noires sont séparés par au moins une case blanche.
+Le Picross est un casse-tête qui consiste à retrouver une figure depuis les indices. La figure à découvrir est une grille dans laquelle chaque case est de couleur noire ou blanche. Pour chacune des lignes et colonnes on dispose d'un indice qui est une séquence de nombres représentant les longueurs des blocs de cases noires contiguës de la ligne/colonne. Les blocs de cases noires sont séparés par au moins une case blanche.
 
 \begin{table}[h]
 \centering
@@ -143,14 +143,14 @@ L'exemple ci-dessous illustre l'importance de cette spécification.
 \includegraphics[height=6.5cm,width=12cm]{Exemple1}
 \subsubsection{La méthode remplirCasesSureBl}
 Cette méthode est appelée après Fusion dans le but de placer les cases blanches sûres. Elle est en mesure de les déterminer grâce aux solutions SLPG-SLPD en calculant les envergures des blocs de cases noires. Dès lors, les espaces situés entre les intervalles trouvés sont des cases blanches sûres.\newline
-Elle commence par générer une ligne de cases blanche de la même taille que celles prises en paramétres; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noirci'' les cases correspantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
+Elle commence par générer une ligne de cases blanche de la même taille que celles prises en paramètres; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noirci'' les cases correspondantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
 \newline
 A la fin de ce procédé, elle copie les cases blanches restantes dans le résultat de Fusion.
 \subsection{Résolution du Picross}
 Pour résoudre un Picross, un appel initial des méthodes précédentes sur toutes les lignes et colonnes est effectuer (cf. TINY\_SOL), cela pour but d'initialiser nos listes d'indices de lignes/colonnes modifiées afin de rappeler les méthodes sur les lignes/colonnes correspondantes, et ce tant que les listes contiennent des cases modifiées (cf. FAT\_SOL).
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
-Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place une case indeterminée (arbitrairement, la première qu'il trouve en parcourant les lignes de la matrice) à noire et étudie les conséquences de cette coloration;
+Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place une case indéterminée (arbitrairement, la première qu'il trouve en parcourant les lignes de la matrice) à noire et étudie les conséquences de cette coloration;
 L'algorithme est explicité en annexe.
 \section{Description de l'implémentation}
 \subsection{Les besoins du programme :}
@@ -162,9 +162,9 @@ L'algorithme est explicité en annexe.
 \item parcours en $\theta$(n) (plusieurs méthodes recourant à un parcours total ou partiel de la structure)
 \item relation d'ordre (le parcours ne sont réalisés que dans l'ordre de l'indice le plus en haut vers celui le plus en bas respectivement gauche-droite pour les lignes)
 \end{itemize}
-\item Choix : la liste simplement chainée, car elle correspond parfaitement aux spécifications.
+\item Choix : la liste simplement chaînée, car elle correspond parfaitement aux spécifications.
 \end{itemize}
-\subsubsection{Pour représenter la grille du picross :}
+\subsubsection{Pour représenter la grille du Picross :}
 \begin{itemize}
 \item Imperatif à satisfaire:
 \begin{itemize}
@@ -192,7 +192,7 @@ L'algorithme est explicité en annexe.
 \item taille dynamique
 \end{itemize}
 \item Choix :
-Le choix naturel serait l'ensemble mais nous avons choisi la liste simplement chainée car déjà implémentée.
+Le choix naturel serait l'ensemble mais nous avons choisi la liste simplement chaînée car déjà implémentée.
 \end{itemize}
 \newpage
 
@@ -216,7 +216,7 @@ notamment très utile pour vérifier la condition d'arrêt de notre résolution.
 \end{itemize}
 \item Méthode remarquable :
 \begin{itemize}
-\item Surcharge de l'opérateur() : Nous l'utilisons notamment pour faciliter l'accès à un element de la liste.
+\item Surcharge de l'opérateur() : Nous l'utilisons notamment pour faciliter l'accès à un élément de la liste.
 \end{itemize}
 \end{itemize}
 \subsubsection{La classe Tabliste :}
@@ -241,7 +241,7 @@ notamment très utile pour vérifier la condition d'arrêt de notre résolution.
 \end{itemize}
 \end{itemize}
 \subsection{ La classe Picross :}
-La classe picross est la classe dont l'instance représente le picross; S'est dans cette classe que sont implémentées nos méthodes de résolution.
+La classe Picross est la classe dont l'instance représente le Picross; S'est dans cette classe que sont implémentées nos méthodes de résolution.
 \begin{itemize}
 \item Attributs:
 \begin{itemize}
@@ -257,9 +257,9 @@ La classe picross est la classe dont l'instance représente le picross; S'est da
 \begin{itemize}
 \item Paramètres:
 \begin{itemize}
-\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
+\item Un tableau d'entier: (Donnée/résultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
 \item Un short int : représentant la taille du tableau
-\item Une cellule de liste: il repésente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
+\item Une cellule de liste: il représente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
 \item Un short int : représentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
 \item Un booléen passé par référence : représentant si il est possible ou non de placer la fin de la liste d'indices indice courant compté a partir de l'indice courant dans le tableau.
 \end{itemize}
@@ -324,23 +324,23 @@ Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen
 \item $m_i$: l'envergure d'un indice i
 \end{itemize}
 Dans le pire des cas de notre algorithme, on peut imaginer que chaque hypothèse faite par notre algorithme soit fausse. Pour cela, il nous faut imaginer une liste d'indice de petite taille (ici on choisira $\forall$i $\in$[0,l[ $m_i$=1). En effet, plus les indices sont grands moins ils ont de positions possibles pour une même taille de tableau, et donc moins d'hypothèses.
-\newline Enfin, on voit bien que la complexité va dépendre de la taille de la liste; en effet, chaque cellule appelle la fonction au moins une fois pour chaque maillons placé après dans liste. Au plus, pour un indice j de la liste SLG sera appeé $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
-\newline En outre, on sait que le coût de SLG sans les appels récursifs revient à n puisque dans tous les cas où la liste n'est pas vide, on recopie le tableau. Sinon, si la liste est vide, on parcours le tableau de l'indice i à n. Ici, on considérera cette valeur cst=n, bien que ce cas soit défavorable. Il n'est pas réaliste en effet, dans le cas d'une liste non-vide (ce qui est notre cas) cette valeur est nécessairement inférieure et decroit tout au long des appels de SLG.
+\newline Enfin, on voit bien que la complexité va dépendre de la taille de la liste; en effet, chaque cellule appelle la fonction au moins une fois pour chaque maillons placé après dans liste. Au plus, pour un indice j de la liste SLG sera appelée $\sum_{i=l-j}^{l} (i)$ fois c'est à dire l-i fois $\forall$i $\in$[j,l[.
+\newline En outre, on sait que le coût de SLG sans les appels récursifs revient à n puisque dans tous les cas où la liste n'est pas vide, on recopie le tableau. Sinon, si la liste est vide, on parcours le tableau de l'indice i à n. Ici, on considérera cette valeur cst=n, bien que ce cas soit défavorable. Il n'est pas réaliste en effet, dans le cas d'une liste non-vide (ce qui est notre cas) cette valeur est nécessairement inférieure et décroit tout au long des appels de SLG.
 Soit une complexité inférieure à $2^n$.
 \newline
-Avec ce modèle défavorable on obtient l'équation de recursion suivante:
+Avec ce modèle défavorable on obtient l'équation de récursion suivante:
 \begin{center}
  \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
 \end{center}
-Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
+Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimum une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
 \paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
-Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau pour pouvoir vérifier.
+Dans le meilleur des cas la liste est vide, on doit parcourir une fois le tableau pour pouvoir vérifier.
 \subsubsection{remplirCasesSureBl :}
 \paragraph{Spécification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
 \begin{itemize}
 \item Paramètres:
 \begin{itemize}
-\item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice,après la résolution de notre fonction, initialisé avec le retour de fusion.
+\item Un tableau d'entier Merge: (Résultat) il représente la ligne/colonne de la matrice,après la résolution de notre fonction, initialisé avec le retour de fusion.
 \item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des informations à notre disposition
 \item Un tableau d'entier TD: (Donnée) idem pour la solution la plus à droite
 \item Un short int taille: représentant la taille du tableau
@@ -348,11 +348,11 @@ Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau
 \end{itemize}
 \item Retour de la fonction:
 \end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles case blanches "sures" en se basant sur l'envergure des blocs.
-\paragraph{Comlexité : $\theta(n)$\newline}
-On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermediaire, pour cela il nous faut parcourir SLG puis SLD mais pas en totalité, en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.
+La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de départ avec en plus d'éventuelles case blanches "sures" en se basant sur l'envergure des blocs.
+\paragraph{Complexité : $\theta(n)$\newline}
+On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermédiaire, pour cela il nous faut parcourir SLG puis SLD mais pas en totalité, en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.
 On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0, c'est alors qu'on parcours SLD à partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. 
-On a alors l'envergure du premier bloc. Pour le deuxiéme on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline 
+On a alors l'envergure du premier bloc. Pour le deuxième on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline 
 On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à partir du nouveau i2 et ainsi de suite. Au final, on aura parcouru entre n et 2n case du tableau.
 \subsubsection{Backtrack :}
 \paragraph{Spécification :}
@@ -387,10 +387,10 @@ Dans une fenêtre du programme on a quatre boutons:
 \end{landscape}
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
-\item Dans le cas ou le picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
+\item Dans le cas ou le Picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
 \item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
 Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité reste équivalente ($theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
-\item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic).
+\item Nous aurions pû implémenter des méthodes permettant de rentrer des grilles de Picross graphiquement (au clic).
 \item Dans certains cas la méthode pour trouver les cases blanches sûres que nous avons choisies ne trouve pas toutes les cases blanches que nous aurions pu déterminer. Par exemple :
 \begin{center}
 \includegraphics[width=11cm]{image1}
@@ -477,11 +477,11 @@ void Picross::backtrack(bool &poss)
     bool* TC=new bool [getNbColonnes()];
     copieBool(TL,TC);	//Copie de nos booléens lignes|colonnes finies
     sint i=0,j=0;	//Indices utilisés pour le placement de la case noire
-    Placer1noir(poss,i,j);	//poss à true ssi la matrice contient un indeterminé(0) qu'on à pu mettre à noir(1)
+    Placer1noir(poss,i,j);	//poss à true ssi la matrice contient un indéterminé(0) qu'on à pu mettre à noir(1)
     if(poss)
     {
       backtrack(poss);	//On recommence
-	//Si, a la suite des appels recursifs, le picross n'est pas correctement rempli et on ne peut pas Placer1noir:
+	//Si, a la suite des appels récursifs, le Picross n'est pas correctement rempli et on ne peut pas Placer1noir:
 	//A ce niveau nous sommes dans le dernier environnement où on à Placer1noir en (i,j)
       if(!poss)
       {
