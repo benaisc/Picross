@@ -113,27 +113,27 @@ Le traitement des lignes et des colonnes se faisant de la même manière; nous n
 \newline
 Une première méthode de résolution consisterait à générer toutes les solutions d'une ligne, partiellement remplie ou non; et de déterminer les cases noires ou blanches communes à chacune des solutions.
 \newline
-Une telle méthode permettrait de déterminer un grand nombre de cases. En revanche, c'est une méthode très coûteuse.
+Une telle méthode permettrait de déterminer un plus grand nombre de cases. En revanche, elle serait très coûteuse.
 \newline
-C'est pourquoi, au lieu de générer toutes les solutions, nous avons choisi d'en générer deux; la plus à gauche et la plus à droite. Cette méthode ne permet pas de déterminer autant de cases que la précédente mais elle est nettement moins coûteuse.
+C'est pourquoi, au lieu de générer toutes les solutions, nous avons choisi d'en générer deux; la plus à gauche et la plus à droite. Cette méthode ne permet pas de déterminer autant de cases que la précédente mais est nettement moins coûteuse.
 \subsection{Résolution d'une ligne}
 La résolution d'une ligne passe par l'appel de deux méthodes donnant respectivement la solution la plus à gauche et la solution la plus à droite de la ligne.
 \newline
-On fait ensuite la fusion de ces deux solutions afin de déterminer les cases nécessairement noires et celles nécessairement blanches.
+On fait ensuite la fusion de ces deux solutions afin de déterminer les cases nécessairement noires ou blanches.
 \subsubsection{La méthode SLG}
 La méthode SLG a pour but de générer une solution à une ligne contenant ou non des cases déjà déterminées.
 Elle cherchera à placer chaque blocs de la liste d'indices dans la ligne.
-Une fois un bloc placé, elle cherchera à placer le suivant. Si elle n'y parvient pas, elle recommence en i+1.
+Une fois un bloc placé, elle cherchera à placer le suivant.
 Afin d'expliciter son fonctionnement, son algorithme est détaillé en annexe.
 \subsubsection{Les méthodes SLPG et SLPD}
-Les méthodes SLPG et SLPD sont les méthodes qui génèrent les deux solutions nécessaires à la résolution d'une ligne. Elles font toutes deux appel à SLG avec i=0. 
+Les méthodes SLPG et SLPD sont les méthodes qui génèrent les deux solutions nécessaires à la résolution d'une ligne. Elles font toutes deux appel à SLG. 
 \newline
 Pour la solution droite, SLG est appelé sur une ligne et une liste d'indices préalablement inversées.
 \subsubsection{La méthode Fusion}
-A la suite des appels à SLPG et SLPD, nous aurons deux solutions possibles pour une ligne; or, pour parvenir à la résolution de notre Picross, il nous faut déterminer les cases n'ayant qu'une solution. 
+Les appels à SLPG et SLPD nous donnent deux solutions possibles pour une ligne et, pour parvenir à sa résolution, il nous faut déterminer les cases n'ayant qu'une solution possible. 
 \newline
 Pour ce faire, on fait appel à Fusion qui placera les cases nécessairement noires.
-Cette dernière nécessite que nos blocs de cases noires soient numérotées. Pour cela, on fait donc appel à une méthode Numeroter qui consiste à numéroter avec les numéros de blocs, les cases noires de nos solutions SLPG-SLPD.
+Cette dernière nécessite que nos blocs de cases noires soient numérotés, on fait donc un appel préalable à une méthode Numeroter sur nos solutions SLPG-SLPD.
 \newline
 Fusion sera ainsi en mesure de noircir les cases qui sont noires dans SLPG et SLPD et qui ont le même numéro de bloc.
 En effet, le status de case noire sûre ne peut être défini que si une case noire commune aux deux solutions appartient à un même et unique bloc.
@@ -148,44 +148,10 @@ Elle commence par générer une ligne de cases blanche de la même taille que ce
 A la fin de ce procédé, elle copie les cases blanches restantes dans le résultat de Fusion.
 \subsection{Résolution du Picross}
 Pour résoudre un Picross, un appel initial des méthodes précédentes sur toutes les lignes et colonnes est effectuer (cf. TINY\_SOL), cela pour but d'initialiser nos listes d'indices de lignes/colonnes modifiées afin de rappeler les méthodes sur les lignes/colonnes correspondantes, et ce tant que les listes contiennent des cases modifiées (cf. FAT\_SOL).
-\newline
-La méthode de résolution du Picross se résume donc ainsi : 
-\begin{itemize}
-\item traiter ligne;
-\item liste C == colonnes à traiter;
-\item tant que la liste n'est pas vide 
-  \begin{itemize}
-  \item liste L == vide;
-  \item pour chaque i de C faire
-    \begin{itemize}
-    \item L == L + traiter ligne(i);
-    \end{itemize}
-  \item fin pour;
-  \item C == vide;
-  \item pour chaque i de L faire
-    \begin{itemize}
-    \item C == C + traiter colonne(i);
-    \end{itemize}
-  \item fin pour;
-  \end{itemize}
-\item fin tant que;
-\end{itemize}
-\subsection{Algorithmes remarquables}
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
-Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place des cases choisies arbitrairement à noir et étudie les conséquences de cette coloration : 
-\begin{itemize}
-\item Recherche la 1ere case indeterminée de la matrice (parcours par les lignes)
-\item On place cette case à noir
-\begin{itemize}
-\item On étudie la conséquence de cette coloration arbitraire : 
-\begin{itemize}
-\item Si cela mène à un picross résolu, on sort
-\item Si cela mène à un picross non rempli, on réitère sur une nouvelle case que l'on backtrack
-\item Si cela mène à un picross rempli mais non résolu, on sort de nos environnements successifs avec un booléen à false, on effectue alors une recopie de notre matrice qui avait été sauvegardée, et on réitère, cette fois avec la case backtrackée à blanc
-\end{itemize}
-\end{itemize}
-\end{itemize}
+Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place une case indeterminée (arbitrairement, la première qu'il trouve en parcourant les lignes de la matrice) à noire et étudie les conséquences de cette coloration;
+L'algorithme est explicité en annexe.
 \section{Description de l'implémentation}
 \subsection{Les besoins du programme :}
 \subsubsection{Pour les indices de chaque ligne/colonne:}
@@ -193,31 +159,31 @@ Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place
 \item Imperatif à satisfaire:
 \begin{itemize}
 \item structure de taille dynamique (nombre variable d'indices par lignes)
-\item parcours en $\theta$(n) (plusieurs méthodes recourant à  un parcours total ou partiel de la structure)
+\item parcours en $\theta$(n) (plusieurs méthodes recourant à un parcours total ou partiel de la structure)
 \item relation d'ordre (le parcours ne sont réalisés que dans l'ordre de l'indice le plus en haut vers celui le plus en bas respectivement gauche-droite pour les lignes)
 \end{itemize}
-\item Choix : la liste simplement chainés, car elle correspond parfaitement au spécification et parait finalement très proche de la réalité
+\item Choix : la liste simplement chainée, car elle correspond parfaitement aux spécifications.
 \end{itemize}
 \subsubsection{Pour représenter la grille du picross :}
 \begin{itemize}
 \item Imperatif à satisfaire:
 \begin{itemize}
 \item structure de taille fixe
-\item accèes en temps constant a chaque case
-\item faciliter de copie de la structure ($\theta$(n))
+\item accès en temps constant a chaque case
+\item facilitée de copie de la structure ($\theta$(n))
 \end{itemize}
-\item Choix: La matrice car très proche de la réalité
+\item Choix: La matrice (Un tableau de tableaux)
 \end{itemize}
 \subsubsection{Pour l'ensemble des indices de lignes/colonnes :}
 \begin{itemize}
 \item Imperatif à satisfaire:
 \begin{itemize}
-\item accéder en temps constant a chaque liste
-\item garder un indicage cohérent avec la matrice
+\item accès en temps constant a chaque liste
+\item indicage cohérent avec la matrice
 \end{itemize}
-\item Choix :Un tableau
+\item Choix : Un tableau de listes
 \end{itemize}
-\subsubsection{Pour ligmodif /colmodif}
+\subsubsection{Pour ligmodif/colmodif}
 \begin{itemize}
 \item Imperatif à satisfaire:
 \begin{itemize}
@@ -226,109 +192,65 @@ Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place
 \item taille dynamique
 \end{itemize}
 \item Choix :
-Le choix naturel serait l'ensemble mais on choisit la liste simplement chainés car déjà  implémentés pour les indices de chaque ligne/colonne. Son
-comportement est similaire dans le cas d'un ajout et d'un retrait en début de liste .
+Le choix naturel serait l'ensemble mais nous avons choisi la liste simplement chainée car déjà implémentée.
 \end{itemize}
 \newpage
-\subsection{ Les classes}
-L'ensemble de nos classes disposent d'une surcharge de l'operateur<< afin de faciliter l'affichage dans le terminal. De plus, il existe d'autres classes dans notre programme qui permettent d'améliorer l'affichage en utilisant une interface graphique. Nous ne distinguerons ici seulement les classes permettant la resolution du picross.
 
+\subsection{Les classes}
 \subsubsection{La classe Cell :}
-Elle représente un indice logique
 \begin{itemize}
 \item Attributs :
 \begin{itemize}
-\item Val : qui représente la valeur de cette indice logique (cette valeur étant strictement enti\`ere positive et a priori non borné nous avons choisi de la représenter par un short int)
-\item Suiv : qui est pointeur sur la cellule suivante de la liste
+\item Val : contient la valeur d'un bloc de case ou un indice
+\item Suiv : pointeur sur la cellule suivante de la liste
 \end{itemize}
 \end{itemize}
 \subsubsection{La classe Liste :}
 \begin{itemize}
 \item Attributs :
 \begin{itemize}
-\item Longueur : qui représente la longueur de la liste. Cette attribut et incrémenter ou décrémenter automatiquement d\`es qu'il y a variations de la taille de la liste.
-\item Fini : Nous indique si la ligne/colonne a laquelle est rattaché la liste est enti\`erement remplie (booléen à  true) ou non (booléen à  false), cette attribut est
-notamment tr\`es utile pour vérifier la condition d'arrêt de notre résolution (cf. main)
+\item Longueur : contient le nombres de cellules de la liste.
+\item Fini : indique si la ligne/colonne à laquelle est rattachée la liste est entièrement rempli (booléen à true) ou non (booléen à false), cet attribut est
+notamment très utile pour vérifier la condition d'arrêt de notre résolution.
 \item Tête : Pointeur vers le premier élément de la liste.
 \end{itemize}
 \item Méthode remarquable :
 \begin{itemize}
-\item Surcharge de l'opérateur() : Nous avons utiliser l'operateur() comme un operateur d'indexage d'une liste cela nous permet notamment de faciliter l'accès à un element de la liste.
+\item Surcharge de l'opérateur() : Nous l'utilisons notamment pour faciliter l'accès à un element de la liste.
 \end{itemize}
 \end{itemize}
 \subsubsection{La classe Tabliste :}
 \begin{itemize}
 \item Attributs :
 \begin{itemize}
-\item Tab : le tableau de liste
+\item Tab : le tableau de listes
 \item Taille : la taille du tableau
 \end{itemize}
 \item Méthode remarquable :
 \begin{itemize}
-\item Surcharge de l'opérateur[]: Nous permet d'utiliser comme si elle était simplement un tableau.
+\item Surcharge de l'opérateur[]: Nous permet l'accès aux listes en temps constant comme pour un tableau.
 \end{itemize}
 \end{itemize}
 \subsubsection{La classe Matrice :}
 \begin{itemize}
 \item Attributs:
 \begin{itemize}
-\item Tab : la matrice d'entier (-1 : blanc 0 : indéterminé 1 : noir)
+\item Mat : la matrice d'entiers
 \item Nbl : Nombre de ligne
 \item Nbc : Nombre de colonnes
 \end{itemize}
 \end{itemize}
 \subsection{ La classe Picross :}
-La classe picross est la classe dont les instances représentent les picross; S'est dans cette classe que sont implémenté nos méthodes de résolution.
+La classe picross est la classe dont l'instance représente le picross; S'est dans cette classe que sont implémentées nos méthodes de résolution.
+\begin{itemize}
+\item Attributs:
+\begin{itemize}
+\item Une Matrice (-1 : blanc, 0 : indéterminé, 1 : noir)
+\item Deux TabListes pour nos listes de blocs
+\item Deux listes d'indices ligModif et colModif pour limiter nos récursions
+\end{itemize}
+\end{itemize}
 \subsection{Les algorithmes remarquables :}
-\subsubsection{Backtrack :}
-\paragraph{Spécification :}
- void backtrack(bool \&poss);
-\begin{itemize}
-\item Param\`etre:
-\begin{itemize}
-\item Un booléen signalant la possibilité de placer une case dans un picross non fini
-\end{itemize}
-Dans le cas ou cela est possible, on "backtrack" une case
-Dans le cas ou cela n'est pas possible, on revient à l'environnement de la dernière case backtrackée et on l'inverse
-\item Retour de la fonction :
-\end{itemize}
-La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
-Cela à pour conséquence une complexité élevée ($\theta(n^2)$) lors de la recopie de celle-ci.
-\subsubsection{Fusion :}
-\paragraph{Spécification :}Fusion(int* Merge,int* TG,int* TD,sint taille);
-\begin{itemize}
-\item Param\`etre:
-\begin{itemize}
-\item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice,apr\`es la resolution de notre fonction, initialisé avec la ligne/colonne existante
-\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des informations à notre disposition
-\item Un tableau d'entier TD: (Donnée) idem pour la solution la plus à droite
-\item Un short int taille: représentant la taille du tableau
-\end{itemize}
-\item Retour de la fonction:
-\end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles cases noires "sûres".
-\paragraph{Comlexité : $\theta$(n)\newline}
-Nous parcourons chaque case du tableau pour vérifier si nous avons des informations supplémentaires. Remarque: on aurait pu gérer une liste des indices qui était encore indéterminé pour chaque ligne/colonne ce qui aurait améliorer notre complexité moyenne. 
-Néanmoins, nous avons juger cela peut indispensable au vue du caractère negligeble de cette complexité par rapport aux autres fonctions du programme. 
-\subsubsection{remplirCasesSureBl :}
-\paragraph{Spécification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
-\begin{itemize}
-\item Paramètres:
-\begin{itemize}
-\item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice,après la résolution de notre fonction, initialisé avec le retour de fusion.
-\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des informations à notre disposition
-\item Un tableau d'entier TD: (Donnée) idem pour la solution la plus à droite
-\item Un short int taille: représentant la taille du tableau
-\item Une liste d'indices L: La liste d'indices associés a la ligne/colonne
-\end{itemize}
-\item Retour de la fonction:
-\end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles case blanches "sures" en se basant sur l'envergure des blocs.
-\paragraph{Comlexité : $\theta(n)$\newline}
-On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermediaire, pour cela il nous faut parcourir SLG puis SLD mais pas en totalité, en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.
-On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0, c'est alors qu'on parcours SLD à partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. 
-On a alors l'envergure du premier bloc. Pour le deuxiéme on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline 
-On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à partir du nouveau i2 et ainsi de suite. Au final, on aura parcouru entre n et 2n case du tableau.
 \subsubsection{SLG :}
 \paragraph{Spécification :}
  void SLG(int*, short int, Cell*, short int, bool\&);
@@ -413,15 +335,47 @@ Avec ce modèle défavorable on obtient l'équation de recursion suivante:
 Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
 \paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
 Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau pour pouvoir vérifier.
+\subsubsection{remplirCasesSureBl :}
+\paragraph{Spécification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
+\begin{itemize}
+\item Paramètres:
+\begin{itemize}
+\item Un tableau d'entier Merge: (Resultat) il représente la ligne/colonne de la matrice,après la résolution de notre fonction, initialisé avec le retour de fusion.
+\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des informations à notre disposition
+\item Un tableau d'entier TD: (Donnée) idem pour la solution la plus à droite
+\item Un short int taille: représentant la taille du tableau
+\item Une liste d'indices L: La liste d'indices associés a la ligne/colonne
+\end{itemize}
+\item Retour de la fonction:
+\end{itemize}
+La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de depart avec en plus d'éventuelles case blanches "sures" en se basant sur l'envergure des blocs.
+\paragraph{Comlexité : $\theta(n)$\newline}
+On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermediaire, pour cela il nous faut parcourir SLG puis SLD mais pas en totalité, en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.
+On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0, c'est alors qu'on parcours SLD à partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. 
+On a alors l'envergure du premier bloc. Pour le deuxiéme on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline 
+On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à partir du nouveau i2 et ainsi de suite. Au final, on aura parcouru entre n et 2n case du tableau.
+\subsubsection{Backtrack :}
+\paragraph{Spécification :}
+ void backtrack(bool \&poss);
+\begin{itemize}
+\item Param\`etre:
+\begin{itemize}
+\item Un booléen signalant la possibilité de placer une case dans un picross non fini
+\end{itemize}
+Dans le cas ou cela est possible, on "backtrack" une case
+Dans le cas ou cela n'est pas possible, on revient à l'environnement de la dernière case backtrackée et on l'inverse
+\item Retour de la fonction :
+\end{itemize}
+La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
+Cela à pour conséquence une complexité élevée ($\theta(n^2)$) lors de la recopie de celle-ci.
 \subsection{ L'interface graphique:}
-Pour implémenter une interface utilisateur graphique et afficher une grille Picross résolue on utilise une bibliothèque Gtkmm, qui est une surcouche de GTK+ pour le langage C++.
-
+Pour implémenter une interface utilisateur graphique et afficher notre Picross on utilise la bibliothèque Gtkmm, qui est une surcouche de GTK pour le langage C++.
 Dans une fenêtre du programme on a quatre boutons:
 \begin{itemize}
 \item  ``Description'' contient une brève description du programme;
-\item ``Ouvrir'' pour ouvrir un fichier texte(d'où on a mit la taille et les indices d'une grille Picross), qui permet l'initialisation d'une grille vide avec ses indices;
+\item ``Ouvrir'' pour ouvrir un fichier texte (nos grilles Picross), qui permet l'initialisation d'une grille vide avec ses indices;
 \item ``Résolution'' permet le déclenchement de nos méthodes de résolution et affiche la grille ainsi résolue;
-\item ``Quitter'' appel une fonction GTK permettant la fermeture d'une fenêtre.
+\item ``Quitter'' appel d'une fonction GTK permettant la fermeture de la fenêtre.
 \end{itemize}
 \begin{landscape}
 \begin{figure}
@@ -433,7 +387,7 @@ Dans une fenêtre du programme on a quatre boutons:
 \end{landscape}
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
-\item Dans le cas ou le picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisie pour lancer le backtracking.
+\item Dans le cas ou le picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
 \item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
 Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité reste équivalente ($theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
 \item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic).
@@ -446,10 +400,6 @@ En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et a
 \includegraphics[width=11cm]{image2}
 \end{center}
 Ici on voit bien que la cellule 11 devrait être blanche puisque qu’elle n’est pas dans l’envergure du seul bloc qui pourrait convenir. Ainsi, en sachant que la solution la plus à gauche générale et la solution la plus à droite générale définissent aussi respectivement la solution la plus à droite et la solution la plus à gauche de chaque bloc, on aurait pu définir un algorithme qui, en fonction de ces deux solution et de la liste d’indices, vérifie pour chaque bloc d’indéterminé coincé entre deux blanc (ou un bord) s’il est dans l’envergure des indices qui sont inférieurs à sa taille.
-\end{itemize}
-\section{Remerciements :}
-\begin{itemize}
-\item Nous tenions à remercier M.Janssen pour son implication dans le projet, ainsi qu'à l'équipe pédagogique de l'Université.
 \end{itemize}
 \section{Annexes :}
 \subsection{Schéma de l'implémentation : }
