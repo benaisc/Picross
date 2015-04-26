@@ -93,8 +93,8 @@ La résolution d'une ligne passe par l'appel de deux méthodes donnant respectiv
 On fait ensuite la fusion de ces deux solutions afin de déterminer les cases nécessairement noires ou blanches.
 \subsubsection{La méthode SLG}
 La méthode SLG a pour but de générer la solution la plus à gauche d'une ligne contenant ou non des cases déjà déterminées.
-Une fois un bloc placé, elle cherchera à placer le suivant, ainsi tous les blocs de la liste d'indices de la ligne.
-Afin d'expliciter son fonctionnement, son algorithme est explicité en en page 9.
+Une fois un bloc placé, elle cherchera à placer le suivant, ainsi que tous les blocs de la liste d'indices de la ligne.
+Afin d'expliciter son fonctionnement, son algorithme est explicité en page 9.
 \subsubsection{Les méthodes SLPG et SLPD}
 Les méthodes SLPG et SLPD sont les méthodes qui génèrent les deux solutions nécessaires à la résolution d'une ligne. Elles font toutes deux appel à SLG. 
 \newline
@@ -113,11 +113,11 @@ L'exemple ci-dessous illustre l'importance de cette spécification.
 \includegraphics[height=6.5cm,width=12cm]{Exemple1}
 \subsubsection{La méthode remplirCasesSureBl}
 Cette méthode est appelée après Fusion dans le but de placer les cases blanches sûres. Elle est en mesure de les déterminer grâce aux solutions SLPG-SLPD en calculant les envergures des blocs de cases noires. Dès lors, les espaces situés entre les intervalles trouvés sont des cases blanches sûres.\newline
-Elle commence par générer une ligne de cases blanche de la même taille que celles prises en paramètres; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noirci'' les cases correspondantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
+Elle commence par générer une ligne de cases blanche de la même taille que celles prises en paramètres; à savoir, le résultat de Fusion et les solutions SLPG-SLPD; puis ``noircit'' les cases correspondantes à l'intervalle qu'occupe chacun des blocs dans l'une et l'autre des solutions SLPG-SLPD.
 \newline
 A la fin de ce procédé, elle copie les cases blanches restantes dans le résultat de Fusion.
 \subsection{Résolution du Picross}
-Pour résoudre un Picross, un appel initial des méthodes précédentes sur toutes les lignes et colonnes est effectuer (cf. TINY\_SOL), cela pour but d'initialiser nos listes d'indices de lignes/colonnes modifiées afin de rappeler les méthodes sur les lignes/colonnes correspondantes, et ce tant que les listes contiennent des cases modifiées (cf. FAT\_SOL).
+Pour résoudre un Picross, un appel initial des méthodes précédentes sur toutes les lignes et colonnes est effectué (cf. TINY\_SOL), cela à pour but d'initialiser nos listes d'indices de lignes/colonnes modifiées afin de rappeler les méthodes sur les lignes/colonnes correspondantes, et ce tant que les listes contiennent des cases modifiées (cf. FAT\_SOL).
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
 Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place une case indéterminée (arbitrairement, la première qu'il trouve en parcourant les lignes de la matrice) à noire et étudie les conséquences de cette coloration;
