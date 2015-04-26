@@ -149,28 +149,6 @@ A la fin de ce procédé, elle copie les cases blanches restantes dans le résul
 \subsection{Résolution du Picross}
 Pour résoudre un Picross, un appel initial des méthodes précédentes sur toutes les lignes et colonnes est effectuer (cf. TINY\_SOL), cela pour but d'initialiser nos listes d'indices de lignes/colonnes modifiées afin de rappeler les méthodes sur les lignes/colonnes correspondantes, et ce tant que les listes contiennent des cases modifiées (cf. FAT\_SOL).
 \newline
-La méthode de résolution du Picross se résume donc ainsi : 
-\begin{itemize}
-\item traiter ligne;
-\item liste C == colonnes à traiter;
-\item tant que la liste n'est pas vide 
-  \begin{itemize}
-  \item liste L == vide;
-  \item pour chaque i de C faire
-    \begin{itemize}
-    \item L == L + traiter ligne(i);
-    \end{itemize}
-  \item fin pour;
-  \item C == vide;
-  \item pour chaque i de L faire
-    \begin{itemize}
-    \item C == C + traiter colonne(i);
-    \end{itemize}
-  \item fin pour;
-  \end{itemize}
-\item fin tant que;
-\end{itemize}
-\subsection{Algorithmes remarquables}
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
 Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place des cases choisies arbitrairement à noir et étudie les conséquences de cette coloration : 
@@ -447,10 +425,13 @@ En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et a
 \end{center}
 Ici on voit bien que la cellule 11 devrait être blanche puisque qu’elle n’est pas dans l’envergure du seul bloc qui pourrait convenir. Ainsi, en sachant que la solution la plus à gauche générale et la solution la plus à droite générale définissent aussi respectivement la solution la plus à droite et la solution la plus à gauche de chaque bloc, on aurait pu définir un algorithme qui, en fonction de ces deux solution et de la liste d’indices, vérifie pour chaque bloc d’indéterminé coincé entre deux blanc (ou un bord) s’il est dans l’envergure des indices qui sont inférieurs à sa taille.
 \end{itemize}
+<<<<<<< HEAD
+=======
 \section{Remerciements :}
 \begin{itemize}
 \item Nous tenions à remercier M.Janssen pour son implication dans le projet, ainsi qu'à l'équipe pédagogique de l'Université.
 \end{itemize}
+>>>>>>> 16774ba469c3d1047778a8994bb76467ae9664f7
 \section{Annexes :}
 \subsection{Schéma de l'implémentation : }
 \begin{landscape}

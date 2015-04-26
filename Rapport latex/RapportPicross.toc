@@ -6,37 +6,39 @@
 \contentsline {subsubsection}{\numberline {2.1.3}La m\IeC {\'e}thode Fusion}{6}{subsubsection.2.1.3}
 \contentsline {subsubsection}{\numberline {2.1.4}La m\IeC {\'e}thode remplirCasesSureBl}{6}{subsubsection.2.1.4}
 \contentsline {subsection}{\numberline {2.2}R\IeC {\'e}solution du Picross}{7}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}la m\IeC {\'e}thode de Backtracking}{7}{subsubsection.2.2.1}
-\contentsline {section}{\numberline {3}Description de l'impl\IeC {\'e}mentation}{7}{section.3}
-\contentsline {subsection}{\numberline {3.1}Les besoins du programme :}{7}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Pour les indices de chaque ligne/colonne:}{7}{subsubsection.3.1.1}
+\contentsline {subsection}{\numberline {2.3}Algorithmes remarquables}{7}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}la m\IeC {\'e}thode de Backtracking}{7}{subsubsection.2.3.1}
+\contentsline {section}{\numberline {3}Description de l'impl\IeC {\'e}mentation}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Les besoins du programme :}{8}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Pour les indices de chaque ligne/colonne:}{8}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Pour repr\IeC {\'e}senter la grille du picross :}{8}{subsubsection.3.1.2}
 \contentsline {subsubsection}{\numberline {3.1.3}Pour l'ensemble des indices de lignes/colonnes :}{8}{subsubsection.3.1.3}
-\contentsline {subsubsection}{\numberline {3.1.4}Pour ligmodif /colmodif}{8}{subsubsection.3.1.4}
-\contentsline {subsection}{\numberline {3.2} Les classes}{9}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}La classe Cell :}{9}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}La classe Liste :}{9}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}La classe Tabliste :}{9}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}La classe Matrice :}{10}{subsubsection.3.2.4}
-\contentsline {subsection}{\numberline {3.3} La classe Picross :}{10}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Les algorithmes remarquables :}{10}{subsection.3.4}
-\contentsline {subsubsection}{\numberline {3.4.1}Backtrack :}{10}{subsubsection.3.4.1}
-\contentsline {paragraph}{Sp\IeC {\'e}cification :}{10}{section*.2}
-\contentsline {subsubsection}{\numberline {3.4.2}Fusion :}{10}{subsubsection.3.4.2}
-\contentsline {paragraph}{Sp\IeC {\'e}cification :}{10}{section*.3}
-\contentsline {paragraph}{Comlexit\IeC {\'e} : $\theta $(n)\newline }{11}{section*.4}
-\contentsline {subsubsection}{\numberline {3.4.3}remplirCasesSureBl :}{11}{subsubsection.3.4.3}
-\contentsline {paragraph}{Sp\IeC {\'e}cification :}{11}{section*.5}
-\contentsline {paragraph}{Comlexit\IeC {\'e} : $\theta (n)$\newline }{11}{section*.6}
-\contentsline {subsubsection}{\numberline {3.4.4}SLG :}{12}{subsubsection.3.4.4}
-\contentsline {paragraph}{Sp\IeC {\'e}cification :}{12}{section*.7}
-\contentsline {paragraph}{Algorithme : SLG}{12}{section*.8}
-\contentsline {paragraph}{Complexit\IeC {\'e} pire des cas : $\theta (n^2) <$c$\leq \theta (2^n)$\\ }{13}{section*.9}
-\contentsline {paragraph}{Complexit\IeC {\'e} meilleur des cas : $\theta $(n)\newline }{14}{section*.10}
-\contentsline {subsection}{\numberline {3.5} L'interface graphique:}{14}{subsection.3.5}
-\contentsline {section}{\numberline {4}Ameliorations/Evolution du programme:}{16}{section.4}
-\contentsline {section}{\numberline {5}Annexes :}{16}{section.5}
-\contentsline {subsection}{\numberline {5.1}Sch\IeC {\'e}ma de l'impl\IeC {\'e}mentation : }{16}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Lecture d'un fichier pour construire une grille:}{18}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Algorithme SLG :}{19}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Algorithme de backtracking :}{20}{subsection.5.4}
+\contentsline {subsubsection}{\numberline {3.1.4}Pour ligmodif /colmodif}{9}{subsubsection.3.1.4}
+\contentsline {subsection}{\numberline {3.2} Les classes}{10}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}La classe Cell :}{10}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}La classe Liste :}{10}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}La classe Tabliste :}{10}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}La classe Matrice :}{11}{subsubsection.3.2.4}
+\contentsline {subsection}{\numberline {3.3} La classe Picross :}{11}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Les algorithmes remarquables :}{11}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Backtrack :}{11}{subsubsection.3.4.1}
+\contentsline {paragraph}{Sp\IeC {\'e}cification :}{11}{section*.2}
+\contentsline {subsubsection}{\numberline {3.4.2}Fusion :}{11}{subsubsection.3.4.2}
+\contentsline {paragraph}{Sp\IeC {\'e}cification :}{11}{section*.3}
+\contentsline {paragraph}{Comlexit\IeC {\'e} : $\theta $(n)\newline }{12}{section*.4}
+\contentsline {subsubsection}{\numberline {3.4.3}remplirCasesSureBl :}{12}{subsubsection.3.4.3}
+\contentsline {paragraph}{Sp\IeC {\'e}cification :}{12}{section*.5}
+\contentsline {paragraph}{Comlexit\IeC {\'e} : $\theta (n)$\newline }{12}{section*.6}
+\contentsline {subsubsection}{\numberline {3.4.4}SLG :}{13}{subsubsection.3.4.4}
+\contentsline {paragraph}{Sp\IeC {\'e}cification :}{13}{section*.7}
+\contentsline {paragraph}{Algorithme : SLG}{13}{section*.8}
+\contentsline {paragraph}{Complexit\IeC {\'e} pire des cas : $\theta (n^2) <$c$\leq \theta (2^n)$\\ }{14}{section*.9}
+\contentsline {paragraph}{Complexit\IeC {\'e} meilleur des cas : $\theta $(n)\newline }{15}{section*.10}
+\contentsline {subsection}{\numberline {3.5} L'interface graphique:}{15}{subsection.3.5}
+\contentsline {section}{\numberline {4}Ameliorations/Evolution du programme:}{17}{section.4}
+\contentsline {section}{\numberline {5}Remerciements :}{18}{section.5}
+\contentsline {section}{\numberline {6}Annexes :}{18}{section.6}
+\contentsline {subsection}{\numberline {6.1}Sch\IeC {\'e}ma de l'impl\IeC {\'e}mentation : }{18}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Lecture d'un fichier pour construire une grille:}{20}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Algorithme SLG :}{21}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Algorithme de backtracking :}{22}{subsection.6.4}
