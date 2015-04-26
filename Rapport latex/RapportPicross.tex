@@ -454,13 +454,21 @@ Dans une fenêtre du programme on a quatre boutons:
 \item Dans le cas ou le picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisie pour lancer le backtracking.
 \item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
 Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité reste équivalente ($theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
-\item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic)
+\item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic).
+\item Dans certains cas la méthode pour trouver les cases blanches sûres que nous avons choisies ne trouve pas toutes les cases blanches que nous aurions pu déterminer. Par exemple :
+\begin{center}
+\includegraphics[width=11cm]{image1}
+\end{center}
+En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et aucun blanc qui ne soit dans l’envergure des blocs. Pourtant on peut aisément voir que la case d’indice 4 (indice débutant à 0) est blanche puisqu’elle est coincée entre deux blanches et que la taille minimum des blocs est de deux. On pourrait donc imaginer un algorithme qui teste pour chaque bloc d’indéterminé coincé entre deux blancs si sa taille est inferieure au plus petit indice à rentrer,  dans ce cas on le blanchit. Néanmoins, on pourrait imaginer un algorithme plus fin. Regardons cet autre exemple :
+\begin{center}
+\includegraphics[width=11cm]{image2}
+\end{center}
+Ici on voit bien que la cellule 11 devrait être blanche puisque qu’elle n’est pas dans l’envergure du seul bloc qui pourrait convenir. Ainsi, en sachant que la solution la plus à gauche générale et la solution la plus à droite générale définissent aussi respectivement la solution la plus à droite et la solution la plus à gauche de chaque bloc, on aurait pu définir un algorithme qui, en fonction de ces deux solution et de la liste d’indices, vérifie pour chaque bloc d’indéterminé coincé entre deux blanc (ou un bord) s’il est dans l’envergure des indices qui sont inférieurs à sa taille.
 \end{itemize}
 \section{Remerciements :}
 \begin{itemize}
 \item Nous tenions à remercier M.Janssen pour son implication dans le projet, ainsi qu'à l'équipe pédagogique de l'Université.
 \end{itemize}
-\section{Bibliographie :}
 \section{Annexes :}
 \subsection{Lecture d'un fichier pour construire une grille:}
 Dans le but de construire une grille Picross nous avons choisi du structurer un fichier texte de la manière suivante :\newline
