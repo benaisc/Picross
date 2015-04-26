@@ -106,7 +106,7 @@ Pour ce faire, on fait appel à Fusion qui placera les cases nécessairement noi
 Cette dernière nécessite que nos blocs de cases noires soient numérotés, on fait donc un appel préalable à une méthode Numeroter sur nos solutions SLPG-SLPD.
 \newline
 Fusion sera ainsi en mesure de noircir les cases qui sont noires dans SLPG et SLPD et qui ont le même numéro de bloc.
-En effet, le status de case noire sûre ne peut être défini que si une case noire commune aux deux solutions appartient à un même et unique bloc.
+En effet, le statut de case noire sûre ne peut être défini que si une case noire commune aux deux solutions appartient à un même et unique bloc.
 \newline
 L'exemple ci-dessous illustre l'importance de cette spécification.  
 \newline
@@ -120,7 +120,7 @@ A la fin de ce procédé, elle copie les cases blanches restantes dans le résul
 Pour résoudre un Picross, un appel initial des méthodes précédentes sur toutes les lignes et colonnes est effectuer (cf. TINY\_SOL), cela pour but d'initialiser nos listes d'indices de lignes/colonnes modifiées afin de rappeler les méthodes sur les lignes/colonnes correspondantes, et ce tant que les listes contiennent des cases modifiées (cf. FAT\_SOL).
 \subsubsection{la méthode de Backtracking}
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
-Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place une case indeterminée (arbitrairement, la première qu'il trouve en parcourant les lignes de la matrice) à noire et étudie les conséquences de cette coloration;
+Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place une case indéterminée (arbitrairement, la première qu'il trouve en parcourant les lignes de la matrice) à noire et étudie les conséquences de cette coloration;
 L'algorithme est explicité en annexe.
 \newpage
 \section{Description de l'implémentation}
@@ -303,7 +303,7 @@ Avec ce modèle défavorable on obtient l'équation de récursion suivante:
 \begin{center}
  \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
 \end{center}
-Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
+Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimum une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
 \subsection{L'interface graphique:}
 Pour implémenter une interface utilisateur graphique et afficher notre Picross on utilise la bibliothèque Gtkmm, qui est une surcouche de GTK pour le langage C++.
 Dans une fenêtre du programme on a quatre boutons:
@@ -323,16 +323,16 @@ Dans une fenêtre du programme on a quatre boutons:
 \end{landscape}
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
-\item Dans le cas où le picross nécessite un backtrack pour sa résolution, les cases restantes peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
+\item Dans le cas où le picross nécessite un backtrack pour sa résolution, les cases restantes peuvent se voir attribuer un degré de liberté, et la case ainsi déterminée la plus probable aurait alors été celle choisi pour lancer le backtracking.
 \item Dans le souci d'améliorer la complexité de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
 Cela dit, dans le pire des cas (1ere hypothese fausse), la complexité reste équivalente ($\theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
-\item L'implémentation de méthodes permettant de rentrer des grilles de picross graphiquement (au clic).
-\item L'implémentation de méthodes permettant de résoudre des grilles de picross graphiquement (au clic).
+\item L'implémentation de méthodes permettant de rentrer des grilles de Picross graphiquement (au clic).
+\item L'implémentation de méthodes permettant de résoudre des grilles de Picross graphiquement (au clic).
 \item Dans certains cas la méthode pour trouver les cases blanches sûres que nous avons choisies ne trouve pas toutes les cases blanches que nous aurions pu déterminer. Par exemple :
 \begin{center}
 \includegraphics[width=11cm]{image1}
 \end{center}
-En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et aucun blanc qui ne soit dans l’envergure des blocs. Pourtant on peut aisément voir que la case d’indice 4 (indice débutant à 0) est blanche puisqu’elle est coincée entre deux blanches et que la taille minimum des blocs est de deux. On pourrait donc imaginer un algorithme qui teste pour chaque blocs d’indéterminés coincés entre deux blancs si sa taille est inferieure au plus petit indice à rentrer,  dans ce cas on le blanchit.
+En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et aucun blanc qui ne soit dans l’envergure des blocs. Pourtant on peut aisément voir que la case d’indice 4 (indice débutant à 0) est blanche puisqu’elle est coincée entre deux blanches et que la taille minimum des blocs est de deux. On pourrait donc imaginer un algorithme qui teste pour chaque blocs d’indéterminés coincés entre deux blancs si sa taille est inférieure au plus petit indice à rentrer,  dans ce cas on le blanchit.
 \end{itemize}
 \section{Annexes :}
 \subsection{Algorithme de backtracking :}
@@ -347,7 +347,7 @@ void Picross::backtrack(bool &poss)
     bool* TC=new bool [getNbColonnes()];
     copieBool(TL,TC);	//Copie de nos booléens lignes|colonnes finies
     sint i=0,j=0;	//Indices utilisés pour le placement de la case noire
-    Placer1noir(poss,i,j);	//poss à true ssi la matrice contient un indeterminé(0) 
+    Placer1noir(poss,i,j);	//poss à true ssi la matrice contient un indéterminé(0) 
                                //on place un noir(1) et on initialise (i,j)
     if(poss)
     {
