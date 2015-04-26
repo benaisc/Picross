@@ -20,18 +20,6 @@ Le Picross est un casse-tête qui consiste à retrouver une figure depuis les in
 \begin{table}[h]
 \centering
 \begin{tabular}{ccccccc}
-\textbf{}  & \textbf{}                       & \textbf{3}                     & \textbf{4}                     & \textbf{4}                     & \textbf{4}                     & \textbf{3}                     \\ \cline{3-7} 
-\textbf{2} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
-\textbf{}  & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
-\textbf{}  & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
-\textbf{}  & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
-\textbf{}  & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{}} \\ \cline{3-7} 
-\end{tabular}
-\end{table}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{ccccccc}
 \textbf{}  & \textbf{}                       & \textbf{3}                                                                    & \textbf{4}                                                                    & \textbf{4}                                                                    & \textbf{4}                                                                    & \textbf{3}                                                                    \\ \cline{3-7} 
 \textbf{2} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{000000} \textbf{}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\textbf{}}                                                & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{3-7} 
 \textbf{}  & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}\textbf{}}                        \\ \cline{3-7} 
@@ -42,19 +30,7 @@ Le Picross est un casse-tête qui consiste à retrouver une figure depuis les in
 \end{tabular}
 \caption{Un exemple de Picross et sa solution.}
 \end{table}
-
-Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
-\begin{table}[h]
-\centering
-\begin{tabular}{ccccc}
-\textbf{}                       & \textbf{2}            & \textbf{2}            & \textbf{2}            & \textbf{2}            \\ \cline{2-5} 
-\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{2-5} 
-\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{2-5} 
-\multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{} \\ \cline{2-5} 
-\multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-5} 
-\end{tabular}
-\end{table}
-
+Certaines grilles peuvent ne pas avoir de solution, d'autres en avoir plusieurs.
 \begin{table}[h]
 \centering
 \begin{tabular}{ccccc}
@@ -65,8 +41,6 @@ Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
 \multicolumn{1}{l|}{\textbf{2}} & \multicolumn{1}{l|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{l|}{\cellcolor[HTML]{000000}} & \multicolumn{1}{l|}{}                         & \multicolumn{1}{l|}{}                         \\ \cline{2-5} 
 \end{tabular}
 \end{table}
-\newpage
-
 \begin{table}[h]
 \centering
 \begin{tabular}{ccccc}
@@ -106,11 +80,10 @@ Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
 Le but du projet est d'implémenter un solveur de Picross en C++ qui, étant donnée une matrice et des indices liés à ses lignes/colonnes, calcule, puis affiche la solution. On ne considère que des Picross qui ont (au moins) une solution.\newline
 La résolution d'une grille de Picross est un problème NP-complet (en temps Non-déterministe Polynomial). Pour le problème du Picross cela signifie qu'il ne faut pas espérer un algorithme qui résout n'importe quelle grille de Picross avec une complexité polynomiale, trouver une solution peut être très coûteux.
 \section{Description de la méthode de résolution utilisée}
-Afin de résoudre une grille de Picross donnée, nous traitons ses lignes indépendamment de ses colonnes. 
+Afin de résoudre une grille de Picross donnée, nous traitons ses lignes indépendamment de ses colonnes.
 Le traitement des lignes et des colonnes se faisant de la même manière; nous n'évoquerons par la suite que le traitement des lignes.
 \newline
 Une première méthode de résolution consisterait à générer toutes les solutions d'une ligne, partiellement remplie ou non; et de déterminer les cases noires ou blanches communes à chacune des solutions.
-\newline
 Une telle méthode permettrait de déterminer un plus grand nombre de cases. En revanche, elle serait très coûteuse.
 \newline
 C'est pourquoi, au lieu de générer toutes les solutions, nous avons choisi d'en générer deux; la plus à gauche et la plus à droite. Cette méthode ne permet pas de déterminer autant de cases que la précédente mais est nettement moins coûteuse.
@@ -119,14 +92,13 @@ La résolution d'une ligne passe par l'appel de deux méthodes donnant respectiv
 \newline
 On fait ensuite la fusion de ces deux solutions afin de déterminer les cases nécessairement noires ou blanches.
 \subsubsection{La méthode SLG}
-La méthode SLG a pour but de générer une solution à une ligne contenant ou non des cases déjà déterminées.
-Elle cherchera à placer chaque blocs de la liste d'indices dans la ligne.
-Une fois un bloc placé, elle cherchera à placer le suivant.
-Afin d'expliciter son fonctionnement, son algorithme est détaillé en annexe.
+La méthode SLG a pour but de générer la solution la plus à gauche d'une ligne contenant ou non des cases déjà déterminées.
+Une fois un bloc placé, elle cherchera à placer le suivant, ainsi tous les blocs de la liste d'indices de la ligne.
+Afin d'expliciter son fonctionnement, son algorithme est explicité en en page 9.
 \subsubsection{Les méthodes SLPG et SLPD}
 Les méthodes SLPG et SLPD sont les méthodes qui génèrent les deux solutions nécessaires à la résolution d'une ligne. Elles font toutes deux appel à SLG. 
 \newline
-Pour la solution droite, SLG est appelé sur une ligne et une liste d'indices préalablement inversées.
+Pour la solution la plus à droite, SLG est appelé sur une ligne et une liste d'indices préalablement inversés.
 \subsubsection{La méthode Fusion}
 Les appels à SLPG et SLPD nous donnent deux solutions possibles pour une ligne et, pour parvenir à sa résolution, il nous faut déterminer les cases n'ayant qu'une solution possible. 
 \newline
@@ -150,6 +122,7 @@ Pour résoudre un Picross, un appel initial des méthodes précédentes sur tout
 A l'aide de nos méthodes précédentes, il peut arriver que des cases ne puissent être déterminées;\newline
 Nous avons choisi d'implémenter une méthode de backtracking 'simple' qui place une case indeterminée (arbitrairement, la première qu'il trouve en parcourant les lignes de la matrice) à noire et étudie les conséquences de cette coloration;
 L'algorithme est explicité en annexe.
+\newpage
 \section{Description de l'implémentation}
 \subsection{Les besoins du programme :}
 \subsubsection{Pour les indices de chaque ligne/colonne:}
@@ -192,8 +165,6 @@ L'algorithme est explicité en annexe.
 \item Choix :
 Le choix naturel serait l'ensemble mais nous avons choisi la liste simplement chaînée car déjà implémentée.
 \end{itemize}
-\newpage
-
 \subsection{Les classes}
 \subsubsection{La classe Cell :}
 \begin{itemize}
@@ -238,7 +209,7 @@ notamment très utile pour vérifier la condition d'arrêt de notre résolution.
 \item Nbc : Nombre de colonnes
 \end{itemize}
 \end{itemize}
-\subsection{ La classe Picross :}
+\subsubsection{La classe Picross :}
 La classe Picross est la classe dont l'instance représente le Picross; S'est dans cette classe que sont implémentées nos méthodes de résolution.
 \begin{itemize}
 \item Attributs:
@@ -248,7 +219,8 @@ La classe Picross est la classe dont l'instance représente le Picross; S'est da
 \item Deux listes d'indices ligModif et colModif pour limiter nos récursions
 \end{itemize}
 \end{itemize}
-\subsection{Les algorithmes remarquables :}
+\newpage
+\subsection{Algorithme remarquable :}
 \subsubsection{SLG :}
 \paragraph{Spécification :}
  void SLG(int*, short int, Cell*, short int, bool\&);
@@ -264,7 +236,7 @@ La classe Picross est la classe dont l'instance représente le Picross; S'est da
 \item Retour de la fonction.
 \end{itemize}
 Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen est à false c'est que le couple (ligne/colonne,liste d'indice) n'a pas de solution. Dans le cas contraire, la solution la plus à gauche nous est donnée dans le tableau.
-\paragraph{Algorithme : SLG}(L: ligne; n: taille de la ligne; Lind: liste d'indices; i: entier; possible: booleen)
+\paragraph{SLG}(L: ligne; n: taille de la ligne; Lind: liste d'indices; i: entier; possible: booleen)
 \begin{description}
 \item[Debut]
 \item[]
@@ -312,6 +284,7 @@ Le retour ce fait par l'intermédiaire du tableau et du booléen. Si le booléen
   \end{itemize}
 \item[Fin algorithme]
 \end{description}
+\newpage
 \paragraph{Complexité pire des cas : $\theta(n^2) <$c$\leq\theta(2^n)$\\ }
  Notons :
 \begin{itemize}
@@ -331,40 +304,7 @@ Avec ce modèle défavorable on obtient l'équation de récursion suivante:
  \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
 \end{center}
 Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
-\subsubsection{remplirCasesSureBl :}
-\paragraph{Spécification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
-\begin{itemize}
-\item Paramètres:
-\begin{itemize}
-\item Un tableau d'entier Merge: (Résultat) il représente la ligne/colonne de la matrice,après la résolution de notre fonction, initialisé avec le retour de fusion.
-\item Un tableau d'entier TG: (Donnée) il représente la solution la plus à gauche qui résout notre ligne/colonne en fonction de sa liste d'indices et des informations à notre disposition
-\item Un tableau d'entier TD: (Donnée) idem pour la solution la plus à droite
-\item Un short int taille: représentant la taille du tableau
-\item Une liste d'indices L: La liste d'indices associés a la ligne/colonne
-\end{itemize}
-\item Retour de la fonction:
-\end{itemize}
-La fonction retourne par l'intermédiaire du tableau Merge notre ligne/colonne de départ avec en plus d'éventuelles case blanches "sures" en se basant sur l'envergure des blocs.
-\paragraph{Complexité : $\theta(n)$\newline}
-On doit pour chaque indice de la liste inscrire son envergure dans un tableau intermédiaire, pour cela il nous faut parcourir SLG puis SLD mais pas en totalité, en effet, on parcours SLG jusqu'a trouver un indice i1 tel que TG[i1]=0.
-On continu notre parcours jusqu'a trouver un indice i2 tel que TG[i2]=0, c'est alors qu'on parcours SLD à partir de i2-1 jusqu'a trouver un indice i3 tel que TG[i3]=0. 
-On a alors l'envergure du premier bloc. Pour le deuxième on peut commencer notre parcours dans SLG à partir de i2 car il est forcément à droite du premier.\newline 
-On trouve alors un nouveau i1 puis un i2 puis un i3 et on recommence alors à partir du nouveau i2 et ainsi de suite. Au final, on aura parcouru entre n et 2n case du tableau.
-\subsubsection{Backtrack :}
-\paragraph{Spécification :}
- void backtrack(bool \&poss);
-\begin{itemize}
-\item Param\`etre:
-\begin{itemize}
-\item Un booléen signalant la possibilité de placer une case dans un picross non fini
-\end{itemize}
-Dans le cas ou cela est possible, on "backtrack" une case
-Dans le cas ou cela n'est pas possible, on revient à l'environnement de la dernière case backtrackée et on l'inverse
-\item Retour de la fonction :
-\end{itemize}
-La fonction ne retourne rien, on travaille directement sur notre Matrice.\newline
-Cela à pour conséquence une complexité élevée ($\theta(n^2)$) lors de la recopie de celle-ci.
-\subsection{ L'interface graphique:}
+\subsection{L'interface graphique:}
 Pour implémenter une interface utilisateur graphique et afficher notre Picross on utilise la bibliothèque Gtkmm, qui est une surcouche de GTK pour le langage C++.
 Dans une fenêtre du programme on a quatre boutons:
 \begin{itemize}
@@ -384,33 +324,27 @@ Dans une fenêtre du programme on a quatre boutons:
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
 \item Dans le cas où le picross nécessite un backtrack pour sa résolution, les cases restantes peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
-\item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
+\item Dans le souci d'améliorer la compléxité de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
 Cela dit, dans le pire des cas (1ere hypothese fausse), la complexité reste équivalente ($\theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
-\item Nous aurions pû implémenter des méthodes permettant de rentrer des grilles de picross graphiquement (au clic).
+\item L'implémentation de méthodes permettant de rentrer des grilles de picross graphiquement (au clic).
+\item L'implémentation de méthodes permettant de résoudre des grilles de picross graphiquement (au clic).
 \item Dans certains cas la méthode pour trouver les cases blanches sûres que nous avons choisies ne trouve pas toutes les cases blanches que nous aurions pu déterminer. Par exemple :
 \begin{center}
 \includegraphics[width=11cm]{image1}
 \end{center}
-En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et aucun blanc qui ne soit dans l’envergure des blocs. Pourtant on peut aisément voir que la case d’indice 4 (indice débutant à 0) est blanche puisqu’elle est coincée entre deux blanches et que la taille minimum des blocs est de deux. On pourrait donc imaginer un algorithme qui teste pour chaque bloc d’indéterminé coincé entre deux blancs si sa taille est inferieure au plus petit indice à rentrer,  dans ce cas on le blanchit. Néanmoins, on pourrait imaginer un algorithme plus fin. Regardons cet autre exemple :
-\begin{center}
-\includegraphics[width=11cm]{image2}
-\end{center}
-Ici on voit bien que la cellule 11 devrait être blanche puisque qu’elle n’est pas dans l’envergure du seul bloc qui pourrait convenir. Ainsi, en sachant que la solution la plus à gauche générale et la solution la plus à droite générale définissent aussi respectivement la solution la plus à droite et la solution la plus à gauche de chaque bloc, on aurait pu définir un algorithme qui, en fonction de ces deux solution et de la liste d’indices, vérifie pour chaque bloc d’indéterminé coincé entre deux blanc (ou un bord) s’il est dans l’envergure des indices qui sont inférieurs à sa taille.
+En effet, il n’y a aucun chevauchement de noir appartenant au même bloc, et aucun blanc qui ne soit dans l’envergure des blocs. Pourtant on peut aisément voir que la case d’indice 4 (indice débutant à 0) est blanche puisqu’elle est coincée entre deux blanches et que la taille minimum des blocs est de deux. On pourrait donc imaginer un algorithme qui teste pour chaque blocs d’indéterminés coincés entre deux blancs si sa taille est inferieure au plus petit indice à rentrer,  dans ce cas on le blanchit.
 \end{itemize}
 \section{Annexes :}
-\subsection{Schéma de l'implémentation : }
+\subsection{Schéma de l'implémentation :}
 \begin{landscape}
 \begin{figure}
 \begin{center}
-\includegraphics[width=14cm]{./images/recapitulatif_stucture.png}
+\includegraphics[width=15cm]{./images/recapitulatif_stucture.png}
 \end{center}
 \end{figure}
 \end{landscape}
 \newpage
-\subsection{Lecture d'un fichier pour construire une grille:}
-Dans le but de construire une grille Picross nous avons choisi du structurer un fichier texte de la manière suivante :\newline
-Les deux premiers nombres séparés d'un espaces représentent nos Lignes | Colonnes.
-La méthode passe ensuite sur toutes les lignes du fichier, ou chaque saut de ligne correspond à une nouvelle liste de tabListe.
+\subsection{Construire une grille de Picross :}
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=8cm]{ex2}
@@ -418,54 +352,11 @@ La méthode passe ensuite sur toutes les lignes du fichier, ou chaque saut de li
 \caption{Un exemple de fichier.}
 \end{figure}
 \newpage
-\subsection{Algorithme SLG :}
-\begin{verbatim}
-void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
-{
-  if(P && i<n)
-  {
-    int* Tab2=new int [n];
-    for(size_t j=0;j<n;j++)
-    {
-      Tab2[j]=Tab[j];
-    }
-    PlacerBloc(Tab,n,P->getVal(),i,poss);
-    if(poss)//si j'ai placer mon bloc
-    {
-      SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss);//bloc suivant
-      if(!poss)
-      {
-        for(size_t j=0;j<n;j++)
-        {
-          Tab[j]=Tab2[j];
-        }
-	      if(Tab[i]==1){poss=false;}
-        else{SLG(Tab,n,P,i+1,poss);}
-      }
-    }
-    else
-    {
-      if(Tab[i]==1){poss=false;}
-      else{SLG(Tab,n,P,i+1,poss);}
-    }
-    delete [] Tab2;
-  }
-  else
-  {
-    poss=Verification(Tab,i,n);
-    if(poss)
-    {
-	    for(size_t i=0; i<n; i++){if(Tab[i]==0){Tab[i]=-1;}}
-    }
-  }
-}
-\end{verbatim}
-\newpage
 \subsection{Algorithme de backtracking :}
 \begin{verbatim}
 void Picross::backtrack(bool &poss)
 {
-  FAT\_SOL(ligModif.getLongueur()); //méthode de résolution
+  FAT_SOL(ligModif.getLongueur()); //méthode de résolution
   if(!isPicrossFini())
   {
     int** SAVE=copieMat();	//Copie de la matrice
@@ -473,17 +364,18 @@ void Picross::backtrack(bool &poss)
     bool* TC=new bool [getNbColonnes()];
     copieBool(TL,TC);	//Copie de nos booléens lignes|colonnes finies
     sint i=0,j=0;	//Indices utilisés pour le placement de la case noire
-    Placer1noir(poss,i,j);	//poss à true ssi la matrice contient un indeterminé(0) qu'on à pu mettre à noir(1)
+    Placer1noir(poss,i,j);	//poss à true ssi la matrice contient un indeterminé(0) 
+                               //on place un noir(1) et on initialise (i,j)
     if(poss)
     {
       backtrack(poss);	//On recommence
-	//Si, a la suite des appels recursifs, le picross n'est pas correctement rempli et on ne peut pas Placer1noir:
-	//A ce niveau nous sommes dans le dernier environnement où on à Placer1noir en (i,j)
+//A ce niveau nous sommes dans le dernier environnement où on à Placer1noir(i,j)
+//Si le picross n'est pas correctement rempli qu'on à pas pu Placer1noir poss=false
       if(!poss)
       {
         recopieMat(SAVE);	//Recopie de la matrice sauvegardée avant le placement du noir
-        recopieBool(TL,TC);	//Recopie de nos booléens de lignes|colonnes finies qui aurait pu être modifiés par FAT_SOL de l'environnement précédent
-        Placer1blanc(i,j);	//On place la case (i,j) à blanc, car on est sûr qu'elle n'est pas noire
+        recopieBool(TL,TC);	//Recopie de nos booléens fini qui auraient pu être modifiés
+        Placer1blanc(i,j);	//On place la case (i,j) à blanc
         backtrack(poss);	//On recommence
       }
     }
