@@ -2,7 +2,6 @@
 hanjie, logigraphe, griddler, nonogram, logimage
 ------------------------------------------------
 
-Il va falloir harmoniser nos types (size_t, en fait, s'est pourri !)
 
 Les grilles de picross qui nécéssitent un backtrack pour leur résolution peuvent,
 dans certains cas, avoir des solutions multiples (exemple avec "heureux"), dans

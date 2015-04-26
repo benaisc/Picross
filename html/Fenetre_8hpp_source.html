@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Picross:  Fichier source de Fenetre.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Picross
+   </div>
+   <div id="projectbrief">Jeu de réflexion</div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('Fenetre_8hpp_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Fenetre.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Fenetre_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef DEF_FENETRE</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DEF_FENETRE</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;gtk/gtk.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;gtkmm.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include&lt;iostream&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;glib.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="picross_8h.html">picross.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classFenetre.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFenetre.html">Fenetre</a> : <span class="keyword">public</span> Gtk::Window {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  <a class="code" href="classFenetre.html#a95efed2d5a307b3595a99d919feade01">Fenetre</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <a class="code" href="classFenetre.html#a4738cb1dcb874908428b66b5ecd794c4">~Fenetre</a>();</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="comment">//Signals</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classFenetre.html#a5d3043a1418510e52ba1f29b7982c4a7">cliquer_sur_btnOuvrir</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classFenetre.html#aeb9a7d2c7fa1095057b87b2a171be69b">cliquer_sur_btnResolution</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classFenetre.html#ace3eb37e7a141f5a25f670a98e15b0a8">cliquer_sur_btnDescription</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// void ouverturePicross(Picross *P);</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classFenetre.html#ab3b72049e2f357739f5aca049a96e2ac">creerTabPicross</a>(<a class="code" href="classPicross.html">Picross</a> &amp;P,<span class="keywordtype">size_t</span> nbl,<span class="keywordtype">size_t</span> nbc);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classFenetre.html#a7ccd05bb52f8a89810854393ebf9caf3">creerTabRes</a>(<a class="code" href="classPicross.html">Picross</a> &amp;P,<span class="keywordtype">size_t</span> nbl,<span class="keywordtype">size_t</span> nbc);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classFenetre.html#a3267d5d9ca6dadeb457beaf239c7ca14">afficherErreur</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classFenetre.html#a06028b804be54f4a24665250c9efcbb4">   26</a></span>&#160;  Glib::ustring <a class="code" href="classFenetre.html#a06028b804be54f4a24665250c9efcbb4">file</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classFenetre.html#acad76e904a4de7075709bf06729fa27c">   29</a></span>&#160;  Gtk::Image <a class="code" href="classFenetre.html#acad76e904a4de7075709bf06729fa27c">image</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classFenetre.html#a62a2bbe3cfb2b01a25ce96cf99e6762e">   30</a></span>&#160;  Gtk::Table <a class="code" href="classFenetre.html#a62a2bbe3cfb2b01a25ce96cf99e6762e">tableau</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classFenetre.html#ac302e74e02bb775efc803a68b4cbfb28">   31</a></span>&#160;  Gtk::Button <a class="code" href="classFenetre.html#ac302e74e02bb775efc803a68b4cbfb28">btnQuitter</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classFenetre.html#ada45a51d2ba9685ca734ca7aa441df3f">   32</a></span>&#160;  Gtk::Button <a class="code" href="classFenetre.html#ada45a51d2ba9685ca734ca7aa441df3f">btnOuvrir</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classFenetre.html#a57a749731cc8723c35f72f85f0c58ed8">   33</a></span>&#160;  Gtk::Button <a class="code" href="classFenetre.html#a57a749731cc8723c35f72f85f0c58ed8">btnResolution</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classFenetre.html#a7fb842a9213402c263c763c699b3c7a4">   34</a></span>&#160;  Gtk::Button <a class="code" href="classFenetre.html#a7fb842a9213402c263c763c699b3c7a4">btnDescription</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classFenetre.html#afac798b71e2ce67a578247e46ece4f7f">   36</a></span>&#160;  Gtk::VButtonBox <a class="code" href="classFenetre.html#afac798b71e2ce67a578247e46ece4f7f">boiteV</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classFenetre.html#a1a52e2a109a739d93ed09f60566eb5b0">   37</a></span>&#160;  Gtk::Label <a class="code" href="classFenetre.html#a1a52e2a109a739d93ed09f60566eb5b0">etiquette1</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classFenetre.html#a59e3e710d9a854bf3baa9109012121af">   38</a></span>&#160;  Gtk::Label <a class="code" href="classFenetre.html#a59e3e710d9a854bf3baa9109012121af">etiquette2</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;};</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classFenetre_html_ac302e74e02bb775efc803a68b4cbfb28"><div class="ttname"><a href="classFenetre.html#ac302e74e02bb775efc803a68b4cbfb28">Fenetre::btnQuitter</a></div><div class="ttdeci">Gtk::Button btnQuitter</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00031">Fenetre.hpp:31</a></div></div>
+<div class="ttc" id="classFenetre_html_afac798b71e2ce67a578247e46ece4f7f"><div class="ttname"><a href="classFenetre.html#afac798b71e2ce67a578247e46ece4f7f">Fenetre::boiteV</a></div><div class="ttdeci">Gtk::VButtonBox boiteV</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00036">Fenetre.hpp:36</a></div></div>
+<div class="ttc" id="classPicross_html"><div class="ttname"><a href="classPicross.html">Picross</a></div><div class="ttdef"><b>Definition:</b> <a href="picross_8h_source.html#l00008">picross.h:8</a></div></div>
+<div class="ttc" id="classFenetre_html_ab3b72049e2f357739f5aca049a96e2ac"><div class="ttname"><a href="classFenetre.html#ab3b72049e2f357739f5aca049a96e2ac">Fenetre::creerTabPicross</a></div><div class="ttdeci">void creerTabPicross(Picross &amp;P, size_t nbl, size_t nbc)</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00064">Fenetre.cpp:64</a></div></div>
+<div class="ttc" id="classFenetre_html_a4738cb1dcb874908428b66b5ecd794c4"><div class="ttname"><a href="classFenetre.html#a4738cb1dcb874908428b66b5ecd794c4">Fenetre::~Fenetre</a></div><div class="ttdeci">~Fenetre()</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00061">Fenetre.cpp:61</a></div></div>
+<div class="ttc" id="classFenetre_html_a57a749731cc8723c35f72f85f0c58ed8"><div class="ttname"><a href="classFenetre.html#a57a749731cc8723c35f72f85f0c58ed8">Fenetre::btnResolution</a></div><div class="ttdeci">Gtk::Button btnResolution</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00033">Fenetre.hpp:33</a></div></div>
+<div class="ttc" id="classFenetre_html_a62a2bbe3cfb2b01a25ce96cf99e6762e"><div class="ttname"><a href="classFenetre.html#a62a2bbe3cfb2b01a25ce96cf99e6762e">Fenetre::tableau</a></div><div class="ttdeci">Gtk::Table tableau</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00030">Fenetre.hpp:30</a></div></div>
+<div class="ttc" id="classFenetre_html_a95efed2d5a307b3595a99d919feade01"><div class="ttname"><a href="classFenetre.html#a95efed2d5a307b3595a99d919feade01">Fenetre::Fenetre</a></div><div class="ttdeci">Fenetre()</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00006">Fenetre.cpp:6</a></div></div>
+<div class="ttc" id="classFenetre_html_a1a52e2a109a739d93ed09f60566eb5b0"><div class="ttname"><a href="classFenetre.html#a1a52e2a109a739d93ed09f60566eb5b0">Fenetre::etiquette1</a></div><div class="ttdeci">Gtk::Label etiquette1</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00037">Fenetre.hpp:37</a></div></div>
+<div class="ttc" id="classFenetre_html_a59e3e710d9a854bf3baa9109012121af"><div class="ttname"><a href="classFenetre.html#a59e3e710d9a854bf3baa9109012121af">Fenetre::etiquette2</a></div><div class="ttdeci">Gtk::Label etiquette2</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00038">Fenetre.hpp:38</a></div></div>
+<div class="ttc" id="classFenetre_html_a06028b804be54f4a24665250c9efcbb4"><div class="ttname"><a href="classFenetre.html#a06028b804be54f4a24665250c9efcbb4">Fenetre::file</a></div><div class="ttdeci">Glib::ustring file</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00026">Fenetre.hpp:26</a></div></div>
+<div class="ttc" id="classFenetre_html_ada45a51d2ba9685ca734ca7aa441df3f"><div class="ttname"><a href="classFenetre.html#ada45a51d2ba9685ca734ca7aa441df3f">Fenetre::btnOuvrir</a></div><div class="ttdeci">Gtk::Button btnOuvrir</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00032">Fenetre.hpp:32</a></div></div>
+<div class="ttc" id="picross_8h_html"><div class="ttname"><a href="picross_8h.html">picross.h</a></div></div>
+<div class="ttc" id="classFenetre_html_ace3eb37e7a141f5a25f670a98e15b0a8"><div class="ttname"><a href="classFenetre.html#ace3eb37e7a141f5a25f670a98e15b0a8">Fenetre::cliquer_sur_btnDescription</a></div><div class="ttdeci">void cliquer_sur_btnDescription()</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00213">Fenetre.cpp:213</a></div></div>
+<div class="ttc" id="classFenetre_html_a5d3043a1418510e52ba1f29b7982c4a7"><div class="ttname"><a href="classFenetre.html#a5d3043a1418510e52ba1f29b7982c4a7">Fenetre::cliquer_sur_btnOuvrir</a></div><div class="ttdeci">void cliquer_sur_btnOuvrir()</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00138">Fenetre.cpp:138</a></div></div>
+<div class="ttc" id="classFenetre_html_a3267d5d9ca6dadeb457beaf239c7ca14"><div class="ttname"><a href="classFenetre.html#a3267d5d9ca6dadeb457beaf239c7ca14">Fenetre::afficherErreur</a></div><div class="ttdeci">void afficherErreur()</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00221">Fenetre.cpp:221</a></div></div>
+<div class="ttc" id="classFenetre_html_a7fb842a9213402c263c763c699b3c7a4"><div class="ttname"><a href="classFenetre.html#a7fb842a9213402c263c763c699b3c7a4">Fenetre::btnDescription</a></div><div class="ttdeci">Gtk::Button btnDescription</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00034">Fenetre.hpp:34</a></div></div>
+<div class="ttc" id="classFenetre_html_a7ccd05bb52f8a89810854393ebf9caf3"><div class="ttname"><a href="classFenetre.html#a7ccd05bb52f8a89810854393ebf9caf3">Fenetre::creerTabRes</a></div><div class="ttdeci">void creerTabRes(Picross &amp;P, size_t nbl, size_t nbc)</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00100">Fenetre.cpp:100</a></div></div>
+<div class="ttc" id="classFenetre_html"><div class="ttname"><a href="classFenetre.html">Fenetre</a></div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00011">Fenetre.hpp:11</a></div></div>
+<div class="ttc" id="classFenetre_html_aeb9a7d2c7fa1095057b87b2a171be69b"><div class="ttname"><a href="classFenetre.html#aeb9a7d2c7fa1095057b87b2a171be69b">Fenetre::cliquer_sur_btnResolution</a></div><div class="ttdeci">void cliquer_sur_btnResolution()</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8cpp_source.html#l00184">Fenetre.cpp:184</a></div></div>
+<div class="ttc" id="classFenetre_html_acad76e904a4de7075709bf06729fa27c"><div class="ttname"><a href="classFenetre.html#acad76e904a4de7075709bf06729fa27c">Fenetre::image</a></div><div class="ttdeci">Gtk::Image image</div><div class="ttdef"><b>Definition:</b> <a href="Fenetre_8hpp_source.html#l00029">Fenetre.hpp:29</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="Fenetre_8hpp.html">Fenetre.hpp</a></li>
+    <li class="footer">Généré le Dimanche 26 Avril 2015 15:41:55 pour Picross par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

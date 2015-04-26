@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Picross:  Fichier source de matrice.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Picross
+   </div>
+   <div id="projectbrief">Jeu de réflexion</div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('matrice_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">matrice.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="matrice_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __MATRICE_H__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __MATRICE_H__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="liste_8h.html">liste.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//enum class Color  {?, rouge, noir}; ! ! !</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classMatrice.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMatrice.html">Matrice</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">   12</a></span>&#160;    <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">   13</a></span>&#160;    <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">   14</a></span>&#160;    <span class="keywordtype">int</span>** <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classMatrice.html#afb131ecb5c23c7f9e420907a29461fed">Matrice</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classMatrice.html#ae9076e71ad3223654b0d51225bc8b3c0">~Matrice</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">int</span>**  <a class="code" href="classMatrice.html#a74022db9c0409d3451a259ec38bddf2b">getMat</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classMatrice.html#ad23f82f0c076cb90ab6055d393f07d3a">getNbc</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classMatrice.html#a1b2f1b7f44d0d91c09a8683aee9c63d5">getNbl</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classMatrice.html#a1416b86015f07dfd8f3481588667cb43">getValue</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nl, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nc) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrice.html#a96cff406137449620be89bff15f6ba19">setValue</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nl, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nc, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrice.html#ac075edf29b7c410d5e6731a0132e08db">setLigne</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nl, <span class="keywordtype">int</span>* T);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classMatrice.html#aef8d235393fc8b89a89a37a8d0dc0f73">setColonne</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nc, <span class="keywordtype">int</span>* T);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">void</span>   <a class="code" href="classMatrice.html#a014c2c17c7183ff91f5159ea02f9769c">afficheM</a>(std::ostream&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::string <a class="code" href="classMatrice.html#ace6f8022370a40f720518cc75e4493b4">afficheMatrice</a>(<span class="keywordtype">size_t</span> i,<span class="keywordtype">size_t</span> j)<span class="keyword">const</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;std::ostream &amp;<a class="code" href="matrice_8h.html#a52cc30ca73a13ee58a282732cbc50b0d">operator&lt;&lt;</a>(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="classMatrice.html">Matrice</a>&amp;);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classMatrice_html_a1416b86015f07dfd8f3481588667cb43"><div class="ttname"><a href="classMatrice.html#a1416b86015f07dfd8f3481588667cb43">Matrice::getValue</a></div><div class="ttdeci">int getValue(sint nl, sint nc) const </div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00040">matrice.cpp:40</a></div></div>
+<div class="ttc" id="classMatrice_html_a96cff406137449620be89bff15f6ba19"><div class="ttname"><a href="classMatrice.html#a96cff406137449620be89bff15f6ba19">Matrice::setValue</a></div><div class="ttdeci">void setValue(sint nl, sint nc, int v)</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00049">matrice.cpp:49</a></div></div>
+<div class="ttc" id="classMatrice_html_ac075edf29b7c410d5e6731a0132e08db"><div class="ttname"><a href="classMatrice.html#ac075edf29b7c410d5e6731a0132e08db">Matrice::setLigne</a></div><div class="ttdeci">void setLigne(sint nl, int *T)</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00056">matrice.cpp:56</a></div></div>
+<div class="ttc" id="cell_8h_html_a2a342460f23ea7ab3265e9db9984138d"><div class="ttname"><a href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a></div><div class="ttdeci">unsigned short int sint</div><div class="ttdef"><b>Definition:</b> <a href="cell_8h_source.html#l00013">cell.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_ae9076e71ad3223654b0d51225bc8b3c0"><div class="ttname"><a href="classMatrice.html#ae9076e71ad3223654b0d51225bc8b3c0">Matrice::~Matrice</a></div><div class="ttdeci">~Matrice()</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00019">matrice.cpp:19</a></div></div>
+<div class="ttc" id="classMatrice_html_aef8d235393fc8b89a89a37a8d0dc0f73"><div class="ttname"><a href="classMatrice.html#aef8d235393fc8b89a89a37a8d0dc0f73">Matrice::setColonne</a></div><div class="ttdeci">void setColonne(sint nc, int *T)</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00066">matrice.cpp:66</a></div></div>
+<div class="ttc" id="liste_8h_html"><div class="ttname"><a href="liste_8h.html">liste.h</a></div></div>
+<div class="ttc" id="classMatrice_html_ad23f82f0c076cb90ab6055d393f07d3a"><div class="ttname"><a href="classMatrice.html#ad23f82f0c076cb90ab6055d393f07d3a">Matrice::getNbc</a></div><div class="ttdeci">sint getNbc() const </div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00032">matrice.cpp:32</a></div></div>
+<div class="ttc" id="classMatrice_html_ace6f8022370a40f720518cc75e4493b4"><div class="ttname"><a href="classMatrice.html#ace6f8022370a40f720518cc75e4493b4">Matrice::afficheMatrice</a></div><div class="ttdeci">std::string afficheMatrice(size_t i, size_t j) const </div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00100">matrice.cpp:100</a></div></div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_a1b2f1b7f44d0d91c09a8683aee9c63d5"><div class="ttname"><a href="classMatrice.html#a1b2f1b7f44d0d91c09a8683aee9c63d5">Matrice::getNbl</a></div><div class="ttdeci">sint getNbl() const </div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00036">matrice.cpp:36</a></div></div>
+<div class="ttc" id="matrice_8h_html_a52cc30ca73a13ee58a282732cbc50b0d"><div class="ttname"><a href="matrice_8h.html#a52cc30ca73a13ee58a282732cbc50b0d">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const Matrice &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00123">matrice.cpp:123</a></div></div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+<div class="ttc" id="classMatrice_html_a74022db9c0409d3451a259ec38bddf2b"><div class="ttname"><a href="classMatrice.html#a74022db9c0409d3451a259ec38bddf2b">Matrice::getMat</a></div><div class="ttdeci">int ** getMat() const </div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00028">matrice.cpp:28</a></div></div>
+<div class="ttc" id="classMatrice_html"><div class="ttname"><a href="classMatrice.html">Matrice</a></div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00009">matrice.h:9</a></div></div>
+<div class="ttc" id="classMatrice_html_a014c2c17c7183ff91f5159ea02f9769c"><div class="ttname"><a href="classMatrice.html#a014c2c17c7183ff91f5159ea02f9769c">Matrice::afficheM</a></div><div class="ttdeci">void afficheM(std::ostream &amp;) const </div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00076">matrice.cpp:76</a></div></div>
+<div class="ttc" id="classMatrice_html_afb131ecb5c23c7f9e420907a29461fed"><div class="ttname"><a href="classMatrice.html#afb131ecb5c23c7f9e420907a29461fed">Matrice::Matrice</a></div><div class="ttdeci">Matrice(sint nbl, sint nbc)</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8cpp_source.html#l00003">matrice.cpp:3</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="matrice_8h.html">matrice.h</a></li>
+    <li class="footer">Généré le Dimanche 26 Avril 2015 15:41:55 pour Picross par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

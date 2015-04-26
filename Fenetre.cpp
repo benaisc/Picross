@@ -193,15 +193,11 @@ void Fenetre::cliquer_sur_btnResolution(){
     P.remplirTabListe(f);
     P.TINY_SOL_iter();
 
-    cout << P << endl;
-
     if(!P.isPicrossFini())
       {
 	 bool R;
           P.backtrack(R);
-          cout<<"On fini avec Res Ã  : "<<boolalpha<<R<<noboolalpha<<endl;
 	  creerTabRes(P,nbl,nbc);
-	  cout<< P.getMatrice() << endl;
       }
     //Je créé un tableau Picross final
     creerTabRes(P,nbl,nbc); 

@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Picross:  Fichier source de picross.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Picross
+   </div>
+   <div id="projectbrief">Jeu de réflexion</div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('picross_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">picross.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="picross_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __PICROSS_H__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __PICROSS_H__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="tabListe_8h.html">tabListe.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="matrice_8h.html">matrice.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classPicross.html">    8</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPicross.html">Picross</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classPicross.html#a99543273038182d18b60c7121f5dde16">   11</a></span>&#160;  <a class="code" href="classMatrice.html">Matrice</a> <a class="code" href="classPicross.html#a99543273038182d18b60c7121f5dde16">mat</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classPicross.html#a389f001b3bafe1c5375719df2e3b9e26">   12</a></span>&#160;  <a class="code" href="classTabListe.html">TabListe</a> <a class="code" href="classPicross.html#a389f001b3bafe1c5375719df2e3b9e26">lignes</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classPicross.html#ae2a442bd12c9bf07107ed6e736cb5d6d">   13</a></span>&#160;  <a class="code" href="classTabListe.html">TabListe</a> <a class="code" href="classPicross.html#ae2a442bd12c9bf07107ed6e736cb5d6d">colonnes</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classPicross.html#aa75ae7beeb931c7b34bbc16eddc5ea50">   14</a></span>&#160;  <a class="code" href="classListe.html">Liste</a> <a class="code" href="classPicross.html#aa75ae7beeb931c7b34bbc16eddc5ea50">colModif</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classPicross.html#a7907f437671ba04961327b24f022ec40">   15</a></span>&#160;  <a class="code" href="classListe.html">Liste</a> <a class="code" href="classPicross.html#a7907f437671ba04961327b24f022ec40">ligModif</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="comment">//constructeur</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <a class="code" href="classPicross.html#aaf9059d7459e191ebbe94e901a05ad9d">Picross</a>(<span class="keywordtype">size_t</span>, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="comment">//les lignes puis les colonnes</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#aab06b5f8522e9431d81995a9dc374acd">remplirTabListe</a>(std::ifstream&amp;);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="comment">//accesseur</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classPicross.html#a664581743767362ceab3ae90ac06cf09">getNbLignes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classPicross.html#a98fe549c1299b3124e7af786279a9940">getNbColonnes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <a class="code" href="classTabListe.html">TabListe</a>&amp; <a class="code" href="classPicross.html#a58d5dbb3a3a8f741d363eac9933e6bf3">getLignes</a>();</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="classTabListe.html">TabListe</a>&amp; <a class="code" href="classPicross.html#a6ee974923efbc3fbd8662015fb0bdb47">getColonnes</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="classMatrice.html">Matrice</a>&amp; <a class="code" href="classPicross.html#ae4eaf11ee021255fe884bd90f4b2f4f1">getMatrice</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="classListe.html">Liste</a>&amp; <a class="code" href="classPicross.html#a70ffbca3a713d7d29795f61cf704f9db">getColModif</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classListe.html">Liste</a>&amp; <a class="code" href="classPicross.html#a3cd2051225ff9c6fe07efc7232050915">getLigModif</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">int</span>** <a class="code" href="classPicross.html#af1910b915f008984d58adccdbb0e9b5f">copieMat</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a61cbb3d6fe78cd87c5a748c967e5f98a">recopieMat</a>(<span class="keywordtype">int</span>** save);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a9587eb7a20b21700cb6ce78dd5461971">copieBool</a>(<span class="keywordtype">bool</span>* L, <span class="keywordtype">bool</span>* C);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#afc971c77cd2f16c06316d64629ea4faf">recopieBool</a>(<span class="keywordtype">bool</span>* L, <span class="keywordtype">bool</span>* C);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a16777b7247c987d501a9e4ef11909bc3">premiereCaseLibre</a>(<span class="keywordtype">bool</span> &amp;poss, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> &amp;nl, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> &amp;nc) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a7c177be80b3ddb4c9a58cf9c42b09e36">Placer1noir</a>(<span class="keywordtype">bool</span> &amp;poss, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> &amp;nl, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> &amp;nc);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#adc8505478d16195a38ce8ab1963ca229">Placer1blanc</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> &amp;nl, <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> &amp;nc);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#ac66950519a9104169d676e507faa8f02">backtrack</a>(<span class="keywordtype">bool</span> &amp;poss);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a5bc256485638dbe7e1aa6467275f3fdf">SLPG</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>, <a class="code" href="classListe.html">Liste</a>&amp;);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a75f7a85f4d85d3752d3b1fb07279b503">SLPD</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>, <a class="code" href="classListe.html">Liste</a>&amp;);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a230ee33ea6ad1cec64a5eea4d5b86d5f">SLG</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>, <a class="code" href="classCell.html">Cell</a>*, <span class="keywordtype">size_t</span>, <span class="keywordtype">bool</span>&amp;);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a078879e6b9743c4da9eabf0618460643">PlacerBloc</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>, <span class="keywordtype">size_t</span>, <span class="keywordtype">size_t</span>, <span class="keywordtype">bool</span>&amp;);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classPicross.html#a7659b3ca4e7182753b965f7f360c3f71">Verification</a>(<span class="keywordtype">int</span>* , <span class="keywordtype">size_t</span>, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a57b70a485372dc78d24d4a3b4bae5b45">Numeroter</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#af38335f4b06f91d83b6615d91e8678d9">Fusion</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">int</span>*, <span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a81c70d779355fc8972d8ed2de0b3f801">remplirCasesSureBl</a>(<span class="keywordtype">int</span>*,<span class="keywordtype">int</span>*, <span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>, <a class="code" href="classListe.html">Liste</a>&amp;);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a0e526b21535a18964a64d3ced99d6981">isFini</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>, <a class="code" href="classListe.html">Liste</a>&amp;);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classPicross.html#a3287221fe486df9cfd0928a4903de8e1">chkSUM</a>(<span class="keywordtype">int</span>*, <a class="code" href="classListe.html">Liste</a>&amp;, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#ae24a90217c9704b85265f9b25b35b8a0">amodif</a>(<span class="keywordtype">bool</span>, <span class="keywordtype">int</span>*, <span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a66d193bf3a75025e82a7a2915b3b2e6e">Push</a>(<span class="keywordtype">int</span>*,<span class="keywordtype">size_t</span>,<span class="keywordtype">bool</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#ae888bcf7f2ee87bd25c80122411c1835">solLignes</a>(<span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#ad046d8b188787271f7dc4dbdebcdbba8">solColonnes</a>(<span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a16bc5d2f671b987b43202ea43e053a12">TINY_SOL_iter</a>();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a3e83344d56fdd21e129b0d8ff98b292f">FAT_SOL</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a27ce9ed2054e952b877dac556cc2eb8d">FAT_LIG</a>();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a34090934fc6bbc63dbe93422a75d395f">FAT_COL</a>();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classPicross.html#aafb0a39c6882ffc12e6cc70fca1e7f08">VerifMatrice</a>(<span class="keywordtype">size_t</span>, <span class="keywordtype">bool</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#a91f3fa184fd71bffbf6400b72c01c9a5">setLCFini</a>();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classPicross.html#a8b526e8c0f26baad05986946e6b42865">isPicrossFini</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPicross.html#acc82e42c6c2b092443501c1a03416921">afficheP</a>(std::ostream&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;};</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;std::ostream&amp; <a class="code" href="picross_8h.html#ad2205b81ede82466a4f77c189c40b883">operator&lt;&lt;</a>(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="classPicross.html">Picross</a>&amp;);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keywordtype">void</span> <a class="code" href="picross_8h.html#a008e26587551ed87afa5a0b5f0398710">afftableau</a>(<span class="keyword">const</span> <span class="keywordtype">int</span>*, <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> <a class="code" href="picross_8h.html#ad36568aafe9e877ca5cbb830ff57dd5a">inverseT</a>(<span class="keywordtype">int</span>*, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classPicross_html_a664581743767362ceab3ae90ac06cf09"><div class="ttname"><a href="classPicross.html#a664581743767362ceab3ae90ac06cf09">Picross::getNbLignes</a></div><div class="ttdeci">sint getNbLignes() const </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00510">picross.cpp:510</a></div></div>
+<div class="ttc" id="classPicross_html_a230ee33ea6ad1cec64a5eea4d5b86d5f"><div class="ttname"><a href="classPicross.html#a230ee33ea6ad1cec64a5eea4d5b86d5f">Picross::SLG</a></div><div class="ttdeci">void SLG(int *, size_t, Cell *, size_t, bool &amp;)</div><div class="ttdoc">Fonction recursive qui retourne la solution la plus a gauche de Tab. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00069">picross.cpp:69</a></div></div>
+<div class="ttc" id="classCell_html"><div class="ttname"><a href="classCell.html">Cell</a></div><div class="ttdoc">Brique de base pour une liste. </div><div class="ttdef"><b>Definition:</b> <a href="cell_8h_source.html#l00015">cell.h:15</a></div></div>
+<div class="ttc" id="classPicross_html_a99543273038182d18b60c7121f5dde16"><div class="ttname"><a href="classPicross.html#a99543273038182d18b60c7121f5dde16">Picross::mat</a></div><div class="ttdeci">Matrice mat</div><div class="ttdef"><b>Definition:</b> <a href="picross_8h_source.html#l00011">picross.h:11</a></div></div>
+<div class="ttc" id="classPicross_html_ae4eaf11ee021255fe884bd90f4b2f4f1"><div class="ttname"><a href="classPicross.html#ae4eaf11ee021255fe884bd90f4b2f4f1">Picross::getMatrice</a></div><div class="ttdeci">Matrice &amp; getMatrice()</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00040">picross.cpp:40</a></div></div>
+<div class="ttc" id="classPicross_html_aa75ae7beeb931c7b34bbc16eddc5ea50"><div class="ttname"><a href="classPicross.html#aa75ae7beeb931c7b34bbc16eddc5ea50">Picross::colModif</a></div><div class="ttdeci">Liste colModif</div><div class="ttdef"><b>Definition:</b> <a href="picross_8h_source.html#l00014">picross.h:14</a></div></div>
+<div class="ttc" id="classPicross_html_a9587eb7a20b21700cb6ce78dd5461971"><div class="ttname"><a href="classPicross.html#a9587eb7a20b21700cb6ce78dd5461971">Picross::copieBool</a></div><div class="ttdeci">void copieBool(bool *L, bool *C)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00588">picross.cpp:588</a></div></div>
+<div class="ttc" id="classListe_html"><div class="ttname"><a href="classListe.html">Liste</a></div><div class="ttdoc">Classe représentant la liste par une tete et son nombre de cellules Ainsi qu&#39;un booleen indiquant si ...</div><div class="ttdef"><b>Definition:</b> <a href="liste_8h_source.html#l00016">liste.h:16</a></div></div>
+<div class="ttc" id="cell_8h_html_a2a342460f23ea7ab3265e9db9984138d"><div class="ttname"><a href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a></div><div class="ttdeci">unsigned short int sint</div><div class="ttdef"><b>Definition:</b> <a href="cell_8h_source.html#l00013">cell.h:13</a></div></div>
+<div class="ttc" id="classPicross_html_af1910b915f008984d58adccdbb0e9b5f"><div class="ttname"><a href="classPicross.html#af1910b915f008984d58adccdbb0e9b5f">Picross::copieMat</a></div><div class="ttdeci">int ** copieMat() const </div><div class="ttdoc">Simple copie d&#39;une matrice. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00519">picross.cpp:519</a></div></div>
+<div class="ttc" id="classPicross_html_ae24a90217c9704b85265f9b25b35b8a0"><div class="ttname"><a href="classPicross.html#ae24a90217c9704b85265f9b25b35b8a0">Picross::amodif</a></div><div class="ttdeci">void amodif(bool, int *, int *, size_t)</div><div class="ttdoc">ajoute à ligModif|colModif les colonnes|lignes modifiées </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00214">picross.cpp:214</a></div></div>
+<div class="ttc" id="classPicross_html_a16777b7247c987d501a9e4ef11909bc3"><div class="ttname"><a href="classPicross.html#a16777b7247c987d501a9e4ef11909bc3">Picross::premiereCaseLibre</a></div><div class="ttdeci">void premiereCaseLibre(bool &amp;poss, sint &amp;nl, sint &amp;nc) const </div><div class="ttdoc">parcours ligne par ligne qui donne la première case libre de mat </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00548">picross.cpp:548</a></div></div>
+<div class="ttc" id="classPicross_html_a3287221fe486df9cfd0928a4903de8e1"><div class="ttname"><a href="classPicross.html#a3287221fe486df9cfd0928a4903de8e1">Picross::chkSUM</a></div><div class="ttdeci">bool chkSUM(int *, Liste &amp;, size_t)</div><div class="ttdoc">compte les cases noires et les blocs, true si le compte est bon </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00194">picross.cpp:194</a></div></div>
+<div class="ttc" id="classTabListe_html"><div class="ttname"><a href="classTabListe.html">TabListe</a></div><div class="ttdoc">Classe représentant un tableau de listes de cellules. </div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8h_source.html#l00011">tabListe.h:11</a></div></div>
+<div class="ttc" id="classPicross_html_aafb0a39c6882ffc12e6cc70fca1e7f08"><div class="ttname"><a href="classPicross.html#aafb0a39c6882ffc12e6cc70fca1e7f08">Picross::VerifMatrice</a></div><div class="ttdeci">bool VerifMatrice(size_t, bool) const </div><div class="ttdoc">false si la ligne ou colonne de matrice n&#39;est pas correctement rempli càd si le nombre de blocs noirs...</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00422">picross.cpp:422</a></div></div>
+<div class="ttc" id="classPicross_html_a0e526b21535a18964a64d3ced99d6981"><div class="ttname"><a href="classPicross.html#a0e526b21535a18964a64d3ced99d6981">Picross::isFini</a></div><div class="ttdeci">void isFini(int *, size_t, Liste &amp;)</div><div class="ttdoc">appel chkSUM et met le booleen de la liste à true si T terminé </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00187">picross.cpp:187</a></div></div>
+<div class="ttc" id="classPicross_html_ad046d8b188787271f7dc4dbdebcdbba8"><div class="ttname"><a href="classPicross.html#ad046d8b188787271f7dc4dbdebcdbba8">Picross::solColonnes</a></div><div class="ttdeci">void solColonnes(size_t)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00278">picross.cpp:278</a></div></div>
+<div class="ttc" id="classPicross_html_a3e83344d56fdd21e129b0d8ff98b292f"><div class="ttname"><a href="classPicross.html#a3e83344d56fdd21e129b0d8ff98b292f">Picross::FAT_SOL</a></div><div class="ttdeci">void FAT_SOL(sint)</div><div class="ttdoc">appel recursif FATCOL&amp;FATLIG tq colModif et ligModif contiennent des cell càd tant que l&#39;on modifie d...</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00349">picross.cpp:349</a></div></div>
+<div class="ttc" id="picross_8h_html_ad36568aafe9e877ca5cbb830ff57dd5a"><div class="ttname"><a href="picross_8h.html#ad36568aafe9e877ca5cbb830ff57dd5a">inverseT</a></div><div class="ttdeci">void inverseT(int *, size_t)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00675">picross.cpp:675</a></div></div>
+<div class="ttc" id="classPicross_html_ac66950519a9104169d676e507faa8f02"><div class="ttname"><a href="classPicross.html#ac66950519a9104169d676e507faa8f02">Picross::backtrack</a></div><div class="ttdeci">void backtrack(bool &amp;poss)</div><div class="ttdoc">Tant que le picross n&#39;est pas rempli avec FAT il place un noir dans la premCaseLib; Si le picross n&#39;e...</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00616">picross.cpp:616</a></div></div>
+<div class="ttc" id="classPicross_html_a3cd2051225ff9c6fe07efc7232050915"><div class="ttname"><a href="classPicross.html#a3cd2051225ff9c6fe07efc7232050915">Picross::getLigModif</a></div><div class="ttdeci">Liste &amp; getLigModif()</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00050">picross.cpp:50</a></div></div>
+<div class="ttc" id="classPicross_html_acc82e42c6c2b092443501c1a03416921"><div class="ttname"><a href="classPicross.html#acc82e42c6c2b092443501c1a03416921">Picross::afficheP</a></div><div class="ttdeci">void afficheP(std::ostream &amp;) const </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00647">picross.cpp:647</a></div></div>
+<div class="ttc" id="classPicross_html_adc8505478d16195a38ce8ab1963ca229"><div class="ttname"><a href="classPicross.html#adc8505478d16195a38ce8ab1963ca229">Picross::Placer1blanc</a></div><div class="ttdeci">void Placer1blanc(sint &amp;nl, sint &amp;nc)</div><div class="ttdoc">Place la case(nl,nc) a blanc. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00581">picross.cpp:581</a></div></div>
+<div class="ttc" id="classPicross_html_ae888bcf7f2ee87bd25c80122411c1835"><div class="ttname"><a href="classPicross.html#ae888bcf7f2ee87bd25c80122411c1835">Picross::solLignes</a></div><div class="ttdeci">void solLignes(size_t)</div><div class="ttdoc">appel sur la ligneMat[ind] de SLPG SLPD Fusion CasesBlanches AMODIF &amp; Push </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00250">picross.cpp:250</a></div></div>
+<div class="ttc" id="classPicross_html"><div class="ttname"><a href="classPicross.html">Picross</a></div><div class="ttdef"><b>Definition:</b> <a href="picross_8h_source.html#l00008">picross.h:8</a></div></div>
+<div class="ttc" id="matrice_8h_html"><div class="ttname"><a href="matrice_8h.html">matrice.h</a></div></div>
+<div class="ttc" id="picross_8h_html_a008e26587551ed87afa5a0b5f0398710"><div class="ttname"><a href="picross_8h.html#a008e26587551ed87afa5a0b5f0398710">afftableau</a></div><div class="ttdeci">void afftableau(const int *, int)</div></div>
+<div class="ttc" id="classPicross_html_a078879e6b9743c4da9eabf0618460643"><div class="ttname"><a href="classPicross.html#a078879e6b9743c4da9eabf0618460643">Picross::PlacerBloc</a></div><div class="ttdeci">void PlacerBloc(int *, size_t, size_t, size_t, bool &amp;)</div><div class="ttdoc">Fonction qui tente de placer le bloc val directement en i, false si il y à un -1 génant ou un 1 au bo...</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00108">picross.cpp:108</a></div></div>
+<div class="ttc" id="classPicross_html_a75f7a85f4d85d3752d3b1fb07279b503"><div class="ttname"><a href="classPicross.html#a75f7a85f4d85d3752d3b1fb07279b503">Picross::SLPD</a></div><div class="ttdeci">void SLPD(int *, size_t, Liste &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00055">picross.cpp:55</a></div></div>
+<div class="ttc" id="classPicross_html_ae2a442bd12c9bf07107ed6e736cb5d6d"><div class="ttname"><a href="classPicross.html#ae2a442bd12c9bf07107ed6e736cb5d6d">Picross::colonnes</a></div><div class="ttdeci">TabListe colonnes</div><div class="ttdef"><b>Definition:</b> <a href="picross_8h_source.html#l00013">picross.h:13</a></div></div>
+<div class="ttc" id="classPicross_html_a81c70d779355fc8972d8ed2de0b3f801"><div class="ttname"><a href="classPicross.html#a81c70d779355fc8972d8ed2de0b3f801">Picross::remplirCasesSureBl</a></div><div class="ttdeci">void remplirCasesSureBl(int *, int *, int *, size_t, Liste &amp;)</div><div class="ttdoc">TODO. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00384">picross.cpp:384</a></div></div>
+<div class="ttc" id="classPicross_html_aab06b5f8522e9431d81995a9dc374acd"><div class="ttname"><a href="classPicross.html#aab06b5f8522e9431d81995a9dc374acd">Picross::remplirTabListe</a></div><div class="ttdeci">void remplirTabListe(std::ifstream &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00006">picross.cpp:6</a></div></div>
+<div class="ttc" id="classPicross_html_a27ce9ed2054e952b877dac556cc2eb8d"><div class="ttname"><a href="classPicross.html#a27ce9ed2054e952b877dac556cc2eb8d">Picross::FAT_LIG</a></div><div class="ttdeci">void FAT_LIG()</div><div class="ttdoc">appel recursif sur tout les indices de ligModif </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00363">picross.cpp:363</a></div></div>
+<div class="ttc" id="classPicross_html_a66d193bf3a75025e82a7a2915b3b2e6e"><div class="ttname"><a href="classPicross.html#a66d193bf3a75025e82a7a2915b3b2e6e">Picross::Push</a></div><div class="ttdeci">void Push(int *, size_t, bool)</div><div class="ttdoc">brute push dans la matrice a l&#39;indice ind, 0&gt;ligne 1&gt;colonne </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00238">picross.cpp:238</a></div></div>
+<div class="ttc" id="classMatrice_html"><div class="ttname"><a href="classMatrice.html">Matrice</a></div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00009">matrice.h:9</a></div></div>
+<div class="ttc" id="classPicross_html_afc971c77cd2f16c06316d64629ea4faf"><div class="ttname"><a href="classPicross.html#afc971c77cd2f16c06316d64629ea4faf">Picross::recopieBool</a></div><div class="ttdeci">void recopieBool(bool *L, bool *C)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00602">picross.cpp:602</a></div></div>
+<div class="ttc" id="classPicross_html_a98fe549c1299b3124e7af786279a9940"><div class="ttname"><a href="classPicross.html#a98fe549c1299b3124e7af786279a9940">Picross::getNbColonnes</a></div><div class="ttdeci">sint getNbColonnes() const </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00514">picross.cpp:514</a></div></div>
+<div class="ttc" id="classPicross_html_a5bc256485638dbe7e1aa6467275f3fdf"><div class="ttname"><a href="classPicross.html#a5bc256485638dbe7e1aa6467275f3fdf">Picross::SLPG</a></div><div class="ttdeci">void SLPG(int *, size_t, Liste &amp;)</div><div class="ttdoc">Fonction qui donne la solution la plus a gauche en fonction d&#39;une liste L. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00064">picross.cpp:64</a></div></div>
+<div class="ttc" id="classPicross_html_a16bc5d2f671b987b43202ea43e053a12"><div class="ttname"><a href="classPicross.html#a16bc5d2f671b987b43202ea43e053a12">Picross::TINY_SOL_iter</a></div><div class="ttdeci">void TINY_SOL_iter()</div><div class="ttdoc">appel sur toutes les lignes et colonnes de solLignes et solColonnes dans le but d&#39;initialiser ligModi...</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00307">picross.cpp:307</a></div></div>
+<div class="ttc" id="tabListe_8h_html"><div class="ttname"><a href="tabListe_8h.html">tabListe.h</a></div></div>
+<div class="ttc" id="classPicross_html_a58d5dbb3a3a8f741d363eac9933e6bf3"><div class="ttname"><a href="classPicross.html#a58d5dbb3a3a8f741d363eac9933e6bf3">Picross::getLignes</a></div><div class="ttdeci">TabListe &amp; getLignes()</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00032">picross.cpp:32</a></div></div>
+<div class="ttc" id="classPicross_html_a7c177be80b3ddb4c9a58cf9c42b09e36"><div class="ttname"><a href="classPicross.html#a7c177be80b3ddb4c9a58cf9c42b09e36">Picross::Placer1noir</a></div><div class="ttdeci">void Placer1noir(bool &amp;poss, sint &amp;nl, sint &amp;nc)</div><div class="ttdoc">Place la premCaseLib(nl,nc) a noir sinon poss false. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00571">picross.cpp:571</a></div></div>
+<div class="ttc" id="classPicross_html_af38335f4b06f91d83b6615d91e8678d9"><div class="ttname"><a href="classPicross.html#af38335f4b06f91d83b6615d91e8678d9">Picross::Fusion</a></div><div class="ttdeci">void Fusion(int *, int *, int *, size_t)</div><div class="ttdoc">Fusion simple entre TG et TD là ou les valeures sont égales. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00169">picross.cpp:169</a></div></div>
+<div class="ttc" id="classPicross_html_a8b526e8c0f26baad05986946e6b42865"><div class="ttname"><a href="classPicross.html#a8b526e8c0f26baad05986946e6b42865">Picross::isPicrossFini</a></div><div class="ttdeci">bool isPicrossFini() const </div><div class="ttdoc">false si la liste d&#39;une ligne ou d&#39;une colonne n&#39;est pas à true </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00489">picross.cpp:489</a></div></div>
+<div class="ttc" id="classPicross_html_a70ffbca3a713d7d29795f61cf704f9db"><div class="ttname"><a href="classPicross.html#a70ffbca3a713d7d29795f61cf704f9db">Picross::getColModif</a></div><div class="ttdeci">Liste &amp; getColModif()</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00045">picross.cpp:45</a></div></div>
+<div class="ttc" id="classPicross_html_a57b70a485372dc78d24d4a3b4bae5b45"><div class="ttname"><a href="classPicross.html#a57b70a485372dc78d24d4a3b4bae5b45">Picross::Numeroter</a></div><div class="ttdeci">void Numeroter(int *, size_t)</div><div class="ttdoc">identifie les blocs de cases noires (1..2..) </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00152">picross.cpp:152</a></div></div>
+<div class="ttc" id="classPicross_html_a91f3fa184fd71bffbf6400b72c01c9a5"><div class="ttname"><a href="classPicross.html#a91f3fa184fd71bffbf6400b72c01c9a5">Picross::setLCFini</a></div><div class="ttdeci">void setLCFini()</div><div class="ttdoc">appel de VerifMatrice sur toutes les lignes et colonnes non finies et pose à true les listes fini ...</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00469">picross.cpp:469</a></div></div>
+<div class="ttc" id="classPicross_html_a7907f437671ba04961327b24f022ec40"><div class="ttname"><a href="classPicross.html#a7907f437671ba04961327b24f022ec40">Picross::ligModif</a></div><div class="ttdeci">Liste ligModif</div><div class="ttdef"><b>Definition:</b> <a href="picross_8h_source.html#l00015">picross.h:15</a></div></div>
+<div class="ttc" id="classPicross_html_aaf9059d7459e191ebbe94e901a05ad9d"><div class="ttname"><a href="classPicross.html#aaf9059d7459e191ebbe94e901a05ad9d">Picross::Picross</a></div><div class="ttdeci">Picross(size_t, size_t)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00004">picross.cpp:4</a></div></div>
+<div class="ttc" id="classPicross_html_a389f001b3bafe1c5375719df2e3b9e26"><div class="ttname"><a href="classPicross.html#a389f001b3bafe1c5375719df2e3b9e26">Picross::lignes</a></div><div class="ttdeci">TabListe lignes</div><div class="ttdef"><b>Definition:</b> <a href="picross_8h_source.html#l00012">picross.h:12</a></div></div>
+<div class="ttc" id="classPicross_html_a6ee974923efbc3fbd8662015fb0bdb47"><div class="ttname"><a href="classPicross.html#a6ee974923efbc3fbd8662015fb0bdb47">Picross::getColonnes</a></div><div class="ttdeci">TabListe &amp; getColonnes()</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00036">picross.cpp:36</a></div></div>
+<div class="ttc" id="classPicross_html_a34090934fc6bbc63dbe93422a75d395f"><div class="ttname"><a href="classPicross.html#a34090934fc6bbc63dbe93422a75d395f">Picross::FAT_COL</a></div><div class="ttdeci">void FAT_COL()</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00373">picross.cpp:373</a></div></div>
+<div class="ttc" id="picross_8h_html_ad2205b81ede82466a4f77c189c40b883"><div class="ttname"><a href="picross_8h.html#ad2205b81ede82466a4f77c189c40b883">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const Picross &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00658">picross.cpp:658</a></div></div>
+<div class="ttc" id="classPicross_html_a7659b3ca4e7182753b965f7f360c3f71"><div class="ttname"><a href="classPicross.html#a7659b3ca4e7182753b965f7f360c3f71">Picross::Verification</a></div><div class="ttdeci">bool Verification(int *, size_t, size_t)</div><div class="ttdoc">verifie si les cases entre j et n sont non-noires (false s&#39;il y à un noir après le dernier bloc placé...</div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00140">picross.cpp:140</a></div></div>
+<div class="ttc" id="classPicross_html_a61cbb3d6fe78cd87c5a748c967e5f98a"><div class="ttname"><a href="classPicross.html#a61cbb3d6fe78cd87c5a748c967e5f98a">Picross::recopieMat</a></div><div class="ttdeci">void recopieMat(int **save)</div><div class="ttdoc">Recopie d&#39;une save de matrice pour récupérer un mauvais backtrack. </div><div class="ttdef"><b>Definition:</b> <a href="picross_8cpp_source.html#l00535">picross.cpp:535</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="picross_8h.html">picross.h</a></li>
+    <li class="footer">Généré le Dimanche 26 Avril 2015 15:41:55 pour Picross par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

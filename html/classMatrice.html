@@ -1,0 +1,613 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Picross: Référence de la classe Matrice</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Picross
+   </div>
+   <div id="projectbrief">Jeu de réflexion</div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('classMatrice.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pri-attribs">Attributs privés</a> &#124;
+<a href="classMatrice-members.html">Liste de tous les membres</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la classe Matrice</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="matrice_8h_source.html">matrice.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:afb131ecb5c23c7f9e420907a29461fed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#afb131ecb5c23c7f9e420907a29461fed">Matrice</a> (<a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="el" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>, <a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="el" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>)</td></tr>
+<tr class="separator:afb131ecb5c23c7f9e420907a29461fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9076e71ad3223654b0d51225bc8b3c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#ae9076e71ad3223654b0d51225bc8b3c0">~Matrice</a> ()</td></tr>
+<tr class="separator:ae9076e71ad3223654b0d51225bc8b3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74022db9c0409d3451a259ec38bddf2b"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#a74022db9c0409d3451a259ec38bddf2b">getMat</a> () const </td></tr>
+<tr class="separator:a74022db9c0409d3451a259ec38bddf2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad23f82f0c076cb90ab6055d393f07d3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#ad23f82f0c076cb90ab6055d393f07d3a">getNbc</a> () const </td></tr>
+<tr class="separator:ad23f82f0c076cb90ab6055d393f07d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b2f1b7f44d0d91c09a8683aee9c63d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#a1b2f1b7f44d0d91c09a8683aee9c63d5">getNbl</a> () const </td></tr>
+<tr class="separator:a1b2f1b7f44d0d91c09a8683aee9c63d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1416b86015f07dfd8f3481588667cb43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#a1416b86015f07dfd8f3481588667cb43">getValue</a> (<a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nl, <a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nc) const </td></tr>
+<tr class="separator:a1416b86015f07dfd8f3481588667cb43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96cff406137449620be89bff15f6ba19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#a96cff406137449620be89bff15f6ba19">setValue</a> (<a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nl, <a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nc, int v)</td></tr>
+<tr class="separator:a96cff406137449620be89bff15f6ba19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac075edf29b7c410d5e6731a0132e08db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#ac075edf29b7c410d5e6731a0132e08db">setLigne</a> (<a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nl, int *T)</td></tr>
+<tr class="separator:ac075edf29b7c410d5e6731a0132e08db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef8d235393fc8b89a89a37a8d0dc0f73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#aef8d235393fc8b89a89a37a8d0dc0f73">setColonne</a> (<a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> nc, int *T)</td></tr>
+<tr class="separator:aef8d235393fc8b89a89a37a8d0dc0f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014c2c17c7183ff91f5159ea02f9769c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#a014c2c17c7183ff91f5159ea02f9769c">afficheM</a> (std::ostream &amp;) const </td></tr>
+<tr class="separator:a014c2c17c7183ff91f5159ea02f9769c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace6f8022370a40f720518cc75e4493b4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#ace6f8022370a40f720518cc75e4493b4">afficheMatrice</a> (size_t i, size_t j) const </td></tr>
+<tr class="separator:ace6f8022370a40f720518cc75e4493b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:a940f4ba5e65fb3878a7920e32f4f79c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a></td></tr>
+<tr class="separator:a940f4ba5e65fb3878a7920e32f4f79c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5a620a05d8e173d3950cb4f0e7ce047"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a></td></tr>
+<tr class="separator:af5a620a05d8e173d3950cb4f0e7ce047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cfc0fa987e80950fc5e2b0707c0fb1b"><td class="memItemLeft" align="right" valign="top">int **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a></td></tr>
+<tr class="separator:a4cfc0fa987e80950fc5e2b0707c0fb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock">
+<p>Définition à la ligne <a class="el" href="matrice_8h_source.html#l00009">9</a> du fichier <a class="el" href="matrice_8h_source.html">matrice.h</a>.</p>
+</div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
+<a class="anchor" id="afb131ecb5c23c7f9e420907a29461fed"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Matrice::Matrice </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nbl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nbc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00003">3</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;                                   : <a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>(<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>), <a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>(<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>)</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>!=0 &amp;&amp; <a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>!=0)</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>=<span class="keyword">new</span> <span class="keywordtype">int</span>* [<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>];</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>; i++)</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;      <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[i]=<span class="keyword">new</span> <span class="keywordtype">int</span> [<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>];</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j=0; j&lt;<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>; j++)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[i][j]=0;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      }</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ae9076e71ad3223654b0d51225bc8b3c0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Matrice::~Matrice </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00019">19</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0;i&lt;<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>;i++)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">delete</span> [] <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[i];</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  <span class="keyword">delete</span> [] <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions membres</h2>
+<a class="anchor" id="a014c2c17c7183ff91f5159ea02f9769c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Matrice::afficheM </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00076">76</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0; i&lt;<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>;i++)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span> &lt;&lt; <span class="stringliteral">&quot;L|C[&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;] : &quot;</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> j=0;j&lt;<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>;j++)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keywordflow">switch</span>(<a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[i][j])</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keywordflow">case</span>(-1):</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        os&lt;&lt;<span class="stringliteral">&quot; &quot;</span>&lt;&lt;<span class="stringliteral">&quot;\u25A7&quot;</span>&lt;&lt;<span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="keywordflow">case</span>(1):</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        os&lt;&lt;<span class="stringliteral">&quot; &quot;</span>&lt;&lt;<span class="stringliteral">&quot;\u25A0&quot;</span>&lt;&lt;<span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        os&lt;&lt;<span class="stringliteral">&quot; &quot;</span>&lt;&lt;<span class="stringliteral">&quot;\u25A1&quot;</span>&lt;&lt;<span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  os &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ace6f8022370a40f720518cc75e4493b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Matrice::afficheMatrice </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00100">100</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; std::stringstream ss;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="keywordflow">switch</span>(<a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[i][j])</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="keywordflow">case</span>(-1):</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    ss&lt;&lt;<span class="stringliteral">&quot;Images/croix.png&quot;</span>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      }<span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="keywordflow">case</span>(0):</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    ss&lt;&lt;<span class="stringliteral">&quot;Images/carre_blanc.png&quot;</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      }<span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="keywordflow">case</span>(1):</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        ss&lt;&lt;<span class="stringliteral">&quot;Images/carre_noir.png&quot;</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      }<span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    ss&lt;&lt;<span class="stringliteral">&quot;Images/carre_blanc.png&quot;</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">return</span> ss.str();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a74022db9c0409d3451a259ec38bddf2b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ** Matrice::getMat </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00028">28</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ad23f82f0c076cb90ab6055d393f07d3a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> Matrice::getNbc </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00032">32</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1b2f1b7f44d0d91c09a8683aee9c63d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> Matrice::getNbl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00036">36</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1416b86015f07dfd8f3481588667cb43"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Matrice::getValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00040">40</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">int</span> v=0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">if</span>(nl+nc&lt;<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>+<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    v=<a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[nl][nc];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="aef8d235393fc8b89a89a37a8d0dc0f73"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Matrice::setColonne </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>T</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00066">66</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">if</span>(nc&lt;<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0;i&lt;<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>;i++)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[i][nc]=T[i];</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ac075edf29b7c410d5e6731a0132e08db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Matrice::setLigne </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>T</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00056">56</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">if</span>(nl&lt;<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> i=0;i&lt;<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>;i++)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[nl][i]=T[i];</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a96cff406137449620be89bff15f6ba19"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Matrice::setValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nl</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>&#160;</td>
+          <td class="paramname"><em>nc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8cpp_source.html#l00049">49</a> du fichier <a class="el" href="matrice_8cpp_source.html">matrice.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordflow">if</span>(nl+nc&lt;<a class="code" href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">nbl</a>+<a class="code" href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">nbc</a>)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">mat</a>[nl][nc]=v;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="ttc" id="classMatrice_html_a940f4ba5e65fb3878a7920e32f4f79c5"><div class="ttname"><a href="classMatrice.html#a940f4ba5e65fb3878a7920e32f4f79c5">Matrice::nbl</a></div><div class="ttdeci">sint nbl</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00012">matrice.h:12</a></div></div>
+<div class="ttc" id="classMatrice_html_af5a620a05d8e173d3950cb4f0e7ce047"><div class="ttname"><a href="classMatrice.html#af5a620a05d8e173d3950cb4f0e7ce047">Matrice::nbc</a></div><div class="ttdeci">sint nbc</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00013">matrice.h:13</a></div></div>
+<div class="ttc" id="classMatrice_html_a4cfc0fa987e80950fc5e2b0707c0fb1b"><div class="ttname"><a href="classMatrice.html#a4cfc0fa987e80950fc5e2b0707c0fb1b">Matrice::mat</a></div><div class="ttdeci">int ** mat</div><div class="ttdef"><b>Definition:</b> <a href="matrice_8h_source.html#l00014">matrice.h:14</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Documentation des données membres</h2>
+<a class="anchor" id="a4cfc0fa987e80950fc5e2b0707c0fb1b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int** Matrice::mat</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8h_source.html#l00014">14</a> du fichier <a class="el" href="matrice_8h_source.html">matrice.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af5a620a05d8e173d3950cb4f0e7ce047"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> Matrice::nbc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8h_source.html#l00013">13</a> du fichier <a class="el" href="matrice_8h_source.html">matrice.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a940f4ba5e65fb3878a7920e32f4f79c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> Matrice::nbl</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Définition à la ligne <a class="el" href="matrice_8h_source.html#l00012">12</a> du fichier <a class="el" href="matrice_8h_source.html">matrice.h</a>.</p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li><a class="el" href="matrice_8h_source.html">matrice.h</a></li>
+<li><a class="el" href="matrice_8cpp_source.html">matrice.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classMatrice.html">Matrice</a></li>
+    <li class="footer">Généré le Dimanche 26 Avril 2015 15:41:55 pour Picross par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

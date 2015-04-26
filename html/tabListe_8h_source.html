@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.6"/>
+<title>Picross:  Fichier source de tabListe.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Picross
+   </div>
+   <div id="projectbrief">Jeu de réflexion</div>
+  </td>
+   <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.6 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('tabListe_8h_source.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Définitions de type</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">tabListe.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="tabListe_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __TABLISTE_H__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __TABLISTE_H__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="liste_8h.html">liste.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classTabListe.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTabListe.html">TabListe</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classTabListe.html#ab1143bea5634836315711b49cc71de2d">   14</a></span>&#160;    <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classTabListe.html#ab1143bea5634836315711b49cc71de2d">taille</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classTabListe.html#abdb3886e84cd59e77928b6d824eff1cd">   15</a></span>&#160;    <a class="code" href="classListe.html">Liste</a>* <a class="code" href="classTabListe.html#abdb3886e84cd59e77928b6d824eff1cd">tab</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classTabListe.html#aff31a0fe9ea5f0ea567895157f7e8d5b">TabListe</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classTabListe.html#a8136d2feb5c13f6867819442c9c47546">~TabListe</a>();</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a> <a class="code" href="classTabListe.html#aff3365b5f403bd488eb0bf72a735ae26">getTaille</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTabListe.html#ae448f884a02e908ed6c08281039bc503">error</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classListe.html">Liste</a> &amp;<a class="code" href="classTabListe.html#aa98ce10e2508152b58b4248157fe16f4">operator[]</a>(<a class="code" href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classTabListe.html#ad87527505302d65e0b1a50dbd7bec9c6">afficheT</a>(std::ostream&amp;) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;std::ostream &amp;<a class="code" href="tabListe_8h.html#a3caffca57a0711628bf5e56c48da4284">operator&lt;&lt;</a>(std::ostream&amp;, <span class="keyword">const</span> <a class="code" href="classTabListe.html">TabListe</a>&amp;);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classListe_html"><div class="ttname"><a href="classListe.html">Liste</a></div><div class="ttdoc">Classe représentant la liste par une tete et son nombre de cellules Ainsi qu&#39;un booleen indiquant si ...</div><div class="ttdef"><b>Definition:</b> <a href="liste_8h_source.html#l00016">liste.h:16</a></div></div>
+<div class="ttc" id="cell_8h_html_a2a342460f23ea7ab3265e9db9984138d"><div class="ttname"><a href="cell_8h.html#a2a342460f23ea7ab3265e9db9984138d">sint</a></div><div class="ttdeci">unsigned short int sint</div><div class="ttdef"><b>Definition:</b> <a href="cell_8h_source.html#l00013">cell.h:13</a></div></div>
+<div class="ttc" id="classTabListe_html"><div class="ttname"><a href="classTabListe.html">TabListe</a></div><div class="ttdoc">Classe représentant un tableau de listes de cellules. </div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8h_source.html#l00011">tabListe.h:11</a></div></div>
+<div class="ttc" id="classTabListe_html_ae448f884a02e908ed6c08281039bc503"><div class="ttname"><a href="classTabListe.html#ae448f884a02e908ed6c08281039bc503">TabListe::error</a></div><div class="ttdeci">void error() const </div><div class="ttdoc">Stratagème pour sortir du programme avec élégance Affiche problèmes sur terminal en cas d&#39;erreur...</div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8cpp_source.html#l00019">tabListe.cpp:19</a></div></div>
+<div class="ttc" id="classTabListe_html_ab1143bea5634836315711b49cc71de2d"><div class="ttname"><a href="classTabListe.html#ab1143bea5634836315711b49cc71de2d">TabListe::taille</a></div><div class="ttdeci">sint taille</div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8h_source.html#l00014">tabListe.h:14</a></div></div>
+<div class="ttc" id="classTabListe_html_aff31a0fe9ea5f0ea567895157f7e8d5b"><div class="ttname"><a href="classTabListe.html#aff31a0fe9ea5f0ea567895157f7e8d5b">TabListe::TabListe</a></div><div class="ttdeci">TabListe(sint)</div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8cpp_source.html#l00003">tabListe.cpp:3</a></div></div>
+<div class="ttc" id="liste_8h_html"><div class="ttname"><a href="liste_8h.html">liste.h</a></div></div>
+<div class="ttc" id="classTabListe_html_aff3365b5f403bd488eb0bf72a735ae26"><div class="ttname"><a href="classTabListe.html#aff3365b5f403bd488eb0bf72a735ae26">TabListe::getTaille</a></div><div class="ttdeci">sint getTaille() const </div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8cpp_source.html#l00014">tabListe.cpp:14</a></div></div>
+<div class="ttc" id="classTabListe_html_aa98ce10e2508152b58b4248157fe16f4"><div class="ttname"><a href="classTabListe.html#aa98ce10e2508152b58b4248157fe16f4">TabListe::operator[]</a></div><div class="ttdeci">Liste &amp; operator[](sint) const </div><div class="ttdoc">Sucre syntaxique évitant les seg. fault. </div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8cpp_source.html#l00026">tabListe.cpp:26</a></div></div>
+<div class="ttc" id="tabListe_8h_html_a3caffca57a0711628bf5e56c48da4284"><div class="ttname"><a href="tabListe_8h.html#a3caffca57a0711628bf5e56c48da4284">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const TabListe &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8cpp_source.html#l00044">tabListe.cpp:44</a></div></div>
+<div class="ttc" id="classTabListe_html_a8136d2feb5c13f6867819442c9c47546"><div class="ttname"><a href="classTabListe.html#a8136d2feb5c13f6867819442c9c47546">TabListe::~TabListe</a></div><div class="ttdeci">~TabListe()</div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8cpp_source.html#l00005">tabListe.cpp:5</a></div></div>
+<div class="ttc" id="classTabListe_html_abdb3886e84cd59e77928b6d824eff1cd"><div class="ttname"><a href="classTabListe.html#abdb3886e84cd59e77928b6d824eff1cd">TabListe::tab</a></div><div class="ttdeci">Liste * tab</div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8h_source.html#l00015">tabListe.h:15</a></div></div>
+<div class="ttc" id="classTabListe_html_ad87527505302d65e0b1a50dbd7bec9c6"><div class="ttname"><a href="classTabListe.html#ad87527505302d65e0b1a50dbd7bec9c6">TabListe::afficheT</a></div><div class="ttdeci">void afficheT(std::ostream &amp;) const </div><div class="ttdef"><b>Definition:</b> <a href="tabListe_8cpp_source.html#l00035">tabListe.cpp:35</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="tabListe_8h.html">tabListe.h</a></li>
+    <li class="footer">Généré le Dimanche 26 Avril 2015 15:41:55 pour Picross par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
+  </ul>
+</div>
+</body>
+</html>

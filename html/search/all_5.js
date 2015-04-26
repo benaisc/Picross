@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['getcolmodif',['getColModif',['../classPicross.html#a70ffbca3a713d7d29795f61cf704f9db',1,'Picross']]],
+  ['getcolonnes',['getColonnes',['../classPicross.html#a6ee974923efbc3fbd8662015fb0bdb47',1,'Picross']]],
+  ['getfini',['getFini',['../classListe.html#a9eb7d3a702326e486d7d4e1560803020',1,'Liste']]],
+  ['getligmodif',['getLigModif',['../classPicross.html#a3cd2051225ff9c6fe07efc7232050915',1,'Picross']]],
+  ['getlignes',['getLignes',['../classPicross.html#a58d5dbb3a3a8f741d363eac9933e6bf3',1,'Picross']]],
+  ['getlongueur',['getLongueur',['../classListe.html#a5bd2e69830022556e78d92d87df2d854',1,'Liste']]],
+  ['getmat',['getMat',['../classMatrice.html#a74022db9c0409d3451a259ec38bddf2b',1,'Matrice']]],
+  ['getmatrice',['getMatrice',['../classPicross.html#ae4eaf11ee021255fe884bd90f4b2f4f1',1,'Picross']]],
+  ['getnbc',['getNbc',['../classMatrice.html#ad23f82f0c076cb90ab6055d393f07d3a',1,'Matrice']]],
+  ['getnbcolonnes',['getNbColonnes',['../classPicross.html#a98fe549c1299b3124e7af786279a9940',1,'Picross']]],
+  ['getnbl',['getNbl',['../classMatrice.html#a1b2f1b7f44d0d91c09a8683aee9c63d5',1,'Matrice']]],
+  ['getnblignes',['getNbLignes',['../classPicross.html#a664581743767362ceab3ae90ac06cf09',1,'Picross']]],
+  ['getpremier',['getPremier',['../classListe.html#ac585f052619bd5b86dbcd61571fb9a73',1,'Liste']]],
+  ['getsuiv',['getSuiv',['../classCell.html#a4386393b73e6235fd94735e21c6f551c',1,'Cell']]],
+  ['gettaille',['getTaille',['../classTabListe.html#aff3365b5f403bd488eb0bf72a735ae26',1,'TabListe']]],
+  ['getval',['getVal',['../classCell.html#ab6d62fc964822fea141c6391bdff3ac1',1,'Cell']]],
+  ['getvalue',['getValue',['../classMatrice.html#a1416b86015f07dfd8f3481588667cb43',1,'Matrice']]]
+];
