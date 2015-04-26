@@ -103,10 +103,8 @@ Certaines grilles peuvent ne pas avoir de solution ou en avoir plusieurs.
 \end{table}
 \newpage
 
-
 Le but du projet est d'implémenter un solveur de Picross en C++ qui, étant donnée une matrice et des indices liés à ses lignes/colonnes, calcule, puis affiche la solution. On ne considère que des Picross qui ont (au moins) une solution.\newline
 La résolution d'une grille de Picross est un problème NP-complet (en temps Non-déterministe Polynomial). Pour le problème du Picross cela signifie qu'il ne faut pas espérer un algorithme qui résout n'importe quelle grille de Picross avec une complexité polynomiale, trouver une solution peut être très coûteux.
-
 \section{Description de la méthode de résolution utilisée}
 Afin de résoudre une grille de Picross donnée, nous traitons ses lignes indépendamment de ses colonnes. 
 Le traitement des lignes et des colonnes se faisant de la même manière; nous n'évoquerons par la suite que le traitement des lignes.
@@ -195,7 +193,6 @@ L'algorithme est explicité en annexe.
 Le choix naturel serait l'ensemble mais nous avons choisi la liste simplement chainée car déjà implémentée.
 \end{itemize}
 \newpage
-
 \subsection{Les classes}
 \subsubsection{La classe Cell :}
 \begin{itemize}
@@ -257,7 +254,7 @@ La classe picross est la classe dont l'instance représente le picross; S'est da
 \begin{itemize}
 \item Paramètres:
 \begin{itemize}
-\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne de notre matrice, initialement il peut contenir des cellules à 1,-1,0
+\item Un tableau d'entier: (Donnée/resultat) il représente une ligne/colonne issu de notre matrice
 \item Un short int : représentant la taille du tableau
 \item Une cellule de liste: il repésente le prochain indice a placer dans le tableau, initialement la première cellule associé à la dite ligne/colonne
 \item Un short int : représentant l'indice dans le tableau auquel on souhaite placer le bloc, initialement 0
@@ -333,8 +330,6 @@ Avec ce modèle défavorable on obtient l'équation de recursion suivante:
  \fbox{SLG(i)= $\sum_{k=l-i}^{l} (SLG(k)*n)+cst$}
 \end{center}
 Ainsi, en notant c la complexité dans ce pire des cas: $\theta(n^2) <$c$\leq\theta(2^n)$; pour chaque case on parcours au minimun une fois le tableau (la recopie) pour chaque cellule après ici cela fait déjà $\theta(n^2)$ et on doit le faire pour chaque indice.
-\paragraph{Complexité meilleur des cas : $\theta$(n)\newline}
-Dans le meilleur des cas la liste est vide, on doit pacourir une fois le tableau pour pouvoir vérifier.
 \subsubsection{remplirCasesSureBl :}
 \paragraph{Spécification :}remplirCasesSureBl(int* Merge, int* TG,int* TD, sint taille, Liste \&L);
 \begin{itemize}
@@ -387,10 +382,10 @@ Dans une fenêtre du programme on a quatre boutons:
 \end{landscape}
 \section{Ameliorations/Evolution du programme:}
 \begin{itemize}
-\item Dans le cas ou le picross nécessite un backtrack pour sa résolution, les blocs restants peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
+\item Dans le cas où le picross nécessite un backtrack pour sa résolution, les cases restantes peuvent se voir attribuer un degré de liberté, et la case ainsi determinée la plus probable aurait alors été celle choisi pour lancer le backtracking.
 \item Dans le souci d'améliorer la compléxitée de la résolution d'une grille en moyenne, nous aurions pû, plutôt que de faire des copies/recopies de matrices entre les environnements de backtrack, ne maintenir que les cases modifiées entre les environnements de backtracks;
-Cela dit, dans le pire des cas (aucune case n'est determinable), la complexité reste équivalente ($theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
-\item Nous aurions pû implémenter des methodes permettant de rentrer des grilles de picross graphiquement (au clic).
+Cela dit, dans le pire des cas (1ere hypothese fausse), la complexité reste équivalente ($\theta(n^2)$) car l'ensemble des cases se verraient modifiées après le premier environnement de backtrack. (Exemple BT 1 sol)
+\item Nous aurions pû implémenter des méthodes permettant de rentrer des grilles de picross graphiquement (au clic).
 \item Dans certains cas la méthode pour trouver les cases blanches sûres que nous avons choisies ne trouve pas toutes les cases blanches que nous aurions pu déterminer. Par exemple :
 \begin{center}
 \includegraphics[width=11cm]{image1}
@@ -413,57 +408,14 @@ Ici on voit bien que la cellule 11 devrait être blanche puisque qu’elle n’e
 \newpage
 \subsection{Lecture d'un fichier pour construire une grille:}
 Dans le but de construire une grille Picross nous avons choisi du structurer un fichier texte de la manière suivante :\newline
-Les deux premiers nombres séparés d'un espaces représentent nos Lignes | Colonnes.
-La méthode passe ensuite sur toutes les lignes du fichier, ou chaque saut de ligne correspond à une nouvelle liste de tabListe.
+Les deux premiers nombres séparés d'un espaces représentent respectivement le nombre de Lignes et de Colonnes.
+La méthode passe ensuite sur toutes les lignes du fichier, où chaque saut de ligne correspond à une nouvelle liste de tabListe.
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=8cm]{ex2}
 \end{center}
 \caption{Un exemple de fichier.}
 \end{figure}
-\newpage
-\subsection{Algorithme SLG :}
-\begin{verbatim}
-void Picross::SLG(int* Tab, size_t n, Cell* P, size_t i, bool &poss)
-{
-  if(P && i<n)
-  {
-    int* Tab2=new int [n];
-    for(size_t j=0;j<n;j++)
-    {
-      Tab2[j]=Tab[j];
-    }
-    PlacerBloc(Tab,n,P->getVal(),i,poss);
-    if(poss)//si j'ai placer mon bloc
-    {
-      SLG(Tab,n,P->getSuiv(),i+P->getVal()+1,poss);//bloc suivant
-      if(!poss)
-      {
-        for(size_t j=0;j<n;j++)
-        {
-          Tab[j]=Tab2[j];
-        }
-	      if(Tab[i]==1){poss=false;}
-        else{SLG(Tab,n,P,i+1,poss);}
-      }
-    }
-    else
-    {
-      if(Tab[i]==1){poss=false;}
-      else{SLG(Tab,n,P,i+1,poss);}
-    }
-    delete [] Tab2;
-  }
-  else
-  {
-    poss=Verification(Tab,i,n);
-    if(poss)
-    {
-	    for(size_t i=0; i<n; i++){if(Tab[i]==0){Tab[i]=-1;}}
-    }
-  }
-}
-\end{verbatim}
 \newpage
 \subsection{Algorithme de backtracking :}
 \begin{verbatim}
