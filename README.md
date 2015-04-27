@@ -11,6 +11,7 @@ Aussi, les picross à solutions multiples sont donc correctement résolus mais n
 Dans ce cas, (exemple BT_2_sol) nous avons choisi de placer les cases backtrackées à noir et nous déterminons ainsi la solution la plus à gauche possible.
 ------------------------------------------------
 
+- Installer au préalable la bibliotheque graphique "libgtkmm-3.0-dev"
 - Compiler le programme avec un simple "make"
 - Grilles de Picross dans le fichier Grilles/
 - Page web de documentation disponible dans le dossier html/ avec le fichier Index.html
