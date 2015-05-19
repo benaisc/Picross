@@ -23,8 +23,6 @@ int main(int argc, char** argv)
 
     P.TINY_SOL_iter();
     cout << P << endl;
-    P.FAT_SOL(4);
-    cout << P << endl;
 
     if(!P.isPicrossFini())
     {
